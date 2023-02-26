@@ -83,6 +83,15 @@ struct SliceSequenceFirst <: ResonanceSet
     end
 end
 
+struct SliceSequenceScnd <: ResonanceSet
+    finish::Int
+    resonances::DataFrame
+    SliceSequenceScnd(finish::Int, dataset::DataSet) = begin
+        df = filter(:onset => o -> o <= finish, dataset.data)
+        return new(finish, df)
+    end
+end
+
 
 
 
@@ -164,9 +173,13 @@ function filterSlice(seq::Vector{Union{Int, Int}}, m::Module)
     return SliceSequence(seq[1]*duration, seq[2]*duration, m.__data__)
 end
 
-function filterSlice(seq::Vector{Union{Int, Colon}}, m::Module) 
+function filterSlice(seq::Vector{Any}, m::Module) 
     duration = m.__data__.data.duration[1]
-    return SliceSequenceFirst(seq[1]*duration, m.__data__)
+    if (typeof(seq[2]) == Colon)
+        return SliceSequenceFirst(seq[1]*duration, m.__data__)
+    elseif (typeof(seq[1]) == Colon)
+        return SliceSequenceScnd(seq[2]*duration, m.__data__)
+    end
 end
 
 
