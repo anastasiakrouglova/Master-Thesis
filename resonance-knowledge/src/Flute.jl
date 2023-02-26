@@ -4,7 +4,9 @@ using Chakra
 using DataFrames
 using CSV
 
-include("./Resonances.jl")
+push!(LOAD_PATH, ".")
+using Resonances
+#include("./Resonances.jl")
 
 dir = @__DIR__
 

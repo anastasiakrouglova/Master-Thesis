@@ -74,6 +74,18 @@ struct SliceSequence <: ResonanceSet
     end
 end
 
+struct SliceSequenceFirst <: ResonanceSet
+    start::Int
+    resonances::DataFrame
+    SliceSequenceFirst(start::Int, dataset::DataSet) = begin
+        df = filter(:onset => o -> start <= o, dataset.data)
+        return new(start, df)
+    end
+end
+
+
+
+
 
 struct Frequencies <: ResonanceSet
     typeFreq::String
@@ -141,23 +153,21 @@ end
 
 
 
-Chakra.filter(seq::Vector, m::Module) = begin 
-    # slice number is multiplied by the duration (how onset works)
-    duration = m.__data__.data.duration[1]
-    #print(duration)
-    print(seq[1])
+
+# Function overloading
+function filterSlice(x::Int, m::Module) 
+    return Slice(x*m.__data__.data.duration[1], m.__data__)
+end
+
+function filterSlice(seq::Vector{Union{Int, Int}}, m::Module) 
+    duration = m.__data__.data.duration[1] # slice number is multiplied by the duration (how onset works)
     return SliceSequence(seq[1]*duration, seq[2]*duration, m.__data__)
 end
 
-
-
-# function filterSlice(x::Int, m::Module) 
-#     #println(m.__data__.data.duration[1])
-#     i = findall(==(m.__data__.data.duration), m.__data__.data.duration[1])
-#     println(i)
-#     return Slice(x*m.__data__.data.duration[1], m.__data__)
-#     #Slice(x*m.__data__.data.duration[1], m.__data__)
-# end
+function filterSlice(seq::Vector{Union{Int, Colon}}, m::Module) 
+    duration = m.__data__.data.duration[1]
+    return SliceSequenceFirst(seq[1]*duration, m.__data__)
+end
 
 
 # Chakra.fnd(x::SliceId, m::ResonanceHierarchy) = Chakra.fnd(x,m.dataset)
@@ -171,25 +181,6 @@ end
 
 
 
-# # An abstract type for filtering of resonances
-# abstract type ResonanceSet <: Constituent end
-
-# struct Slice <: ResonanceSet
-#     onset::Float64
-#     data::DataFrame
-# end
-
-# struct PositiveResonances <: ResonanceSet
-#     onset::Float64
-#     data::DataFrame
-# end
-
-# struct NegativeResonances <: ResonanceSet
-#     onset::Float64
-#     data::DataFrame
-# end
-
-
 # # Operations on data
 # Base.get(d::DataFrame,x::Int) = x > size(d)[1] ? none : d[x,:]
 # Chakra.fnd(x::ResonanceId, m::DataSet) = (r = Base.get(m.data, x.index); r == none ? none : Resonance(r))
@@ -198,4 +189,3 @@ end
 # Chakra.pts(x::Resonance)::Vector{<:Id} = Id[] # empty because doesn’t have any smaller atoms (onder in tree)
 
 
-# end
