@@ -64,11 +64,39 @@ struct Slice <: ResonanceSet
     end
 end
 
-# You will probably also need a type SliceId (or ResonanceSetId)
+struct SliceSequence <: ResonanceSet
+    start::Int
+    finish::Int
+    resonances::DataFrame
+    SliceSequence(start::Int, finish::Int, dataset::DataSet) = begin
+        df = filter(:onset => o -> start <= o <= finish, dataset.data)
+        return new(start,finish, df)
+    end
+end
+
+
+struct Frequencies <: ResonanceSet
+    typeFreq::String
+    resonances::DataFrame
+    Frequencies(typeFreq::String, dataset::DataSet) = begin
+        if (typeFreq == "pos")
+            df = filter(:frequency => f -> f > 0, dataset.data)
+        elseif (typeFreq == "neg")
+            df = filter(:frequency => f -> f < 0, dataset.data)
+        elseif (typeFreq == "null")
+            df = filter(:frequency => f -> f == 0, dataset.data)
+        else
+            df = null
+        end
+        return new(typeFreq, df)
+    end
+end
+
+# You will probably also need a type SliceId (or ResonanceSetId) --- NO
 
 # Other types of resonance set? 
-## Negative frequencies? 
-## Positive frequencies?
+## Negative frequencies?  -- DONE
+## Positive frequencies? -- DONE
 ## Sequences of slices?
 ## frequency bands?
 # What about collections of resonance sets etc? 
@@ -93,21 +121,44 @@ Chakra.fnd(x::ResonanceId, m::ResonanceHierarchy) = Chakra.fnd(x,m.dataset)
 
 
 
-# filter on onset to get a certain slice
+
+# filter on frequency: bool 1 = pos, 0 = neg
+Chakra.filter(s::String, m::Module) = begin
+    return Frequencies(s,m.__data__) #PosFrequencies(m.__data__)
+end
+
+
+# filter on a certain slice
 Chakra.filter(x::Int, m::Module) = begin 
-    return Slice(x, m.__data__)
+    # slice number is multiplied by the duration (how onset works)
+    #i = findall((m.__data__.data.duration) == m.__data__.data.duration[1])
+    #println(i)
+    duration = m.__data__.data.duration[1]
+    return Slice(x*duration, m.__data__)
+    # TODO: return correct slice, not only equal to first one!
+    # WEIRD: Gives also 185, which is not equal to first duration, but still works...
 end
 
 
 
-#Chakra.filter(x::SliceId, m::Tuple) = filter(x, m)
+Chakra.filter(seq::Vector, m::Module) = begin 
+    # slice number is multiplied by the duration (how onset works)
+    duration = m.__data__.data.duration[1]
+    #print(duration)
+    print(seq[1])
+    return SliceSequence(seq[1]*duration, seq[2]*duration, m.__data__)
+end
 
-#Chakra.filter(x::SliceId, m::DataSet) = Chakra.filter(x,m.data.onset)
 
-# Chakra.fnd(x::SliceId, m::DataSet) = begin
-#     i = findall(==(x.onset),m.data.onset)
-#     isempty(i) ? none : Slice(x, m)
+
+# function filterSlice(x::Int, m::Module) 
+#     #println(m.__data__.data.duration[1])
+#     i = findall(==(m.__data__.data.duration), m.__data__.data.duration[1])
+#     println(i)
+#     return Slice(x*m.__data__.data.duration[1], m.__data__)
+#     #Slice(x*m.__data__.data.duration[1], m.__data__)
 # end
+
 
 # Chakra.fnd(x::SliceId, m::ResonanceHierarchy) = Chakra.fnd(x,m.dataset)
 # Chakra.fnd(x::Id,m::ResonanceHierarchy) = Base.get(m.structure,x,none)
