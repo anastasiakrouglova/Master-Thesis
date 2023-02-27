@@ -10,6 +10,11 @@ abstract type Id <: Chakra.Id end
 abstract type Constituent <: Chakra.Constituent end
 abstract type Hierarchy <: Chakra.Hierarchy end
 
+
+########################################################################################################
+########################################################################################################
+################################  ID's, constituents, hierearchies #####################################
+########################################################################################################
 ########################################################################################################
 
 # Definition Ids
@@ -55,6 +60,7 @@ end
 # An abstract type to filter resonances
 abstract type ResonanceSet end
 
+# a slice in the spectrogram (based on time)
 struct Slice <: ResonanceSet
     onset::Int
     resonances::DataFrame
@@ -74,6 +80,7 @@ struct SliceSequence <: ResonanceSet
     end
 end
 
+# for input such as [x, :]
 struct SliceSequenceFirst <: ResonanceSet
     start::Int
     resonances::DataFrame
@@ -83,6 +90,7 @@ struct SliceSequenceFirst <: ResonanceSet
     end
 end
 
+# for input such as [:, x]
 struct SliceSequenceScnd <: ResonanceSet
     finish::Int
     resonances::DataFrame
@@ -93,9 +101,7 @@ struct SliceSequenceScnd <: ResonanceSet
 end
 
 
-
-
-
+# filter on positive, negative and 0 frequencies
 struct Frequencies <: ResonanceSet
     typeFreq::String
     resonances::DataFrame
@@ -113,59 +119,76 @@ struct Frequencies <: ResonanceSet
     end
 end
 
-# You will probably also need a type SliceId (or ResonanceSetId) --- NO
+# frequency between [x, y]
+struct FrequencyBand <: ResonanceSet
+    start::Int
+    finish::Int
+    resonances::DataFrame
+    FrequencyBand(start::Int, finish::Int, dataset::DataSet) = begin
+            df = filter(:frequency => f -> start <= f <= finish, dataset.data)
+        return new(start, finish, df)
+    end
+end
 
-# Other types of resonance set? 
-## Negative frequencies?  -- DONE
-## Positive frequencies? -- DONE
-## Sequences of slices?
-## frequency bands?
-# What about collections of resonance sets etc? 
-
-# What about Hierarchies which contain resonance sets and other collectsion?
-# For example:
 
 
 ########################################################################################################
+########################################################################################################
+###################################   OPERATIONS  ######################################################
+########################################################################################################
+########################################################################################################
 
+####################################  find a resonance by id ###########################################
 Chakra.fnd(x::ResonanceId, m::DataSet) = begin
     i = findall(==(x.value),m.data.id)
     isempty(i) ? none : Resonance(m.data[i[1],:])
 end
 
+# Chakra.fnd(seq::Vector{ResonanceId}, m::Module) = begin
+#     for j in seq
+#         i = findall(==(seq[j].value),m.__data__.data.id)
+#         isempty(i) ? none : Resonance(m.__data__.data[i[1],:])
+#     end
+# end
+
 # Operations on data
 Chakra.fnd(x::ResonanceId, m::ResonanceHierarchy) = Chakra.fnd(x,m.dataset)
-
-
-# Todo: op bepaalde types filteren: bv onset, frequency
-#Chakra.filter(x::Int, m::Module, t::String) = none
+#Chakra.fnd(x::ResonanceId, m::ResonanceHierarchy) = Chakra.fnd(x,m.dataset)
 
 
 
+# [2, 4 , 78, 3]
+function findResonancesbyId(seq::Vector{Union{ResonanceId, ResonanceId}}, m::Module)
+    println(length(seq))
+    #for j in seq
+    i = findall(==(seq[1].value),m.__data__.data.id)
+    j = findall(==(seq[2].value),m.__data__.data.id)
+    isempty(i) ? none : Resonance(m.__data__.data[i[1],:])
+        #println(i)
+    #end
 
-# filter on frequency: bool 1 = pos, 0 = neg
-Chakra.filter(s::String, m::Module) = begin
-    return Frequencies(s,m.__data__) #PosFrequencies(m.__data__)
+    #return 5
 end
 
 
-# filter on a certain slice
-Chakra.filter(x::Int, m::Module) = begin 
-    # slice number is multiplied by the duration (how onset works)
-    #i = findall((m.__data__.data.duration) == m.__data__.data.duration[1])
-    #println(i)
+
+
+#############################  filter on frequency (Function overloading) ###############################
+function filterFrequency(s::String, m::Module)
+    return Frequencies(s,m.__data__) 
+end
+
+
+function filterFrequency(band::Vector{Union{Int, Int}}, m::Module)
+    return FrequencyBand(band[1], band[2], m.__data__) 
+end
+
+
+################################### filter on slice ######################################################
+function filterSlice(x::Int, m::Module) 
+    # TODO: return correct slice, not only equal to first one!
     duration = m.__data__.data.duration[1]
     return Slice(x*duration, m.__data__)
-    # TODO: return correct slice, not only equal to first one!
-    # WEIRD: Gives also 185, which is not equal to first duration, but still works...
-end
-
-
-
-
-# Function overloading
-function filterSlice(x::Int, m::Module) 
-    return Slice(x*m.__data__.data.duration[1], m.__data__)
 end
 
 function filterSlice(seq::Vector{Union{Int, Int}}, m::Module) 
@@ -183,9 +206,6 @@ function filterSlice(seq::Vector{Any}, m::Module)
 end
 
 
-# Chakra.fnd(x::SliceId, m::ResonanceHierarchy) = Chakra.fnd(x,m.dataset)
-# Chakra.fnd(x::Id,m::ResonanceHierarchy) = Base.get(m.structure,x,none)
-
 Chakra.pts(x::Resonance)::Vector{Id} = Id[] # empty because the resonance is the smallest constituent
 Chakra.pts(x::Slice)::Vector{Id} = id.(x.resonances.id)  
 
@@ -193,12 +213,20 @@ end
 
 
 
+########################################################################################################
+########################################################################################################
+###################################      TODO     ######################################################
+########################################################################################################
+########################################################################################################
 
-# # Operations on data
-# Base.get(d::DataFrame,x::Int) = x > size(d)[1] ? none : d[x,:]
-# Chakra.fnd(x::ResonanceId, m::DataSet) = (r = Base.get(m.data, x.index); r == none ? none : Resonance(r))
+# You will probably also need a type SliceId (or ResonanceSetId) --- NO
 
-# # define a chakra-particle 
-# Chakra.pts(x::Resonance)::Vector{<:Id} = Id[] # empty because doesn’t have any smaller atoms (onder in tree)
+# Other types of resonance set? 
+## Negative frequencies?  -- DONE
+## Positive frequencies? -- DONE
+## Sequences of slices? -- DONE
+## frequency bands? -- DONE
+# What about collections of resonance sets etc? 
 
-
+# What about Hierarchies which contain resonance sets and other collectsion?
+# For example:
