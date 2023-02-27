@@ -87,32 +87,22 @@ struct Slice <: ResonanceSet
 end
 
 struct SliceSequence <: ResonanceSet
-    start::Int
-    finish::Int
+    start::Union{Int,Colon}
+    finish::Union{Int,Colon}
     resonances::DataFrame
-    SliceSequence(start::Int, finish::Int, dataset::DataSet) = begin
-        df = filter(:onset => o -> start <= o <= finish, dataset.data)
+    SliceSequence(start::Union{Int,Colon}, finish::Union{Int,Colon}, dataset::DataSet) = begin
+        # TODO: duration dependent on number, not just first element
+        # slice number is multiplied by the duration (how onset works)
+        duration = dataset.data.duration[1]
+
+        if (typeof(start) == Int && typeof(finish) == Int)
+            df = filter(:onset => o -> start*duration <= o <= finish*duration, dataset.data)
+        elseif (typeof(start) == Int && typeof(finish) == Colon)
+            df = filter(:onset => o -> start*duration <= o, dataset.data)
+        elseif (typeof(start) == Colon && typeof(finish) == Int)
+            df = filter(:onset => o -> o <= finish*duration, dataset.data)
+        end
         return new(start,finish, df)
-    end
-end
-
-# for input such as [x, :]
-struct SliceSequenceFirst <: ResonanceSet
-    start::Int
-    resonances::DataFrame
-    SliceSequenceFirst(start::Int, dataset::DataSet) = begin
-        df = filter(:onset => o -> start <= o, dataset.data)
-        return new(start, df)
-    end
-end
-
-# for input such as [:, x]
-struct SliceSequenceScnd <: ResonanceSet
-    finish::Int
-    resonances::DataFrame
-    SliceSequenceScnd(finish::Int, dataset::DataSet) = begin
-        df = filter(:onset => o -> o <= finish, dataset.data)
-        return new(finish, df)
     end
 end
 
@@ -145,9 +135,6 @@ struct FrequencyBand <: ResonanceSet
         return new(min, max, df)
     end
 end
-
-
-
 
 
 
@@ -192,36 +179,48 @@ function findResonancesbyId(ids::Vector{ResonanceId}, m::Module)
 end
 
 #############################  filter on frequency (Function overloading) ###############################
-## Application
-#### Flute.Resonances.id("pos", <Module>) 
-function filterFrequency(s::String, m::Module) # s can be "pos"/"neg"/"null"
+function filterFrequency(s::String, m::Module) 
     """
     Find frequencies with a certain characteristic
 
-    # Variables
-    s = "pos" / "neg" / "null" # to filter on positive/negative/null frequencies
+    # Arguments
+    `s::String` = "pos" / "neg" / "null" # to filter on positive/negative/null frequencies
 
     # Examples
     ```
+    julia> Flute.Resonances.id("pos", <Module>) 
     ```
     """    
     return Frequencies(s,m.__data__) 
 end
 
 
-function filterFrequency(band::Vector{Union{Int, Int}}, m::Module)
+function frequencyBand(band::Vector{Union{Int, Int}}, m::Module)
     """
-    Find frequencies between a minimum and maximum frequency.
+    Find frequencies between a minimum and maximum frequency value.
 
-    # Variables
-    band = a minimum and maximum value integer
+    # Arguments
+    `band::::Vector{Union{Int, Int}}` = contains in the first element the minimum and in the second the maximum value for constraining the frequency band
 
     # Examples
     ```
+    julia> Resonances.frequencyBand([3, 10000], Flute)
     ```
     """
     return FrequencyBand(band[1], band[2], m.__data__) 
 end
+
+# HIERAAN STRAKS AAN HET WERKEN
+# function frequencyBand(seq::Vector{Any}, m::Module) 
+#     if (length(seq) > 2)
+#         return none
+#     elseif (typeof(seq[2]) == Colon)
+#         return FrequencyFirst(band[1], m.__data__)
+#     elseif (typeof(seq[1]) == Colon)
+#         return FrequencyScnd(band[2], m.__data__) 
+#     end
+
+# end
 
 
 ################################### filter on slice ######################################################
@@ -231,18 +230,9 @@ function filterSlice(x::Int, m::Module)
     return Slice(x*duration, m.__data__)
 end
 
-function filterSlice(seq::Vector{Union{Int, Int}}, m::Module) 
-    duration = m.__data__.data.duration[1] # slice number is multiplied by the duration (how onset works)
-    return SliceSequence(seq[1]*duration, seq[2]*duration, m.__data__)
-end
-
 function filterSlice(seq::Vector{Any}, m::Module) 
-    duration = m.__data__.data.duration[1]
-    if (typeof(seq[2]) == Colon)
-        return SliceSequenceFirst(seq[1]*duration, m.__data__)
-    elseif (typeof(seq[1]) == Colon)
-        return SliceSequenceScnd(seq[2]*duration, m.__data__)
-    end
+
+    return SliceSequence(seq[1], seq[2], m.__data__)
 end
 
 
