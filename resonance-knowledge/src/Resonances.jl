@@ -62,7 +62,6 @@ end
 # An abstract type to filter resonances
 abstract type ResonanceSet end
 
-
 struct ResonanceCollection <: ResonanceSet
     ids::Vector{ResonanceId}
     data::DataFrame
@@ -138,12 +137,12 @@ end
 
 # frequency between [x, y]
 struct FrequencyBand <: ResonanceSet
-    start::Int
-    finish::Int
+    min::Int
+    max::Int
     resonances::DataFrame
-    FrequencyBand(start::Int, finish::Int, dataset::DataSet) = begin
-            df = filter(:frequency => f -> start <= f <= finish, dataset.data)
-        return new(start, finish, df)
+    FrequencyBand(min::Int, max::Int, dataset::DataSet) = begin
+            df = filter(:frequency => f -> min <= f <= max, dataset.data)
+        return new(min, max, df)
     end
 end
 
@@ -159,49 +158,68 @@ end
 ########################################################################################################
 
 ####################################  find a resonance by id ###########################################
+## Application
+#### i = Flute.Resonances.id(<id1>) 
+#### Resonances.findResonancesbyId(i, <Module (e.g. Flute)>)
 Chakra.fnd(x::ResonanceId, m::DataSet) = begin
     i = findall(==(x.value),m.data.id)
     isempty(i) ? none : Resonance(m.data[i[1],:])
 end
 
-# Chakra.fnd(seq::Vector{ResonanceId}, m::Module) = begin
-#     for j in seq
-#         i = findall(==(seq[j].value),m.__data__.data.id)
-#         isempty(i) ? none : Resonance(m.__data__.data[i[1],:])
-#     end
-# end
-
 # Operations on data
 Chakra.fnd(x::ResonanceId, m::ResonanceHierarchy) = Chakra.fnd(x,m.dataset)
-#Chakra.fnd(x::ResonanceId, m::ResonanceHierarchy) = Chakra.fnd(x,m.dataset)
 
 
-
-# [2, 4 , 78, 3]
+#################################  find a resonance by multiple ids ######################################
 function findResonancesbyId(ids::Vector{ResonanceId}, m::Module)
-    #for j in seq
-    # i = findall(==(seq[1].value),m.__data__.data.id)
-    # j = findall(==(seq[2].value),m.__data__.data.id)
+    """
+    Find resonances of multiple ids.
 
-    #isempty(i) ? none : 
-    
+    # Examples
+    ```jldoctest
+    julia> i1 = Flute.Resonances.id(10) 
+    julia> i2 = Flute.Resonances.id(20)
+    julia> Resonances.findResonancesbyId([i1, i2], Flute)
+    2×11 DataFrame:
+    Row │ onset  duration  sample_rate  amplitude   phase      frequency  decay   ⋯
+    │ Int64  Int64     Int64        Float64     Float64    Float64    Float64 ⋯
+    ─────┼──────────────────────────────────────────────────────────────────────────
+    1 │     0       512        44100  8.45435e-5  -0.766382   -20398.8  -137.77 ⋯
+    2 │     0       512        44100  2.70559e-5   1.26059    -17333.4  -171.53
+    ```
+    """    
     ResonanceCollection(ids, m.__data__)
-        #println(i)
-    #end
-
-    #return 5
 end
 
-
-
-
 #############################  filter on frequency (Function overloading) ###############################
-function filterFrequency(s::String, m::Module)
+## Application
+#### Flute.Resonances.id("pos", <Module>) 
+function filterFrequency(s::String, m::Module) # s can be "pos"/"neg"/"null"
+    """
+    Find frequencies with a certain characteristic
+
+    # Variables
+    s = "pos" / "neg" / "null" # to filter on positive/negative/null frequencies
+
+    # Examples
+    ```
+    ```
+    """    
     return Frequencies(s,m.__data__) 
 end
 
 
 function filterFrequency(band::Vector{Union{Int, Int}}, m::Module)
+    """
+    Find frequencies between a minimum and maximum frequency.
+
+    # Variables
+    band = a minimum and maximum value integer
+
+    # Examples
+    ```
+    ```
+    """
     return FrequencyBand(band[1], band[2], m.__data__) 
 end
 
