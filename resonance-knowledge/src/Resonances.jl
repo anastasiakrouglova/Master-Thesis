@@ -37,6 +37,8 @@ struct Resonance <: Constituent
     data::DataFrameRow
 end
 
+
+
 # Definition Hierarchies
 struct DataSet <: Hierarchy
     data::DataFrame
@@ -59,6 +61,21 @@ end
 
 # An abstract type to filter resonances
 abstract type ResonanceSet end
+
+
+struct ResonanceCollection <: ResonanceSet
+    ids::Vector{ResonanceId}
+    data::DataFrame
+    ResonanceCollection(ids::Vector{ResonanceId}, dataset::DataSet) = begin
+        values = Vector{Int64}()
+        for (index, val) in enumerate(ids)
+            append!(values, ids[index].value)
+        end
+
+        df = filter(:id => o -> o in values, dataset.data)
+        return new(ids, df)
+    end
+end
 
 # a slice in the spectrogram (based on time)
 struct Slice <: ResonanceSet
@@ -132,6 +149,9 @@ end
 
 
 
+
+
+
 ########################################################################################################
 ########################################################################################################
 ###################################   OPERATIONS  ######################################################
@@ -158,12 +178,14 @@ Chakra.fnd(x::ResonanceId, m::ResonanceHierarchy) = Chakra.fnd(x,m.dataset)
 
 
 # [2, 4 , 78, 3]
-function findResonancesbyId(seq::Vector{Union{ResonanceId, ResonanceId}}, m::Module)
-    println(length(seq))
+function findResonancesbyId(ids::Vector{ResonanceId}, m::Module)
     #for j in seq
-    i = findall(==(seq[1].value),m.__data__.data.id)
-    j = findall(==(seq[2].value),m.__data__.data.id)
-    isempty(i) ? none : Resonance(m.__data__.data[i[1],:])
+    # i = findall(==(seq[1].value),m.__data__.data.id)
+    # j = findall(==(seq[2].value),m.__data__.data.id)
+
+    #isempty(i) ? none : 
+    
+    ResonanceCollection(ids, m.__data__)
         #println(i)
     #end
 
