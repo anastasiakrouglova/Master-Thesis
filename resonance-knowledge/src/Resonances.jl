@@ -26,11 +26,11 @@ end
     # value::List ([1:4] bv)
 
 struct SliceId <: Id
-    onset::Int
+    value::Int
 end
 
-id(i::Int) = ResonanceId(i)
-sId(i::Int) = SliceId(i)
+resId(i::Int) = ResonanceId(i)
+sliceId(i::Int) = SliceId(i)
 
 # Definition Constituents
 struct Resonance <: Constituent
@@ -78,29 +78,30 @@ end
 
 # a slice in the spectrogram (based on time)
 struct Slice <: ResonanceSet
-    onset::Int
+    onset::SliceId
     resonances::DataFrame
-    Slice(onset::Int,dataset::DataSet) = begin
-        df = filter(:onset => o -> o == onset, dataset.data)
+    Slice(onset::SliceId,dataset::DataSet) = begin
+        duration = dataset.data.duration[1]
+        df = filter(:onset => o -> o == onset.value*duration, dataset.data)
         return new(onset,df)
     end
 end
 
 struct SliceSequence <: ResonanceSet
-    start::Union{Int,Colon}
-    finish::Union{Int,Colon}
+    start::Union{SliceId,Colon}
+    finish::Union{SliceId,Colon}
     resonances::DataFrame
-    SliceSequence(start::Union{Int,Colon}, finish::Union{Int,Colon}, dataset::DataSet) = begin
+    SliceSequence(start::Union{SliceId,Colon}, finish::Union{SliceId,Colon}, dataset::DataSet) = begin
         # TODO: duration dependent on number, not just first element
         # slice number is multiplied by the duration (how onset works)
         duration = dataset.data.duration[1]
 
-        if (typeof(start) == Int && typeof(finish) == Int)
-            df = filter(:onset => o -> start*duration <= o <= finish*duration, dataset.data)
-        elseif (typeof(start) == Int && typeof(finish) == Colon)
-            df = filter(:onset => o -> start*duration <= o, dataset.data)
-        elseif (typeof(start) == Colon && typeof(finish) == Int)
-            df = filter(:onset => o -> o <= finish*duration, dataset.data)
+        if (typeof(start) == SliceId && typeof(finish) == SliceId)
+            df = filter(:onset => o -> start.value*duration <= o <= finish.value*duration, dataset.data)
+        elseif (typeof(start) == SliceId && typeof(finish) == Colon)
+            df = filter(:onset => o -> start.value*duration <= o, dataset.data)
+        elseif (typeof(start) == Colon && typeof(finish) == SliceId)
+            df = filter(:onset => o -> o <= finish.value*duration, dataset.data)
         end
         return new(start,finish, df)
     end
@@ -127,8 +128,8 @@ end
 
 # frequency between [x, y]
 struct FrequencyBand <: ResonanceSet
-    min::Int
-    max::Int
+    min::Union{Int,Colon}
+    max::Union{Int,Colon}
     resonances::DataFrame
     FrequencyBand(min::Int, max::Int, dataset::DataSet) = begin
             df = filter(:frequency => f -> min <= f <= max, dataset.data)
@@ -210,34 +211,32 @@ function frequencyBand(band::Vector{Union{Int, Int}}, m::Module)
     return FrequencyBand(band[1], band[2], m.__data__) 
 end
 
-# HIERAAN STRAKS AAN HET WERKEN
-# function frequencyBand(seq::Vector{Any}, m::Module) 
-#     if (length(seq) > 2)
-#         return none
-#     elseif (typeof(seq[2]) == Colon)
-#         return FrequencyFirst(band[1], m.__data__)
-#     elseif (typeof(seq[1]) == Colon)
-#         return FrequencyScnd(band[2], m.__data__) 
-#     end
-
-# end
 
 
 ################################### filter on slice ######################################################
-function filterSlice(x::Int, m::Module) 
+function getSlice(x::SliceId, m::Module) 
     # TODO: return correct slice, not only equal to first one!
-    duration = m.__data__.data.duration[1]
-    return Slice(x*duration, m.__data__)
+    #duration = m.__data__.data.duration[1]
+    return Slice(x, m.__data__)
 end
 
-function filterSlice(seq::Vector{Any}, m::Module) 
-
+function getSlice(seq::Vector{Any}, m::Module) 
     return SliceSequence(seq[1], seq[2], m.__data__)
+end
+
+function getSlice(seq::Vector{SliceId}, m::Module) 
+    return SliceSequence(seq[1], seq[2], m.__data__)
+end
+
+function getSlice(seq::Vector{Colon}, m::Module) 
+    return error("Please enter a vector of length 2 with a slideId and maximum 1 Colon.")
 end
 
 
 Chakra.pts(x::Resonance)::Vector{Id} = Id[] # empty because the resonance is the smallest constituent
 Chakra.pts(x::Slice)::Vector{Id} = id.(x.resonances.id)  
+#Chakra.pts(x::SliceSequence)::Vector{Id} = id.(x.resonances.id) # is this correct?
+
 
 end
 
@@ -256,7 +255,7 @@ end
 ## Positive frequencies? -- DONE
 ## Sequences of slices? -- DONE
 ## frequency bands? -- DONE
-# What about collections of resonance sets etc? 
+# What about collections of resonance sets etc? (dus rode bolletjes hoger)
 
 # What about Hierarchies which contain resonance sets and other collectsion?
 # For example:
