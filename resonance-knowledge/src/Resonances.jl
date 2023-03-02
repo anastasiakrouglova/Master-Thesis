@@ -22,21 +22,26 @@ struct ResonanceId <: Id
     value::Int
 end
 
-#TODO ResonancesId 
-    # value::List ([1:4] bv)
-
 struct SliceId <: Id
+    value::Int
+end
+
+struct SliceSequenceId <: Id
+    value::Int
+end
+
+struct PairId <: Id
     value::Int
 end
 
 resId(i::Int) = ResonanceId(i)
 sliceId(i::Int) = SliceId(i)
-
+sliceSeqId(i::Int) = SliceSequenceId(i)
+pairId(i::Int) = PairId(i)
 # Definition Constituents
 struct Resonance <: Constituent
     data::DataFrameRow
 end
-
 
 
 # Definition Hierarchies
@@ -45,7 +50,14 @@ struct DataSet <: Hierarchy
     DataSet(filepath) = begin
         df = DataFrame(CSV.File(filepath))
         # Create a unique id for every dataframe
-        df[!,:id] = collect(1:size(df)[1])
+        df[!,:id] = collect(1:size(df)[1]) # add res id
+
+        sliceIds = [floor(Int, (o / d)) for (o, d) in zip(df.onset, df.duration)]
+        df[!, :sliceId] = sliceIds
+
+        pairIds =  [ceil(Int, (id / 2)) for (id) in df.id]
+        df[!, :pairId] = pairIds
+
         new(df)
     end
 end
@@ -70,6 +82,7 @@ struct ResonanceCollection <: ResonanceSet
         for (index, val) in enumerate(ids)
             append!(values, ids[index].value)
         end
+        #values = [id.value for id in ids]
 
         df = filter(:id => o -> o in values, dataset.data)
         return new(ids, df)
@@ -78,12 +91,23 @@ end
 
 # a slice in the spectrogram (based on time)
 struct Slice <: ResonanceSet
-    onset::SliceId
+    sliceId::SliceId
     resonances::DataFrame
-    Slice(onset::SliceId,dataset::DataSet) = begin
-        duration = dataset.data.duration[1]
-        df = filter(:onset => o -> o == onset.value*duration, dataset.data)
-        return new(onset,df)
+    Slice(sliceId::SliceId,dataset::DataSet) = begin
+        #duration = dataset.data.duration[1]
+        df = filter(:sliceId => o -> o == sliceId.value, dataset.data)
+        return new(sliceId,df)
+    end
+end
+
+
+struct Pair <: ResonanceSet
+    pairId::PairId
+    resonances::DataFrame
+
+    Pair(pairId::PairId, dataset::DataSet) = begin
+        df = filter(:pairId => p -> p == pairId.value, dataset.data)
+        return new(pairId,df)
     end
 end
 
@@ -97,6 +121,8 @@ struct SliceSequence <: ResonanceSet
         duration = dataset.data.duration[1]
 
         if (typeof(start) == SliceId && typeof(finish) == SliceId)
+            # TODO: Slices enumeraten 
+            # SliceSequence
             df = filter(:onset => o -> start.value*duration <= o <= finish.value*duration, dataset.data)
         elseif (typeof(start) == SliceId && typeof(finish) == Colon)
             df = filter(:onset => o -> start.value*duration <= o, dataset.data)
@@ -128,12 +154,32 @@ end
 
 # frequency between [x, y]
 struct FrequencyBand <: ResonanceSet
-    min::Union{Int,Colon}
-    max::Union{Int,Colon}
+    min::Union{Real,Colon}
+    max::Union{Real,Colon}
     resonances::DataFrame
-    FrequencyBand(min::Int, max::Int, dataset::DataSet) = begin
+    FrequencyBand(min::Union{Real,Colon}, max::Union{Real,Colon}, dataset::DataSet) = begin
+        if (typeof(max) == Colon)
+            df = filter(:frequency => f -> min <= f, dataset.data)
+        elseif (typeof(min) == Colon)
+            df = filter(:frequency => f -> f < max, dataset.data)
+        else
             df = filter(:frequency => f -> min <= f <= max, dataset.data)
+        end
+
         return new(min, max, df)
+    end
+
+
+    FrequencyBand(s::String, dataset::DataSet) = begin
+        if (s == "pos")
+            FrequencyBand(0, :, dataset::DataSet)
+        elseif (s == "neg")
+            FrequencyBand(:, 0, dataset::DataSet)
+        elseif (s == "null")
+            FrequencyBand(0, 0, dataset::DataSet)
+        else
+            error("please put in pos/neg/null")
+        end
     end
 end
 
@@ -147,19 +193,32 @@ end
 
 ####################################  find a resonance by id ###########################################
 ## Application
-#### i = Flute.Resonances.id(<id1>) 
-#### Resonances.findResonancesbyId(i, <Module (e.g. Flute)>)
+### i = Flute.Resonances.id(<id1>) 
+### Resonances.findResonancesbyId(i, <Module (e.g. Flute)>)
+
 Chakra.fnd(x::ResonanceId, m::DataSet) = begin
     i = findall(==(x.value),m.data.id)
     isempty(i) ? none : Resonance(m.data[i[1],:])
 end
 
+# Chakra.fnd(x::PairId, m::DataSet) = begin
+#     i = findall(==(x.value),m.data.id)
+#     isempty(i) ? none : Pair(m.data[i[1],:])
+# end
+
 # Operations on data
-Chakra.fnd(x::ResonanceId, m::ResonanceHierarchy) = Chakra.fnd(x,m.dataset)
+#Chakra.fnd(x::ResonanceId, m::ResonanceHierarchy) = Chakra.fnd(x,m.dataset)
+
+
+# function findResonanceById(x::ResonanceId, m::Module)
+#     i = findall(==(x.value),m.__data__.data.id)
+#     return isempty(i) ? none : Resonance(m.__data__.data[i[1],:])
+# end
+
 
 
 #################################  find a resonance by multiple ids ######################################
-function findResonancesbyId(ids::Vector{ResonanceId}, m::Module)
+function findResonancesByIds(ids::Vector{ResonanceId}, m::Module)
     """
     Find resonances of multiple ids.
 
@@ -179,8 +238,15 @@ function findResonancesbyId(ids::Vector{ResonanceId}, m::Module)
     ResonanceCollection(ids, m.__data__)
 end
 
+
+# function findSliceById(x::SliceId, m::Module)
+#     i = findall(==(x.value),m.__data__.data.onset[])
+#     return isempty(i) ? none : Resonance(m.__data__.data[i[1],:])
+# end
+
+
 #############################  filter on frequency (Function overloading) ###############################
-function filterFrequency(s::String, m::Module) 
+function signFrequencies(s::String, m::Module) 
     """
     Find frequencies with a certain characteristic
 
@@ -196,19 +262,23 @@ function filterFrequency(s::String, m::Module)
 end
 
 
-function frequencyBand(band::Vector{Union{Int, Int}}, m::Module)
+function frequencyBand(min::Union{Real,Colon}, max::Union{Real,Colon}, m::Module)
     """
     Find frequencies between a minimum and maximum frequency value.
 
     # Arguments
-    `band::::Vector{Union{Int, Int}}` = contains in the first element the minimum and in the second the maximum value for constraining the frequency band
+    `min::Union{Real,Colon}, max::Union{Real,Colon}` = contains in the first element the minimum and in the second the maximum value for constraining the frequency band
 
     # Examples
     ```
     julia> Resonances.frequencyBand([3, 10000], Flute)
     ```
     """
-    return FrequencyBand(band[1], band[2], m.__data__) 
+    return FrequencyBand(min, max, m.__data__) 
+end
+
+function frequencyBand(s::String, m::Module)
+    return FrequencyBand(s, m.__data__) 
 end
 
 
@@ -216,27 +286,37 @@ end
 ################################### filter on slice ######################################################
 function getSlice(x::SliceId, m::Module) 
     # TODO: return correct slice, not only equal to first one!
-    #duration = m.__data__.data.duration[1]
     return Slice(x, m.__data__)
 end
 
-function getSlice(seq::Vector{Any}, m::Module) 
-    return SliceSequence(seq[1], seq[2], m.__data__)
+function getSlice(min::SliceId, max::SliceId, m::Module)
+    return SliceSequence(min, max, m.__data__)
 end
 
-function getSlice(seq::Vector{SliceId}, m::Module) 
-    return SliceSequence(seq[1], seq[2], m.__data__)
+function getSlice(min::SliceId, max::Colon, m::Module)
+    return SliceSequence(min, max, m.__data__)
 end
 
-function getSlice(seq::Vector{Colon}, m::Module) 
-    return error("Please enter a vector of length 2 with a slideId and maximum 1 Colon.")
+function getSlice(min::Colon, max::SliceId, m::Module)
+    return SliceSequence(min, max, m.__data__)
 end
+
+# function getSliceSequence(min::SliceId, max::SliceId, ::Module)
+#     return SliceSequence(min, max, m.__data__)
+# end
+
 
 
 Chakra.pts(x::Resonance)::Vector{Id} = Id[] # empty because the resonance is the smallest constituent
-Chakra.pts(x::Slice)::Vector{Id} = id.(x.resonances.id)  
-#Chakra.pts(x::SliceSequence)::Vector{Id} = id.(x.resonances.id) # is this correct?
+Chakra.pts( x::Resonances.ResonanceCollection) = x.ids
+Chakra.pts(x::Slice)::Vector{Id} = pairId.(unique(x.resonances.pairId)) 
+# TODO: Don't understand
+Chakra.pts(x::SliceSequence)::Vector{Id} = sliceId.(unique(x.resonances.sliceId))  
 
+Chakra.pts(x::Frequencies)::Vector{Id} = resId.(x.resonances.id) 
+Chakra.pts(x::FrequencyBand)::Vector{Id} = resId.(x.resonances.id)  
+
+Chakra.pts(x::Pair)::Vector{Id} = resId.(x.resonances.id)
 
 end
 
