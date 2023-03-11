@@ -13,6 +13,6 @@ dir = @__DIR__
 filename = "flute_a4.csv"
 filepath = joinpath(dir,"..",filename)
 
-__data__ = Resonances.DataSet(filepath)
+__data__ = Resonances.DRSHierarchy(filepath)
 
 end # module

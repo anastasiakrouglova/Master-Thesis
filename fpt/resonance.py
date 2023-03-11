@@ -426,9 +426,10 @@ class ResonanceSet:
         mask = self.map_with(pred, args)
         return replace(self, elements=self.elements[mask], onsets=self.onsets[mask])
 
-    # @cached_property
-    # def N(self):
-    #     return np.max([el.max_duration + onset for onset, el in zip(self.onsets, self.elements)])
+# # NET TOEGEVOEGD
+#     @cached_property
+#     def N(self):
+#         return np.max([el.max_duration + onset for onset, el in zip(self.onsets, self.elements)])
 
     # @cached_property
     # def reconstruction(self):

@@ -1,6 +1,7 @@
 # Definition Constituents
 struct Resonance <: Constituent
     data::DataFrameRow
+    # TODO: instead of row: just id
 end
 
 # An abstract type to filter resonances
@@ -9,7 +10,7 @@ abstract type ResonanceSet end
 struct ResonanceCollection <: ResonanceSet
     ids::Vector{ResonanceId}
     data::DataFrame
-    ResonanceCollection(ids::Vector{ResonanceId}, dataset::DataSet) = begin
+    ResonanceCollection(ids::Vector{ResonanceId}, dataset::DRSHierarchy) = begin
         values = [id.value for id in ids]
 
         df = filter(:id => o -> o in values, dataset.data)
@@ -21,7 +22,7 @@ struct Pair <: ResonanceSet
     pairId::PairId
     resonances::DataFrame
 
-    Pair(pairId::PairId, dataset::DataSet) = begin
+    Pair(pairId::PairId, dataset::DRSHierarchy) = begin
         df = filter(:pairId => p -> p == pairId.value, dataset.data)
 
         return isempty(df) ? none : new(pairId,df)
@@ -38,7 +39,7 @@ end
 struct Slice <: ResonanceSet
     sliceId::SliceId
     resonances::DataFrame
-    Slice(sliceId::SliceId,dataset::DataSet) = begin
+    Slice(sliceId::SliceId,dataset::DRSHierarchy) = begin
         df = filter(:sliceId => o -> o == sliceId.value, dataset.data)
         return isempty(df) ? none : new(sliceId,df)
     end
@@ -48,7 +49,7 @@ struct SliceSequence <: ResonanceSet
     start::Union{SliceId,Colon}
     finish::Union{SliceId,Colon}
     resonances::DataFrame
-    SliceSequence(start::Union{SliceId,Colon}, finish::Union{SliceId,Colon}, dataset::DataSet) = begin
+    SliceSequence(start::Union{SliceId,Colon}, finish::Union{SliceId,Colon}, dataset::DRSHierarchy) = begin
         if (typeof(start) == SliceId && typeof(finish) == SliceId)
             df = filter(:sliceId => o -> start.value <= o <= finish.value, dataset.data)
         elseif (typeof(start) == SliceId && typeof(finish) == Colon)
@@ -69,7 +70,7 @@ struct FrequencyBand <: ResonanceSet
     max::Union{Real,Colon}
     resonances::DataFrame
     # frequency between [x, y]
-    FrequencyBand(min::Union{Real,Colon}, max::Union{Real,Colon}, dataset::DataSet) = begin
+    FrequencyBand(min::Union{Real,Colon}, max::Union{Real,Colon}, dataset::DRSHierarchy) = begin
         if (typeof(max) == Colon)
             df = filter(:frequency => f -> min <= f, dataset.data)
         elseif (typeof(min) == Colon)
@@ -81,13 +82,13 @@ struct FrequencyBand <: ResonanceSet
         return isempty(df) ? none : new(min, max, df)
     end
     # Filter on pos, neg and 0 frequencies
-    FrequencyBand(s::String, dataset::DataSet) = begin
+    FrequencyBand(s::String, dataset::DRSHierarchy) = begin
         if (s == "pos")
-            FrequencyBand(0, :, dataset::DataSet)
+            FrequencyBand(0, :, dataset::DRSHierarchy)
         elseif (s == "neg")
-            FrequencyBand(:, 0, dataset::DataSet)
+            FrequencyBand(:, 0, dataset::DRSHierarchy)
         elseif (s == "null")
-            FrequencyBand(0, 0, dataset::DataSet)
+            FrequencyBand(0, 0, dataset::DRSHierarchy)
         else
             error("please put in pos/neg/null")
         end
@@ -96,10 +97,13 @@ end
 
 
 struct DRS <: ResonanceSet
-    resonances::DataSet
+    id::DRSId # multiple DRSs of an audiofile are possible
+    resonances::DRSHierarchy
 
-    DRS(df::DataSet) = begin
-        return isempty(df) ? none : new(df)
+    DRS(id::DRSId, df::DRSHierarchy) = begin
+
+        return new(id, df)
+       #return isempty(df) ? none : new(id, df)
     end 
 end
 

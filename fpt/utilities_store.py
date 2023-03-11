@@ -2,6 +2,8 @@
 
 import sys
 
+
+
 sys.path.insert(0, '../')
 
 from fpt import *
@@ -71,9 +73,11 @@ def get_spectrogram(file, folder=None, N=500, step_size=500, rem_offset=False, t
 
     # Load signal
     if folder == None:
-        sample_rate, signal = read(filename='../data/input/' + file)
+        sample_rate, signal = read(filename='./data/input/' + file)
+        #sample_rate, signal = read(filename='../data/input/' + file)
     else:
-        sample_rate, signal = read(filename='../data/' + folder + '/' + file)
+        #sample_rate, signal = read(filename='../data/' + folder + '/' + file)
+        sample_rate, signal = read(filename='./data/' + folder + '/' + file)
 
     # Convert to mono
     if len(signal.shape) > 1:

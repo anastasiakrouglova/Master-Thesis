@@ -1,7 +1,7 @@
 # Definition Hierarchies
-struct DataSet <: Hierarchy
+struct DRSHierarchy <: Hierarchy
     data::DataFrame
-    DataSet(filepath) = begin
+    DRSHierarchy(filepath) = begin
         df = DataFrame(CSV.File(filepath))
         # Create a unique id for every dataframe
         df[!,:id] = collect(1:size(df)[1]) # add res id
@@ -17,6 +17,6 @@ struct DataSet <: Hierarchy
 end
 
 struct ResonanceHierarchy <: Hierarchy
-    dataset::DataSet #the atomic resonanaces
+    dataset::DRSHierarchy #the atomic resonanaces
     structure::Dict{Id,Constituent} # other constituents like slices etc
 end

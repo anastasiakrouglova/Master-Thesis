@@ -22,21 +22,21 @@ include("components/Constituents.jl")
 ########################################################################################################
 
 ####################################  find a resonance by id ###########################################
-Chakra.fnd(x::ResonanceId, m::DataSet) = begin
+Chakra.fnd(x::ResonanceId, m::DRSHierarchy) = begin
     i = findall(==(x.value),m.data.id)
     isempty(i) ? none : Resonance(m.data[i[1],:])
 end
 
-Chakra.fnd(x::PairId, m::DataSet) = begin
+Chakra.fnd(x::PairId, m::DRSHierarchy) = begin
     Pair(x, m)
 end
 
-Chakra.fnd(x::SliceId, m::DataSet) = begin
+Chakra.fnd(x::SliceId, m::DRSHierarchy) = begin
     Slice(x, m)
 end
 
-Chakra.fnd(x::DRSId, m::DataSet) = begin
-    DRS(m)
+Chakra.fnd(x::DRSId, m::DRSHierarchy) = begin
+    DRS(x, m)
 end
 
 
@@ -72,11 +72,6 @@ function findResonancesByIds(ids::Vector{ResonanceId}, m::Module)
     ResonanceCollection(ids, m.__data__)
 end
 
-
-# function findSliceById(x::SliceId, m::Module)
-#     i = findall(==(x.value),m.__data__.data.onset[])
-#     return isempty(i) ? none : Resonance(m.__data__.data[i[1],:])
-# end
 
 
 #############################  filter on frequency (Function overloading) ###############################
