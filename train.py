@@ -1,6 +1,3 @@
-# https://www.youtube.com/watch?v=4p0G6tgNLis
-
-
 import torch
 from torch import nn
 from torch.utils.data import DataLoader
