@@ -375,7 +375,7 @@ def overlap_function(spectrogram, freq_ratio=5, min_overlap=1e-5, overlap_type="
 
     Parameters
     ----------
-    spectrogram : resonance3.ResonanceSpectrogram
+    spectrogram : resonance3.ResonanceSpectrogram # SHOULD BE ResonanceSet 
         Spectrogram for which matches between resonances are found
     freq_ratio : float, optional
         Ratio of frequency in times/second relative to the original resonance for which candidates 

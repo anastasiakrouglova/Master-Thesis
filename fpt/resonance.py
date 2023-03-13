@@ -443,10 +443,10 @@ class ResonanceSet:
 # class ResonanceSpectrum(ResonanceSet):
 #     pass
 
-
-# @dataclass
-# class ResonanceSpectrogram(ResonanceSet):
-#     pass
+# JUST UNCOMMENTED
+@dataclass
+class ResonanceSpectrogram(ResonanceSet):
+    pass
 
 # @dataclass
 # class ResonanceStore:
