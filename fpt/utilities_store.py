@@ -230,8 +230,8 @@ def residue_distance(res, candidates, forward):
     """
 
     # Shift the res resonance
-    shifted_res = Resonance(res.d * np.exp((1 if forward else -1) * -1j * res.w * res.max_duration / res.sample_rate), res.w,
-                            res.z, res.max_duration, res.sample_rate)
+    shifted_res = Resonance(res.d * np.exp((1 if forward else -1) * -1j * res.w * res.N / res.sample_rate), res.w,
+                            res.z, res.N, res.sample_rate)
 
     # Calculate the distances
     return np.abs(shifted_res.d) * np.abs(candidates.d) / np.abs(res.w - candidates.w)
@@ -258,8 +258,8 @@ def residue_power_distance(res, candidates, forward):
     """
 
     # Shift the res resonance
-    shifted_res = Resonance(res.d * np.exp((1 if forward else -1) * -1j * res.w * res.max_duration / res.sample_rate), res.w,
-                            res.z, res.max_duration, res.sample_rate)
+    shifted_res = Resonance(res.d * np.exp((1 if forward else -1) * -1j * res.w * res.N / res.sample_rate), res.w,
+                            res.z, res.N, res.sample_rate)
 
     # Calculate the distances
     return res.power * np.array(candidates.power) * np.abs(shifted_res.d) * np.abs(candidates.d) / np.abs(
@@ -314,7 +314,7 @@ def harmonic_mean_distance(res, candidates, forward, alpha=100, beta=1):
     # Calculate the distances
     return 1 / (alpha * np.abs(res.w - candidates.w) / (res.sample_rate * 2 * np.pi) +
                 beta * np.abs(
-                (res.d * np.exp((1 if forward else -1) * -1j * res.w * res.max_duration / res.sample_rate)) - candidates.d))
+                (res.d * np.exp((1 if forward else -1) * -1j * res.w * res.N / res.sample_rate)) - candidates.d))
 
 
 def residue_distance_transference(res, candidates, spectrum_l):
@@ -413,7 +413,7 @@ def overlap_function(spectrogram, freq_ratio=5, min_overlap=1e-5, overlap_type="
     matches_list = []
 
     # Convert freq ratio from times/second to times/window:
-    freq_ratio = 1 + freq_ratio * spectrogram.elements[0].max_duration / spectrogram.sample_rate[0]
+    freq_ratio = 1 + freq_ratio * spectrogram.elements[0].N / spectrogram.sample_rate[0]
 
     # Obtain list of spectra
     spectrum_onsets = np.unique(spectrogram.onsets)
@@ -540,7 +540,7 @@ def overlap_function_intersect(spectrogram, freq_ratio=5, min_overlap=1e-5, over
     matches_list = []
 
     # Convert freq ratio from times/second to times/window:
-    freq_ratio = 1 + freq_ratio * spectrogram.elements[0].max_duration / spectrogram.sample_rate[0]
+    freq_ratio = 1 + freq_ratio * spectrogram.elements[0].N / spectrogram.sample_rate[0]
 
     # Obtain list of spectra
     spectrum_onsets = np.unique(spectrogram.onsets)
@@ -870,7 +870,7 @@ def extend_dynamic_by_amp(dynamic, dyn_onset, spectrum_list, step_size, matched_
         if onset < np.max(dynamic_onsets):
 
             # Reconstruct left resonance
-            res_recon = np.zeros(dynamic_spectrum.elements[0].max_duration)
+            res_recon = np.zeros(dynamic_spectrum.elements[0].N)
             for res in dynamic_spectrum.elements:
                 res_recon += res.reconstruction.real
 
@@ -878,7 +878,7 @@ def extend_dynamic_by_amp(dynamic, dyn_onset, spectrum_list, step_size, matched_
             next_res = dynamic.filter(lambda right_onset, right_res: right_onset == dynamic_onsets[idx + 1])
 
             # Reconstruct right resonances
-            next_res_recon = np.zeros(next_res.elements[0].max_duration)
+            next_res_recon = np.zeros(next_res.elements[0].N)
             if next_res.elements.size == 0:
                 return dynamic, False
             for res in next_res.elements:
@@ -889,7 +889,7 @@ def extend_dynamic_by_amp(dynamic, dyn_onset, spectrum_list, step_size, matched_
                 next_next_res = dynamic.filter(lambda right_onset, right_res: right_onset == dynamic_onsets[idx + 2])
 
                 # Reconstruction of second right resonance:
-                next_next_res_recon = np.zeros(next_next_res.elements[0].max_duration)
+                next_next_res_recon = np.zeros(next_next_res.elements[0].N)
                 for res in next_next_res.elements:
                     next_next_res_recon += res.reconstruction.real
 
@@ -998,7 +998,7 @@ def extend_dynamic_by_phase(dynamic, dyn_onset, spectrum_list, step_size, matche
                                            hash(cand_res) not in matched_res)
 
             shifted_d = np.sum(np.array(dynamic_spectrum.d) * np.exp(-1j * np.array(dynamic_spectrum.w)
-                                                                     * np.array(dynamic_spectrum.max_duration) / np.array(
+                                                                     * np.array(dynamic_spectrum.N) / np.array(
                 dynamic_spectrum.sample_rate)))
 
             if candidates.elements.size > 0:
@@ -1009,15 +1009,15 @@ def extend_dynamic_by_phase(dynamic, dyn_onset, spectrum_list, step_size, matche
                 # If second right resonances exist
                 if idx + 2 < len(dynamic_onsets):
                     current_error += np.abs(np.sum(next_res.d * np.exp(-1j * np.array(next_res.w)
-                                                                       * np.array(next_res.max_duration) / np.array(
+                                                                       * np.array(next_res.N) / np.array(
                         next_res.sample_rate)))
                                             - np.sum(next_next_res.d))
 
                     new_error += np.abs(np.sum(next_res.d * np.exp(-1j * np.array(next_res.w)
-                                                                   * np.array(next_res.max_duration) / np.array(
+                                                                   * np.array(next_res.N) / np.array(
                         next_res.sample_rate)))
                                         + candidates.d * np.exp(-1j * np.array(candidates.w)
-                                                                * np.array(candidates.max_duration) / np.array(
+                                                                * np.array(candidates.N) / np.array(
                         candidates.sample_rate))
                                         - np.sum(next_next_res.d))
 
@@ -1948,7 +1948,7 @@ def source_separation(spectrogram, f0_s, max_dist=0.05, att_factor=20):
                     # without attenuation, otherwise, res is attenuated
                     sources_spectrum[idx_1].append(Resonance(res.d if distance < max_dist
                                                              else res.d * (np.exp(- distance * att_factor)),
-                                                             res.w, res.z, res.max_duration, res.sample_rate))
+                                                             res.w, res.z, res.N, res.sample_rate))
 
                 sources_spectrogram[idx_1].append(ResonanceSet(np.array([hash(res) for res in sources_spectrum[idx_1]]),
                                                                np.array([onset] * len(sources_spectrum[idx_1]))))
@@ -2014,7 +2014,7 @@ def denoise_by_density(spectrogram, slices_overlap=7, freq_overlap=250, density_
     # Bigger the factor of the exp, the steeper
     new_elements = [
         Resonance(res.d if density > density_threshold else res.d * (np.exp(- 2 * (1 - density / density_threshold))),
-                  res.w, res.z, res.max_duration, res.sample_rate)
+                  res.w, res.z, res.N, res.sample_rate)
         for res, density in zip(spectrogram.elements, density_spectrogram)]
 
     ids = [hash(res) for res in new_elements]

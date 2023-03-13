@@ -12,7 +12,7 @@ plt.rcParams["font.family"] = "Helvetica"
 if __name__ == '__main__':
     n0 = 0
     N = 512
-    dir = "./data/input/london/violin"
+    # dir = "./data/input/london/violin"
     # filename = "violin_As5_long_forte_molto-vibrato"
     dir = "./data/input"
     # filename = "bach"

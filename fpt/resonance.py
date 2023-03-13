@@ -43,7 +43,8 @@ class Resonance:
 
     def __eq__(self, other):
         return np.allclose([self.d, self.w, self.z, self.N, self.sample_rate],
-                           [other.d, other.w, other.z, other.max_duration, other.sample_rate])
+                           # Test
+                           [other.d, other.w, other.z, other.N, other.sample_rate])
 
     def __lt__(self, other):
         return self.frequency < other.frequency
