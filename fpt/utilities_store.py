@@ -21,7 +21,7 @@ from resonance import ResonanceSet
 Helper for Resonance and ResonanceSet operations
 
 Creation of resonance set:
-    res_set = ResonanceSet(np.array([spectrogram._elements[0]]), np.array(spectrogram.onsets[0]))
+    res_set = ResonanceSet(np.array([spectrogram.elements[0]]), np.array(spectrogram.onsets[0]))
 
 Creation of set of sets of resonances: 
     res_res_set = ResonanceSet(np.array([hash(res_set), hash(res_set)]), np.array(onsets))
@@ -180,14 +180,14 @@ def plot_spectrogram_arrows(spectrogram, min_freq=0, max_freq=3000, scale=1):
     ax = fig.add_subplot(111, label="1")
 
     # Original spectrogram    
-    damping = ResonanceSet(spectrogram._elements[np.array(spectrogram.w).imag < - 5],
+    damping = ResonanceSet(spectrogram.elements[np.array(spectrogram.w).imag < - 5],
                            spectrogram.onsets[np.array(spectrogram.w).imag < - 5])
 
-    ramping = ResonanceSet(spectrogram._elements[np.array(spectrogram.w).imag > 5],
+    ramping = ResonanceSet(spectrogram.elements[np.array(spectrogram.w).imag > 5],
                            spectrogram.onsets[np.array(spectrogram.w).imag > 5])
 
     mask = np.logical_and(np.array(spectrogram.w).imag > -5, np.array(spectrogram.w).imag < 5)
-    constant = ResonanceSet(spectrogram._elements[mask], spectrogram.onsets[mask])
+    constant = ResonanceSet(spectrogram.elements[mask], spectrogram.onsets[mask])
 
     ax.scatter(damping.onsets / damping.sample_rate, damping.frequency, marker="v", label="Damping",
                s=20 + np.array(damping.power) * 10 * scale, c=np.array(damping.power), zorder=2)
@@ -412,6 +412,7 @@ def overlap_function(spectrogram, freq_ratio=5, min_overlap=1e-5, overlap_type="
 
     matches_list = []
 
+
     # Convert freq ratio from times/second to times/window:
     freq_ratio = 1 + freq_ratio * spectrogram.elements[0].N / spectrogram.sample_rate[0]
 
@@ -473,10 +474,12 @@ def overlap_function(spectrogram, freq_ratio=5, min_overlap=1e-5, overlap_type="
             if multiple_match == False:
 
                 # Check that the right resonance is free
-                if list(filter(lambda x: x[1] == candidates_list[index[0]][index[1]]._elements, matches)) == []:
+                if list(filter(lambda x: x[1] == candidates_list[index[0]][index[1]].elements, matches)) == []:
 
+                    print(spectrum[index[0]].elements)
+                    print(candidates_list[index[0]][index[1]].elements)
                     # Confirm match and discard resonance from possible max
-                    matches.append((spectrum[index[0]]._elements, candidates_list[index[0]][index[1]]._elements))
+                    matches.append((spectrum[index[0]].elements, candidates_list[index[0]][index[1]].elements))
                     overlaps[index[0]][:] = 0
 
                 else:
@@ -487,7 +490,7 @@ def overlap_function(spectrogram, freq_ratio=5, min_overlap=1e-5, overlap_type="
             else:
 
                 # Confirm match and discard resonance from possible max
-                matches.append((spectrum[index[0]]._elements, candidates_list[index[0]][index[1]]._elements))
+                matches.append((spectrum[index[0]].elements, candidates_list[index[0]][index[1]].elements))
                 overlaps[index[0]][:] = 0
 
             # Find index of the max overlap  
@@ -594,10 +597,10 @@ def overlap_function_intersect(spectrogram, freq_ratio=5, min_overlap=1e-5, over
                 # Confirm match and discard resonance from possible max
                 # If left to right
                 if i == 0:
-                    matches[i].append((spectrum[index[0]]._elements, candidates_list[i][index[0]][index[1]]._elements))
+                    matches[i].append((spectrum[index[0]].elements, candidates_list[i][index[0]][index[1]].elements))
                 # If right to left we invert order of keys stored in mathces
                 else:
-                    matches[i].append((candidates_list[i][index[0]][index[1]]._elements, spectrum[index[0]]._elements))
+                    matches[i].append((candidates_list[i][index[0]][index[1]].elements, spectrum[index[0]].elements))
 
                 overlaps[i][index[0]][:] = 0
 
@@ -742,13 +745,15 @@ def get_dynamic_resonances(spectrogram, min_overlap=5e-1, overlap_type="linear",
 
     # Convert each dynamic resonance into a ResonanceSet
     for dynamic in dynamic_resonances_idx:
-        onsets = spectrogram.onsets[[np.where(spectrogram._elements == res_id)[0][0] for res_id in dynamic]]
+        onsets = spectrogram.onsets[[np.where(spectrogram.elements == res_id)[0][0] for res_id in dynamic]]
         min_onset = np.min(onsets)
         dynamic_spec_onsets.append(min_onset)
         dynamic_resonances.append(ResonanceSet(np.array(dynamic), onsets - min_onset))
 
     # Convert list of dynamic resonances into a Resonance set
-    return ResonanceSet(np.array([hash(dynamic) for dynamic in dynamic_resonances]), np.array(dynamic_spec_onsets))
+    # HASHING DOESN'T WORK YET
+    #return ResonanceSet(np.array([hash(dynamic) for dynamic in dynamic_resonances]), np.array(dynamic_spec_onsets))
+    return ResonanceSet(np.array([dynamic for dynamic in dynamic_resonances]), np.array(dynamic_spec_onsets))
 
 
 def filter_dynamic(dyns, min_length=2, average_distance_thr=0, distance='residue_power', low_cut_freq=None,
@@ -902,7 +907,7 @@ def extend_dynamic_by_amp(dynamic, dyn_onset, spectrum_list, step_size, matched_
 
             # Remove candidates that alreeady belong to a dyncamic resonance:
             candidates = candidates.filter(lambda cand_onset, cand_res:
-                                           np.all(hash(cand_res) != next_res._elements) and
+                                           np.all(hash(cand_res) != next_res.elements) and
                                            hash(cand_res) not in matched_res)
 
             for candidate in candidates.elements:
@@ -994,7 +999,7 @@ def extend_dynamic_by_phase(dynamic, dyn_onset, spectrum_list, step_size, matche
 
             # Remove candidates that alreeady belong to a dyncamic resonance:
             candidates = candidates.filter(lambda cand_onset, cand_res:
-                                           np.all(hash(cand_res) != next_res._elements) and
+                                           np.all(hash(cand_res) != next_res.elements) and
                                            hash(cand_res) not in matched_res)
 
             shifted_d = np.sum(np.array(dynamic_spectrum.d) * np.exp(-1j * np.array(dynamic_spectrum.w)
@@ -1090,13 +1095,13 @@ def extend_dynamic_by_decay(dynamic, dyn_onset, spectrum_list, step_size, matche
                                                                     and cand_res.frequency > current.frequency)
             if len(higher) > 0:
                 # Add higher frequency resonances
-                new_dynamic += ResonanceSet(higher._elements, np.array([current_onset] * len(higher)))
+                new_dynamic += ResonanceSet(higher.elements, np.array([current_onset] * len(higher)))
 
             # Add lower frequency resonances
             lower = candidates.filter(lambda cand_onset, cand_res: np.array(cand_res.w).imag > 0
                                                                    and cand_res.frequency < current.frequency)
             if len(lower) > 0:
-                new_dynamic += ResonanceSet(lower._elements, np.array([current_onset] * len(lower)))
+                new_dynamic += ResonanceSet(lower.elements, np.array([current_onset] * len(lower)))
 
         # If dynamic resonance is increasing in freq   
         else:
@@ -1104,13 +1109,13 @@ def extend_dynamic_by_decay(dynamic, dyn_onset, spectrum_list, step_size, matche
             higher = candidates.filter(lambda cand_onset, cand_res: np.array(cand_res.w).imag > 0
                                                                     and cand_res.frequency > current.frequency)
             if len(higher) > 0:
-                new_dynamic += ResonanceSet(higher._elements, np.array([current_onset] * len(higher)))
+                new_dynamic += ResonanceSet(higher.elements, np.array([current_onset] * len(higher)))
 
             # Add lower frequency resonances
             lower = candidates.filter(lambda cand_onset, cand_res: np.array(cand_res.w).imag < 0
                                                                    and cand_res.frequency < current.frequency)
             if len(lower) > 0:
-                new_dynamic += ResonanceSet(lower._elements, np.array([current_onset] * len(lower)))
+                new_dynamic += ResonanceSet(lower.elements, np.array([current_onset] * len(lower)))
 
     return new_dynamic, False
 
@@ -1155,7 +1160,7 @@ def extend_dynamic_res(spectrogram, dyns, step_size, extension_type='amplitude',
         while modified:
 
             dynamic_old = dynamic
-            matched_res = np.hstack([dyn._elements for dyn in dyns.elements])
+            matched_res = np.hstack([dyn.elements for dyn in dyns.elements])
             # Extend by decreasing error in amplitude in time at the edge of the window
             if extension_type == 'amplitude':
                 dynamic, modified = extend_dynamic_by_amp(dynamic, dyn_onset, spectrum_list, step_size, matched_res,
@@ -1174,8 +1179,8 @@ def extend_dynamic_res(spectrogram, dyns, step_size, extension_type='amplitude',
             else:
                 print("Introduce a valid extension method")
 
-            dyns = ResonanceSet(np.append(dyns._elements[dyns._elements != hash(dynamic_old)], hash(dynamic)),
-                                np.append(dyns.onsets[dyns._elements != hash(dynamic_old)], dyn_onset))
+            dyns = ResonanceSet(np.append(dyns.elements[dyns.elements != hash(dynamic_old)], hash(dynamic)),
+                                np.append(dyns.onsets[dyns.elements != hash(dynamic_old)], dyn_onset))
 
     return dyns
 
@@ -1233,7 +1238,16 @@ def plot_dynamic(spectrogram, dyns, signal=None, min_freq=0, max_freq=3000, hide
 
     # Dynamic resonances spectrogram
     if not hide_dynamic:
-        for dynamic, onset in zip(dyns.elements, dyns.onsets):
+        
+        for dynamic, onset in zip(dyns.elements, dyns.onsets): #REPLACED dyns.elements by dyns
+            
+            print("A")
+            print(dynamic)
+            print("--------------------")
+            print(spectrogram.frequency)
+            print("--------------------")
+            print(spectrogram)
+            
             if dynamic.frequency[0] > min_freq and dynamic.frequency[0] < 2 * max_freq:
                 # onset_s = np.array(dynamic.onsets)/spectrogram.sample_rate[0] -> Onset of resonances in dynamic as N0 ins
                 onset_s = (onset + dynamic.onsets) / spectrogram.sample_rate[0]
@@ -1616,7 +1630,7 @@ def filter_by_density(spectrogram, density_spectrogram, threshold):
 
     """
     mask = np.hstack(density_spectrogram) > threshold
-    return ResonanceSet(spectrogram._elements[mask], spectrogram.onsets[mask])
+    return ResonanceSet(spectrogram.elements[mask], spectrogram.onsets[mask])
 
 
 """ Fundamental frequency (f0) estimation realted functions """
@@ -2019,7 +2033,7 @@ def denoise_by_density(spectrogram, slices_overlap=7, freq_overlap=250, density_
 
     ids = [hash(res) for res in new_elements]
 
-    return ResonanceSpectrogram(np.array(ids), np.array(spectrogram.onsets))
+    return ResonanceSet(np.array(ids), np.array(spectrogram.onsets))
 
 
 def denoise_by_dyns(spectrogram, min_overlap=1e-15, min_length=3, freq_ratio=20):
@@ -2056,7 +2070,7 @@ def denoise_by_dyns(spectrogram, min_overlap=1e-15, min_length=3, freq_ratio=20)
 
     dyns = dyns.filter(lambda onset, dynamic: len(dynamic) >= min_length)
 
-    return ResonanceSet(np.hstack(dynamic._elements for dynamic in dyns.elements),
+    return ResonanceSet(np.hstack(dynamic.elements for dynamic in dyns.elements),
                         np.hstack(dynamic.onsets + onset for dynamic, onset
                                   in zip(dyns.elements, dyns.onsets)))
 
