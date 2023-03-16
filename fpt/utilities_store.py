@@ -1987,6 +1987,7 @@ def denoise_by_power(spectrogram, power_factor=0.5):
         Resonance spectrogram denoised by power
 
     """
+    print(spectrogram)
 
     average_power = np.average(spectrogram.power) * power_factor
     return spectrogram.filter(lambda onset, res: res.power > average_power)
@@ -2033,7 +2034,8 @@ def denoise_by_density(spectrogram, slices_overlap=7, freq_overlap=250, density_
 
     ids = [hash(res) for res in new_elements]
 
-    return ResonanceSet(np.array(ids), np.array(spectrogram.onsets))
+    # CHANGED: was ResonanceSpectrogram at first
+    return ResonanceSpectrogram(np.array(ids), np.array(spectrogram.onsets))
 
 
 def denoise_by_dyns(spectrogram, min_overlap=1e-15, min_length=3, freq_ratio=20):

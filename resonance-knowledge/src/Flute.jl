@@ -10,7 +10,7 @@ using Resonances
 
 dir = @__DIR__
 
-filename = "flute_a4.csv"
+filename = "data/flute_a4.csv"
 filepath = joinpath(dir,"..",filename)
 
 __data__ = Resonances.DRSHierarchy(filepath)
