@@ -21,23 +21,6 @@ include("components/Constituents.jl")
 ########################################################################################################
 ########################################################################################################
 
-####################################  find a resonance by id ###########################################
-Chakra.fnd(x::ResonanceId, m::DRSHierarchy) = begin
-    i = findall(==(x.value),m.data.id)
-    isempty(i) ? none : Resonance(m.data[i[1],:])
-end
-
-Chakra.fnd(x::PairId, m::DRSHierarchy) = begin
-    Pair(x, m)
-end
-
-Chakra.fnd(x::SliceId, m::DRSHierarchy) = begin
-    Slice(x, m)
-end
-
-Chakra.fnd(x::DRSId, m::DRSHierarchy) = begin
-    DRS(x, m)
-end
 
 
 # Chakra.fnd(x::SliceSequenceId, m::DataSet) = begin
@@ -114,14 +97,49 @@ function getSlice(min::Colon, max::SliceId, m::Module)
 end
 
 
-
-Chakra.pts(x::Resonance)::Vector{Id} = Id[] # empty because the resonance is the smallest constituent
-Chakra.pts( x::Resonances.ResonanceCollection) = x.ids
-
-Chakra.pts(x::Slice)::Vector{Id} = pairId.(unique(x.resonances.pairId)) 
-Chakra.pts(x::SliceSequence)::Vector{Id} = sliceId.(unique(x.resonances.sliceId))  
-Chakra.pts(x::FrequencyBand)::Vector{Id} = resId.(x.resonances.id)  
+# One dimensional DRS structure in time
+Chakra.pts(x::Resonance)::Vector{Id} = Id[]  # empty because the resonance is the smallest constituent
 Chakra.pts(x::Pair)::Vector{Id} = resId.(x.resonances.id)
+Chakra.pts(x::Slice)::Vector{Id} = pairId.(unique(x.resonances.pairId)) 
+Chakra.pts(x::DRS)::Vector{Id} = sliceId.(unique(x.resonances.sliceId))  
+
+# Groups of Slices and resonances
+Chakra.pts(x::SliceSequence)::Vector{Id} = sliceId.(unique(x.resonances.sliceId))  
+
+
+#Chakra.pts(x::Resonances.ResonanceCollection) = x.ids
+#Chakra.pts(x::FrequencyBand)::Vector{Id} = resId.(x.resonances.id)  # Uhm something weird
+
+
+
+
+####################################  find a hierarchical structure by id ###########################################
+#Chakra.fnd(x::ResonanceId, m::DRSHierarchy) = Base.get(h.files,x,none)
+
+
+# Chakra.fnd(x::ResonanceId, m::DRSHierarchy) = begin
+#     Resonance(x, m)
+# end
+
+Chakra.fnd(x::ResonanceId, m::DRSHierarchy) = begin
+    i = findall(==(x.value),m.data.id)
+
+    isempty(i) ? none : Resonance(m.data[i[1],:])
+    #isempty(i) ? none : Resonance(m.data[i[1],:]).resonance.id
+end
+
+Chakra.fnd(x::PairId, m::DRSHierarchy) = begin
+    Pair(x, m)
+end
+
+Chakra.fnd(x::SliceId, m::DRSHierarchy) = begin
+    Slice(x, m)
+end
+
+Chakra.fnd(x::DRSId, m::DRSHierarchy) = begin
+    DRS(x, m)
+end
+
 
 end
 

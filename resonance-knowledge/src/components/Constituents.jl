@@ -1,4 +1,5 @@
 # Definition Constituents
+
 struct Resonance <: Constituent
     data::DataFrameRow
     # TODO: instead of row: just id
@@ -6,6 +7,17 @@ end
 
 # An abstract type to filter resonances
 abstract type ResonanceSet end
+
+# struct Resonance <: ResonanceSet
+#     id::ResonanceId
+#     data::DataFrameRow
+#     print("aaaaaaa")
+#     Resonance(id::ResonanceId, dataset::DRSHierarchy) = begin
+#         df = filter(:id => i -> i == id.value, dataset.data)
+#         print("bbbbbbb")
+#         return isempty(df) ? none : new(id,df)
+#     end
+# end
 
 struct ResonanceCollection <: ResonanceSet
     ids::Vector{ResonanceId}
@@ -22,9 +34,10 @@ struct Pair <: ResonanceSet
     pairId::PairId
     resonances::DataFrame
 
-    Pair(pairId::PairId, dataset::DRSHierarchy) = begin
-        df = filter(:pairId => p -> p == pairId.value, dataset.data)
-
+    Pair(pairId::PairId, dataset::Module) = begin
+        # dataset.__data__ is a DRSHierarchy
+        df = filter(:pairId => p -> p == pairId.value, dataset.__data__.data)
+        
         return isempty(df) ? none : new(pairId,df)
     end
 end
@@ -98,11 +111,11 @@ end
 
 struct DRS <: ResonanceSet
     id::DRSId # multiple DRSs of an audiofile are possible
-    resonances::DRSHierarchy
+    #resonances::DRSHierarchy
+    resonances::DataFrame
 
-    DRS(id::DRSId, df::DRSHierarchy) = begin
-
-        return new(id, df)
+    DRS(id::DRSId, dataset::DRSHierarchy) = begin
+        return new(id, dataset.data)
        #return isempty(df) ? none : new(id, df)
     end 
 end
