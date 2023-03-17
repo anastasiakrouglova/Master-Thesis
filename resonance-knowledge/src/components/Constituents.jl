@@ -34,10 +34,9 @@ struct Pair <: ResonanceSet
     pairId::PairId
     resonances::DataFrame
 
-    Pair(pairId::PairId, dataset::Module) = begin
-        # dataset.__data__ is a DRSHierarchy
-        df = filter(:pairId => p -> p == pairId.value, dataset.__data__.data)
-        
+    Pair(pairId::PairId, dataset::DRSHierarchy) = begin
+        df = filter(:pairId => p -> p == pairId.value, dataset.data)
+
         return isempty(df) ? none : new(pairId,df)
     end
 end
@@ -115,6 +114,8 @@ struct DRS <: ResonanceSet
     resonances::DataFrame
 
     DRS(id::DRSId, dataset::DRSHierarchy) = begin
+
+        # return collection of sliceId's
         return new(id, dataset.data)
        #return isempty(df) ? none : new(id, df)
     end 

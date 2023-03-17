@@ -121,23 +121,32 @@ Chakra.pts(x::SliceSequence)::Vector{Id} = sliceId.(unique(x.resonances.sliceId)
 #     Resonance(x, m)
 # end
 
-Chakra.fnd(x::ResonanceId, m::DRSHierarchy) = begin
-    i = findall(==(x.value),m.data.id)
+Chakra.fnd(x::ResonanceId, m::Module) = begin
+    i = findall(==(x.value),m.__data__.data.id)
 
-    isempty(i) ? none : Resonance(m.data[i[1],:])
+    isempty(i) ? none : Resonance(m.__data__.data[i[1],:])
     #isempty(i) ? none : Resonance(m.data[i[1],:]).resonance.id
 end
 
-Chakra.fnd(x::PairId, m::DRSHierarchy) = begin
-    Pair(x, m)
+# Chakra.fnd(x::PairId, m::DRSHierarchy) = begin
+#     Pair(x, m)
+# end
+
+Chakra.fnd(x::PairId, m::Module) = begin
+    # Should return all the elements from which it 
+    #return vector of resonanceId's
+
+    Pair(x, m.__data__)
 end
 
-Chakra.fnd(x::SliceId, m::DRSHierarchy) = begin
-    Slice(x, m)
+Chakra.fnd(x::SliceId, m::Module) = begin
+    Slice(x, m.__data__)
 end
 
-Chakra.fnd(x::DRSId, m::DRSHierarchy) = begin
-    DRS(x, m)
+Chakra.fnd(x::DRSId, m::Module) = begin
+    DRS(x, m.__data__)
+
+    #Base.get(m.__data__.data.id,x,none)
 end
 
 
