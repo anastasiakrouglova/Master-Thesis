@@ -30,10 +30,10 @@ def to_csv(s, filename='temp', dir='./data/output'):
     print('Writing csv...', end='')
     with open(f'{dir}/{filename}.csv', 'w', newline='') as file:
         row = ('onset', 'duration', 'sample_rate',
-               'amplitude', 'phase', 'frequency', 'decay',
+               'amplitude', 'phase', 'frequency', 'decay', 'power',
                'd', 'w', 'z')
         rows = list(zip(s.onsets, s.N, s.sample_rate,
-                        s.amplitude, s.phase, s.frequency, s.decay,
+                        s.amplitude, s.phase, s.frequency, s.decay, s.power,
                         s.d, s.w, s.z))
         writer = csv.writer(file)
         writer.writerow(row)
