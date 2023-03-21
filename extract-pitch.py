@@ -15,6 +15,7 @@ print(sys.path)
 
 import data_preprocessing as dp
 import DBSCAN as fe
+import linear_regression as lr
 #print(sys.modules)
 #print(dir(dp))
 
@@ -24,11 +25,21 @@ import DBSCAN as fe
 
 # Load data
 DATA = "./fpt/data/output/flute-a4.csv"
-raw = pd.read_csv(DATA)
+MAX_FREQ = 2000
 
 # Denoise raw data
+raw = pd.read_csv(DATA)
 data = dp.remove_noise(raw, 0.001)
 
-# Run DBSCAN
-pre = fe.DBSCAN(data, 2000)
-print(pre)
+# Run DBSCAN 
+labels = fe.cluster_DBSCAN(data, MAX_FREQ)
+print(labels)
+
+# insert labels into dataframe filtered on MAX_FREQ
+data_with_clusters = fe.insert_cluster_data(data, MAX_FREQ, labels)
+
+# Find intercept of every cluster with linear regression
+
+for i in range(4): # unique(labels)
+    lr.regression(data, i)
+
