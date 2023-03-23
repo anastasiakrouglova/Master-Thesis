@@ -2,6 +2,7 @@ import pandas as pd
 import statsmodels.formula.api as smf
 
 
+
 def regression(data, i):
     harmonic = data[data['cluster'] == i]
     harmonic = harmonic[harmonic['cluster'].notnull()]
@@ -11,6 +12,6 @@ def regression(data, i):
     #print(results.summary())
     #plt.scatter(harmonic.power, harmonic.frequency)
 
-    intercept = results.params[0] # intercept
+    intercept = results.params[0] # intercept is the value of the predicted harmonic
     
     return intercept

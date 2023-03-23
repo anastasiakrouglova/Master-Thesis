@@ -9,6 +9,8 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 
+
+
 def cluster_DBSCAN(data, max_frequency): 
     # Empirical test for good max_frequency = 2000
     freq_pow_array_normalized, freq_pow_df = preprocessing_DBSCAN(data, max_frequency) 
@@ -34,9 +36,8 @@ def cluster_DBSCAN(data, max_frequency):
     
     plot_clustering_DBSCAN(freq_pow_array_normalized, db, labels, n_clusters_)
     
-    return labels # labels of clusters
+    return labels, n_clusters_ # labels of clusters
     
-
     
 
 def plot_clustering_DBSCAN(X, db, labels, n_clusters_):
