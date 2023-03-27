@@ -1,9 +1,6 @@
 module Sine
 
-using Chakra
-using DataFrames
-using CSV
-
+using Chakra, DataFrames, CSV
 push!(LOAD_PATH, ".")
 using Resonances
 #include("./Resonances.jl")
