@@ -18,12 +18,12 @@ end
 
 # TODO: Find epsilon and min_pts with hyperparameter tuning
 # ϵ = 0.5; # min_pts = 5;
-function findClusters(raw, ϵ, min_pts)
-    # Parameters of DBSCAN
-
-
+function findClusters(raw, ϵ, min_pts, min_power, max_frequency)
     # Denoise raw data
-    df = remove_noise(raw, 0.001, 2000)
+    df = remove_noise(raw, min_power, max_frequency)
+
+    df.onset = (df.onset ./ 44100)
+    df.frequency = df.frequency
 
     # Convert data to a matrix
     X = convert(Matrix, df[:,[1, 6, 8]])
@@ -35,39 +35,45 @@ function findClusters(raw, ϵ, min_pts)
     # Run DBSCAN 
     m = dbscan(mat, ϵ, min_pts); #returns object dbscan!
 
-    #m = kmeans(mat, 4); #returns object dbscan!
-
     # Put labels from clustering back to a dataframe
     # print(m.labels)
     df[!,:cluster] = m.labels
 
-    # for k-means experiment
-    # print(m.cluster)
-    # df[!,:clusterK] = m.cluster
     return df
 end
 
 
 function plotCluster(df)
     # https://plotly.com/julia/reference/scatter3d/
-    plot(
+    p = plot(
         df, 
         Layout(scene = attr(
-                        xaxis_title="Onset",
-                        yaxis_title="Frequency",
-                        zaxis_title="Power"),
-                        #margin=attr(r=50, b=50, l=50, t=50)
+                        xaxis_title="Time (s)",
+                        yaxis_title="Frequency (Hz)",
+                        zaxis_title="Power (dB)"),
+                        #margin=attr(r=100, b=150, l=50, t=50)
                         ),
-        x=:onset, y=:frequency, z=:power, color=:cluster,  
+        x=:onset, 
+        y=:frequency, z=:power, color=:cluster,  
         type="scatter3d", mode="markers", 
         marker_size=3
     )
+
+    name = "Clustering of resonances"
+    # Default parameters which are used when `layout.scene.camera` is not provided
+    camera = attr(
+        up=attr(x=0, y=0, z=1),
+        center=attr(x=0, y=0, z=0),
+        eye=attr(x=-1.25, y=-1.25, z=1.25)
+    )
+    relayout!(p, scene_camera=camera, title=name)
+    p
 end
 
 
 
-# raw = DataFrame(CSV.File("./fpt/data/output/flute-a4.csv"))
+raw = DataFrame(CSV.File("./fpt/data/output/flute-a4.csv"))
 # raw = DataFrame(CSV.File("./fpt/data/output/nine_N500.csv"))
 # raw = DataFrame(CSV.File("./fpt/data/output/A_maj_4_0.csv"))
-# df = findClusters(raw, 0.5, 5)
-# plotCluster(df)
+df = findClusters(raw, 0.5, 5, 0.001, 2000)
+plotCluster(df)
