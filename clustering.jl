@@ -50,7 +50,7 @@ function plotCluster(df)
         Layout(scene = attr(
                         xaxis_title="Time (s)",
                         yaxis_title="Frequency (Hz)",
-                        zaxis_title="Power (dB)"),
+                        zaxis_title="Power"),
                         #margin=attr(r=100, b=150, l=50, t=50)
                         ),
         x=:onset, 
@@ -72,8 +72,8 @@ end
 
 
 
-raw = DataFrame(CSV.File("./fpt/data/output/flute-a4.csv"))
-# raw = DataFrame(CSV.File("./fpt/data/output/nine_N500.csv"))
-# raw = DataFrame(CSV.File("./fpt/data/output/A_maj_4_0.csv"))
-df = findClusters(raw, 0.5, 5, 0.001, 2000)
-plotCluster(df)
+# raw = DataFrame(CSV.File("./fpt/data/output/flute-a4.csv"))
+# # raw = DataFrame(CSV.File("./fpt/data/output/nine_N500.csv"))
+# # raw = DataFrame(CSV.File("./fpt/data/output/A_maj_4_0.csv"))
+# df = findClusters(raw, 0.5, 5, 0.001, 2000)
+# plotCluster(df)
