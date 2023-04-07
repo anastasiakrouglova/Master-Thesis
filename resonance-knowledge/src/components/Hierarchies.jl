@@ -8,10 +8,17 @@ struct DRSHierarchy <: Hierarchy
         # add a sliceId column
         sliceIds = [floor(Int, (o / d)) for (o, d) in zip(df.onset, df.duration)]
         df[!, :sliceId] = sliceIds
-        # add a pairId column
-        pairIds =  [ceil(Int, (id / 2)) for (id) in df.id]
-        df[!, :pairId] = pairIds
 
+        # add a pairId column only if complex-valued dataset
+
+
+        if (df.amplitude[1] == df.amplitude[2])
+            pairIds =  [ceil(Int, (id / 2)) for (id) in df.id]
+            df[!, :pairId] = pairIds
+        else
+            print("Note: Your dataset does not contain complex values, so you won't need the Pair in the Hierarchy.")
+        end
+        
         new(df)
     end
 end

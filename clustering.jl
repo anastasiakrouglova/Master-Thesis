@@ -22,7 +22,7 @@ function findClusters(raw, ϵ, min_pts, min_power, max_frequency)
     # Denoise raw data
     df = remove_noise(raw, min_power, max_frequency)
 
-    df.onset = (df.onset ./ 44100)
+    df[!,:onset_s] = (df.onset ./ df.sample_rate)
     df.frequency = df.frequency
 
     # Convert data to a matrix
@@ -37,7 +37,7 @@ function findClusters(raw, ϵ, min_pts, min_power, max_frequency)
 
     # Put labels from clustering back to a dataframe
     # print(m.labels)
-    df[!,:cluster] = m.labels
+    df[!,:dynamicResonance] = m.labels
 
     return df
 end
@@ -53,8 +53,8 @@ function plotCluster(df)
                         zaxis_title="Power"),
                         #margin=attr(r=100, b=150, l=50, t=50)
                         ),
-        x=:onset, 
-        y=:frequency, z=:power, color=:cluster,  
+        x=:onset_s, 
+        y=:frequency, z=:power, color=:dynamicResonance,  
         type="scatter3d", mode="markers", 
         marker_size=3
     )
@@ -72,8 +72,11 @@ end
 
 
 
-# raw = DataFrame(CSV.File("./fpt/data/output/flute-a4.csv"))
-# # raw = DataFrame(CSV.File("./fpt/data/output/nine_N500.csv"))
-# # raw = DataFrame(CSV.File("./fpt/data/output/A_maj_4_0.csv"))
-# df = findClusters(raw, 0.5, 5, 0.001, 2000)
-# plotCluster(df)
+raw = DataFrame(CSV.File("./fpt/data/output/flute-a4.csv"))
+# raw = DataFrame(CSV.File("./fpt/data/output/nine_N500.csv"))
+# raw = DataFrame(CSV.File("./fpt/data/output/A_maj_4_0.csv"))
+df = findClusters(raw, 0.5, 5, 0.001, 2000)
+
+CSV.write("./filtered-clustered-flute_a4.csv", df)
+
+plotCluster(df)

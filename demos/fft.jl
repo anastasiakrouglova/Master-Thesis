@@ -24,7 +24,7 @@ end
 
 
 # # Loading and plotting an audio signal
-s, fs = wavread("./fpt/data/input/flute-a4.wav")
+s, fs = wavread("./../fpt/data/input/flute-a4.wav")
 
 # PROBLEM: JUMPS OF 661 HERE, at Flute: 512
 

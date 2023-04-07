@@ -100,8 +100,26 @@ end
 # One dimensional DRS structure in time
 Chakra.pts(x::Resonance)::Vector{Id} = Id[]  # empty because the resonance is the smallest constituent
 Chakra.pts(x::Pair)::Vector{Id} = resId.(x.resonances.id)
-Chakra.pts(x::Slice)::Vector{Id} = pairId.(unique(x.resonances.pairId)) 
-Chakra.pts(x::DRS)::Vector{Id} = sliceId.(unique(x.resonances.sliceId))  
+
+
+Chakra.pts(x::Slice)::Vector{Id} = begin
+    if("pairId" in names(x.resonances)) 
+        pairId.(unique(x.resonances.pairId)) # try first if complex valued
+    else
+        resId.(x.resonances.id) # function overload
+    end
+end
+
+Chakra.pts(x::DRS)::Vector{Id} = sliceId.(unique(x.resonances.sliceId)) 
+    
+
+## Expansions basic structure with machine learning (clustering)
+# Note: the complex values are removed from the dataset for clustering
+
+#    Chakra.pts(x::DynamicResonance)::Vector{Id} = pairId.(unique(x.resonances.pairId))
+
+Chakra.pts(x::DynamicResonance)::Vector{Id} = resId.(x.resonances.id)
+
 
 # Groups of Slices and resonances
 Chakra.pts(x::SliceSequence)::Vector{Id} = sliceId.(unique(x.resonances.sliceId))  
@@ -128,14 +146,10 @@ Chakra.fnd(x::ResonanceId, m::Module) = begin
     #isempty(i) ? none : Resonance(m.data[i[1],:]).resonance.id
 end
 
-# Chakra.fnd(x::PairId, m::DRSHierarchy) = begin
-#     Pair(x, m)
-# end
 
 Chakra.fnd(x::PairId, m::Module) = begin
     # Should return all the elements from which it 
     #return vector of resonanceId's
-
     Pair(x, m.__data__)
 end
 
@@ -145,8 +159,12 @@ end
 
 Chakra.fnd(x::DRSId, m::Module) = begin
     DRS(x, m.__data__)
-
     #Base.get(m.__data__.data.id,x,none)
+end
+
+
+Chakra.fnd(x::DynamicResonanceId, m::Module) = begin
+    DynamicResonance(x, m.__data__)
 end
 
 

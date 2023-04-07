@@ -35,12 +35,29 @@ struct Pair <: ResonanceSet
     resonances::DataFrame
 
     Pair(pairId::PairId, dataset::DRSHierarchy) = begin
+
+        # if pair exists, filter, else throw error that dataset is not complex-valued
+        
         df = filter(:pairId => p -> p == pairId.value, dataset.data)
 
         return isempty(df) ? none : new(pairId,df)
     end
 end
 
+
+###########################################################################################
+#################################       Dynamic Resonance        ######################################
+###########################################################################################
+
+# A dynamic resonance is a horizontal group of resonances, mostly grouped by pitch
+struct DynamicResonance <: ResonanceSet
+    dynamicResId::DynamicResonanceId
+    resonances::DataFrame
+    DynamicResonance(dynamicResId::DynamicResonanceId,dataset::DRSHierarchy) = begin
+        df = filter(:dynamicResonance => o -> o == dynamicResId.value, dataset.data)
+        return isempty(df) ? none : new(dynamicResId,df)
+    end
+end
 
 
 ###########################################################################################

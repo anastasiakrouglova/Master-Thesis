@@ -15,6 +15,11 @@ struct PairId <: Id
     value::Int
 end
 
+# A dynamic resonance is a horizontal group of resonances, mostly grouped by pitch
+struct DynamicResonanceId <: Id
+    value::Int
+end
+
 struct DRSId <: Id
     value::Int
 end
@@ -24,6 +29,7 @@ resId(i::Int) = ResonanceId(i)
 pairId(i::Int) = PairId(i)
 sliceId(i::Int) = SliceId(i)
 drsId(i::Int) = DRSId(i) # it is possible to have multiple DRS's of 1 audiofragment: eg with different framewidths!!!
+dynamicResId(i::Int) = DynamicResonanceId(i)
 
 sliceSeqId(i::Int) = SliceSequenceId(i) #other dimension: DRS points directly to sliceId, not really implemented
 
