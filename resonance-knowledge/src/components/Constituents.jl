@@ -131,7 +131,6 @@ struct DRS <: ResonanceSet
     resonances::DataFrame
 
     DRS(id::DRSId, dataset::DRSHierarchy) = begin
-
         # return collection of sliceId's
         return new(id, dataset.data)
        #return isempty(df) ? none : new(id, df)

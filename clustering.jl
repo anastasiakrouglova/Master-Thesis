@@ -1,4 +1,4 @@
-using PlotlyJS, ClusterAnalysis, StatsBase, DataFrames, CSV
+using PlotlyJS, ClusterAnalysis, StatsBase, DataFrames, CSV, LinearAlgebra
 
 
 function remove_noise(data, min_power, max_frequency)
@@ -23,7 +23,7 @@ function findClusters(raw, ϵ, min_pts, min_power, max_frequency)
     df = remove_noise(raw, min_power, max_frequency)
 
     df[!,:onset_s] = (df.onset ./ df.sample_rate)
-    df.frequency = df.frequency
+    normalize!(df.power, 2)
 
     # Convert data to a matrix
     X = convert(Matrix, df[:,[1, 6, 8]])
@@ -54,7 +54,7 @@ function plotCluster(df)
                         #margin=attr(r=100, b=150, l=50, t=50)
                         ),
         x=:onset_s, 
-        y=:frequency, z=:power, color=:dynamicResonance,  
+        y=:frequency, z=:power, #color=:dynamicResonance,  
         type="scatter3d", mode="markers", 
         marker_size=3
     )

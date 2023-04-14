@@ -3,7 +3,7 @@
 # using SignalAnalysis
 
 
-using DSP, WAV, PlotlyJS, DataFrames  # "using" makes the listed modules available for the
+using DSP, WAV, PlotlyJS, DataFrames, ClusterAnalysis  # "using" makes the listed modules available for the
                        # user, like "import" in other languages
 
 
@@ -16,15 +16,19 @@ function remove_noise(data, min_power, max_frequency)
     # good value (tested on flute-a4.wav) for min_power = 0.001
     data = data[(data.power .> min_power), :]
 
+    
+
     # Remove frequencies above 2000 and complex part
     data = data[(0 .< data.frequency) .& (data.frequency .< max_frequency), :]
     
+    normalize!(data.power, 2)
+
     return data
 end
 
 
 # # Loading and plotting an audio signal
-s, fs = wavread("./../fpt/data/input/flute-a4.wav")
+s, fs = wavread("./fpt/data/input/flute-a4.wav")
 
 # PROBLEM: JUMPS OF 661 HERE, at Flute: 512
 
@@ -36,6 +40,7 @@ t = (time(S) ./ fs) * 44100
 f = freq(S) * fs 
 p = power(S) 
 p = vec(p)
+
 
 x = repeat(t, inner=length(f))
 y = repeat(f, outer=length(t)),
@@ -86,7 +91,7 @@ function plotCluster(df)
                         )
                         #margin=attr(r=50, b=50, l=50, t=50)
                         ),
-        x=:onset, y=:frequency, z=:power, color=:cluster,
+        x=:onset, y=:frequency, z=:power, #color=:cluster,
         type="scatter3d", mode="markers", 
         marker_size=3
     )
