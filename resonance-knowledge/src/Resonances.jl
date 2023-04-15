@@ -115,8 +115,8 @@ Chakra.pts(x::DRS)::Vector{Id} = sliceId.(unique(x.resonances.sliceId))
 
 ## Expansions basic structure with machine learning (clustering)
 # Note: the complex values are removed from the dataset for clustering
-Chakra.pts(x::DynR)::Vector{Id} = dynamicResId.(unique(x.resonances.dynamicResonance)) 
-Chakra.pts(x::DynamicResonance)::Vector{Id} = resId.(x.resonances.id)
+Chakra.pts(x::DynR)::Vector{Id} = harmonicId.(unique(x.resonances.dynamicResonance)) 
+Chakra.pts(x::Harmonic)::Vector{Id} = resId.(x.resonances.id)
 
 
 # Groups of Slices and resonances
@@ -164,8 +164,8 @@ Chakra.fnd(x::DynRId, m::Module) = begin
     DynR(x, m.__harmonics__)
 end
 
-Chakra.fnd(x::DynamicResonanceId, m::Module) = begin
-    DynamicResonance(x, m.__harmonics__)
+Chakra.fnd(x::HarmonicId, m::Module) = begin
+    Harmonic(x, m.__harmonics__)
 end
 
 end

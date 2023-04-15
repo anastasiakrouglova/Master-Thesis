@@ -34,8 +34,7 @@ struct DynRHierarchy <: Hierarchy
     data::DataFrame
     DynRHierarchy(filepath) = begin
         df = DataFrame(CSV.File(filepath))
-        # Create a unique id for every dataframe
-        df[!,:id] = collect(1:size(df)[1]) # add res id
+        # A unique id is already created in the cluster algorithm to match the filtered data
         new(df)
     end
 end

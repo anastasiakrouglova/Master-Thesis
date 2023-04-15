@@ -54,7 +54,7 @@ function plotCluster(df)
                         #margin=attr(r=100, b=150, l=50, t=50)
                         ),
         x=:onset_s, 
-        y=:frequency, z=:power, #color=:dynamicResonance,  
+        y=:frequency, z=:power, color=:dynamicResonance,  
         type="scatter3d", mode="markers", 
         marker_size=3
     )
@@ -73,10 +73,12 @@ end
 
 
 raw = DataFrame(CSV.File("./fpt/data/output/flute-a4.csv"))
+raw[!,:id] = collect(1:size(raw)[1])
 # raw = DataFrame(CSV.File("./fpt/data/output/nine_N500.csv"))
 # raw = DataFrame(CSV.File("./fpt/data/output/A_maj_4_0.csv"))
 df = findClusters(raw, 0.5, 5, 0.001, 2000)
 
-CSV.write("./filtered-clustered-flute_a4.csv", df)
+CSV.write("./fpt/data/output/filtered-clustered-flute_a4.csv", df)
+
 
 plotCluster(df)

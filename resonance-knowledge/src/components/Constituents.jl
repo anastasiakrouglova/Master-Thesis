@@ -50,13 +50,13 @@ end
 #################################       Dynamic Resonance        ######################################
 ###########################################################################################
 
-# A dynamic resonance is a horizontal group of resonances, mostly grouped by pitch
-struct DynamicResonance <: DynResonanceSet # Note that this is a subset of dynamic resonancesHierarchy
-    dynamicResId::DynamicResonanceId
+# A dynamicResonace is a set of resonances mostly grouped by pitch (mostly horizontally)
+struct Harmonic <: DynResonanceSet # Note that this is a subset of dynamic resonancesHierarchy
+    harmonicId::HarmonicId
     resonances::DataFrame
-    DynamicResonance(dynamicResId::DynamicResonanceId,dataset::DynRHierarchy) = begin
-        df = filter(:dynamicResonance => o -> o == dynamicResId.value, dataset.data)
-        return isempty(df) ? none : new(dynamicResId,df)
+    Harmonic(harmonicId::HarmonicId,dataset::DynRHierarchy) = begin
+        df = filter(:dynamicResonance => o -> o == harmonicId.value, dataset.data)
+        return isempty(df) ? none : new(harmonicId,df)
     end
 end
 
