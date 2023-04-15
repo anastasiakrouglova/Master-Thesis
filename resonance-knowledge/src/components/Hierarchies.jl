@@ -23,7 +23,24 @@ struct DRSHierarchy <: Hierarchy
     end
 end
 
-struct ResonanceHierarchy <: Hierarchy
-    dataset::DRSHierarchy #the atomic resonanaces
-    structure::Dict{Id,Constituent} # other constituents like slices etc
+# struct ResonanceHierarchy <: Hierarchy
+#     dataset::DRSHierarchy #the atomic resonanaces
+#     structure::Dict{Id,Constituent} # other constituents like slices etc
+# end
+
+
+# Hierarchy of dynamic resonances (other dimension than DRS)
+struct DynRHierarchy <: Hierarchy
+    data::DataFrame
+    DynRHierarchy(filepath) = begin
+        df = DataFrame(CSV.File(filepath))
+        # Create a unique id for every dataframe
+        df[!,:id] = collect(1:size(df)[1]) # add res id
+        new(df)
+    end
 end
+
+# struct DynResonanceSet <: Hierarchy
+#     dataset::DynRHierarchy #the atomic resonanaces
+#     structure::Dict{Id,Constituent} # other constituents like slices etc
+# end

@@ -111,13 +111,11 @@ Chakra.pts(x::Slice)::Vector{Id} = begin
 end
 
 Chakra.pts(x::DRS)::Vector{Id} = sliceId.(unique(x.resonances.sliceId)) 
-    
+
 
 ## Expansions basic structure with machine learning (clustering)
 # Note: the complex values are removed from the dataset for clustering
-
-#    Chakra.pts(x::DynamicResonance)::Vector{Id} = pairId.(unique(x.resonances.pairId))
-
+Chakra.pts(x::DynR)::Vector{Id} = dynamicResId.(unique(x.resonances.dynamicResonance)) 
 Chakra.pts(x::DynamicResonance)::Vector{Id} = resId.(x.resonances.id)
 
 
@@ -162,30 +160,12 @@ Chakra.fnd(x::DRSId, m::Module) = begin
     #Base.get(m.__data__.data.id,x,none)
 end
 
+Chakra.fnd(x::DynRId, m::Module) = begin
+    DynR(x, m.__harmonics__)
+end
 
 Chakra.fnd(x::DynamicResonanceId, m::Module) = begin
-    DynamicResonance(x, m.__data__)
+    DynamicResonance(x, m.__harmonics__)
 end
 
-
 end
-
-
-
-########################################################################################################
-########################################################################################################
-###################################      TODO     ######################################################
-########################################################################################################
-########################################################################################################
-
-# You will probably also need a type SliceId (or ResonanceSetId) --- NO
-
-# Other types of resonance set? 
-## Negative frequencies?  -- DONE
-## Positive frequencies? -- DONE
-## Sequences of slices? -- DONE
-## frequency bands? -- DONE
-# What about collections of resonance sets etc? (dus rode bolletjes hoger)
-
-# What about Hierarchies which contain resonance sets and other collectsion?
-# For example:

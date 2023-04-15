@@ -7,6 +7,7 @@ end
 
 # An abstract type to filter resonances
 abstract type ResonanceSet end
+abstract type DynResonanceSet end
 
 # struct Resonance <: ResonanceSet
 #     id::ResonanceId
@@ -50,14 +51,30 @@ end
 ###########################################################################################
 
 # A dynamic resonance is a horizontal group of resonances, mostly grouped by pitch
-struct DynamicResonance <: ResonanceSet
+struct DynamicResonance <: DynResonanceSet # Note that this is a subset of dynamic resonancesHierarchy
     dynamicResId::DynamicResonanceId
     resonances::DataFrame
-    DynamicResonance(dynamicResId::DynamicResonanceId,dataset::DRSHierarchy) = begin
+    DynamicResonance(dynamicResId::DynamicResonanceId,dataset::DynRHierarchy) = begin
         df = filter(:dynamicResonance => o -> o == dynamicResId.value, dataset.data)
         return isempty(df) ? none : new(dynamicResId,df)
     end
 end
+
+
+
+
+# TODO: subset of all resonances that come out of clustering, is another hierarchy probably
+# struct DynR <: DynResonanceSet
+#     id::DRSId # multiple DRSs of an audiofile are possible
+#     #resonances::DRSHierarchy
+#     resonances::DataFrame
+
+#     DRS(id::DRSId, dataset::DRSHierarchy) = begin
+#         # return collection of sliceId's
+#         return new(id, dataset.data)
+#        #return isempty(df) ? none : new(id, df)
+#     end 
+# end
 
 
 ###########################################################################################
@@ -137,4 +154,16 @@ struct DRS <: ResonanceSet
     end 
 end
 
+
+struct DynR <: DynResonanceSet
+    id::DynRId # multiple DRSs of an audiofile are possible
+    #resonances::DRSHierarchy
+    resonances::DataFrame
+
+    DynR(id::DynRId, dataset::DynRHierarchy) = begin
+        # return collection of sliceId's
+        return new(id, dataset.data)
+       #return isempty(df) ? none : new(id, df)
+    end 
+end
 
