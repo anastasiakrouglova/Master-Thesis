@@ -1,7 +1,7 @@
 using PlotlyJS, ClusterAnalysis, StatsBase, DataFrames, CSV, LinearAlgebra
 
 
-function remove_noise(data, min_power, max_frequency)
+function remove_noise(data, min_power, min_frequency, max_frequency)
     # Noise in the onset appears at the beginning and end of the data from padding the signal 
     # with zeros on the left and right so that the window/step-size/overlap work out.
     data = data[(data.onset .!= 0) .& (data.onset .!= maximum(data.onset)), :]
@@ -9,8 +9,8 @@ function remove_noise(data, min_power, max_frequency)
     # good value (tested on flute-a4.wav) for min_power = 0.001
     data = data[(data.power .> min_power), :]
 
-    # Remove frequencies above 2000 and complex part
-    data = data[(0 .< data.frequency) .& (data.frequency .< max_frequency), :]
+    # Remove frequencies above max_frequency (default 2000) and complex part
+    data = data[(min_frequency .< data.frequency) .& (data.frequency .< max_frequency), :]
     
     return data
 end
@@ -18,15 +18,17 @@ end
 
 # TODO: Find epsilon and min_pts with hyperparameter tuning
 # ϵ = 0.5; # min_pts = 5;
-function findClusters(raw, ϵ, min_pts, min_power, max_frequency)
+function findClusters(raw, ϵ, min_pts, min_power, min_frequency, max_frequency)
     # Denoise raw data
-    df = remove_noise(raw, min_power, max_frequency)
+    df = remove_noise(raw, min_power, min_frequency, max_frequency)
 
     df[!,:onset_s] = (df.onset ./ df.sample_rate)
     normalize!(df.power, 2)
 
+
     # Convert data to a matrix
-    X = convert(Matrix, df[:,[1, 6, 8]])
+    # X = convert(Matrix, df[:,[1, 6, 8]]) # with power
+    X = convert(Matrix, df[:,[1, 6]]) # ignore power in clustering
 
     # normalize matrix
     dt = fit(ZScoreTransform, X, dims=1)
@@ -73,12 +75,28 @@ end
 
 
 raw = DataFrame(CSV.File("./fpt/data/output/flute-a4.csv"))
+#raw = DataFrame(CSV.File("./fpt/data/output/flute-d4.csv"))
+#raw = DataFrame(CSV.File("./fpt/data/output/nine_N500.csv"))
+#raw = DataFrame(CSV.File("./fpt/data/output/piano-chords_83_C.csv"))
+#raw = DataFrame(CSV.File("./fpt/data/output/HALFTONES/flute_C5F.csv"))
+
 raw[!,:id] = collect(1:size(raw)[1])
 # raw = DataFrame(CSV.File("./fpt/data/output/nine_N500.csv"))
 # raw = DataFrame(CSV.File("./fpt/data/output/A_maj_4_0.csv"))
-df = findClusters(raw, 0.5, 5, 0.001, 2000)
+#df = findClusters(raw, 0.5, 5, 0.001, 2000)
+
+# check ad different frequencies and compare
+df = findClusters(raw, 0.5, 5, 0.0001, 0, 2000) # flute d4: until 4000 frequency
+#df = findClusters(raw, 0.3, 8, 0.005, 0, 4000) # Piano 
+# for speach: min freq 100
+# https://flypaper.soundfly.com/produce/eqing-vocals-whats-happening-in-each-frequency-range-in-the-human-voice/
+#df = findClusters(raw, 0.6, 8, 0.00000001, 60, 1000) # Nine (freq we can hear)
+#df = findClusters(raw, 0.15, 5, 0.0001, 0, 1000) # flute afaf
+#df = findClusters(raw, 0.12, 5, 0.001, 0, 1000) # piano afaf
+#df = findClusters(raw, 0.02, 5, 0.0001, 0, 1000) # flute afaf
+
 
 CSV.write("./fpt/data/output/filtered-clustered-flute_a4.csv", df)
+#CSV.write("./fpt/data/output/filtered-clustered-C5F4.csv", df)
 
-
-plotCluster(df)
+plotCluster(df) 
