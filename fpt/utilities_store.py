@@ -32,9 +32,6 @@ Filter spectrogram with external attribute:
 
 """
 
-def helloWorld():
-    print("qsdfqsf")
-    return 10
 
 
 def get_spectrogram(file, folder=None, N=500, step_size=500, rem_offset=False, t_min=0, t_max=0,
@@ -76,7 +73,8 @@ def get_spectrogram(file, folder=None, N=500, step_size=500, rem_offset=False, t
     # Load signal
     if folder == None:
         #sample_rate, signal = read(filename='./fpt/data/input/' + file)
-        sample_rate, signal = read(filename='./data/input/' + file)
+        #sample_rate, signal = read(filename='./data/input/' + file)
+        sample_rate, signal = read(filename='./' + file)
     else:
         sample_rate, signal = read(filename='./data/' + folder + '/' + file)
         #sample_rate, signal = read(filename='./fpt/data/input/' + folder + '/' + file)
@@ -742,19 +740,25 @@ def get_dynamic_resonances(spectrogram, min_overlap=5e-1, overlap_type="linear",
     # Horizontalize
     dynamic_resonances_idx = horizontalize(index_maps)
 
+    print("after overlap")
+    print(dynamic_resonances_idx)
+    
     dynamic_spec_onsets = []
     dynamic_resonances = []
 
     # Convert each dynamic resonance into a ResonanceSet
+    # very slow
     for dynamic in dynamic_resonances_idx:
         onsets = spectrogram.onsets[[np.where(spectrogram.elements == res_id)[0][0] for res_id in dynamic]]
         min_onset = np.min(onsets)
+        print(min_onset)
         dynamic_spec_onsets.append(min_onset)
         dynamic_resonances.append(ResonanceSet(np.array(dynamic), onsets - min_onset))
 
     # Convert list of dynamic resonances into a Resonance set
     # HASHING DOESN'T WORK YET
     #return ResonanceSet(np.array([hash(dynamic) for dynamic in dynamic_resonances]), np.array(dynamic_spec_onsets))
+    print("i")
     return ResonanceSet(np.array([dynamic for dynamic in dynamic_resonances]), np.array(dynamic_spec_onsets))
 
 
@@ -1243,10 +1247,10 @@ def plot_dynamic(spectrogram, dyns, signal=None, min_freq=0, max_freq=3000, hide
         
         for dynamic, onset in zip(dyns.elements, dyns.onsets): #REPLACED dyns.elements by dyns
             
-            print("A")
+            print("B")
             print(dynamic)
             print("--------------------")
-            print(spectrogram.frequency)
+            print(dynamic.frequency[0])
             print("--------------------")
             print(spectrogram)
             
