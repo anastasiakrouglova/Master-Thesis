@@ -1,21 +1,23 @@
 # NOTE: f_0 has the additional row "ID", so code slightly different
-
 using PlotlyJS, ClusterAnalysis, StatsBase, DataFrames, CSV, LinearAlgebra
 using PyCall
 using Conda
 using ScikitLearn
 
-using NearestNeighbors
-using PyCall
 np = pyimport("numpy")
 
-# nn = pyimport("sklearn")
-#from sklearn.neighbors import NearestNeighbors
+ENV["PYTHON"]=""
+# using Pkg
+# Pkg.build("PyCall")
+push!(pyimport("sys")."path", "/Users/nastysushi/Mirror/_MULTIMEDIA/THESIS/thesis/github/")
+kneed = pyimport("kneed")
 
-using NearestNeighbors
+# import libraries
+@sk_import preprocessing: (StandardScaler)
+@sk_import metrics: (silhouette_samples, silhouette_score)
+@sk_import cluster: (KMeans)
 
-# TODO: Find epsilon and min_pts with hyperparameter tuning
-# ϵ = 0.5; # min_pts = 5;
+
 function findClusters(df, ϵ, min_pts)
     # no denoise needed
     df[!,:onset_s] = (df.onset ./ df.sample_rate)
@@ -23,39 +25,9 @@ function findClusters(df, ϵ, min_pts)
     # Convert data to a matrix
     X = convert(Matrix, df[:,[2, 7]]) # ignore power in clustering
 
-    #hyperparameterTuning(X)
-
     # Normalize matrix
     dt = fit(ZScoreTransform, X, dims=1)
     mat = StatsBase.transform(dt, X)
-
-
-    range_eps = [0.1, 0.2, 0.3, 0.4, 0.5]
-    max_silhouette_avg = [0, 0]
-    for i in 1:length(range_eps)
-        println("Eps value is", i)
-        db = dbscan(mat, ϵ, min_pts);
-        print(typeof(db))
-        #core_samples_mask = np.zeros_like(db.indices)
-
-        #core_samples_mask[db.index] = True
-        # labels = db.labels_
-        # print(set(labels))
-        # print(set(labels))
-
-        silhouette_avg = silhouette_score(mat, labels)
-        
-        if(max_silhouette_avg[0] < silhouette_avg)
-            max_silhouette_avg[0] = silhouette_avg
-            max_silhouette_avg[1] = i
-        end
-           
-        # print("For eps value ="+str(i), #labels,
-        #       "The average silhouette_score is :", silhouette_avg)
-    end
-    # print("BEST EPS IS", max_silhouette_avg[1] )
-    # max_silhouette_avg[1]
-        
 
     # Run DBSCAN 
     m = dbscan(mat, ϵ, min_pts); #returns object dbscan!
@@ -64,7 +36,6 @@ function findClusters(df, ϵ, min_pts)
 
     return df
 end
-
 
 function plotCluster(df)
     # https://plotly.com/julia/reference/scatter3d/
@@ -93,63 +64,86 @@ function plotCluster(df)
     p
 end
 
-# Hyperparameter tuning EPS
-#min_samples = dim*2
-
-function hyperparameterTuning(X)
-    dim = ndims(X)
-
-    # X = X[1:10]
-
-    
-    # for i in 1:length(X)
-    #     for j in 1:length(X)
-    #         # find distance from i to j
-    #         dist = np.linalg.norm(X[i, :]-X[j, :]) # works, is just slow
-    #         print(dist)
-    #         # find min values of distances to nearest 3
-    #         min()
-    #     end
-    # end
-
-    # sort distances in ascending and plot tof ind each value
-
-    # # elbatta, 2012 uitleggen in verslag
-    k = 4 #dim*2 # if 1 or 2, subject to noise; not goed, so altijd dim*2
-    points = rand(1397, 6)
-
-    # print(X[:,2])
-
-    kdtree = KDTree(X)
-    println(kdtree)
-
-    idxs, dists = knn(kdtree, points, k, true)
-    
-    dists = np.sort(dists, axis=0) # very slow calculation but works
-
-    println(idxs)
-    println(dists)
-
+function dataNormalization(df)
+    data = DataFrame(onset=df.onset, frequency=df.frequency)
+    mapper = DataFrameMapper([([:onset], StandardScaler()),
+                            ([:frequency], StandardScaler())]);
+    mapper = fit_transform!(mapper, copy(data))
 end
 
+function min_ptsTuning(X)
+    max_silouette = 0
+    best_cluster = 0
 
-MIN_PTS = 4 # number of dimensions * 2
+    for n_clusters in 3:50
+        clusterer = KMeans(n_clusters=n_clusters, random_state=10, n_init=10)
+        cluster_labels = clusterer.fit_predict(X)
+        silhouette_avg = silhouette_score(X, cluster_labels)
 
-raw = DataFrame(CSV.File("./fpt/data/output/C5F_f0.csv"))
+        # println("for n_clusters=", n_clusters, "The average silhouette_score is :", silhouette_avg)
+        if (silhouette_avg > max_silouette)
+            max_silouette = silhouette_avg
+            best_cluster = n_clusters
+        end
+
+        # compute the silhouette score for each sample
+        sample_silhouette_values = silhouette_samples(X, cluster_labels)
+    end
+
+    best_cluster
+end
+
+function epsilonTuning(X)
+    df_distance = DataFrame([[],[]], ["index", "distance", ])
+
+    l_X = size(X, 1)-1
+    for i in 1:l_X
+        dist = np.linalg.norm(X[i, :]-X[i+1, :])
+        println(dist)
+        push!(df_distance, [string(i), dist])
+    end 
+
+    df_distance = sort!(df_distance, :distance)
+
+    # Knee extraction, Satopaa 2011
+    distances = df_distance.distance
+    i = 1:length(distances)
+    knee = kneed.KneeLocator(i, distances, S=1, curve="convex", direction="increasing", interp_method="polynomial")
+    # Returns the epsilon
+    distances[knee.knee]
+end
+
+raw = DataFrame(CSV.File("./fpt/data/output/filtered-clustered-C5F4_f0.csv"))
 raw[!,:id] = collect(1:size(raw)[1])
-#df = findClusters(raw, 0.04, 5) # halftones
-df = findClusters(raw, 0.06, MIN_PTS) # halftones
+X = dataNormalization(raw)
+
+# hyperparameters
+MIN_PTS = min_ptsTuning(X) # number of dimensions * 2
+EPSILON = epsilonTuning(X)
+
+###################################
+
+#df = findClusters(raw, 0.10, 23) # halftones
+df = findClusters(raw, EPSILON, MIN_PTS) # halftones 0.06, MIN_PTS works or 0.10 23 works (so seperately, they have best results)
+
 
 #CSV.write("./fpt/data/output/filtered-clustered-flute_a4.csv", df)
 CSV.write("./fpt/data/output/filtered-clustered-C5F4_f0.csv", df)
 
-# plotCluster(df) 
 
-# plot(dists)
+#plot(scatter(df_distance, x=:index, y=:distance, mode="markers"))
 
+plotCluster(df) 
 
+# compilation
+# @profview plotCluster(df)
+# # pure runtime
+# @profview plotCluster(df)
 
 
 # TODO: run on 20 pieces: say what the accuracy is met hyperparameter tuning
 # Accuracy met manuele hyperparameter tuning: 100%
 # automatische hyperparameter tuning met kleinste afstand: ...
+
+
+
