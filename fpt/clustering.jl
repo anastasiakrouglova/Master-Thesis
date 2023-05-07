@@ -1,5 +1,8 @@
 using PlotlyJS, ClusterAnalysis, StatsBase, DataFrames, CSV, LinearAlgebra
 
+using ScikitLearn
+@sk_import cluster: (KMeans)
+
 function remove_noise(data, min_power, min_frequency, max_frequency)
     # Noise in the onset appears at the beginning and end of the data from padding the signal 
     # with zeros on the left and right so that the window/step-size/overlap work out.
@@ -36,9 +39,16 @@ function findClusters(raw, ϵ, min_pts, min_power, min_frequency, max_frequency)
     # Run DBSCAN 
     m = dbscan(mat, ϵ, min_pts); #returns object dbscan!
 
+    # Run Kmeans: just as a comparison
+    # clusterer = KMeans(n_clusters=4, random_state=1, n_init=8)
+    # cluster_labels = clusterer.fit_predict(X)
+
     # Put labels from clustering back to a dataframe
     # print(m.labels)
     df[!,:dynamicResonance] = m.labels
+
+    # kmeans : just as a comparison
+    # df[!,:dynamicResonance] = cluster_labels
 
     return df
 end
@@ -73,7 +83,7 @@ end
 
 raw = DataFrame(CSV.File("./fpt/data/output/flute-a4.csv"))
 raw[!,:id] = collect(1:size(raw)[1])
-df = findClusters(raw, 0.5, 5, 0.001, 0, 2000)
+df = findClusters(raw, 0.4, 4, 0.001, 0, 2000)
 CSV.write("./fpt/data/output/filtered-clustered-flute_a4.csv", df)
 
 

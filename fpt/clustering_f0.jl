@@ -3,19 +3,45 @@ using PlotlyJS, ClusterAnalysis, StatsBase, DataFrames, CSV, LinearAlgebra
 using PyCall
 using Conda
 using ScikitLearn
-
 np = pyimport("numpy")
-
 ENV["PYTHON"]=""
 # using Pkg
 # Pkg.build("PyCall")
 push!(pyimport("sys")."path", "/Users/nastysushi/Mirror/_MULTIMEDIA/THESIS/thesis/github/")
 kneed = pyimport("kneed")
-
 # import libraries
 @sk_import preprocessing: (StandardScaler)
 @sk_import metrics: (silhouette_samples, silhouette_score)
 @sk_import cluster: (KMeans)
+
+PATH = "./fpt/data/output/filtered-clustered-C5F4_f0.csv"
+PATH = "./fpt/data/output/syrinx_f0.csv"
+
+function __main__(path)
+    raw = DataFrame(CSV.File(path))
+    # Additional id column for hierarchical knowledge representation
+    raw[!,:id] = collect(1:size(raw)[1])
+    X = dataNormalization(raw)
+
+    # hyperparameters
+    #MIN_PTS = min_ptsTuning(X) # number of dimensions * 2
+    #EPSILON = epsilonTuning(X)
+
+    #println(MIN_PTS)
+    #println(EPSILON)
+
+    #df = findClusters(raw, 0.10, 23) # halftones
+    #df = findClusters(raw, 0.07, 18) # syrinx
+    df = findClusters(raw, 0.07, 6)
+
+    # Export clustered data
+    CSV.write("./fpt/data/output/filtered-clustered-C5F4_f0.csv", df)
+
+    # Plot the Distances
+    # plot(scatter(df_distance, x=:index, y=:distance, mode="markers"))
+    # Plot the Clusters
+    plotCluster(df) 
+end
 
 
 function findClusters(df, ϵ, min_pts)
@@ -99,10 +125,8 @@ function epsilonTuning(X)
     l_X = size(X, 1)-1
     for i in 1:l_X
         dist = np.linalg.norm(X[i, :]-X[i+1, :])
-        println(dist)
         push!(df_distance, [string(i), dist])
     end 
-
     df_distance = sort!(df_distance, :distance)
 
     # Knee extraction, Satopaa 2011
@@ -113,34 +137,21 @@ function epsilonTuning(X)
     distances[knee.knee]
 end
 
-raw = DataFrame(CSV.File("./fpt/data/output/filtered-clustered-C5F4_f0.csv"))
-raw[!,:id] = collect(1:size(raw)[1])
-X = dataNormalization(raw)
-
-# hyperparameters
-MIN_PTS = min_ptsTuning(X) # number of dimensions * 2
-EPSILON = epsilonTuning(X)
-
-###################################
-
-#df = findClusters(raw, 0.10, 23) # halftones
-df = findClusters(raw, EPSILON, MIN_PTS) # halftones 0.06, MIN_PTS works or 0.10 23 works (so seperately, they have best results)
+__main__(PATH)
 
 
-#CSV.write("./fpt/data/output/filtered-clustered-flute_a4.csv", df)
-CSV.write("./fpt/data/output/filtered-clustered-C5F4_f0.csv", df)
+########################## TODO #######################################
 
-
-#plot(scatter(df_distance, x=:index, y=:distance, mode="markers"))
-
-plotCluster(df) 
+# SPEED TEST:
+# TODO: @time all functions (20 times and take average), do the same with Dynamic Resonances: show which one is faster 
+#@time min_ptsTuning(X)
 
 # compilation
 # @profview plotCluster(df)
 # # pure runtime
 # @profview plotCluster(df)
 
-
+# STATISTICAL COMPARISON
 # TODO: run on 20 pieces: say what the accuracy is met hyperparameter tuning
 # Accuracy met manuele hyperparameter tuning: 100%
 # automatische hyperparameter tuning met kleinste afstand: ...
