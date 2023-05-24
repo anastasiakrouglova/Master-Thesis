@@ -14,25 +14,36 @@ kneed = pyimport("kneed")
 @sk_import metrics: (silhouette_samples, silhouette_score)
 @sk_import cluster: (KMeans)
 
-filename = "flute_syrinx_1_f0"
+filename = "flute_syrinx_3_f0"
+#filename = "violin_canonD_1_f0"
 PATH = "./fpt/data/output/scores/" * filename * ".csv"
+PATH_OUTPUT = "./fpt/data/output/scores/clustered/" * filename * ".csv"
+PATH_PNG = "./fpt/data/output/scores/" * filename * ".png"
 
 function __main__(path, accuracy)
     raw = DataFrame(CSV.File(path))
     # Additional id column for hierarchical knowledge representation
     raw[!,:id] = collect(1:size(raw)[1])
 
-    clustered_df = hyperparameterTuning(raw, accuracy)
+    # similarity parametertuning: did not work
+    #sim_df = hyperparameterTuning(raw, 2, "similarity")
+    #filtered_df = filter(:clusterSimilarity =>  n -> n != -1, sim_df)
 
-    # Export clustered data
-    CSV.write("./fpt/data/output/filtered-clustered-C5F4_f0.csv", clustered_df)
+    clustered_df = hyperparameterTuning(raw, accuracy, "features")
+
+    #print(clustered_df.clusters)
+    # save clustered data
+    CSV.write(PATH_OUTPUT, clustered_df)
 
     # Plot the Distances
     # plot(scatter(df_distance, x=:index, y=:distance, mode="markers"))
     # Plot the Clusters
-    plotCluster(clustered_df) 
-end
+    #plotCluster(sim_df) 
+    #test = clustered_df[(clustered_df.power .> 0.02), : ]
 
+    plotCluster(clustered_df) 
+    #plot(sim_df, y=:similarity, kind="box")
+end
 
 function plotCluster(df)
     # https://plotly.com/julia/reference/scatter3d/
@@ -41,13 +52,17 @@ function plotCluster(df)
         Layout(scene = attr(
                         xaxis_title="Time (s)",
                         yaxis_title="Frequency (Hz)",
-                        zaxis_title="Power"),
+                        #zaxis_title="Power"
+                        ),
                         #margin=attr(r=100, b=150, l=50, t=50)
                         ),
         x=:onset_s, 
-        y=:frequency, z=:power, color=:dynamicResonance,  
-        type="scatter3d", mode="markers", 
-        marker_size=2
+        y=:frequency, 
+        #z=:power, 
+        color=:clusters,  
+        #type="scatter3d", 
+        mode="markers", 
+        marker_size=5
     )
 
     name = "Clustering of resonances"
@@ -62,22 +77,89 @@ function plotCluster(df)
     savefig(p, "test.png")
 
     p
+    
 end
 
+# Euclidean distance onset/frequency
 function featureNormalization(df)
-    data = DataFrame(onset=df.onset, frequency=df.frequency)
+    data = DataFrame(onset=df.onset, frequency=df.frequency, similarity=df.similarity)
     mapper = DataFrameMapper([([:onset], StandardScaler()),
-                            ([:frequency], StandardScaler())]);
+                            ([:frequency], StandardScaler())
+                            #([:similarity], StandardScaler())
+                            ]);
     mapper = fit_transform!(mapper, copy(data))
 end
 
+# Test: Euclidean distance between amplitude/decay functions
+function similarityNormalization(df)
 
-function hyperparameterTuning(df, accuracy)
+    formatted_d = map(x -> replace(x, 'j' => "im", '(' => "", ')' => ""), df.d)
+    formatted_w = map(x -> replace(x, 'j' => "im", '(' => "", ')' => ""), df.w)
+
+    d = map(x -> parse(ComplexF64, x), formatted_d)
+    w = map(x -> parse(ComplexF64, x), formatted_w)
+
+
+    data = DataFrame(similarity=df.similarity)
+    mapper = DataFrameMapper([
+                                #[:w], StandardScaler()),
+                            #([:frequency], StandardScaler())
+                            ([:similarity], StandardScaler())
+                            ]);
+    mapper = fit_transform!(mapper, copy(data))
+end
+
+# Similary distance resonances (cos d_{jk})
+function resonanceSimilarity(df)
+
+    formatted_d = map(x -> replace(x, 'j' => "im", '(' => "", ')' => ""), df.d)
+    formatted_w = map(x -> replace(x, 'j' => "im", '(' => "", ')' => ""), df.w)
+
+    d = map(x -> parse(ComplexF64, x), formatted_d)
+    w = map(x -> parse(ComplexF64, x), formatted_w)
+
+    djdk = map((x,y) -> x.*y, d[1:end-1], d[2:end])
+    diff_wjwk = diff(w)
+
+
+    dj_absPow = abs.(d[1:end-1]).^2
+    dk_absPow = abs.(d[2:end]).^2
+
+    gj = df.decay[1:end-1]
+    gk = df.decay[2:end]
+
+    numerator = real(djdk./diff_wjwk)
+
+    similarity = numerator ./ (dj_absPow./gj).*(dk_absPow./gk)
+
+    # last element has 0 similarity with first one
+    push!(similarity,0)
+
+    similarity[similarity.>=1] .= 1
+    similarity[similarity.<=-1] .= -1
+    #similarity[.>]
+
+    maximum(similarity) = 0
+
+    similarity = #map(x -> if (x >= 1) x = 0 end, similarity)
+
+    similarity
+end
+
+function hyperparameterTuning(df, accuracy, type)
     # no denoise needed
     df[!,:onset_s] = (df.onset ./ df.sample_rate)
     normalize!(df.power, 2)
     # Convert data to a normalized matrix
-    X = featureNormalization(df) #convert(Matrix, df[:,[2, 7]]) # ignore power in clustering
+    
+    df[!,:similarity] = resonanceSimilarity(df)
+
+    if (type == "similarity")
+        X = similarityNormalization(df)
+    else
+        X = featureNormalization(df)
+    end
+    
     knee_eps = knee_epsilonTuning(X)
 
     # Normalize matrix
@@ -109,6 +191,8 @@ function hyperparameterTuning(df, accuracy)
             end
         end
     end
+
+
     
     println("--------------")
     println("knee method eps:", knee_eps) 
@@ -117,9 +201,14 @@ function hyperparameterTuning(df, accuracy)
     println("--------------")
 
     # return  best min_pts
-    best_clustering = dbscan(X, best_eps, best_pts); 
+    best_clustering = dbscan(X,best_eps, best_pts); 
+    
+    if (type == "similarity")
+        df[!,:clusterSimilarity] = best_clustering.labels
+    else
+        df[!,:clusters] = best_clustering.labels
+    end
 
-    df[!,:dynamicResonance] = best_clustering.labels
 
     # CONCLUSION: KNEE METHOD DOES NOT WORK FOR OUR PROBLEM!!!
     # reason: not in combination of 2 parameters:
@@ -146,10 +235,14 @@ function knee_epsilonTuning(X)
 end
 
 # accuracy must be a value between 10 and 50, since 0.1 <= eps <= 0.5
-# The higher the value, the less accuracy (just inverse for user later)
+# The higher the value, the less accuracy (just inverse for user later), 
+# mainly used for pieces where notes vary strongly in time
+# note: increase accuracy increases running time as well
 __main__(PATH, 10)
 
-
+#df = DataFrame(CSV.File(PATH))
+#resonanceSimilarity(df)
+#featureNormalization(df)
 
 ########################## TODO #######################################
 
@@ -158,9 +251,13 @@ __main__(PATH, 10)
 #@time min_ptsTuning(X)
 
 # compilation
-# @profview plotCluster(df)
-# # pure runtime
-# @profview plotCluster(df)
+
+
+#@time hyperparameterTuning(df,10)
+
+# @profview hyperparameterTuning(df, 10)
+# # # pure runtime
+# @profview hyperparameterTuning(df, 10)
 
 # STATISTICAL COMPARISON
 # TODO: run on 20 pieces: say what the accuracy is met hyperparameter tuning

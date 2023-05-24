@@ -7,7 +7,8 @@ end
 
 # An abstract type to filter resonances
 abstract type ResonanceSet end
-abstract type DynResonanceSet end
+abstract type HarmonicSet end
+abstract type NoteSet end
 
 # struct Resonance <: ResonanceSet
 #     id::ResonanceId
@@ -47,33 +48,32 @@ end
 
 
 ###########################################################################################
-#################################       Dynamic Resonance        ######################################
+#################################       Harmonic       ######################################
 ###########################################################################################
 
-# A dynamicResonace is a set of resonances mostly grouped by pitch (mostly horizontally)
-struct Harmonic <: DynResonanceSet # Note that this is a subset of dynamic resonancesHierarchy
+# A HarmonicSet is a set of resonances mostly grouped by pitch (mostly horizontally) and constrained by a slice
+# to group overtones
+struct Harmonic <: HarmonicSet # Note that this is a subset of HarmonicSet
     harmonicId::HarmonicId
     resonances::DataFrame
     Harmonic(harmonicId::HarmonicId,dataset::DynRHierarchy) = begin
-        df = filter(:dynamicResonance => o -> o == harmonicId.value, dataset.data)
+        df = filter(:harmonic => o -> o == harmonicId.value, dataset.data)
         return isempty(df) ? none : new(harmonicId,df)
     end
 end
 
 
 
-
-# TODO: subset of all resonances that come out of clustering, is another hierarchy probably
-# struct DynR <: DynResonanceSet
-#     id::DRSId # multiple DRSs of an audiofile are possible
-#     #resonances::DRSHierarchy
+###########################################################################################
+#################################    Musical   Note       ######################################
+###########################################################################################
+# struct Note <: NoteSet # Note that this is a subset of dynamic resonancesHierarchy
+#     noteId::NoteId
 #     resonances::DataFrame
-
-#     DRS(id::DRSId, dataset::DRSHierarchy) = begin
-#         # return collection of sliceId's
-#         return new(id, dataset.data)
-#        #return isempty(df) ? none : new(id, df)
-#     end 
+#     Note(noteId::NoteId,dataset::NOTEHierarchy) = begin
+#         df = filter(:note => o -> o == noteId.value, dataset.data)
+#         return isempty(df) ? none : new(noteId,df)
+#     end
 # end
 
 
@@ -155,15 +155,24 @@ struct DRS <: ResonanceSet
 end
 
 
-struct DynR <: DynResonanceSet
-    id::DynRId # multiple DRSs of an audiofile are possible
-    #resonances::DRSHierarchy
+struct HARM <: HarmonicSet
+    id::HARMId # multiple DRSs of an audiofile are possible
     resonances::DataFrame
 
-    DynR(id::DynRId, dataset::DynRHierarchy) = begin
+    HARM(id::HARMId, dataset::HARMHierarchy) = begin
         # return collection of sliceId's
         return new(id, dataset.data)
        #return isempty(df) ? none : new(id, df)
     end 
 end
 
+struct NOTE <: NoteSet
+    id::NOTEId # multiple DRSs of an audiofile are possible
+    resonances::DataFrame
+
+    HARM(id::NOTEId, dataset::NOTEHierarchy) = begin
+        # return collection of sliceId's
+        return new(id, dataset.data)
+       #return isempty(df) ? none : new(id, df)
+    end 
+end

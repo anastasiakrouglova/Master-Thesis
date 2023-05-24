@@ -1,0 +1,1 @@
+python score_conversion/text_to_music.py > score_conversion/piano_score.ly

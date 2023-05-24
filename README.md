@@ -8,3 +8,12 @@ My master's thesis uses FTP (Fast Padé Transform) to decompose audio signals in
 - extracting instruments from a polyphonic audio signal
 - converting music recordings into sheet scores
 - ...
+
+
+
+Run:
+
+1. Run Clustering_f0.jl
+2. Run score_conversion/extract_fundamentals.jl with same filename
+3. Run text_to_music.py if fails, otherwise just execute.py
+4. Check new piano_score.pdf
