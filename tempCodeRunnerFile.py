@@ -1,1 +1,1 @@
-lines
+export PATH=$PATH:/Users/nastysushi/.local/bin

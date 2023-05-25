@@ -14,38 +14,107 @@ kneed = pyimport("kneed")
 @sk_import metrics: (silhouette_samples, silhouette_score)
 @sk_import cluster: (KMeans)
 
-filename = "flute_syrinx_3_f0"
-#filename = "violin_canonD_1_f0"
+# filename = "flute_syrinx_3_f0"
+filename = "violin_canonD_1"
+
 PATH = "./fpt/data/output/scores/" * filename * ".csv"
 PATH_OUTPUT = "./fpt/data/output/scores/clustered/" * filename * ".csv"
 PATH_PNG = "./fpt/data/output/scores/" * filename * ".png"
 
-function __main__(path, accuracy)
+
+function main(path, accuracy)
     raw = DataFrame(CSV.File(path))
     # Additional id column for hierarchical knowledge representation
     raw[!,:id] = collect(1:size(raw)[1])
 
-    # similarity parametertuning: did not work
-    #sim_df = hyperparameterTuning(raw, 2, "similarity")
-    #filtered_df = filter(:clusterSimilarity =>  n -> n != -1, sim_df)
+    # work with f0 subset
+    f0_raw = raw[isequal.(raw.f0,1), :]
+    f0_raw = filter(:f0 => isequal(1), f0_raw)
+    clustered_f0 = hyperparameterTuning(f0_raw, accuracy, "features")
 
-    clustered_df = hyperparameterTuning(raw, accuracy, "features")
+    for (id, f0) in zip(clustered_f0.id, clustered_f0.f0)
+        indices = findall(x -> x == id, raw.id)
+        raw[indices, :f0] .= f0
+    end
 
-    #print(clustered_df.clusters)
-    # save clustered data
-    CSV.write(PATH_OUTPUT, clustered_df)
+    raw[!, :harmonic] .= -1
+    # Harmonics
+    # put all data elements between this range in the harmonicAnalizer
+    raw = harmonicanalyzer(raw, 1)
 
-    # Plot the Distances
-    # plot(scatter(df_distance, x=:index, y=:distance, mode="markers"))
-    # Plot the Clusters
-    #plotCluster(sim_df) 
-    #test = clustered_df[(clustered_df.power .> 0.02), : ]
+    
+    CSV.write(PATH_OUTPUT, raw)
 
-    plotCluster(clustered_df) 
-    #plot(sim_df, y=:similarity, kind="box")
+    plotharmonic(clustered_f0) 
+    #plotf0(clustered_f0) 
 end
 
-function plotCluster(df)
+function harmonicanalyzer(df, i)
+    # add dimension harmonic likeliness
+
+    f0_value = getf0(df, i)
+    f0_resonances = df[df.f0 .== i, :]
+    
+    min = minimum(f0_resonances.onset)
+    max = maximum(f0_resonances.onset)
+
+    println("Cluster ", i, "min: ",min, ", max: ",max)
+
+    note_slice = findall(x -> min <= x <= max, df.onset)
+    df[note_slice, :harmonic] .= i
+
+
+    return df
+    # Filter alle elementen
+    #raw[!,:harmonicity] = clustered_f0.f0 ./ freq
+end
+
+function getf0(df, i)
+    cluster = df[df.f0 .== i, :]
+    vec_cluster = collect(cluster.frequency)
+    avg_cluster = mean(vec_cluster)
+    frequency_pred = round(avg_cluster, digits = 2)
+    println(frequency_pred)
+
+    return frequency_pred
+end
+
+function plotharmonic(df)
+    # https://plotly.com/julia/reference/scatter3d/
+    p = plot(
+        df, 
+        Layout(scene = attr(
+                        xaxis_title="Time (s)",
+                        yaxis_title="Frequency (Hz)",
+                        zaxis_title="Likeliness"
+                        ),
+                        #margin=attr(r=100, b=150, l=50, t=50)
+                        ),
+        x=:onset_s, 
+        y=:frequency, 
+        z=:likeliness, 
+        color=:f0,  
+        type="scatter3d", 
+        mode="markers", 
+        marker_size=3
+    )
+
+    name = "Clustering of resonances"
+    # Default parameters which are used when `layout.scene.camera` is not provided
+    camera = attr(
+        up=attr(x=0, y=0, z=1),
+        center=attr(x=0, y=0, z=0),
+        eye=attr(x=-1.55, y=-1.55, z=1.55)
+    )
+    relayout!(p, scene_camera=camera, title=name)
+
+    savefig(p, "canonD_harmonics.png")
+    p
+end
+
+
+
+function plotf0(df)
     # https://plotly.com/julia/reference/scatter3d/
     p = plot(
         df, 
@@ -59,7 +128,7 @@ function plotCluster(df)
         x=:onset_s, 
         y=:frequency, 
         #z=:power, 
-        color=:clusters,  
+        color=:f0,  
         #type="scatter3d", 
         mode="markers", 
         marker_size=5
@@ -75,9 +144,7 @@ function plotCluster(df)
     relayout!(p, scene_camera=camera, title=name)
 
     savefig(p, "test.png")
-
     p
-    
 end
 
 # Euclidean distance onset/frequency
@@ -203,11 +270,11 @@ function hyperparameterTuning(df, accuracy, type)
     # return  best min_pts
     best_clustering = dbscan(X,best_eps, best_pts); 
     
-    if (type == "similarity")
-        df[!,:clusterSimilarity] = best_clustering.labels
-    else
-        df[!,:clusters] = best_clustering.labels
-    end
+    # if (type == "similarity")
+    #     df[!,:clusterSimilarity] = best_clustering.labels
+    # else
+    df[!,:f0] = best_clustering.labels
+    # end
 
 
     # CONCLUSION: KNEE METHOD DOES NOT WORK FOR OUR PROBLEM!!!
@@ -238,7 +305,7 @@ end
 # The higher the value, the less accuracy (just inverse for user later), 
 # mainly used for pieces where notes vary strongly in time
 # note: increase accuracy increases running time as well
-__main__(PATH, 10)
+main(PATH, 6)
 
 #df = DataFrame(CSV.File(PATH))
 #resonanceSimilarity(df)
