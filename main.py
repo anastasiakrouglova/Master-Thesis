@@ -61,7 +61,7 @@ else:
 
     df = pd.read_csv(path_output+filename+'.csv')  
     # Add a 1 if fundamental frequency or 0 if not to the dataframe
-    df['f0'] = [1 if frequency in f0[0] else -1 for frequency in df['frequency']]
+    df['f0'] = [1 if frequency in f0[0] else 0 for frequency in df['frequency']]
     
     ## 4. Cluster fundamental frequencies
     # execute julia file

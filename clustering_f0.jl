@@ -2,6 +2,7 @@
 using PlotlyJS, ClusterAnalysis, StatsBase, DataFrames, CSV, LinearAlgebra
 using PyCall
 using Conda
+using Statistics, Distributions
 using ScikitLearn
 np = pyimport("numpy")
 ENV["PYTHON"]=""
@@ -24,49 +25,74 @@ PATH_PNG = "./fpt/data/output/scores/" * filename * ".png"
 
 function main(path, accuracy)
     raw = DataFrame(CSV.File(path))
+
     # Additional id column for hierarchical knowledge representation
     raw[!,:id] = collect(1:size(raw)[1])
 
-    # work with f0 subset
-    f0_raw = raw[isequal.(raw.f0,1), :]
+    # remove the negative resonances to perform machine learning techniques only on the real part 
+    pos_raw = filter(:frequency => x -> x > 0, raw)
+
+    # cluster the f0 subset
+    f0_raw = pos_raw[isequal.(pos_raw.f0,1), :]
     f0_raw = filter(:f0 => isequal(1), f0_raw)
     clustered_f0 = hyperparameterTuning(f0_raw, accuracy, "features")
 
+    # cluster the f0 subset
     for (id, f0) in zip(clustered_f0.id, clustered_f0.f0)
-        indices = findall(x -> x == id, raw.id)
-        raw[indices, :f0] .= f0
+        indices = findall(x -> x == id, pos_raw.id)
+        pos_raw[indices, :f0] .= f0
     end
 
-    raw[!, :harmonic] .= -1
+    pos_raw[!, :harmonic] .= -1
+    pos_raw[!, :likeliness] .= 0.5
+
     # Harmonics
-    # put all data elements between this range in the harmonicAnalizer
-    raw = harmonicanalyzer(raw, 1)
+    for i in 1:maximum(clustered_f0.f0)
+        pos_raw = overtoneSlice(pos_raw, i)
+    end
 
+    CSV.write(PATH_OUTPUT, pos_raw)
+
+    #plotharmonic(pos_raw[1000:2000, :]) 
+
+    overtones = pos_raw[pos_raw.likeliness .<= 0.01, :]
     
-    CSV.write(PATH_OUTPUT, raw)
+    overtones_limFreq = overtones[overtones.frequency .<= 2000, :]
+    
+    
+    println(length(overtones.id))
+    println(length(overtones_limFreq.id))
+    
+    #pos_raw[1000:2000, :]
+    plotf0(overtones_limFreq) 
 
-    plotharmonic(clustered_f0) 
     #plotf0(clustered_f0) 
 end
 
-function harmonicanalyzer(df, i)
-    # add dimension harmonic likeliness
-
+function overtoneSlice(df, i)
     f0_value = getf0(df, i)
     f0_resonances = df[df.f0 .== i, :]
     
     min = minimum(f0_resonances.onset)
     max = maximum(f0_resonances.onset)
 
-    println("Cluster ", i, "min: ",min, ", max: ",max)
+    println("Cluster ", i, ", min: ",min, ", max: ",max)
 
     note_slice = findall(x -> min <= x <= max, df.onset)
     df[note_slice, :harmonic] .= i
+    df[note_slice, :likeliness] .= (df[note_slice, :].frequency ./ f0_value) .% 1
 
+    # Define the parameters for the Gaussian function
+    mu = 0.5  # Mean
+    sigma = 0.5  # Standard deviation
+
+    # Calculate the Gaussian function values
+    gaussian_values = pdf(Normal(mu, sigma), df[note_slice, :likeliness])
+
+    # Multiply the likeliness column with the Gaussian values
+    df[note_slice, :likeliness] .= df[note_slice, :likeliness] .* gaussian_values
 
     return df
-    # Filter alle elementen
-    #raw[!,:harmonicity] = clustered_f0.f0 ./ freq
 end
 
 function getf0(df, i)
@@ -85,21 +111,21 @@ function plotharmonic(df)
         df, 
         Layout(scene = attr(
                         xaxis_title="Time (s)",
-                        yaxis_title="Frequency (Hz)",
-                        zaxis_title="Likeliness"
+                        yaxis_title="likeliness f0",
+                        # zaxis_title="Likeliness"
                         ),
-                        #margin=attr(r=100, b=150, l=50, t=50)
+                        #margin=attr(rq=100, b=150, l=50, t=50)
                         ),
         x=:onset_s, 
-        y=:frequency, 
-        z=:likeliness, 
-        color=:f0,  
-        type="scatter3d", 
+        # y=:f0, 
+        y=:likeliness, 
+        # color=:likeliness,  
+        # type="scatter3d", 
         mode="markers", 
         marker_size=3
     )
 
-    name = "Clustering of resonances"
+    name = "Clustering of overtones"
     # Default parameters which are used when `layout.scene.camera` is not provided
     camera = attr(
         up=attr(x=0, y=0, z=1),
@@ -113,7 +139,6 @@ function plotharmonic(df)
 end
 
 
-
 function plotf0(df)
     # https://plotly.com/julia/reference/scatter3d/
     p = plot(
@@ -125,13 +150,13 @@ function plotf0(df)
                         ),
                         #margin=attr(r=100, b=150, l=50, t=50)
                         ),
-        x=:onset_s, 
+        x=:onset, 
         y=:frequency, 
         #z=:power, 
         color=:f0,  
         #type="scatter3d", 
         mode="markers", 
-        marker_size=5
+        marker_size=4
     )
 
     name = "Clustering of resonances"
