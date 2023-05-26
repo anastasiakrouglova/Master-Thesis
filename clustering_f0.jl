@@ -55,7 +55,7 @@ function main(path, accuracy)
     lim_pos_raw = pos_raw[pos_raw.likeliness .<= 1, :]
     overtones_limFreq = lim_pos_raw[lim_pos_raw.frequency .<= 2000, :]
     
-    plotf0(overtones_limFreq) 
+    plotharmonic(overtones_limFreq) 
 end
 
 function overtoneSlice(df, i)
@@ -98,35 +98,35 @@ function getf0(df, i)
 end
 
 function plotharmonic(df)
-    # https://plotly.com/julia/reference/scatter3d/
-    p = plot(
-        df, 
-        Layout(scene = attr(
-                        xaxis_title="Time (s)",
-                        yaxis_title="likeliness f0",
-                        # zaxis_title="Likeliness"
-                        ),
-                        #margin=attr(rq=100, b=150, l=50, t=50)
-                        ),
-        x=:onset_s, 
-        # y=:f0, 
-        y=:likeliness, 
-        # color=:likeliness,  
-        # type="scatter3d", 
-        mode="markers", 
-        marker_size=2
+    # non-harmonic data
+    trace1 = scatter(
+    mode="markers",
+    x=df[df.harmonic .== -1, :].onset,
+    y=df[df.harmonic .== -1, :].frequency,
+    opacity=0.5,
+    marker=attr(
+        size=2,
+        color="646FFB"
+    ),
+    name="data"
     )
 
-    name = "Clustering of overtones"
-    # Default parameters which are used when `layout.scene.camera` is not provided
-    camera = attr(
-        up=attr(x=0, y=0, z=1),
-        center=attr(x=0, y=0, z=0),
-        eye=attr(x=-1.55, y=-1.55, z=1.55)
+    # harmonic data
+    trace2 = scatter(
+    mode="markers",
+    x=df[df.harmonic .!== -1, :].onset,
+    y=df[df.harmonic .!== -1, :].frequency,
+    opacity=1,
+    marker=attr(
+        color=df[df.harmonic .!== -1, :].harmonic,
+        size=4
+    ),
+    name="overtones"
     )
-    relayout!(p, scene_camera=camera, title=name)
 
-    savefig(p, "canonD_harmonics.png")
+    p = plot([trace1, trace2], Layout(title="Overtone seperation", yaxis_title="Frequency (Hz)", xaxis_title="Time"))
+    savefig(p, "overtones.png")
+
     p
 end
 
@@ -145,7 +145,7 @@ function plotf0(df)
         x=:onset, 
         y=:frequency, 
         #z=:power, 
-        color=:harmonic,  # color=:f0 # choose one of the two, dependent on harmonic
+        color=:f0, # choose one of the two, dependent on harmonic
         #type="scatter3d", 
         mode="markers", 
         marker_size=4
