@@ -52,21 +52,10 @@ function main(path, accuracy)
     end
 
     CSV.write(PATH_OUTPUT, pos_raw)
-
-    #plotharmonic(pos_raw[1000:2000, :]) 
-
-    overtones = pos_raw[pos_raw.likeliness .<= 0.01, :]
+    lim_pos_raw = pos_raw[pos_raw.likeliness .<= 1, :]
+    overtones_limFreq = lim_pos_raw[lim_pos_raw.frequency .<= 2000, :]
     
-    overtones_limFreq = overtones[overtones.frequency .<= 2000, :]
-    
-    
-    println(length(overtones.id))
-    println(length(overtones_limFreq.id))
-    
-    #pos_raw[1000:2000, :]
     plotf0(overtones_limFreq) 
-
-    #plotf0(clustered_f0) 
 end
 
 function overtoneSlice(df, i)
@@ -79,9 +68,8 @@ function overtoneSlice(df, i)
     println("Cluster ", i, ", min: ",min, ", max: ",max)
 
     note_slice = findall(x -> min <= x <= max, df.onset)
-    df[note_slice, :harmonic] .= i
     df[note_slice, :likeliness] .= (df[note_slice, :].frequency ./ f0_value) .% 1
-
+        
     # Define the parameters for the Gaussian function
     mu = 0.5  # Mean
     sigma = 0.5  # Standard deviation
@@ -91,6 +79,10 @@ function overtoneSlice(df, i)
 
     # Multiply the likeliness column with the Gaussian values
     df[note_slice, :likeliness] .= df[note_slice, :likeliness] .* gaussian_values
+
+    # Classify overtones with same id as f0
+    likeliness = intersect(findall(x -> min <= x <= max, df.onset), findall(x -> x <= 0.01, df.likeliness))
+    df[likeliness, :harmonic] .= i
 
     return df
 end
@@ -122,7 +114,7 @@ function plotharmonic(df)
         # color=:likeliness,  
         # type="scatter3d", 
         mode="markers", 
-        marker_size=3
+        marker_size=2
     )
 
     name = "Clustering of overtones"
@@ -153,7 +145,7 @@ function plotf0(df)
         x=:onset, 
         y=:frequency, 
         #z=:power, 
-        color=:f0,  
+        color=:harmonic,  # color=:f0 # choose one of the two, dependent on harmonic
         #type="scatter3d", 
         mode="markers", 
         marker_size=4
@@ -174,10 +166,17 @@ end
 
 # Euclidean distance onset/frequency
 function featureNormalization(df)
-    data = DataFrame(onset=df.onset, frequency=df.frequency, similarity=df.similarity)
+    data = DataFrame(onset=df.onset, frequency=df.frequency)
     mapper = DataFrameMapper([([:onset], StandardScaler()),
                             ([:frequency], StandardScaler())
-                            #([:similarity], StandardScaler())
+                            ]);
+    mapper = fit_transform!(mapper, copy(data))
+end
+
+
+function onsetNormalization(df)
+    data = DataFrame(onset=df.onset)
+    mapper = DataFrameMapper([([:onset], StandardScaler())
                             ]);
     mapper = fit_transform!(mapper, copy(data))
 end
@@ -243,7 +242,6 @@ function hyperparameterTuning(df, accuracy, type)
     df[!,:onset_s] = (df.onset ./ df.sample_rate)
     normalize!(df.power, 2)
     # Convert data to a normalized matrix
-    
     df[!,:similarity] = resonanceSimilarity(df)
 
     if (type == "similarity")
