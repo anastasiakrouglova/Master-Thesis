@@ -1,1 +1,1 @@
-export PATH=$PATH:/Users/nastysushi/.local/bin
+i

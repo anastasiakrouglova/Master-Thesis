@@ -20,25 +20,16 @@ sys.path.insert(0, './fpt')
 from utilities_store import *
 import serialization as ser
 
-# PATH problems
-# from julia.api import Julia
-# jl = Julia(compiled_modules=False) # Due to this workaround, the compilation can take some of time
-# from julia import Main
-# Main.include("clustering_f0.jl")
 
+ACCURACY = 500  # Generally a good value for most musical analysis
+MAX_FREQ = 2000 # Generally enough for musical analysis
 
-ACCURACY = 500
-MAX_FREQ = 2000
-
-
-filename = 'violin_canonD_1'
+filename = 'flute_syrinx_artificial_1'
 path_input = 'fpt/data/input/scores/' #scores/
 path_output = 'fpt/data/output/scores/'
 
 file = path_output+filename+".csv"
 file_exists = exists(file)
-
-
 
 if file_exists:
     # 1. Obtain the already generated csv fro mthe spectrogram
@@ -63,16 +54,10 @@ else:
     # Add a 1 if fundamental frequency or 0 if not to the dataframe
     df['f0'] = [1 if frequency in f0[0] else 0 for frequency in df['frequency']]
     
-    ## 4. Cluster fundamental frequencies
-    # execute julia file
-    #Main.main(file, 10)
-    
     # Export extended version of dataframe
     df.to_csv(file) 
 
 
-# Main.println("I'm printing from a Julia function!")
-# Main.main(file, 10)
 
 
 

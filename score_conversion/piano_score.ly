@@ -4,7 +4,7 @@
   tagline = "Copyright: Anastasia Krouglova"
 }{
 \new PianoStaff << 
-  \new Staff {fis''e''d''cis''b'a'b'cis''}
+  \new Staff {\time3/4ais''8.a''32b''32gis''8.g''32a''32fis''16f''16e''16cis''16ais''8.c'''32b''64ais''4}
 >>
 }
 

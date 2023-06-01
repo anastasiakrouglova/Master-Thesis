@@ -15,8 +15,8 @@ kneed = pyimport("kneed")
 @sk_import metrics: (silhouette_samples, silhouette_score)
 @sk_import cluster: (KMeans)
 
-# filename = "flute_syrinx_3_f0"
-filename = "violin_canonD_1"
+filename = "flute_syrinx_artificial_1"
+#filename = "violin_canonD_1"
 
 PATH = "./fpt/data/output/scores/" * filename * ".csv"
 PATH_OUTPUT = "./fpt/data/output/scores/clustered/" * filename * ".csv"
@@ -55,7 +55,8 @@ function main(path, accuracy)
     lim_pos_raw = pos_raw[pos_raw.likeliness .<= 1, :]
     overtones_limFreq = lim_pos_raw[lim_pos_raw.frequency .<= 2000, :]
     
-    plotharmonic(overtones_limFreq) 
+    #plotharmonic(overtones_limFreq) 
+    plotf0(overtones_limFreq) 
 end
 
 function overtoneSlice(df, i)
@@ -129,7 +130,6 @@ function plotharmonic(df)
 
     p
 end
-
 
 function plotf0(df)
     # https://plotly.com/julia/reference/scatter3d/

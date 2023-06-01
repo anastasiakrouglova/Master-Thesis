@@ -13,7 +13,14 @@ My master's thesis uses FTP (Fast Padé Transform) to decompose audio signals in
 
 Run:
 
-1. Run Clustering_f0.jl
+## Generating a .csv file of resonances
+
+Run `execute_fpt.py`. This will generate
+- a .csv file of the resonances + a f0 column in a form of a boolean (1 if resonace is part of fundamental, 0 if not)
+
+## Clustering the fundamental resonances or harmnonics
+
+2. Run Clustering_f0.jl
 2. Run score_conversion/extract_fundamentals.jl with same filename
 3. Run text_to_music.py if fails, otherwise just execute.py
 4. Check new piano_score.pdf
