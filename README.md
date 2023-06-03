@@ -29,7 +29,7 @@ We conceptually step off from the mainstream approach towards data analysis and 
 #### Template
 The template of the thesis was inspired by the work of Edward Tufte and Gilles Castel.
 
-https://raw.githubusercontent.com/anastasiakrouglova/Master-Thesis-Anastasia-Krouglova}/main/.github/images/ex1.pdf
+!https://raw.githubusercontent.com/anastasiakrouglova/Master-Thesis-Anastasia-Krouglova/main/.github/images/ex1.pdf
 
 
 
