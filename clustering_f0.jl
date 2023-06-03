@@ -15,7 +15,7 @@ kneed = pyimport("kneed")
 @sk_import metrics: (silhouette_samples, silhouette_score)
 @sk_import cluster: (KMeans)
 
-filename = "flute_syrinx_artificial_1"
+filename = "flute_syrinx_1"
 #filename = "violin_canonD_1"
 
 PATH = "./fpt/data/output/scores/" * filename * ".csv"
@@ -163,6 +163,7 @@ function plotf0(df)
     savefig(p, "test.png")
     p
 end
+
 
 # Euclidean distance onset/frequency
 function featureNormalization(df)

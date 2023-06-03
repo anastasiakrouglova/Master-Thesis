@@ -5,9 +5,11 @@ using Lathe.preprocess: TrainTestSplit
 filename = "flute_syrinx_artificial_1"
 PATH = "./fpt/data/output/scores/clustered/" * filename * ".csv"
 
-G = "./score_conversion/frequenciesToNote.csv"
+Sharp = "./score_conversion/frequenciesToNoteSharp.csv"
+Flat = "./score_conversion/frequenciesToNoteFlat.csv"
+
 df = DataFrame(CSV.File(PATH))
-notes = DataFrame(CSV.File(G))
+notes = DataFrame(CSV.File(Flat))
 
 # Time signature: manual features for nrow
 beats_per_measure = 3
@@ -95,7 +97,7 @@ for i in 1:maximum(df.f0)
     # TODO:  add rests to musical notation (Future work)
 
     # artificial boundery for the thesis demonstration with Syrinx, needs more expanded rule-based approach
-    if (minimum(cluster.frequency) > 500) 
+    if (minimum(cluster.frequency) > 540) 
         push!(frequencies, freq)
 
         if (ispow2(noteDur))
