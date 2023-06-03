@@ -1,25 +1,22 @@
 
 
 
-## Generating a .csv file of resonances
+## Generating a .csv file of Resonances
 
-Run `execute_fpt.py`. This will generate
-- a .csv file of the resonances + a f0 column in a form of a boolean (1 if resonace is part of fundamental, 0 if not)
+Run `execute_fpt.py`. This will generate a .csv file of the resonances with an additional column `f0`, generated using the Rameau Fundamental.
 
-## Clustering the fundamental resonances or harmnonics
+## Clustering the Fundamental Resonances or Harmonics
 
-2. Run Clustering_f0.jl
-2. Run score_conversion/extract_fundamentals.jl with same filename
-3. Run text_to_music.py if fails, otherwise just execute.py
-4. Check new piano_score.pdf
+Run Clustering_f0.jl
+
+## Creating a Musical Score
+
+1. Run `score_conversion/extract_fundamentals.jl` with filename adjusted to the clustered output
+2. Run `score_conversion/execute.py`text_to_music.py`. If the generation fails: download Lilypond and adjust the paths 
+3. Check generated score.pdf
 
 
-## Hierarchical knowledge
+## Hierarchical Knowledge Representation
 
+Test and expand the type-based hierarchical knowledge representation in `./resonance-knowledge`
 
-# Run the clustering algorithm written in Julia on the saved CSV's for the c_<file>.csv 
-# and test the hierarchical knowledge representation in knowledge_heararchy.ipynb
-
-# Tutorial for installing julia for python: https://www.peterbaumgartner.com/blog/incorporating-julia-into-python-programs/
-
-# first add path to julia by: 'export PATH=$PATH:/Users/<USERNAME>/.local/bin' if code doesn't work
