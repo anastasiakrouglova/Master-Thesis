@@ -20,9 +20,10 @@ as musical score transcription.
 We conceptually step off from the mainstream approach towards data analysis and machine learning. The system I'm creating is based on abstract types, which makes it more expandable and flexible for various end-user goals. 
 
 
-#### Aplications
-- extracting instruments from a polyphonic audio signal
-- converting music recordings into sheet scores
+#### Applications
+- Separate instruments in a polyphonic audio signal
+- Convert musical audio recordings into sheet scores
+- Extract unwanted sounds from a recording with high precision
 - ...
 
 
