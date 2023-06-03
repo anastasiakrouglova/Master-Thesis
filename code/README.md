@@ -7,13 +7,13 @@ Run `execute_fpt.py`. This will generate a .csv file of the resonances with an a
 
 ## Clustering the Fundamental Resonances or Harmonics
 
-Run Clustering_f0.jl
+Run `Clustering_f0.jl`to generate clusters of fundamental tones or overtones and export them as a csv file. This will create new dimensions in the knowledge representation.
 
 ## Creating a Musical Score
 
 1. Run `score_conversion/extract_fundamentals.jl` with filename adjusted to the clustered output
-2. Run `score_conversion/execute.py`text_to_music.py`. If the generation fails: download Lilypond and adjust the paths 
-3. Check generated score.pdf
+2. Run `score_conversion/execute.py text_to_music.py`. If the generation fails: download Lilypond and adjust the paths 
+3. Check the generated `score.pdf`
 
 
 ## Hierarchical Knowledge Representation
