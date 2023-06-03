@@ -19,7 +19,7 @@ struct HarmonicId <: Id
     value::Int
 end
 
-struct NoteId <: Id
+struct FundamentalId <: Id
     value::Int
 end
 
@@ -31,22 +31,26 @@ struct HARMId <: Id
     value::Int
 end
 
-struct NOTEId <: Id
+struct FUNDId <: Id
+    value::Int
+end
+
+struct REALId <: Id
     value::Int
 end
 
 # Call
-resId(i::Int) = ResonanceId(i)
+resonanceId(i::Int) = ResonanceId(i)
 pairId(i::Int) = PairId(i)
 
 sliceId(i::Int) = SliceId(i)
 harmonicId(i::Int) = HarmonicId(i)
-noteId(i::Int) = NoteId(i)
+fundamentalId(i::Int) = FundamentalId(i)
 
 DRSid(i::Int) = DRSId(i) # it is possible to have multiple DRS's of 1 audiofragment: eg with different framewidths!!!
 HARMid(i::Int) = HARMId(i)
-NOTEid(i::Int) = NOTEId(i)
-
+FUNDid(i::Int) = FUNDId(i)
+REALid(i::Int) = REALId(i)
 
 sliceSeqId(i::Int) = SliceSequenceId(i) #other dimension: DRS points directly to sliceId, not really implemented
 

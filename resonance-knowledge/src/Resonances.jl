@@ -23,17 +23,6 @@ include("components/Constituents.jl")
 
 
 
-# Chakra.fnd(x::SliceSequenceId, m::DataSet) = begin
-#     #Chakra.pts(x::SliceSequence)::Vector{Id} = sliceId.(unique(x.resonances.sliceId))  
-#     getSlice(min::SliceId, max::Colon, m::Module)
-# end
-
-# Operations on data
-#Chakra.fnd(x::ResonanceId, m::ResonanceHierarchy) = Chakra.fnd(x,m.dataset)
-
-
-
-
 #################################  find a resonance by multiple ids ######################################
 function findResonancesByIds(ids::Vector{ResonanceId}, m::Module)
     """
@@ -99,49 +88,39 @@ end
 
 # One dimensional DRS structure in time
 Chakra.pts(x::Resonance)::Vector{Id} = Id[]  # empty because the resonance is the smallest constituent
-Chakra.pts(x::Pair)::Vector{Id} = resId.(x.resonances.id)
-
+Chakra.pts(x::Pair)::Vector{Id} = resonanceId.(x.resonances.id)
 
 Chakra.pts(x::Slice)::Vector{Id} = begin
     if("pairId" in names(x.resonances)) 
         pairId.(unique(x.resonances.pairId)) # try first if complex valued
     else
-        resId.(x.resonances.id) # function overload
+        resonanceId.(x.resonances.id) # function overload
     end
 end
 
+
 Chakra.pts(x::DRS)::Vector{Id} = sliceId.(unique(x.resonances.sliceId)) 
 
+Chakra.pts(x::FUND)::Vector{Id} = fundamentalId.(unique(x.resonances.f0)) 
+Chakra.pts(x::Fundamental)::Vector{Id} = resonanceId.(x.resonances.id)
+
+Chakra.pts(x::REAL)::Vector{Id} = resonanceId.(x.resonances.id)
 
 ## Expansions basic structure with machine learning (clustering)
 # Note: the complex values are removed from the dataset for clustering
-Chakra.pts(x::DynR)::Vector{Id} = harmonicId.(unique(x.resonances.dynamicResonance)) 
-Chakra.pts(x::Harmonic)::Vector{Id} = resId.(x.resonances.id)
-
+Chakra.pts(x::HARM)::Vector{Id} = harmonicId.(unique(x.resonances.harmonic)) 
+Chakra.pts(x::Harmonic)::Vector{Id} = resonanceId.(x.resonances.id)
 
 # Groups of Slices and resonances
 Chakra.pts(x::SliceSequence)::Vector{Id} = sliceId.(unique(x.resonances.sliceId))  
 
 
-#Chakra.pts(x::Resonances.ResonanceCollection) = x.ids
-#Chakra.pts(x::FrequencyBand)::Vector{Id} = resId.(x.resonances.id)  # Uhm something weird
-
-
-
 
 ####################################  find a hierarchical structure by id ###########################################
-#Chakra.fnd(x::ResonanceId, m::DRSHierarchy) = Base.get(h.files,x,none)
-
-
-# Chakra.fnd(x::ResonanceId, m::DRSHierarchy) = begin
-#     Resonance(x, m)
-# end
 
 Chakra.fnd(x::ResonanceId, m::Module) = begin
     i = findall(==(x.value),m.__data__.data.id)
-
     isempty(i) ? none : Resonance(m.__data__.data[i[1],:])
-    #isempty(i) ? none : Resonance(m.data[i[1],:]).resonance.id
 end
 
 
@@ -155,17 +134,31 @@ Chakra.fnd(x::SliceId, m::Module) = begin
     Slice(x, m.__data__)
 end
 
+
+Chakra.fnd(x::FundamentalId, m::Module) = begin
+    Fundamental(x, m.__fundamental__)
+end
+
+Chakra.fnd(x::HarmonicId, m::Module) = begin
+    Harmonic(x, m.__harmonics__)
+end
+
+
 Chakra.fnd(x::DRSId, m::Module) = begin
     DRS(x, m.__data__)
     #Base.get(m.__data__.data.id,x,none)
 end
 
-Chakra.fnd(x::DynRId, m::Module) = begin
-    DynR(x, m.__harmonics__)
+Chakra.fnd(x::HARMId, m::Module) = begin
+    HARM(x, m.__harmonics__)
 end
 
-Chakra.fnd(x::HarmonicId, m::Module) = begin
-    Harmonic(x, m.__harmonics__)
+Chakra.fnd(x::FUNDId, m::Module) = begin
+    FUND(x, m.__fundamental__)
+end
+
+Chakra.fnd(x::REALId, m::Module) = begin
+    REAL(x, m.__real__)
 end
 
 end

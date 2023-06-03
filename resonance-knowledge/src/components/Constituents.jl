@@ -8,18 +8,8 @@ end
 # An abstract type to filter resonances
 abstract type ResonanceSet end
 abstract type HarmonicSet end
-abstract type NoteSet end
+abstract type FundamentalSet end
 
-# struct Resonance <: ResonanceSet
-#     id::ResonanceId
-#     data::DataFrameRow
-#     print("aaaaaaa")
-#     Resonance(id::ResonanceId, dataset::DRSHierarchy) = begin
-#         df = filter(:id => i -> i == id.value, dataset.data)
-#         print("bbbbbbb")
-#         return isempty(df) ? none : new(id,df)
-#     end
-# end
 
 struct ResonanceCollection <: ResonanceSet
     ids::Vector{ResonanceId}
@@ -37,9 +27,7 @@ struct Pair <: ResonanceSet
     resonances::DataFrame
 
     Pair(pairId::PairId, dataset::DRSHierarchy) = begin
-
         # if pair exists, filter, else throw error that dataset is not complex-valued
-        
         df = filter(:pairId => p -> p == pairId.value, dataset.data)
 
         return isempty(df) ? none : new(pairId,df)
@@ -56,25 +44,12 @@ end
 struct Harmonic <: HarmonicSet # Note that this is a subset of HarmonicSet
     harmonicId::HarmonicId
     resonances::DataFrame
-    Harmonic(harmonicId::HarmonicId,dataset::DynRHierarchy) = begin
+    Harmonic(harmonicId::HarmonicId,dataset::HARMHierarchy) = begin
         df = filter(:harmonic => o -> o == harmonicId.value, dataset.data)
         return isempty(df) ? none : new(harmonicId,df)
     end
 end
 
-
-
-###########################################################################################
-#################################    Musical   Note       ######################################
-###########################################################################################
-# struct Note <: NoteSet # Note that this is a subset of dynamic resonancesHierarchy
-#     noteId::NoteId
-#     resonances::DataFrame
-#     Note(noteId::NoteId,dataset::NOTEHierarchy) = begin
-#         df = filter(:note => o -> o == noteId.value, dataset.data)
-#         return isempty(df) ? none : new(noteId,df)
-#     end
-# end
 
 
 ###########################################################################################
@@ -90,6 +65,17 @@ struct Slice <: ResonanceSet
         return isempty(df) ? none : new(sliceId,df)
     end
 end
+
+struct Fundamental <: FundamentalSet
+    fundamentalId::FundamentalId
+    resonances::DataFrame
+    Fundamental(fundamentalId::FundamentalId,dataset::FUNDHierarchy) = begin
+        df = filter(:f0 => o -> o == fundamentalId.value, dataset.data)
+        return isempty(df) ? none : new(fundamentalId,df)
+    end
+end
+
+
 
 struct SliceSequence <: ResonanceSet
     start::Union{SliceId,Colon}
@@ -166,13 +152,28 @@ struct HARM <: HarmonicSet
     end 
 end
 
-struct NOTE <: NoteSet
-    id::NOTEId # multiple DRSs of an audiofile are possible
+struct FUND <: FundamentalSet
+    id::FUNDId # multiple DRSs of an audiofile are possible
     resonances::DataFrame
 
-    HARM(id::NOTEId, dataset::NOTEHierarchy) = begin
+    FUND(id::FUNDId, dataset::FUNDHierarchy) = begin
         # return collection of sliceId's
         return new(id, dataset.data)
        #return isempty(df) ? none : new(id, df)
     end 
 end
+
+
+struct REAL <: ResonanceSet
+    id::REALId # multiple DRSs of an audiofile are possible
+    resonances::DataFrame
+
+    REAL(id::REALId, dataset::REALHierarchy) = begin
+        # return collection of sliceId's
+        return new(id, dataset.data)
+       #return isempty(df) ? none : new(id, df)
+    end 
+end
+
+
+
