@@ -28,4 +28,4 @@ Feel free to use this masters thesis as a template.
 ![example2](https://github.com/anastasiakrouglova/Master-Thesis-Anastasia-Krouglova/assets/41705732/48de8bd8-2d39-49ea-9093-7f311cfb5f84)
 
 ### Questions
-Feel free to contact me on `nastyakrouglova@gmail.com` for any questions about this thesis or software.
+Contact me through `nastyakrouglova@gmail.com` for any questions about this thesis or software.
