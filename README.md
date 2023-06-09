@@ -23,7 +23,6 @@ Overall, this thesis bridges the gap between human intelligence and machine lear
 
 ### Template
 The template of the thesis was inspired by the work of Edward Tufte and the layout is an expansion on the master's thesis of Gilles Castel. 
-Feel free to use this masters thesis as a template.
 
 ![1](https://github.com/anastasiakrouglova/Master-Thesis-Anastasia-Krouglova/assets/41705732/4511a9ae-e9d6-433a-bbe2-f6cf7effcb7e)
 ![2](https://github.com/anastasiakrouglova/Master-Thesis-Anastasia-Krouglova/assets/41705732/4c23d103-6f3c-4ff9-926d-4c83064fdf59)
