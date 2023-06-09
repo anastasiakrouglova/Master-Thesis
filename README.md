@@ -15,6 +15,7 @@ Overall, this thesis bridges the gap between human intelligence and machine lear
 
 
 ### Applications
+- Automatic Music Transcription (ATM)
 - Separate instruments in a polyphonic audio signal
 - Convert musical audio recordings into sheet scores
 - Extract unwanted sounds from a recording
@@ -25,7 +26,9 @@ Overall, this thesis bridges the gap between human intelligence and machine lear
 The template of the thesis was inspired by the work of Edward Tufte and the layout is an expansion on the masters thesis of Gilles Castel. 
 Feel free to use this masters thesis as a template.
 
-![example2](https://github.com/anastasiakrouglova/Master-Thesis-Anastasia-Krouglova/assets/41705732/48de8bd8-2d39-49ea-9093-7f311cfb5f84)
+![1](https://github.com/anastasiakrouglova/Master-Thesis-Anastasia-Krouglova/assets/41705732/4511a9ae-e9d6-433a-bbe2-f6cf7effcb7e)
+![2](https://github.com/anastasiakrouglova/Master-Thesis-Anastasia-Krouglova/assets/41705732/4c23d103-6f3c-4ff9-926d-4c83064fdf59)
+
 
 ### Questions
-Contact me through `nastyakrouglova@gmail.com` for any questions about this thesis or software.
+Contact me at this email address `nastyakrouglova@gmail.com` for any questions about this thesis or software.
