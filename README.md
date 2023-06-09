@@ -15,10 +15,9 @@ Overall, this thesis bridges the gap between human intelligence and machine lear
 
 
 ### Applications
-- Automatic Music Transcription (ATM)
-- Separate instruments in a polyphonic audio signal
-- Convert musical audio recordings into sheet scores
-- Extract unwanted sounds from a recording
+- Automatic Music Transcription (AMT)
+- Source Seperation
+- Pitch Correction
 - ...
 
 
