@@ -1,11 +1,9 @@
 
-# Thesis Anastasia Krouglova
-
-## Music Analysis using Spectral Knowledge Representation and Reasoning
-### Density-based Clustering and Representation of Perceived Structure in Audio Signals
+# Music Analysis using Spectral Knowledge Representation and Reasoning
+## Density-based Clustering and Representation of Perceived Structure in Audio Signals
 
 
-#### Abstract
+### Abstract
 The extraction and formation of musical structures through the analysis of complex auditory scenes is a challenging task in signal processing and machine learning. Musical analysis includes multiple open subtasks to be resolved, such as multi-pitch estimation, musical note tracking and multi-pitch streaming.
 The main goal of this thesis is to create a framework for the multipurpose description and evaluation of music, allowing inference from different subtasks and a general improvement in the learnability of machine learning models.
 This was achieved by investigating into the implementation of a coherent structure between a spectral analysis of resonances and a type-based knowledge representation in the musical domain, forming an analogy to the perception, cognition and knowledge representation of human intelligence.
@@ -16,17 +14,18 @@ Our software also contributes to long-term prospective of explainable modelling 
 Overall, this thesis bridges the gap between human intelligence and machine learning through the development of a framework for knowledge representation and the recognition of musical objects in a resonance spectrum.
 
 
-#### Applications
+### Applications
 - Separate instruments in a polyphonic audio signal
 - Convert musical audio recordings into sheet scores
 - Extract unwanted sounds from a recording
 - ...
 
 
-#### Template
+### Template
 The template of the thesis was inspired by the work of Edward Tufte and the layout is an expansion on the masters thesis of Gilles Castel. 
 Feel free to use this masters thesis as a template.
 
 ![example2](https://github.com/anastasiakrouglova/Master-Thesis-Anastasia-Krouglova/assets/41705732/48de8bd8-2d39-49ea-9093-7f311cfb5f84)
 
-
+### Questions
+Feel free to contact me on `nastyakrouglova@gmail.com` for any questions about this thesis or software.
