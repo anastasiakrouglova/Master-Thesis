@@ -6,24 +6,20 @@
 
 
 #### Abstract
-This master’s thesis focuses on modelling a multidimensional hierarchical
-structure of musical objects perceived from audio signals. Our method is
-inspired from cognitive processes related to sound perception and proposes an
-improvement in the precision of a Short-Time Fourier Transform. Precision,
-which refers to the ability to track the parameters of a single musical object,
-has been improved by employing a non-orthogonal approach to spectral
-analysis, called the Fast Padé Transform. This involves decomposing a signal into damped harmonic oscillators known as resonances. Resolution, on the other hand, refers to the ability to distinguish between two musical objects. The accomplished results through
-a density-based clustering approach allows us to deduce structures from
-musical performances, opening up possibilities for diverse applications, such
-as musical score transcription.
-
-We conceptually step off from the mainstream approach towards data analysis and machine learning. The system I'm creating is based on abstract types, which makes it more expandable and flexible for various end-user goals. 
+The extraction and formation of musical structures through the analysis of complex auditory scenes is a challenging task in signal processing and machine learning. Musical analysis includes multiple open subtasks to be resolved, such as multi-pitch estimation, musical note tracking and multi-pitch streaming.
+The main goal of this thesis is to create a framework for the multipurpose description and evaluation of music, allowing inference from different subtasks and a general improvement in the learnability of machine learning models.
+This was achieved by investigating into the implementation of a coherent structure between a spectral analysis of resonances and a type-based knowledge representation in the musical domain, forming an analogy to the perception, cognition and knowledge representation of human intelligence.
+We created pitch-based hierarchies formed through density-based clustering techniques in our self-defined hierarchical structure for the definition of musical objects perceived from audio signals.
+Our multipurpose framework for musical analysis has a methodological contribution to various practical applications due to its precision and ability to deal with overlapping sound events, which is one of the key challenges in music signal processing.
+Approaching this problem through a cognitive perspective has a significant impact on the way machine learning is performed nowadays, due to the possibility of model inference for various subtasks in machine learning. 
+Our software also contributes to long-term prospective of explainable modelling and can be used in other early related fields, including speech recognition.
+Overall, this thesis bridges the gap between human intelligence and machine learning through the development of a framework for knowledge representation and the recognition of musical objects in a resonance spectrum.
 
 
 #### Applications
 - Separate instruments in a polyphonic audio signal
 - Convert musical audio recordings into sheet scores
-- Extract unwanted sounds from a recording with high precision
+- Extract unwanted sounds from a recording
 - ...
 
 
