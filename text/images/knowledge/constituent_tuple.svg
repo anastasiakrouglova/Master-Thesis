@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="147px" height="235px" viewBox="0 0 147 235" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 53.2 (72643) - https://sketchapp.com -->
+    <title>Group 11 Copy</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Group-11-Copy" transform="translate(-33.000000, 1.000000)">
+            <g id="Group-10">
+                <circle id="Oval" stroke="#C7C8EC" stroke-width="2" fill="#E5ECF6" cx="107" cy="72" r="72"></circle>
+                <g id="Group-6" transform="translate(118.926765, 144.375477) rotate(33.000000) translate(-118.926765, -144.375477) translate(42.426765, 44.375477)">
+                    <g id="Group-9" transform="translate(84.000000, 148.000000)">
+                        <g id="Group-5" transform="translate(6.159617, 4.380765)" stroke="#0000A6" stroke-width="1.4">
+                            <path d="M0.299720617,1.27922738 L7.65352418,12.9448112" id="Path-144"></path>
+                            <ellipse id="Oval-Copy-15" fill="#E5ECF6" cx="13.8888889" cy="22.4" rx="11.1111111" ry="11.2"></ellipse>
+                        </g>
+                        <circle id="Oval" fill="#AB63FA" transform="translate(8.500000, 8.500000) rotate(-30.000000) translate(-8.500000, -8.500000) " cx="8.5" cy="8.5" r="5.5"></circle>
+                    </g>
+                    <g id="Group-9" transform="translate(24.524632, 26.065896) rotate(-33.000000) translate(-24.524632, -26.065896) translate(8.524632, 6.065896)">
+                        <g id="Group-5" transform="translate(6.159617, 4.380765)" stroke="#0000A6" stroke-width="1.4">
+                            <path d="M0.299720617,1.27922738 L7.65352418,12.9448112" id="Path-144"></path>
+                            <ellipse id="Oval-Copy-15" fill="#E5ECF6" cx="13.8888889" cy="22.4" rx="11.1111111" ry="11.2"></ellipse>
+                        </g>
+                        <circle id="Oval" fill="#AB63FA" transform="translate(8.500000, 8.500000) rotate(-30.000000) translate(-8.500000, -8.500000) " cx="8.5" cy="8.5" r="5.5"></circle>
+                    </g>
+                    <g id="Group-8" transform="translate(23.405770, 157.879357)">
+                        <g id="Group-5-Copy-3" transform="translate(7.810818, 6.824783)" stroke="#0000A6" stroke-width="1.4">
+                            <path d="M0.299720617,1.27922738 L7.65352418,12.9448112" id="Path-144"></path>
+                            <ellipse id="Oval-Copy-15" fill="#E5ECF6" cx="13.8888889" cy="22.4" rx="11.1111111" ry="11.2"></ellipse>
+                        </g>
+                        <circle id="Oval-Copy-11" fill="#AB63FA" transform="translate(8.500000, 8.500000) rotate(-30.000000) translate(-8.500000, -8.500000) " cx="8.5" cy="8.5" r="5.5"></circle>
+                    </g>
+                    <g id="Group-8" transform="translate(119.351671, 90.801908)">
+                        <g id="Group-5-Copy-3" transform="translate(7.810818, 6.824783)" stroke="#0000A6" stroke-width="1.4">
+                            <path d="M0.299720617,1.27922738 L7.65352418,12.9448112" id="Path-144"></path>
+                            <ellipse id="Oval-Copy-15" fill="#E5ECF6" cx="13.8888889" cy="22.4" rx="11.1111111" ry="11.2"></ellipse>
+                        </g>
+                        <circle id="Oval-Copy-11" fill="#AB63FA" transform="translate(8.500000, 8.500000) rotate(-30.000000) translate(-8.500000, -8.500000) " cx="8.5" cy="8.5" r="5.5"></circle>
+                    </g>
+                </g>
+                <path d="M107.013803,39.7581157 C61.8830325,49.7142249 41.3364673,94.4541268 45.3741075,173.977821" id="Path-143" stroke="#AB63FA" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="4"></path>
+                <path d="M107.013803,39.7581157 C61.6110122,65.251527 59.528622,117.998822 100.766632,198" id="Path-143" stroke="#AB63FA" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="4"></path>
+                <path d="M107.013803,43.159252 C69.7742128,79.9876493 86.1276835,121.250573 156.074215,166.948024" id="Path-143" stroke="#AB63FA" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="4"></path>
+            </g>
+            <text id="$i$" font-family="Merriweather-Regular, Merriweather" font-size="10" font-weight="normal" letter-spacing="0.7454544" fill="#4E586A">
+                <tspan x="95.2536368" y="33">$i$</tspan>
+            </text>
+            <text id="$R(i)$" font-family="Merriweather-Regular, Merriweather" font-size="10" font-weight="normal" letter-spacing="0.7454544" fill="#4E586A">
+                <tspan x="134.377274" y="69">$R(i)$</tspan>
+            </text>
+            <text id="$C$" font-family="Merriweather-Regular, Merriweather" font-size="10" font-weight="normal" letter-spacing="0.7454544" fill="#4E586A">
+                <tspan x="34.0536368" y="14">$C$</tspan>
+            </text>
+            <text id="$P(i)$" font-family="Merriweather-Regular, Merriweather" font-size="10" font-weight="normal" letter-spacing="0.7454544" fill="#4E586A">
+                <tspan x="96.9272736" y="102">$P(i)$</tspan>
+            </text>
+            <polygon id="Path-145" stroke="#AB63FA" fill="#AB63FA" stroke-linecap="round" stroke-linejoin="round" points="116.115786 36.3382141 112.488949 39.5309608 117.097221 40.9970926"></polygon>
+            <polygon id="Path-145" stroke="#AB63FA" fill="#AB63FA" stroke-linecap="round" stroke-linejoin="round" transform="translate(44.609135, 167.474950) rotate(-80.000000) translate(-44.609135, -167.474950) " points="45.9318365 165.145511 42.3049989 168.338257 46.9132717 169.804389"></polygon>
+            <polygon id="Path-145" stroke="#AB63FA" fill="#AB63FA" stroke-linecap="round" stroke-linejoin="round" transform="translate(97.896990, 193.065303) rotate(-102.000000) translate(-97.896990, -193.065303) " points="99.2196912 190.735864 95.5928536 193.92861 100.201126 195.394742"></polygon>
+            <polygon id="Path-145" stroke="#AB63FA" fill="#AB63FA" stroke-linecap="round" stroke-linejoin="round" transform="translate(156.074215, 167.303243) rotate(-135.000000) translate(-156.074215, -167.303243) " points="157.396916 164.973804 153.770079 168.166551 158.378351 169.632682"></polygon>
+        </g>
+    </g>
+</svg>

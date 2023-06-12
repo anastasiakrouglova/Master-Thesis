@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="338px" height="104px" viewBox="0 0 338 104" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 53.2 (72643) - https://sketchapp.com -->
+    <title>Group 33</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Artboard-Copy-9" transform="translate(-70.000000, -4822.000000)">
+            <g id="Group-33" transform="translate(70.000000, 4821.000000)">
+                <g id="Group-31">
+                    <path d="M193.887628,62.8918596 L232.924555,4.9303365" id="Path-60" stroke="#979797"></path>
+                    <path d="M232.924555,62.8918596 L232.924555,4.9303365" id="Path-60" stroke="#979797"></path>
+                    <path d="M268.5,62.9303365 L232.924555,4.9303365" id="Path-60" stroke="#979797"></path>
+                    <path d="M311.5,62.8918596 L232.924555,4.9303365" id="Path-60" stroke="#979797"></path>
+                    <circle id="Oval" stroke="#979797" fill="#D8D8D8" cx="193.5" cy="65.5" r="3.5"></circle>
+                    <circle id="Oval-Copy-22" stroke="#979797" fill="#D8D8D8" cx="232.5" cy="64.5" r="3.5"></circle>
+                    <circle id="Oval-Copy-23" stroke="#979797" fill="#D8D8D8" cx="268.5" cy="65.5" r="3.5"></circle>
+                    <circle id="Oval-Copy-24" stroke="#979797" fill="#D8D8D8" cx="311.5" cy="65.5" r="3.5"></circle>
+                    <text id="bottom-line:-resonan" font-family="Merriweather-Regular, Merriweather" font-size="8" font-weight="normal" letter-spacing="0.5963636" fill="#000000">
+                        <tspan x="68" y="69">bottom line: resonances</tspan>
+                    </text>
+                    <text id="$r_1$" font-family="Merriweather-Regular, Merriweather" font-size="6" font-weight="normal" letter-spacing="0.447272718" fill="#000000">
+                        <tspan x="195" y="66">$r_1$</tspan>
+                    </text>
+                    <text id="onset" font-family="Merriweather-Regular, Merriweather" font-size="5" font-weight="normal" letter-spacing="0.372727275" fill="#000000">
+                        <tspan x="161" y="95">onset</tspan>
+                    </text>
+                    <text id="frequency" font-family="Merriweather-Regular, Merriweather" font-size="5" font-weight="normal" letter-spacing="0.372727275" fill="#000000">
+                        <tspan x="170" y="103">frequency</tspan>
+                    </text>
+                    <text id="ampl" font-family="Merriweather-Regular, Merriweather" font-size="5" font-weight="normal" letter-spacing="0.372727275" fill="#000000">
+                        <tspan x="192" y="95">ampl</tspan>
+                    </text>
+                    <text id="decay" font-family="Merriweather-Regular, Merriweather" font-size="5" font-weight="normal" letter-spacing="0.372727275" fill="#000000">
+                        <tspan x="215" y="90">decay</tspan>
+                    </text>
+                    <text id="$r_2$" font-family="Merriweather-Regular, Merriweather" font-size="6" font-weight="normal" letter-spacing="0.447272718" fill="#000000">
+                        <tspan x="236" y="66">$r_2$</tspan>
+                    </text>
+                    <text id="$r_3$" font-family="Merriweather-Regular, Merriweather" font-size="6" font-weight="normal" letter-spacing="0.447272718" fill="#000000">
+                        <tspan x="274" y="66">$r_3$</tspan>
+                    </text>
+                    <text id="$r_4$" font-family="Merriweather-Regular, Merriweather" font-size="6" font-weight="normal" letter-spacing="0.447272718" fill="#000000">
+                        <tspan x="317" y="66">$r_4$</tspan>
+                    </text>
+                    <text id="machine-learning:-se" font-family="Merriweather-Regular, Merriweather" font-size="8" font-weight="normal" letter-spacing="0.5963636" fill="#000000">
+                        <tspan x="0" y="8">machine learning: search for higher structures</tspan>
+                    </text>
+                    <path d="M191.300958,67.5 L179.300958,85.3009683" id="Path-61" stroke="#979797"></path>
+                    <path d="M192.5,69 L190,86" id="Path-61" stroke="#979797"></path>
+                    <path d="M194.5,68.5 L199,84.5" id="Path-61" stroke="#979797"></path>
+                    <path d="M196.5,67.5 L209,86" id="Path-61" stroke="#979797"></path>
+                    <rect id="Rectangle" stroke="#979797" fill="#D8D8D8" x="177.5" y="84.5" width="4" height="4"></rect>
+                    <rect id="Rectangle-Copy-13" stroke="#979797" fill="#D8D8D8" x="187.5" y="84.5" width="4" height="4"></rect>
+                    <rect id="Rectangle-Copy-14" stroke="#979797" fill="#D8D8D8" x="197.5" y="84.5" width="4" height="4"></rect>
+                    <rect id="Rectangle-Copy-15" stroke="#979797" fill="#D8D8D8" x="207.5" y="84.5" width="4" height="4"></rect>
+                </g>
+                <g id="Group-32" opacity="0.417736235" transform="translate(186.000000, 62.000000)" fill="#D8D8D8" stroke="#979797">
+                    <circle id="Oval-Copy-25" cx="3.5" cy="3.5" r="3.5"></circle>
+                </g>
+                <text id="$-r_1$" opacity="0.606189546" font-family="Merriweather-Regular, Merriweather" font-size="5" font-weight="normal" letter-spacing="0.372727245" fill="#000000">
+                    <tspan x="172" y="59">$-r_1$</tspan>
+                </text>
+            </g>
+        </g>
+    </g>
+</svg>

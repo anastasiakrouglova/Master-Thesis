@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="257px" height="210px" viewBox="0 0 257 210" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 53.2 (72643) - https://sketchapp.com -->
+    <title>Group 44</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Artboard-Copy-9" transform="translate(-136.000000, -6613.000000)">
+            <g id="Group-44" transform="translate(136.000000, 6612.000000)">
+                <g id="Group-43">
+                    <ellipse id="Oval" stroke="#0000A6" cx="78.5" cy="72" rx="33.5" ry="57"></ellipse>
+                    <ellipse id="Oval-Copy-59" stroke="#0000A6" cx="201.5" cy="72" rx="33.5" ry="57"></ellipse>
+                    <text id="SliceIDs" font-family="Merriweather-Regular, Merriweather" font-size="8" font-weight="normal" letter-spacing="0.5963636" fill="#4E586A">
+                        <tspan x="185.365091" y="8">SliceIDs</tspan>
+                    </text>
+                    <text id="$i_1$" font-family="Merriweather-Regular, Merriweather" font-size="8" font-weight="normal" letter-spacing="0.5963636" fill="#4E586A">
+                        <tspan x="83.610182" y="46">$i_1$</tspan>
+                    </text>
+                    <text id="$C^R_1$" font-family="Merriweather-Regular, Merriweather" font-size="8" font-weight="normal" letter-spacing="0.5963636" fill="#4E586A">
+                        <tspan x="11.8974548" y="183">$C^R_1$</tspan>
+                    </text>
+                    <text id="$C^R_2$" font-family="Merriweather-Regular, Merriweather" font-size="8" font-weight="normal" letter-spacing="0.5963636" fill="#4E586A">
+                        <tspan x="38.6334548" y="183">$C^R_2$</tspan>
+                    </text>
+                    <text id="$C^R_3$" font-family="Merriweather-Regular, Merriweather" font-size="8" font-weight="normal" letter-spacing="0.5963636" fill="#4E586A">
+                        <tspan x="100.937455" y="183">$C^R_3$</tspan>
+                    </text>
+                    <text id="$C^R_4$" font-family="Merriweather-Regular, Merriweather" font-size="8" font-weight="normal" letter-spacing="0.5963636" fill="#4E586A">
+                        <tspan x="124.265455" y="183">$C^R_4$</tspan>
+                    </text>
+                    <text id="$C^S_1$" font-family="Merriweather-Regular, Merriweather" font-size="8" font-weight="normal" letter-spacing="0.5963636" fill="#4E586A">
+                        <tspan x="166.777455" y="183">$C^S_1$</tspan>
+                    </text>
+                    <text id="$C^S_2$" font-family="Merriweather-Regular, Merriweather" font-size="8" font-weight="normal" letter-spacing="0.5963636" fill="#4E586A">
+                        <tspan x="215.513455" y="183">$C^S_2$</tspan>
+                    </text>
+                    <text id="$i_1$-copy" font-family="Merriweather-Regular, Merriweather" font-size="8" font-weight="normal" letter-spacing="0.5963636" fill="#4E586A">
+                        <tspan x="207.610182" y="63">$i_1$</tspan>
+                    </text>
+                    <text id="$i_2$" font-family="Merriweather-Regular, Merriweather" font-size="8" font-weight="normal" letter-spacing="0.5963636" fill="#4E586A">
+                        <tspan x="83.346182" y="66">$i_2$</tspan>
+                    </text>
+                    <text id="$i_2$-copy" font-family="Merriweather-Regular, Merriweather" font-size="8" font-weight="normal" letter-spacing="0.5963636" fill="#4E586A">
+                        <tspan x="207.346182" y="89">$i_2$</tspan>
+                    </text>
+                    <text id="$i_3$" font-family="Merriweather-Regular, Merriweather" font-size="8" font-weight="normal" letter-spacing="0.5963636" fill="#4E586A">
+                        <tspan x="83.650182" y="86">$i_3$</tspan>
+                    </text>
+                    <text id="$i_4$" font-family="Merriweather-Regular, Merriweather" font-size="8" font-weight="normal" letter-spacing="0.5963636" fill="#4E586A">
+                        <tspan x="83.978182" y="106">$i_4$</tspan>
+                    </text>
+                    <text id="ResIDs" font-family="Merriweather-Regular, Merriweather" font-size="8" font-weight="normal" letter-spacing="0.5963636" fill="#4E586A">
+                        <tspan x="63.0698184" y="8">ResIDs</tspan>
+                    </text>
+                    <text id="ResonanceCS" font-family="Merriweather-Regular, Merriweather" font-size="8" font-weight="normal" letter-spacing="0.5963636" fill="#4E586A">
+                        <tspan x="44.0080004" y="210">ResonanceCS</tspan>
+                    </text>
+                    <text id="SliceCS" font-family="Merriweather-Regular, Merriweather" font-size="8" font-weight="normal" letter-spacing="0.5963636" fill="#4E586A">
+                        <tspan x="185.313455" y="210">SliceCS</tspan>
+                    </text>
+                    <rect id="Rectangle" stroke="#E2E2E2" x="0.5" y="141.5" width="148" height="51"></rect>
+                    <rect id="Rectangle-Copy-25" stroke="#E2E2E2" x="152.5" y="141.5" width="104" height="51"></rect>
+                    <path d="M78,43.0321101 L20,159.5" id="Path-79" stroke="#A1A1DE"></path>
+                    <path d="M77,65 L46,160.5" id="Path-79-Copy" stroke="#A1A1DE"></path>
+                    <path d="M78.5,83 L130,157.5" id="Path-79-Copy-2" stroke="#A1A1DE"></path>
+                    <path d="M200,60 L174,160.5" id="Path-79-Copy-2" stroke="#A1A1DE"></path>
+                    <path d="M201,86 L222,161" id="Path-79-Copy-2" stroke="#A1A1DE"></path>
+                    <path d="M78.5,103 L106,158" id="Path-79-Copy-3" stroke="#A1A1DE"></path>
+                    <circle id="Oval-Copy-57" stroke="#6CA3D8" fill="#F2F2F2" transform="translate(20.000000, 162.000000) rotate(-270.000000) translate(-20.000000, -162.000000) " cx="20" cy="162" r="6"></circle>
+                    <circle id="Oval-Copy-81" stroke="#6CA3D8" fill="#F2F2F2" transform="translate(106.000000, 162.000000) rotate(-270.000000) translate(-106.000000, -162.000000) " cx="106" cy="162" r="6"></circle>
+                    <circle id="Oval-Copy-58" stroke="#6CA3D8" fill="#F2F2F2" transform="translate(46.000000, 162.000000) rotate(-270.000000) translate(-46.000000, -162.000000) " cx="46" cy="162" r="6"></circle>
+                    <circle id="Oval-Copy-103" stroke="#6CA3D8" fill="#F2F2F2" transform="translate(130.000000, 162.000000) rotate(-270.000000) translate(-130.000000, -162.000000) " cx="130" cy="162" r="6"></circle>
+                    <circle id="Oval-Copy-121" stroke="#0000A6" fill="#0000A6" cx="78" cy="43" r="3"></circle>
+                    <circle id="Oval-Copy-122" stroke="#0000A6" fill="#0000A6" cx="78" cy="63" r="3"></circle>
+                    <circle id="Oval-Copy-123" stroke="#0000A6" fill="#0000A6" cx="78" cy="83" r="3"></circle>
+                    <circle id="Oval-Copy-124" stroke="#0000A6" fill="#0000A6" cx="78" cy="103" r="3"></circle>
+                    <circle id="Oval-Copy-125" stroke="#0000A6" fill="#0000A6" cx="201" cy="60" r="3"></circle>
+                    <circle id="Oval-Copy-126" stroke="#0000A6" fill="#0000A6" cx="201" cy="86" r="3"></circle>
+                    <circle id="Oval-Copy-120" stroke="#0000A6" fill="#F0F7FF" cx="222" cy="162" r="6"></circle>
+                    <circle id="Oval-Copy-127" stroke="#0000A6" fill="#F0F7FF" cx="174" cy="162" r="6"></circle>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

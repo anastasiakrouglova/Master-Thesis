@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="237px" height="263px" viewBox="0 0 237 263" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 53.2 (72643) - https://sketchapp.com -->
+    <title>Group 28</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Artboard" transform="translate(-246.000000, -3891.000000)">
+            <g id="Group-28" transform="translate(246.000000, 3891.000000)">
+                <g id="Group-23">
+                    <path d="M0.5,172.5 L217.5,172.5" id="Path-123" stroke="#E2E2E2"></path>
+                    <path d="M51.8068774,0.814003803 L51.8068774,262.5" id="Path-123" stroke="#E2E2E2"></path>
+                    <path id="Path-124" d="M144.057022,35.7202442 L52.2230011,173.577373 L51.3907537,173.022968 L143.224775,35.1658397 L139.895786,32.9482215 L148.630539,27.9528161 L147.386011,37.9378624 L144.057022,35.7202442 Z" fill="#0102CC" fill-rule="nonzero"></path>
+                    <path id="Path-124" d="M139.857773,173.070428 L51.8110212,173.800153 L51.8027336,172.800188 L139.849485,172.070462 L139.816335,168.0706 L148.85332,172.495856 L139.890923,177.07029 L139.857773,173.070428 Z" fill="#0102CC" fill-rule="nonzero"></path>
+                    <path id="Path-124" d="M52.3068774,36.8689397 L52.3068774,173.30017 L51.3068774,173.30017 L51.3068774,36.8689397 L47.3068774,36.8689397 L51.8068774,27.8689397 L56.3068774,36.8689397 L52.3068774,36.8689397 Z" fill="#0102CC" fill-rule="nonzero"></path>
+                    <text id="$M$" font-family="Merriweather-Regular, Merriweather" font-size="9" font-weight="normal" letter-spacing="0.670909" fill="#4E586A">
+                        <tspan x="98.1076365" y="70">$M$</tspan>
+                    </text>
+                    <text id="$B$" font-family="Merriweather-Regular, Merriweather" font-size="9" font-weight="normal" letter-spacing="0.670909" fill="#4E586A">
+                        <tspan x="25.3735328" y="90.0501704">$B$</tspan>
+                    </text>
+                    <text id="$A$" font-family="Merriweather-Regular, Merriweather" font-size="9" font-weight="normal" letter-spacing="0.670909" fill="#4E586A">
+                        <tspan x="95.8420328" y="190.05017">$A$</tspan>
+                    </text>
+                    <text id="$\theta$" font-family="Merriweather-Regular, Merriweather" font-size="9" font-weight="normal" letter-spacing="0.670909" fill="#4E586A">
+                        <tspan x="98.7382603" y="141.05017">$\theta$</tspan>
+                    </text>
+                    <path id="Path-125" d="M86.7809807,137.47791 C94.7171537,144.325735 99.7444983,153.173656 101.856576,164.004445 L105.8677,163.531766 L102.451912,172.996564 L96.9295465,164.585056 L100.860577,164.121815 C98.7885484,153.572828 93.902277,144.969066 86.1954259,138.293576 L83.8917542,141.502545 L79.2048984,132.598424 L89.1403092,134.191412 L86.7809807,137.47791 Z" fill="#00CC96" fill-rule="nonzero"></path>
+                    <text id="$M-=-\sqrt{(A^2-+-b^" font-family="Merriweather-Regular, Merriweather" font-size="9" font-weight="normal" letter-spacing="0.670909" fill="#4E586A">
+                        <tspan x="80.375592" y="224">$M = \sqrt{(A^2 + b^2)}$</tspan>
+                    </text>
+                    <text id="$\theta-=-arctan(\fr" font-family="Merriweather-Regular, Merriweather" font-size="9" font-weight="normal" letter-spacing="0.670909" fill="#4E586A">
+                        <tspan x="80.311365" y="251">$\theta = arctan(\frac{B}{A})$</tspan>
+                    </text>
+                    <path d="M51.8068774,28.3689397 L148.353337,28.3689397 L148.353337,172.5" id="Path-126" stroke="#000000" opacity="0.422177269" stroke-dasharray="4"></path>
+                </g>
+                <text id="$\Re$" font-family="Merriweather-Regular, Merriweather" font-size="9" font-weight="normal" letter-spacing="0.670909" fill="#4E586A">
+                    <tspan x="169.336228" y="168">$\Re$</tspan>
+                </text>
+                <text id="$\Im$" font-family="Merriweather-Regular, Merriweather" font-size="9" font-weight="normal" letter-spacing="0.670909" fill="#4E586A">
+                    <tspan x="37.1612275" y="15">$\Im$</tspan>
+                </text>
+            </g>
+        </g>
+    </g>
+</svg>

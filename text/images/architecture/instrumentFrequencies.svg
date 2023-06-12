@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="250px" height="77px" viewBox="0 0 250 77" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 53.2 (72643) - https://sketchapp.com -->
+    <title>Group 50</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Artboard-Copy-9" transform="translate(-442.000000, -6351.000000)">
+            <g id="Group-50" transform="translate(441.000000, 6351.000000)">
+                <g id="Group-49">
+                    <text id="(a)-Piano" font-family="Merriweather-Regular, Merriweather" font-size="6" font-weight="normal" letter-spacing="0.4472727" fill="#4E586A">
+                        <tspan x="45" y="16.4974805">(a) Piano</tspan>
+                    </text>
+                    <g id="Group-48" transform="translate(19.480530, 4.757755)">
+                        <text id="Frequency" font-family="Merriweather-Regular, Merriweather" font-size="6" font-weight="normal" letter-spacing="0.4472727" fill="#4E586A">
+                            <tspan x="25.5194695" y="70.7397255">Frequency</tspan>
+                        </text>
+                        <path d="M0.5,-9.09494702e-13 L0.5,59.0584661" id="Path-44" stroke="#0000A6" stroke-width="2"></path>
+                        <path d="M135.01947,0.739725516 L135.01947,59.7981916" id="Path-44-Copy-16" stroke="#0000A6" stroke-width="2"></path>
+                        <path d="M156.01947,36.2009655 L156.01947,59.7981916" id="Path-44-Copy-17" stroke="#0000A6" stroke-width="2"></path>
+                        <path d="M172.01947,49.7689586 L172.01947,59.7981916" id="Path-44-Copy-18" stroke="#0000A6" stroke-width="2"></path>
+                        <path d="M187.01947,54.7835751 L187.01947,59.7981916" id="Path-44-Copy-19" stroke="#0000A6" stroke-width="2"></path>
+                        <path d="M199.01947,56.5335751 L199.01947,59.7981916" id="Path-44-Copy-20" stroke="#0000A6" stroke-width="2"></path>
+                        <path d="M215.01947,56.5335751 L215.01947,59.7981916" id="Path-44-Copy-21" stroke="#0000A6" stroke-width="2"></path>
+                        <path d="M5.01946951,22.2397255 L5.01946951,58.7981916" id="Path-44-Copy" stroke="#0000A6" stroke-width="2"></path>
+                        <path d="M10.0194695,46.2296767 L10.0194695,58.7981916" id="Path-44-Copy-2" stroke="#0000A6" stroke-width="2"></path>
+                        <path d="M14.0194695,41.8833955 L14.0194695,58.7981916" id="Path-44-Copy-3" stroke="#0000A6" stroke-width="2"></path>
+                        <path d="M20.0194695,52.7397255 L20.0194695,58.7981916" id="Path-44-Copy-4" stroke="#0000A6" stroke-width="2"></path>
+                        <path d="M25.5194695,28.7397255 L26.0194695,58.7981916" id="Path-44-Copy-5" stroke="#0000A6" stroke-width="2"></path>
+                        <path d="M34.0194695,52.7397255 L34.0194695,58.7981916" id="Path-44-Copy-6" stroke="#0000A6" stroke-width="2"></path>
+                        <path d="M40.0194695,38.7397255 L40.0194695,58.7981916" id="Path-44-Copy-7" stroke="#0000A6" stroke-width="2"></path>
+                        <path d="M45.0194695,45.7397255 L45.0194695,58.7981916" id="Path-44-Copy-8" stroke="#0000A6" stroke-width="2"></path>
+                        <path d="M51.0194695,45.7397255 L51.0194695,58.7981916" id="Path-44-Copy-9" stroke="#0000A6" stroke-width="2"></path>
+                        <path d="M55.0194695,53.2662041 L55.0194695,58.7981916" id="Path-44-Copy-10" stroke="#0000A6" stroke-width="2"></path>
+                        <path d="M60.0194695,52.2689586 L60.0194695,58.7981916" id="Path-44-Copy-11" stroke="#0000A6" stroke-width="2"></path>
+                        <path d="M65.0194695,53.7397255 L65.0194695,58.7981916" id="Path-44-Copy-12" stroke="#0000A6" stroke-width="2"></path>
+                        <path d="M70.0194695,55.5335751 L70.0194695,58.7981916" id="Path-44-Copy-13" stroke="#0000A6" stroke-width="2"></path>
+                        <path d="M85.0194695,55.5335751 L85.0194695,58.7981916" id="Path-44-Copy-14" stroke="#0000A6" stroke-width="2"></path>
+                        <path d="M95.0194695,55.5335751 L95.0194695,58.7981916" id="Path-44-Copy-15" stroke="#0000A6" stroke-width="2"></path>
+                    </g>
+                    <text id="Amplitude" transform="translate(4.000000, 31.497481) rotate(-90.000000) translate(-4.000000, -31.497481) " font-family="Merriweather-Regular, Merriweather" font-size="6" font-weight="normal" letter-spacing="0.4472727" fill="#4E586A">
+                        <tspan x="-14" y="33.4974805">Amplitude</tspan>
+                    </text>
+                    <text id="(b)-Violin" font-family="Merriweather-Regular, Merriweather" font-size="6" font-weight="normal" letter-spacing="0.4472727" fill="#4E586A">
+                        <tspan x="178" y="16.4974805">(b) Violin</tspan>
+                    </text>
+                    <polyline id="Path-43" stroke="#E2E2E2" points="13.4613782 0 13.4613782 63.8162211 124.492855 63.8162211"></polyline>
+                    <polyline id="Path-43-Copy" stroke="#E2E2E2" points="139 0.497480531 139 64.3137016 250.031477 64.3137016"></polyline>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

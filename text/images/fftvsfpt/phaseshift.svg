@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="257px" height="258px" viewBox="0 0 257 258" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 53.2 (72643) - https://sketchapp.com -->
+    <title>Group 31</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Artboard" transform="translate(-898.000000, -3667.000000)">
+            <g id="Group-31" transform="translate(898.000000, 3666.000000)">
+                <polygon id="Path-147" fill="#E5ECF6" points="201 136.932682 118.096561 137 199 118.515977"></polygon>
+                <g id="Group-30">
+                    <g id="Group-66">
+                        <g id="Group-29">
+                            <circle id="Oval" stroke="#0000A6" cx="119" cy="137" r="82"></circle>
+                            <text id="$\Im$" font-family="Merriweather-Regular, Merriweather" font-size="10" font-weight="normal" letter-spacing="0.7454545" fill="#000000">
+                                <tspan x="126" y="10">$\Im$</tspan>
+                            </text>
+                            <text id="$\Re$" font-family="Merriweather-Regular, Merriweather" font-size="10" font-weight="normal" letter-spacing="0.7454545" fill="#000000">
+                                <tspan x="225" y="152">$\Re$</tspan>
+                            </text>
+                            <path d="M119,3.5 L118.5,258.609794" id="Path-54" stroke="#C9C9C9" stroke-linecap="round" stroke-linejoin="round"></path>
+                            <path d="M237.5,137.015426 L0.5,137.015426" id="Path-54" stroke="#C9C9C9" stroke-linecap="round" stroke-linejoin="round"></path>
+                            <polygon id="Path-55" fill="#C9C9C9" points="116 8.32732017 118.937093 1 121.940881 8.32732017"></polygon>
+                            <polygon id="Path-55" fill="#C9C9C9" transform="translate(237.876934, 136.932682) rotate(-270.000000) translate(-237.876934, -136.932682) " points="234.906494 140.596342 237.843587 133.269022 240.847375 140.596342"></polygon>
+                        </g>
+                    </g>
+                    <text id="$\omega-t$" font-family="Merriweather-Regular, Merriweather" font-size="9" font-weight="normal" letter-spacing="0.670909" fill="#4E586A">
+                        <tspan x="149.056016" y="119">$\omega t$</tspan>
+                    </text>
+                    <path d="M119.006562,136.71409 L173.079831,76.238378 L119,136.721429 L119.006562,136.71409 L198.506173,118.5 L119,136.715594 Z" id="Combined-Shape" stroke="#0000A6" stroke-linejoin="round"></path>
+                    <circle id="Oval" fill="#EF553B" cx="173.5" cy="75.5" r="2.5"></circle>
+                    <text id="$\phi$" font-family="Merriweather-Regular, Merriweather" font-size="9" font-weight="normal" letter-spacing="0.670909" fill="#4E586A">
+                        <tspan x="183.923334" y="133">$\phi$</tspan>
+                    </text>
+                    <path d="M138.069375,132 C137.737351,126.900644 135.41308,123.900644 131.096561,123" id="Path-148" stroke="#0000A6"></path>
+                    <text id="$\omega$" font-family="Merriweather-Regular, Merriweather" font-size="9" font-weight="normal" letter-spacing="0.670909" fill="#4E586A">
+                        <tspan x="154.656159" y="46">$\omega$</tspan>
+                    </text>
+                    <path d="M163.451341,62.8130802 C159.592229,52.6373786 153.925562,45.3040453 146.451341,40.8130802" id="Path-148" stroke="#0102CC" transform="translate(154.951341, 51.813080) rotate(-31.000000) translate(-154.951341, -51.813080) "></path>
+                    <path d="M143.551016,49.0019298 C142.56149,47.1708765 141.935483,45.8375431 141.672994,45.0019298 L146.672994,45.2496825 L143.551016,49.0019298 Z" id="Path-149" fill="#0102CC" transform="translate(144.172994, 47.001930) rotate(-31.000000) translate(-144.172994, -47.001930) "></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

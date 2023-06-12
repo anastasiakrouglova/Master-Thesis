@@ -1,0 +1,88 @@
+\chapter{Cluster Analysis of Resonances}
+\label{chap:cluster}
+
+\begin{marginfigure}
+\vspace{6cm}
+\includesvg[ width=1\linewidth]{images/cluster/kmeans.svg}
+\caption{The resonances in this figure is a representation of the resonances with the strongest power, extracted from the sound of a flute playing the note A4. They are clustered by the K-means algorithm ($K=4$) and each cluster is represented with a different color.}
+\label{kmean} 
+\end{marginfigure}
+
+\begin{marginfigure}
+\includesvg[ width=1\linewidth]{images/cluster/dbscanFlute.svg}
+\caption{Resonances clustered by the DBSCAN algorithm ($\epsilon=0.4$, $minPts = 4$) are represented with different colors. The labeling mimics how a human would draw circles around resonance groups to extract specific features, which exactly aligns with our desired outcome.}
+\label{dbscanFlute} 
+\end{marginfigure}
+
+Clustering is an unsupervised machine learning technique that involves grouping similar data points based on a specific parameter, such as density or similarity. There are various models known in the literature, with K-means being a conventional one that generates a fixed number of clusters associated with a central point. The Markov Cluster Algorithm, introduced by Stijn \textcite{van_dongen_graph_2008}, is more appropriate for graphs/networks. Hierarchical clustering on the other hand is often used for the analysis of social network data and biological data analysis (\cite{hexmoor_diffusion_nodate, yeturu_chapter_2020}). An important drawback of both K-means and hierarchical clustering for our application is that they do not automatically determine the number of clusters. Density-based algorithms, however, such as Mean-Shift, DBSCAN, and HDBSCAN, are more appropriate for this particular problem: resonances require a density-based approach (sudden changes of dense regions imply new musical objects), and they are also capable of automatically determining the amount of clusters based on the input data.
+The previews provided in Figure \ref{kmean} and \ref{dbscanFlute} highlights the benefits of using density-based algorithms for resonance data. 
+
+
+\section{Density-based Cluster Algorithms}
+
+First, let us provide a concise overview of the three density-based cluster algorithms mentioned above. The iterative Mean-Shift algorithm moves each data point towards the mean of its respective region to form clusters. This is a centroid-based algorithm and works best for blob-shaped data. DBSCAN is capable of identifying outliers as noise, unlike the Mean-Shift method, and performs effectively on densely populated data with irregular shapes. HDBSCAN is a variation of DBSCAN introduced by \textcite{campello_density-based_2013}. In this algorithm, DBSCAN's principle of border points (see further) is abandoned, and only core points are considered as part of the cluster. Even though this method may be beneficial for handling noisy data, DBSCAN is nonetheless deemed to be the most appropriate clustering model for this problem, as it is better to implement custom filtering methods for noise reduction before performing clustering.
+
+\section{DBSCAN clustering algorithm}
+\begin{marginfigure}
+\vspace{0.5cm}
+\centering
+\includesvg[ width=0.5\linewidth]{images/cluster/dbscan1.svg}
+\vspace{0.1cm}
+\caption{\textbf{Step 1} | Select a point $p$ and assume minPts = 3 and $\epsilon$ = 0.1. If at least 3 points are inside radius, mark $p$ as a core point.}
+\label{dbscan1} 
+\end{marginfigure}
+
+\begin{marginfigure}
+\centering
+\includesvg[ width=0.5\linewidth]{images/cluster/dbscan2.svg}
+\vspace{0.1cm}
+\caption{\textbf{Step 2} | Iterate over each point and mark all core points, classify left-overs as non-core points.}
+\label{dbscan2} 
+\end{marginfigure}
+
+\begin{marginfigure}
+\centering
+\includesvg[ width=0.5\linewidth]{images/cluster/dbscan3.svg}
+\vspace{0.1cm}
+\caption{\textbf{Step 3} | Pick a random core point, assign it to the first cluster together with all core points in the radius.}
+\label{dbscan3} 
+\end{marginfigure}
+
+\begin{marginfigure}
+\centering
+\includesvg[ width=0.5\linewidth]{images/cluster/dbscan4.svg}
+\vspace{0.1cm}
+\caption{\textbf{Step 4} | Repeat for the neighbouring core points.}
+\label{dbscan4} 
+\end{marginfigure}
+
+\begin{marginfigure}
+\centering
+\includesvg[ width=0.5\linewidth]{images/cluster/dbscan5.svg}
+\vspace{0.1cm}
+\caption{\textbf{Step 5} | Once all the core points have been included in the initial cluster, the border points, which are non-core points within the radius of the core points, are added to the same cluster as well. Note that these border points are not extended iteratively.}
+\label{dbscan5} 
+\end{marginfigure}
+
+\begin{marginfigure}
+\centering
+\includesvg[ width=0.5\linewidth]{images/cluster/dbscan6.svg}
+\vspace{0.1cm}
+\caption{\textbf{Step 6} | Repeat this process to find all clusters. Points that do not belong to any cluster are called noise points and are marked with red.}
+\label{dbscan6} 
+\end{marginfigure}
+Density-based Spatial Clustering of Applications (DBSCAN: \cite{ester_density-based_1996}) is a data based clustering algorithm. The algorithm attempts to imitate the human ability to recognize groups of points with an arbitrary shape that are closely located to each other, and singles out isolated points as noise.
+Figures \ref{dbscan1}-\ref{dbscan6} visualize the DBSCAN algorithm step by step.
+The model estimates the minimum density level using a method that relies on a threshold value, minPts, for the number of neighbors within a radius $\epsilon$. The algorithm begins by marking all core points in the dataset. A point $p$ is classified as \textbf{core point} if there are at least minPts points (including $p$) within the radius $\epsilon$. In the next step, a random core point $i$ is selected from which all transitively included (i.e.,density-reachable) core points are identified to form a cluster. Then, all \textbf{border points}, which are non-core points in the radius of a core point, are added to the cluster of a core point. Notice that a border point that is in the radius of two core points of different clusters will just be classified in the first cluster that is processed. Any points that are not density reachable from any core points are classified as noise and do not belong to any cluster. To ensure that all points in the same cluster are included, the minimum number of points (minPts) should be set to a relatively low value (\cite{ester_density-based_1996, schubert_dbscan_2017}).
+
+
+\subsection{Complexity and Data structure}
+Multiple implementations of the DBSCAN algorithm exist. A more optimized implementation utilizes a FIFO queue to keep track of the points which are already labelled and a $R^*$-tree, Kd-tree, or cover tree for performing a continuous search for density points within a tree-like structure (\cite{schubert_dbscan_2017}). The average time complexity is $O(n\log(n))$, since the neighboring queries are executed in logarithmic time, and labeling core and non-core points takes $O(n)$. Worst case, with degenerate data or naive implementations (e.g., not using the index structure), the time complexity becomes $O(n^2)$. We use an adjacency list-based implementation, which is better in terms of running time and memory usage compared to the matrix-based implementation.
+
+
+\subsection{DMBSDSCAN}
+A drawback of  DBSCAN is that it performs less well at data with a wide variation in density. DMDBSCAN attempts to solve this problem by introducing a dynamic $\epsilon$ estimation, suitable for each density level in the dataset (\cite{elbatta_dynamic_2013}). The algorithm is suggested for future work in case that the static $\epsilon$-estimation would not be sufficient. The required accuracy can currently be pre-defined and adjusted by the user.
+
+
+\section{Summary}
+We delved into a density-based clustering approach, in which labeling mimics how a human would draw circles around resonance groups when plotting it in a certain dimension. The next section will introduce a hierarchy wherein we will be able to represent the obtained clusters and attribute them.

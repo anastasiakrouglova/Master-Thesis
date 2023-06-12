@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="360px" height="332px" viewBox="0 0 360 332" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 53.2 (72643) - https://sketchapp.com -->
+    <title>Group 73</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Group-73" transform="translate(-72.000000, -5.000000)">
+            <text id="Basilar-membrane" font-family="Merriweather-Regular, Merriweather" font-size="14" font-weight="normal" letter-spacing="1.0436362" fill="#4E586A">
+                <tspan x="118.86391" y="37">Basilar membrane</tspan>
+            </text>
+            <text id="Apex" font-family="Merriweather-Regular, Merriweather" font-size="20" font-weight="normal" letter-spacing="1.490909" fill="#4E586A">
+                <tspan x="377.928182" y="20">Apex</tspan>
+            </text>
+            <text id="Base" font-family="Merriweather-Regular, Merriweather" font-size="20" font-weight="normal" letter-spacing="1.490909" fill="#4E586A">
+                <tspan x="79.568182" y="336">Base</tspan>
+            </text>
+            <ellipse id="Oval-Copy-270" stroke="#191AAF" fill="#F0F7FF" transform="translate(357.036534, 36.945753) rotate(21.000000) translate(-357.036534, -36.945753) " cx="357.036534" cy="36.9457529" rx="26" ry="19.9534884"></ellipse>
+            <ellipse id="Oval" stroke="#191AAF" fill="#F0F7FF" transform="translate(141.831578, 264.060542) rotate(34.000000) translate(-141.831578, -264.060542) " cx="141.831578" cy="264.060542" rx="75.5" ry="50.5"></ellipse>
+            <polygon id="Path-116" stroke="#191AAF" fill="#98AABE" points="128.213513 264.026727 152.621964 264.026727 381.212315 36.9119378 333.690771 33.1247597"></polygon>
+            <ellipse id="Oval" stroke="#191AAF" transform="translate(141.831578, 264.060542) rotate(34.000000) translate(-141.831578, -264.060542) " cx="141.831578" cy="264.060542" rx="75.5" ry="50.5"></ellipse>
+            <path d="" id="Path-117" stroke="#979797"></path>
+            <path d="M205.187828,305.366845 C218.434215,277.82931 206.968416,250.244686 170.790431,222.612974 C135.645592,201.084275 107.085728,198.61368 85.1108376,215.201191 L336.399425,21.8151813 C345.436811,14.7802762 355.673582,14.0966803 367.109739,19.7643935 C384.263974,28.2659633 383.566127,43.1195015 380.777731,47.5213496 C379.447481,51.2357461 320.917513,137.184245 205.187828,305.366845 Z" id="Path-118" stroke="#191AAF" fill-opacity="0.7" fill="#F0F7FF" stroke-linecap="round" stroke-linejoin="round"></path>
+            <path d="M232.984081,163.496629 L232.984081,50.6128757" id="Path-119" stroke="#191AAF"></path>
+        </g>
+    </g>
+</svg>

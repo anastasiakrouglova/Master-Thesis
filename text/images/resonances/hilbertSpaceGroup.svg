@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="452px" height="452px" viewBox="0 0 452 452" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 53.2 (72643) - https://sketchapp.com -->
+    <title>Group 8</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Artboard" transform="translate(-789.000000, -689.000000)">
+            <g id="Group-8" transform="translate(790.000000, 690.000000)">
+                <text id="Banach-Spaces" font-family="Merriweather-Regular, Merriweather" font-size="11" font-weight="normal" letter-spacing="0.819999993" fill="#4E586A">
+                    <tspan x="154.4325" y="195">Banach Spaces</tspan>
+                </text>
+                <text id="Normed-Spaces" font-family="Merriweather-Regular, Merriweather" font-size="11" font-weight="normal" letter-spacing="0.819999993" fill="#4E586A">
+                    <tspan x="154.3315" y="124">Normed Spaces</tspan>
+                </text>
+                <text id="Metric-Spaces" font-family="Merriweather-Regular, Merriweather" font-size="11" font-weight="normal" letter-spacing="0.819999993" fill="#4E586A">
+                    <tspan x="153.1215" y="80">Metric Spaces</tspan>
+                </text>
+                <text id="Topological-Spaces" font-family="Merriweather-Regular, Merriweather" font-size="11" font-weight="normal" letter-spacing="0.819999993" fill="#4E586A">
+                    <tspan x="153.387" y="36">Topological Spaces</tspan>
+                </text>
+                <text id="Inner-product-Spaces" font-family="Merriweather-Regular, Merriweather" font-size="11" font-weight="normal" letter-spacing="0.819999993" fill="#4E586A">
+                    <tspan x="179.916" y="371">Inner-product </tspan>
+                    <tspan x="204.1425" y="385">Spaces</tspan>
+                </text>
+                <path d="M224.74402,364.370411 C184.837315,347.744774 132.456783,254.004608 224.74402,195.603743 C320.929439,255.29203 261.480092,349.853747 224.74402,364.370411 Z" id="Path-88" fill="#E5ECF6" transform="translate(225.116390, 279.987077) rotate(-270.000000) translate(-225.116390, -279.987077) "></path>
+                <circle id="Oval" stroke="#0000A6" cx="225" cy="236" r="95"></circle>
+                <circle id="Oval-Copy-7" stroke="#0000A6" cx="225" cy="271.5" r="178.5"></circle>
+                <circle id="Oval-Copy-7" stroke="#0000A6" cx="225" cy="250" r="200"></circle>
+                <circle id="Oval-Copy-7" stroke="#0000A6" cx="225" cy="225" r="225"></circle>
+                <circle id="Oval-Copy-6" stroke="#0000A6" cx="225" cy="323" r="95"></circle>
+                <text id="Hilbert-Spaces" font-family="Merriweather-Regular, Merriweather" font-size="11" font-weight="normal" letter-spacing="0.82" fill="#4E586A">
+                    <tspan x="179.754" y="284">Hilbert Spaces</tspan>
+                </text>
+            </g>
+        </g>
+    </g>
+</svg>

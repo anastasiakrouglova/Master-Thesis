@@ -1,0 +1,198 @@
+\setcounter{chapter}{0}
+\chapter{Fourier Analysis of Auditory Signals}
+\label{chap:fourier}
+
+\begin{marginfigure}
+    \centering
+    \vspace{1cm}
+    \adjustbox{width=1\linewidth}{\tikzFourierTransform{}}
+    \vspace{0.05cm}
+    \caption{A visualization showcasing Fourier analysis, where a square wave in the time domain is decomposed into sinusoidal components. This decomposition allows a transformation into the frequency domain representation and vice versa. Edited from \textcite{neutelings_fourier_2021}. The modifications made to the figure include coloring and change of axis labels.}
+    \label{fourier3D} 
+    \vspace{0.3cm}
+\end{marginfigure}
+
+
+An auditory signal, such as a tone, sound, or spoken message, is a function that carries information. Machines are not able to store values up to infinity, and thus audio files are a discretization of the actual signal, sampled at a certain rate. The specifics of sampling rates exceed the scope of this topic, but as a general guideline, recording at 44.1 kHz typically yields high-quality results\sidenotemark\sidenotetext{The Nyquist sampling theorem states that in order to 
+sample a signal at a certain frequency without significant lost, it should be sampled at twice that frequency. And since the limit of human hearing is approximately 20kHz, it requires a sample rate of 44 kHz.}.
+
+\begin{marginfigure}
+\centering
+\vspace{0.6cm}
+\includesvg[pretex=\fontsize{8pt}{10pt}, width=0.9\linewidth]{images/resonances/FourierTypes.svg}
+\vspace{0.3cm}
+\caption{An illustration providing the behavioral nature of the four fundamental Fourier Transform Categories, namely Fourier Series, Continuous Fourier Transform, Discrete Fourier Transform, and Discrete Time Fourier Transform.}
+\label{typesFourier} 
+\end{marginfigure} 
+
+For many applications, such as the analysis of pitch intensities, it is interesting to transform the time-domain signal into a frequency-domain representation with the Fourier transform (Figure \ref{fourier3D}).
+The Fourier transform is a general term that can be split into four categories, depending on a combination of four characteristics of the input signal: periodic or aperiodic and continuous or discrete. For each category, a specific name is given to refer to a type of signal (\cite{smith_scientist_1997}):
+
+\begin{enumerate}
+    \item Periodic-Continuous: "Fourier Series"
+    \item Aperiodic-Continuous: "(Continuous) Fourier Transform"
+\item Periodic-Discrete: "Discrete Fourier Transform"
+    \item Aperiodic-Discrete: "Discrete Time Fourier Transform"
+\end{enumerate}
+
+Sometimes, the Fourier transform is regarded as an extension of Fourier series because it can handle both periodic and aperiodic signals. We will begin by introducing some fundamental theoretical concepts using Fourier series and then delve into the Continuous and Discrete Fourier Transform. The discrete-time Fourier transform represents a fourth category of the Fourier Transform; however, due to its limited relevance to the subsequent discussions, we will not explore its intricacies in detail. Lastly, the Fast Fourier Transform and Short-Time Fourier Transform will be introduced for a more practical background.
+
+\section{Theoretical background}
+\subsection{Fourier Series}
+Consider an ideal string vibrating solely at the fundamental harmonic A4. This repeating pattern corresponds to a single sinusoidal wave with a frequency of 440 Hz (cycles per second), as roughly depicted in Figure \ref{combifrequency}(a). However, when an instrument plays the A4 note, the resulting sound differs from the sound of an ideal string. This variation is caused by differences in the combination of multiple harmonics or soundwaves, which makes determining the precise real-valued function of a violin or piano a more challenging task, as illustrated in Figures \ref{combifrequency} and \ref{harmonicsPianoViolin}.  Nonetheless, it can be approximated by summing weighted sines and cosines using the Fourier series:
+
+\begin{marginfigure}
+\centering
+\includesvg[pretex=\fontsize{8pt}{10pt}, width=0.9\linewidth]{images/resonances/differenceFrequency.svg}
+\vspace{0.2cm}
+\caption{Three different time-domain signals of similar notes played with a pure tone, violin and piano.}
+\label{combifrequency} \vspace{0.3cm}
+\end{marginfigure}
+
+\begin{equation}
+     f(t) = \frac{a_0}{2} + \sum^{\infty}_{n=-\infty} [A_n \cos(\omega nt)+i A_n \sin(\omega nt)].
+\end{equation}
+
+The sine and cosine waves serve as the fundamental basis functions in the Fourier transform. Frequency $\omega$ is a compact representation of the natural frequency $2 \pi \phi= \frac{2 \pi}{T}$, where $T$ represents the period (the time required for a complete rotation around the unit circle). In this context, 
+$\phi = \frac{1}{T}$. 
+$\omega$ can be interpreted as angular speed\sidenotemark\sidenotetext{The choice of notation ($\omega$ or $2 \pi \phi$ ) depends on the specific field of study, here, $\omega$ is measured in radians per second, while $2 \pi \phi$ is measured in cycles per second.}.  Note that the sine and cosine notation can be expressed in exponential form using Euler's formula: $e^{i \omega t}=\cos(\omega t) + i \sin(\omega t)$:
+\begin{equation}
+f(t) = \sum^\infty_{n=-\infty} A_n e^{i\omega n t}.
+\end{equation}
+
+
+\begin{marginfigure}
+\centering
+\vspace{2cm}
+\includesvg[pretex=\fontsize{8pt}{10pt}, width=1\linewidth]{images/resonances/instrumentFrequencies.svg}
+\vspace{0.1cm}
+\caption{An example of the harmonics of similar notes in the frequency-domain played with piano and violin (\cite{arvin_real-time_2009}).}
+\label{harmonicsPianoViolin}  \vspace{1.5cm}
+\end{marginfigure}
+
+The exponential form using Euler's formula is a more convenient way to represent the sine and cosine waves due to its compactness. It can also be visualized effectively in the complex plane, as depicted in Figure \ref{complexResonance}.
+
+
+\begin{figure}[h]
+    \centering
+    \adjustbox{width=0.9\linewidth}{\tikzSimpleOscillator{}}
+    \vspace{0.3cm}
+    \caption{A simple harmonic oscillator projected in 3D with sinusoidal waves in the Cartesian plane and their compact representation in the complex plane. The real part and the imaginary part of this analytic signal are related through the Hilbert transform. Edited from \textcite{neutelings_harmonic_2021}.}
+    \label{complexResonance}
+\end{figure}
+
+
+Note that in the description above, the notion of phase shift $\phi$ was omitted for simplicity. In reality, digital encoding of audio signals can introduce (unwanted) phase shifts $\phi$ (Figure \ref{oscillatorPhaseShift}):
+\begin{equation}
+f(t) = \sum^\infty_{n=-\infty} A_n e^{i(\omega n t + \phi)}.
+\end{equation}
+
+
+
+\subsection{Continuous Fourier Transform}
+Fourier series is sufficient to describe periodic signals, but for more complicated aperiodic functions, the (continuous) Fourier transform is required. This transform allows the conversion of a continuous time-domain signal into the frequency domain through an invertible linear transformation, defined as follows:
+
+\begin{marginfigure}
+\centering
+\includesvg[pretex=\fontsize{8pt}{10pt}, width=0.9\linewidth]{images/fftvsfpt/phaseshift.svg}
+\vspace{0.2cm}
+\caption{Simple harmonic oscillator with phase shift $\phi$ in the polar plane.}
+\label{oscillatorPhaseShift} 
+\end{marginfigure}
+
+\begin{equation}
+    \mathcal {F}[f(t)] = \hat{f}(\omega)= \frac{1}{\sqrt{2 \pi}} \int_{-\infty}^{\infty} f(t) e^{i \omega t}dt 
+    \; \; \; \; \; \; \; \; \; \; \; 
+    t, \omega \in \mathbb{R},
+\end{equation}
+
+and the inverse Fourier transform as
+\begin{equation}
+    \mathcal {F}^{-1}[\hat{f}(\omega)] = f(t) = \frac{1}{\sqrt{2 \pi}} \int_{-\infty}^{\infty} 
+    \hat{f}(\omega)e^{-i \omega t}d\omega
+    \; \; \; \; \; \; \; \; \; \; \; 
+    t, \omega \in \mathbb{R}.
+\end{equation}
+
+Notice the similarity between the Fourier transform and its inverse. In this case, a symmetric notation is used for both transforms. However, in other literature, the term $\frac{1}{\sqrt{2 \pi}}$ may be excluded from the Fourier transform and only included in the inverse Fourier transform as $\frac{1}{2 \pi}$ (\cite{baraniuk_82_2020}). Here, we evenly distribute this term across both transforms, acting as a normalization factor.
+
+
+\subsection{Discrete Fourier Transform}
+Digital computers can only process discrete and finite data, and since audio data is aperiodic and discrete, the Discrete Time Fourier Transform (DTFT) is intuitively applicable. However, in practice, the "Discrete Fourier Transform" (DFT) is mostly used, often extended with various techniques to enhance its performance, such as improving speed. In this equation, the continuous-time signal is represented by discrete values:
+
+\begin{equation}
+    \mathcal {F}[x[n]] = X[k] = \sum^{N-1}_{n=0} x[n]e^{-i \frac{2 \pi }{N}k n} 
+  \; \; \; \; \; \; \; \; \; \; \; \; \; \;
+  k = 0, 1, ... N-1,
+\end{equation}
+
+\begin{marginfigure}
+\centering
+\includesvg[pretex=\fontsize{8pt}{10pt}, width=0.9\linewidth]{images/fftvsfpt/circleDiscrete.svg}
+\caption{Polar representation of phasor in a discrete unit circle.}
+\label{circleDiscrete} \vspace{3cm}
+\end{marginfigure}
+
+and the inverse Discrete Fourier transform:
+
+\begin{equation}
+        \mathcal {F}^{-1}[X[k]] = x[n] = \frac{1}{N} \sum^{N-1}_{k=0} X[k]e^{i \frac{2 \pi }{N}k n} 
+  \; \; \; \; \; \; \; \; \; \; \; \; \; \;
+  k = 0, 1, ... N-1.
+\end{equation}
+
+$N$ represents the number of samples, often chosen as a power of two, indicating that only specific points $n$ can be captured by the Discrete Fourier Transform (Figure \ref{circleDiscrete}).
+
+In the frequency domain, the sampled frequency $k$ corresponds to the number of rotations around the unit circle in N points. It is worth noting that in this notation, we avoid using the abstraction of $\omega$ to highlight the discrete nature of the formulation.
+
+
+
+\section{Practical Background}
+The Fast Fourier Transform (FFT) and Short-Time Fourier Transform (STFT) are two commonly used techniques for the calculation of a signal's DFT.
+Due to significant speed enhancements of the implemented algorithms, the FFT and STFT became valuable tools across a range of signal processing applications.
+
+\begin{marginfigure}
+\centering
+\includesvg[pretex=\fontsize{3pt}{5pt}, width=1\linewidth]{images/fftvsfpt/audio_syrinx.svg}
+\label{syrinx_audio}
+\end{marginfigure}
+
+\begin{marginfigure}
+\centering
+\includesvg[pretex=\fontsize{8pt}{10pt}, width=1\linewidth]{images/fftvsfpt/dsp.svg}
+\caption{The power spectral density function estimated through the Fast Fourier Transform by calculating the squared magnitude of the Fourier coefficients.}
+\label{syrinx_dsp}
+\end{marginfigure}
+
+\subsection{Fast Fourier Transform}
+\label{sec:FFT}
+\begin{marginfigure}
+\centering
+\vspace{1.2cm}
+\includesvg[pretex=\fontsize{3pt}{5pt}, width=1\linewidth]{images/fftvsfpt/audio_syrinx_sliced2.svg}
+% \caption{stft spectrogram of syrinx}
+\label{syrinx_sliced}
+\end{marginfigure}
+
+\begin{marginfigure}
+\centering
+\includesvg[pretex=\fontsize{8pt}{10pt}, width=1\linewidth]{images/fftvsfpt/specgram.svg}
+\caption{The spectrogram of a fragment from Debussy's Syrinx, obtained by calculating the squared magnitude of the signal's power spectral density in each time segment.}
+\label{specgram_syrinx}
+\end{marginfigure}
+The FFT is an efficient algorithm used to compute the Discrete Fourier Transform (DFT) of a signal. The main practical problem with the DFT (Discrete Fourier Transform), is that it requires large matrix multiplications and summations over all its elements, which are computationally expensive operations. A viable solution is the Cooley-Tukey algorithm, which is one of the most common algorithms used in the FFT. It reduces the computational time of the DFT from $\mathcal{O}(n^2)$ to $\mathcal{O}(n\log(n))$ by dividing its elements recursively into two groups based on parity (odd or even indices) until the elements are computationally manageable with the DFT (\cite{cooley_algorithm_1965}). 
+
+An application of the Fast Fourier Transform is the estimation of the power spectral density function, as shown in Figure \ref{syrinx_dsp}. The power spectral density (PSD) represents the distribution of signal power across different frequencies.
+
+
+\subsection{Short-Time Fourier Transform}
+
+
+The Short-Time Fourier Transform (STFT) is performed by calculating the FFT over shorter time segments that might overlap. These time segments, referred to as the window size, determine the resolution of the STFT. Similarly, the frequency is divided into frequency bins. It is crucial to note that the window size and frequency bin count collectively determine the precision of the STFT. In Chapter~\ref{chap:cognitiveModel}, we will discuss the Fourier uncertainty principle in more detail, which sets a limit on the precision of this transform. Consequently, when applying the STFT, there is a trade-off between time and frequency that needs to be considered. For instance, a spectrogram (Figure \ref{specgram_syrinx}) illustrates the impact of this uncertainty bound on the precision of the transform.
+
+
+\section{Summary}
+We discussed four categories of the well-known Fourier Transform and highlighted the Discrete Fourier Transform, which is used the most in practice. We also gave a practical introduction to the Fast Fourier Transform and Short Time Fourier Transform. The understanding of the main idea behind the DFT and FFT will play an important role in Chapter \ref{chap:resonances}, with the introduction of the so-called Fast Padé Transform.
+The next chapter takes a deeper dive into the underlying mathematics behind Fourier Analysis. We will define the Fourier Transform in a $L^2$ Hilbert Space, which is a complete inner product space.
+
+

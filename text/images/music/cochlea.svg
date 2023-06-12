@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1290px" height="650px" viewBox="0 0 1290 650" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 53.2 (72643) - https://sketchapp.com -->
+    <title>Group 72</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <polygon id="path-1" points="1.52904242e-05 -1.13686838e-13 813.723961 -1.13686838e-13 813.723961 566.179805 1.52904242e-05 566.179805"></polygon>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Group-72" transform="translate(-21.000000, -1.000000)">
+            <g id="Group-71">
+                <g id="Group-3" transform="translate(350.000000, 0.000000)">
+                    <mask id="mask-2" fill="white">
+                        <use xlink:href="#path-1"></use>
+                    </mask>
+                    <g id="Clip-2"></g>
+                    <path d="M457.459201,468.8612 C459.367909,468.7672 462.390194,468.6342 464.299884,468.5632 C469.57586,468.0932 475.061184,467.1782 480.331262,466.4392 C587.090155,450.6262 658.340396,389.4512 671.542129,277.8802 C672.837534,265.7672 673.785008,253.0252 672.455203,241.1952 C672.455203,241.1952 672.410975,235.5132 672.410975,235.5132 L672.025695,232.7592 C668.338999,208.2012 657.979688,183.3912 642.313932,164.2502 C624.457389,142.7752 608.006332,128.5192 580.395917,128.5232 C563.828882,128.2342 547.603882,130.1912 534.545646,140.6432 C524.492003,148.5752 517.232622,161.4442 513.364098,173.7852 C508.361357,195.1352 522.645215,219.9822 543.17218,226.5682 C544.546214,227.0182 546.174808,227.2742 547.66187,227.2942 C553.450897,227.8832 559.871901,227.2252 564.226939,224.4422 C575.825633,216.8812 577.845404,197.8882 571.67208,185.9532 C566.78335,176.4932 557.170027,176.9932 548.182784,180.9732 C544.612065,182.4762 540.51945,180.7492 539.043199,177.1162 C537.87753,174.2492 538.699199,171.0442 540.847724,169.0852 C544.664157,165.6172 549.159744,162.4502 554.681434,160.3162 C567.047738,155.3712 581.268694,158.9382 590.843685,167.9502 C614.159998,189.7872 616.069689,230.2512 596.043981,255.1122 C585.417333,268.6922 569.035075,276.8922 552.636109,279.7692 C549.682624,280.3222 546.729139,281.0122 543.703906,281.3312 C497.185291,286.5662 453.409831,253.8612 435.721356,211.1112 C427.708124,192.3222 425.005268,170.4022 426.205336,150.1862 C431.259186,69.7392 484.961501,18.0896931 566.440908,4.58325287 C633.097276,-1.38874713 697.956407,15.1952 745.692781,64.3542 C790.084493,110.2242 819.104541,192.026417 808.829377,283.5 C798.318109,363.841256 760.708867,423.4762 708.132906,474.2962 C648.220902,533.1552 567.130343,559.863297 485.269179,563.201297 C480.388312,563.443297 458.526823,563.362297 455.506504,563.201297 C381.956378,558.470297 309.648344,537.8822 246.349414,499.6122 C140.989127,436.3962 60.6582717,331.5572 29.0230586,211.5172 C16.2488682,163.3682 11.4839783,113.4852 15.0488,64.7712 C15.3338285,60.8772 18.6666961,57.9562 22.4939406,58.2462 C25.9703052,58.5082 28.6643158,61.3372 28.9070815,64.7712 C42.0695003,249.4062 235.479481,480 457.459201,468.8612 Z" id="Fill-1" stroke="#191AAF" stroke-width="4" fill="#F0F7FF" mask="url(#mask-2)"></path>
+                </g>
+                <path d="M716,169.5 L798.176967,169.5" id="Path-114-Copy" stroke="#191AAF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path>
+                <text id="20-000-Hz" font-family="Merriweather-Regular, Merriweather" font-size="20" font-weight="normal" letter-spacing="1.49090946" fill="#4E586A">
+                    <tspan x="20.5309074" y="159">20 000 Hz</tspan>
+                </text>
+                <text id="7-000-Hz" font-family="Merriweather-Regular, Merriweather" font-size="20" font-weight="normal" letter-spacing="1.49090946" fill="#4E586A">
+                    <tspan x="189.806362" y="446">7 000 Hz</tspan>
+                </text>
+                <text id="600-Hz" font-family="Merriweather-Regular, Merriweather" font-size="20" font-weight="normal" letter-spacing="1.49090946" fill="#4E586A">
+                    <tspan x="504.337272" y="180">600 Hz</tspan>
+                </text>
+                <text id="3000-Hz" font-family="Merriweather-Regular, Merriweather" font-size="20" font-weight="normal" letter-spacing="1.49090946" fill="#4E586A">
+                    <tspan x="1220.20182" y="291">3000 Hz</tspan>
+                </text>
+                <text id="5-000-Hz-Copy" font-family="Merriweather-Regular, Merriweather" font-size="20" font-weight="normal" letter-spacing="1.49090946" fill="#4E586A">
+                    <tspan x="774.746362" y="647">5 000 Hz</tspan>
+                </text>
+                <path d="M337,145.5 L381.372366,145.5" id="Path-114" stroke="#191AAF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path>
+                <path d="M477,427.5 L559.176967,427.5" id="Path-114-Copy" stroke="#191AAF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path>
+                <path d="M1117,279.5 L1199.17697,279.5" id="Path-114-Copy-4" stroke="#191AAF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path>
+                <path d="M861.176967,591.5 L861.176967,523.5" id="Path-114-Copy-2" stroke="#191AAF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path>
+                <path d="M902.176967,169.5 L902.176967,101.5" id="Path-114-Copy-3" stroke="#191AAF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path>
+            </g>
+            <text id="200-Hz" font-family="Merriweather-Regular, Merriweather" font-size="20" font-weight="normal" letter-spacing="1.49090922" fill="#4E586A">
+                <tspan x="870.497272" y="84">200 Hz</tspan>
+            </text>
+        </g>
+    </g>
+</svg>

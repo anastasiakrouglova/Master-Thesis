@@ -1,0 +1,116 @@
+\chapter{Knowledge Representation Applied to Audio Files}
+\label{chap:architecture}
+
+\section{Specification of the CHAKRA abstraction}
+We created a constituent structure (i.e., a multi-hierarchical information model) to model a theoretical estimation of the underlying structure of perception discussed in \ref{subsec:structualism} Structuralism. This constituent structure was an expansion of Harley's type-based framework for the abstract representation of anything. Learning and expanding knowledge about musical data was achieved through density-based clustering techniques. The acquired knowledge creates new dimensions in the hierarchical structure and gives more structural insights about musical structures in audio fragments. We will start with a discussion of the components of the music-specific CHAKRA implementation on resonances. Afterward, we briefly explain several engineering considerations during the development of this software. 
+
+
+The central concept of the CHAKRA system is that it establishes the fundamental abstract types known as a \textit{Constituent, Identifier} and \textit{Hierarchy}. The user of this framework is then responsible for creating a customized implementation for these abstract types, inheriting their underlying structures.
+
+
+\subsection{Constituent}
+Every musical object in the hierarchical structure is called a \textit{Constituent}. New constituents are formed from finite sets of other constituents and are composed of an identifier $i$, particles $P(i)$ and attributes $R(i)$, as has been defined in \ref{def:constituent}. The value of an identifier is unique in a single set of identifiers. We call particles the children of a constituent (i.e., node) and the attributes are specific features of a constituent (e.g., onset, pitch, duration).
+
+
+\begin{marginfigure}
+\vspace{3cm}
+\centering
+\includesvg[pretex=\small, width=1\linewidth]{images/knowledge/constituent_flat.svg}
+\vspace{0.1cm}
+\caption{Visualization of a constituent containing a joint pair of resonances and its musical spaces.}
+\label{constituentRes} 
+\vspace{1cm}
+\end{marginfigure}
+
+
+\subsubsection{Constituents of a DRS}
+The smallest musical objects in our particular hierarchy are resonances, they lay at the lowest layer of the hierarchy. 
+We define each resonance as a constituent, containing 10 attributes, as illustrated in Figure \ref{constituentRes}. 
+
+Each resonance has a conjugate pair with similar attributes; although the conjugate has the opposite sign of the frequency. For sake of completeness, the imaginary part of the signal is kept and the resonance and its conjugate are combined in a new \textit{pair}-constituent. From those pairs, slices in time are taken. A slice is defined as a small period of time containing a subset of the resonances (Figure \ref{slice}). These slices are, in their turn, grouped by a DRS-constituent. This constituent represents all the resonances in the time-domain of a Discrete Resonance spectrum.
+
+\begin{marginfigure}
+\centering
+\includesvg[pretex=\fontsize{8pt}{10pt}, width=1\linewidth]{images/architecture/time-slice.svg}
+\vspace{0.1cm}
+\caption{A rough illustration of a slice in the time-domain representation of a signal. All musical objects falling inside a time-slice $t_n$ are grouped together by a slice constituent.}
+\label{slice} \vspace{2cm}
+\end{marginfigure}
+
+\begin{figure}[h]
+\centering
+\includesvg[pretex=\fontsize{8pt}{10pt}, width=1\linewidth]{images/architecture/DRS.svg}
+\vspace{0.1cm}
+\caption{Two-dimensional hierarchical structure of the DRS hierarchy, consisting of four levels of constituents, denoted with circles.}
+\label{drs} 
+\end{figure}
+
+
+\subsection{Identifier}
+
+\begin{marginfigure}
+\centering
+\includesvg[pretex=\fontsize{12pt}{14pt}, width=0.5\linewidth]{images/architecture/id.svg}
+\vspace{0.3cm}
+\caption{A constituent $c_1$ and its corresponding ID $i_1$.}
+\label{id} \vspace{2cm}
+\end{marginfigure}
+
+\begin{marginfigure}
+\centering
+\vspace{1cm}
+\includesvg[pretex=\fontsize{8pt}{10pt}, width=0.9\linewidth]{images/architecture/set_constituent.svg}
+\vspace{0.3cm}
+\caption{The different sets of constituents and their corresponding IDs allows them to have similar names as long as they are defined within a different set.}
+\label{setConstituent} 
+\end{marginfigure}
+
+
+
+The relation between Constituents and Identifiers is bijective in the multidimensional hierarchical structure. Their value can be repetitive through different sets, but will always contain a unique value in a single set of identifiers (e.g. ResIDs). The identifiers are important assets for finding components of Constituents. By returning the identifiers of the underneath level instead of the knowledge, improvements over speed and memory are achieved. Figure \ref{setConstituent} emphasizes the usage of sets for the definition of different IDs.
+
+
+\subsection{Hierarchy}
+A Hierarchy $H$ is a direct acyclic graph of constituents and is defined as the abstract type \textit{Hierarchy}. Subtypes of \textit{Hierarchy} directly correspond to specific implementations of this abstract type.  We will now explore four implementations of the hierarchies currently being developed, which can be further expanded by incorporating additional machine learning techniques.
+
+
+\subsubsection{Definition of Several hierarchies}
+
+
+
+The \textbf{DRS hierarchy} originates from the idea of a Discrete Resonance Spectrum. It groups resonances (both negative and positive) based on information from the time domain. Note the difference between the DRS constituent and the DRS Hierarchy. Although they have the same name, they do not hold the same semantic value.
+Since half of the resonances are a subset of the negative part, they are often not needed for the analysis of real audio signals. Therefore, we defined the \textbf{NEG hierarchy} to group the resonances with a negative frequency together. This connection can make filtering easier if the imaginary part of the signal is not required. The \textbf{NOTE Hierarchy} was created for the extraction of musical notes from spectral data. The constituent representing a musical note is defined attributed with \textit{onset, duration} and \textit{pitch} and can formally be defined as following:
+\begin{marginfigure}
+\centering
+\includesvg[width=1\linewidth]{images/architecture/hierarchyDynR_labeled.svg}
+\caption{Real-valued representation of the DRS and HARM hierarchy for an audio fragment of a flute playing A4. The blue-like points are part of the DRS structure, including the resonances, pair, slice and DRS constituents. The orange points represent the constituents of the HARM hierarchy (the graph was generated with Gephi).}
+\label{DRS_hierarchy_gephi}
+\end{marginfigure}
+
+\begin{equation}
+    \text{NOTE\_Dataset}:\text{CSPEC} := \forall_{\text{Parts}}(\text{Note})
+\end{equation}
+
+Where CSPEC is the \textit{type} of constituent specifications defined in Calculus of Inductive
+Constructions (see Chapter \ref{sec:cic}). Finally, the \textbf{HARM Hierarchy} contains constituents of overtones corresponding to a specific fundamental tone. A conceptual representation of the four hierarchies is represented in Figure \ref{DRS_hierarchy_prac} and a real-valued representation of the DRS and HARM hierarchies has been plotted in Figure \ref{DRS_hierarchy_gephi}.
+
+\begin{figure}[h]
+\centering
+\vspace{0.5cm}
+\includesvg[width=1\linewidth]{images/architecture/DRS_hierarchy_prac.svg}
+\vspace{0.1cm}
+\caption{A practical visualization of the state-of-the-art hierarchies in our software. Each hierarchy is visualized in its own color, containing Constituents represented as nodes.}
+\label{DRS_hierarchy_prac} 
+\end{figure}
+
+\subsection{Operations}
+The two most important operations in the hierarchical structures are \textit{parts} and \textit{find}. Parts gives all the particles of a selected constituent. The find operation returns all the attributes of a constituent or collection of constituents.
+
+\section{Engineering Considerations}
+We chose to use Julia for knowledge representation modeling and generating new constituents in the hierarchies. This decision was primarily influenced by two factors: firstly, the existing implementation of CHAKRA in Julia, and secondly, the superior speed performance of this uniquely typed language compared to other high-level languages like Python. Julia has many features, wherefrom multiple dispatch and duck typing are far away the most interesting to mention for our application. Multiple dispatch allows multiple functions with the same name, which is fast and was consequently exploited in the implementation of our software.
+Languages supporting Duck typing allow changing objects by adding new methods or attributes to those objects. Duck typing is also present in languages like Python and C++, and is a major type system category. Our main concern about Julia is, however, the fact that the increase of its speed is mainly caused by the cost of the initial compilation time. 
+
+
+\section{Summary}
+This section discussed the actual implementation of the knowledge representation applied to the resonance information, which was, in its turn, extracted from Audio files. We proposed several hierarchies, including the HARM and NOTE hierarchy, for the extraction of notes and harmonies from an audio file. The final chapter will discuss how the constituents of both hierarchies were created and attributed.
+

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="246px" height="88px" viewBox="0 0 246 88" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 53.2 (72643) - https://sketchapp.com -->
+    <title>Group 7</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Artboard-Copy-9" transform="translate(-259.000000, -657.000000)">
+            <g id="Group-7" transform="translate(259.000000, 655.000000)">
+                <circle id="Oval" stroke="#2C2923" fill="#F0F7FF" cx="27.5" cy="51.5" r="12.5"></circle>
+                <circle id="Oval-Copy-7" fill="#000000" cx="22.5" cy="48.5" r="1.5"></circle>
+                <circle id="Oval-Copy-9" fill="#000000" cx="27.5" cy="54.5" r="1.5"></circle>
+                <circle id="Oval-Copy-10" fill="#000000" cx="31.5" cy="48.5" r="1.5"></circle>
+                <circle id="Oval-Copy-8" stroke="#2C2923" fill="#F0F7FF" cx="210.5" cy="51.5" r="12.5"></circle>
+                <g id="Group-4" transform="translate(48.000000, 17.000000)">
+                    <path d="M4.26325641e-14,1 C46.3722013,26.3518081 92.7444026,26.0184748 139.116604,-2.38031816e-13" id="Path-15" stroke="#000000" stroke-linecap="round" transform="translate(69.558302, 9.883550) scale(1, -1) translate(-69.558302, -9.883550) "></path>
+                    <polygon id="Path-16" fill="#000000" transform="translate(138.778471, 19.551888) scale(1, -1) rotate(-34.000000) translate(-138.778471, -19.551888) " points="136.438792 18.0518881 136.438792 21.0518881 141.11815 19.5518881"></polygon>
+                </g>
+                <text id="Functor" font-family="Merriweather-Regular, Merriweather" font-size="9" font-weight="normal" letter-spacing="0.6709091" fill="#000000">
+                    <tspan x="98" y="9">Functor</tspan>
+                </text>
+                <text id="Category-$C$" font-family="Merriweather-Regular, Merriweather" font-size="9" font-weight="normal" letter-spacing="0.6709091" fill="#000000">
+                    <tspan x="0" y="87">Category $C$</tspan>
+                </text>
+                <text id="Category-$D$" font-family="Merriweather-Regular, Merriweather" font-size="9" font-weight="normal" letter-spacing="0.6709091" fill="#000000">
+                    <tspan x="179" y="87">Category $D$</tspan>
+                </text>
+                <g id="Group-4" transform="translate(48.000000, 17.000000)">
+                    <path d="M4.26325641e-14,1 C46.3722013,26.3518081 92.7444026,26.0184748 139.116604,-2.38031816e-13" id="Path-15" stroke="#000000" stroke-linecap="round" transform="translate(69.558302, 9.883550) scale(1, -1) translate(-69.558302, -9.883550) "></path>
+                    <polygon id="Path-16" fill="#000000" transform="translate(138.778471, 19.551888) scale(1, -1) rotate(-34.000000) translate(-138.778471, -19.551888) " points="136.438792 18.0518881 136.438792 21.0518881 141.11815 19.5518881"></polygon>
+                </g>
+                <polyline id="Path-19" stroke="#000000" stroke-width="0.5" points="23.1281861 48.5 31.0295054 48.5 27.5 54.5 22.7951278 48.7453172"></polyline>
+                <circle id="Oval-Copy-7" fill="#000000" cx="203.5" cy="47.5" r="1.5"></circle>
+                <circle id="Oval-Copy-9" fill="#000000" cx="208.5" cy="53.5" r="1.5"></circle>
+                <circle id="Oval-Copy-10" fill="#000000" cx="212.5" cy="47.5" r="1.5"></circle>
+                <circle id="Oval-Copy-11" fill="#000000" cx="216.5" cy="52.5" r="1.5"></circle>
+                <polyline id="Path-19" stroke="#000000" stroke-width="0.5" points="204.128186 47.5 212.029505 47.5 208.5 53.5 203.795128 47.7453172"></polyline>
+                <polyline id="Path-19" stroke="#000000" stroke-width="0.5" points="204.128186 47.5 212.029505 47.5 208.5 53.5 203.795128 47.7453172"></polyline>
+                <polyline id="Path-20" stroke="#000000" stroke-width="0.5" points="208.913467 53.5 216.5 52.5 212.5 47.5"></polyline>
+            </g>
+        </g>
+    </g>
+</svg>

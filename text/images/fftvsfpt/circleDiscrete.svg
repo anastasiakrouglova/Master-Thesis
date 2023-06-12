@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="257px" height="258px" viewBox="0 0 257 258" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 53.2 (72643) - https://sketchapp.com -->
+    <title>Group 67</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Artboard-Copy-9" transform="translate(-83.000000, -2805.000000)">
+            <g id="Group-67" transform="translate(83.000000, 2804.000000)">
+                <g id="Group-66-Copy">
+                    <g id="Group-29">
+                        <circle id="Oval" stroke="#C9C9C9" cx="119" cy="137" r="82"></circle>
+                        <text id="n" font-family="Merriweather-Regular, Merriweather" font-size="10" font-weight="normal" letter-spacing="0.7454545" fill="#0000A6">
+                            <tspan x="115" y="48">n</tspan>
+                        </text>
+                        <text id="n-1" font-family="Merriweather-Regular, Merriweather" font-size="10" font-weight="normal" letter-spacing="-0.8692307" fill="#0000A6">
+                            <tspan x="87" y="51">n-</tspan>
+                            <tspan x="98.1815386" y="51" letter-spacing="-0.965812">1</tspan>
+                        </text>
+                        <text id="1" font-family="Merriweather-Regular, Merriweather" font-size="10" font-weight="normal" letter-spacing="0.7454545" fill="#0000A6">
+                            <tspan x="144" y="51">1</tspan>
+                        </text>
+                        <text id="$\Im$" font-family="Merriweather-Regular, Merriweather" font-size="10" font-weight="normal" letter-spacing="0.7454545" fill="#000000">
+                            <tspan x="126" y="10">$\Im$</tspan>
+                        </text>
+                        <text id="$\Re$" font-family="Merriweather-Regular, Merriweather" font-size="10" font-weight="normal" letter-spacing="0.7454545" fill="#000000">
+                            <tspan x="225" y="152">$\Re$</tspan>
+                        </text>
+                        <text id="2" font-family="Merriweather-Regular, Merriweather" font-size="10" font-weight="normal" letter-spacing="0.7454545" fill="#0000A6">
+                            <tspan x="165" y="59">2</tspan>
+                        </text>
+                        <text id="…" font-family="Merriweather-Regular, Merriweather" font-size="10" font-weight="normal" letter-spacing="0.7454545" fill="#0000A6">
+                            <tspan x="185" y="71">…</tspan>
+                        </text>
+                        <path d="M119,3.5 L118.5,258.609794" id="Path-54" stroke="#C9C9C9" stroke-linecap="round" stroke-linejoin="round"></path>
+                        <path d="M237.5,137.015426 L0.5,137.015426" id="Path-54" stroke="#C9C9C9" stroke-linecap="round" stroke-linejoin="round"></path>
+                        <path d="M119,219 C164.287349,219 201,182.287349 201,137 C201,91.7126505 164.287349,55 119,55 C73.7126505,55 37,91.7126505 37,137 C37,182.287349 73.7126505,219 119,219 Z" id="Oval" stroke="#0000A6" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="0,20"></path>
+                        <polygon id="Path-55" fill="#C9C9C9" points="116 8.32732017 118.937093 1 121.940881 8.32732017"></polygon>
+                        <polygon id="Path-55" fill="#C9C9C9" transform="translate(237.876934, 136.932682) rotate(-270.000000) translate(-237.876934, -136.932682) " points="234.906494 140.596342 237.843587 133.269022 240.847375 140.596342"></polygon>
+                        <path d="M133.513906,126.822216 C129.566393,129.588841 127.592636,132.958996 127.592636,136.932682" id="Path-57" stroke="#C9C9C9" opacity="0.717726935" transform="translate(130.553271, 131.877449) scale(-1, 1) translate(-130.553271, -131.877449) "></path>
+                    </g>
+                </g>
+                <path d="M119,136.932682 L172,74" id="Path-56" stroke="#0000A6" stroke-linecap="round"></path>
+                <text id="$\frac{2\pi}{N}n$" font-family="Merriweather-Regular, Merriweather" font-size="10" font-weight="normal" letter-spacing="0.7454545" fill="#0D0D0D">
+                    <tspan x="145" y="127">$\frac{2\pi}{N}n$</tspan>
+                </text>
+            </g>
+        </g>
+    </g>
+</svg>

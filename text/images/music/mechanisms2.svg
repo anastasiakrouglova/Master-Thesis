@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="932px" height="1060px" viewBox="0 0 932 1060" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 53.2 (72643) - https://sketchapp.com -->
+    <title>Group 80</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Group-80" transform="translate(0.000000, -5.000000)">
+            <g id="Group-79">
+                <text id="(ms)" font-family="Merriweather-Regular, Merriweather" font-size="29" font-weight="normal" letter-spacing="2.161819" fill="#4E586A">
+                    <tspan x="7.912724" y="545">(ms)</tspan>
+                </text>
+                <g id="Group-78">
+                    <path d="M432.49881,535.514279 C447.341828,535.514279 477.489096,530.665343 501.972059,458.579021 C526.455022,386.492699 563.273139,386.492699 584.338066,458.579021 C605.402992,530.665343 626.253139,535.514279 655.793114,535.514279" id="Path-150-Copy" stroke="#0000A6" stroke-dasharray="10"></path>
+                    <path d="M516.069149,334 C524.598102,333.860664 526.668256,334.315487 533.124401,261.081512 C539.580545,187.847536 545.150151,176.281893 549.393217,261.081512 C553.636282,345.88113 562.061425,334 567.122692,334" id="Path-150-Copy" stroke="#0000A6" stroke-dasharray="10"></path>
+                    <path d="M187,735.501002 C239.764454,735.500334 305.057741,711.62765 382.879859,663.882949 C499.613036,592.265897 564.003141,580.068921 687.500733,653.604393 C769.832461,702.62804 845.37636,729.92691 914.132428,735.501002" id="Path-150-Copy-2" stroke="#0000A6"></path>
+                    <path d="M187,735.501002 C239.764454,735.500334 305.057741,711.62765 382.879859,663.882949 C499.613036,592.265897 564.003141,580.068921 687.500733,653.604393 C769.832461,702.62804 845.37636,729.92691 914.132428,735.501002" id="Path-150-Copy-3" stroke="#0000A6"></path>
+                    <path d="M187,735.768907 C244.212331,735.589636 309.505618,713.152815 382.879859,668.458446 C492.941221,601.416893 561.771054,585.479616 692.917177,660.624262 C780.347926,710.720692 854.086343,735.679272 914.132428,735.5" id="Path-150-Copy-2" stroke="#0000A6" stroke-dasharray="10"></path>
+                    <path d="M190.488522,334 L914.132428,334" id="Path-151" stroke="#01019F"></path>
+                    <path d="M0,18.5 L91,18.5" id="Path-151-Copy" stroke="#01019F"></path>
+                    <path d="M0,73.5 L91,73.5" id="Path-151-Copy-2" stroke="#01019F" stroke-dasharray="10"></path>
+                    <path d="M187,535.514279 L914.132428,536 L187,535.514279 Z M187,535.514279 C239.764454,535.513611 305.057741,511.640927 382.879859,463.896226 C499.613036,392.279174 564.003141,380.082198 687.500733,453.61767 C769.832461,502.641317 845.37636,529.940187 914.132428,535.514279 L187,535.514279 Z" id="Combined-Shape" stroke="#01019F"></path>
+                    <path d="M187,735.5 L914.132428,735.5" id="Path-151" stroke="#01019F"></path>
+                    <polyline id="Path-152" stroke="#979797" points="168 163 168 917 932 917"></polyline>
+                    <text id="$f_0$" font-family="Merriweather-Regular, Merriweather" font-size="29" font-weight="normal" letter-spacing="2.1618185" fill="#4E586A">
+                        <tspan x="519.506907" y="985">$f_0$</tspan>
+                    </text>
+                    <text id="$f_0+50$" font-family="Merriweather-Regular, Merriweather" font-size="29" font-weight="normal" letter-spacing="2.1618185" fill="#4E586A">
+                        <tspan x="728.979452" y="977">$f_0+50$</tspan>
+                    </text>
+                    <text id="$f_0-50$" font-family="Merriweather-Regular, Merriweather" font-size="29" font-weight="normal" letter-spacing="2.1618185" fill="#4E586A">
+                        <tspan x="250.936452" y="983">$f_0-50$</tspan>
+                    </text>
+                    <text id="(cycles/sec)" font-family="Merriweather-Regular, Merriweather" font-size="29" font-weight="normal" letter-spacing="2.1618185" fill="#4E586A">
+                        <tspan x="432.901178" y="1057">(cycles/sec)</tspan>
+                    </text>
+                    <text id="time" font-family="Merriweather-Regular, Merriweather" font-size="29" font-weight="normal" letter-spacing="2.1618185" fill="#4E586A">
+                        <tspan x="9.26172598" y="504">time</tspan>
+                    </text>
+                    <text id="250" font-family="Merriweather-Regular, Merriweather" font-size="29" font-weight="normal" letter-spacing="2.1618185" fill="#4E586A">
+                        <tspan x="86.2995445" y="335">250</tspan>
+                    </text>
+                    <text id="50" font-family="Merriweather-Regular, Merriweather" font-size="29" font-weight="normal" letter-spacing="2.1618185" fill="#4E586A">
+                        <tspan x="105.803363" y="537">50</tspan>
+                    </text>
+                    <text id="10" font-family="Merriweather-Regular, Merriweather" font-size="29" font-weight="normal" letter-spacing="2.1618185" fill="#4E586A">
+                        <tspan x="110.269363" y="751">10</tspan>
+                    </text>
+                    <text id="3-cycles/sec" font-family="Merriweather-Regular, Merriweather" font-size="29" font-weight="normal" letter-spacing="2.1618185" fill="#4E586A">
+                        <tspan x="698" y="231">3 cycles/sec</tspan>
+                    </text>
+                    <text id="15-cycles/sec" font-family="Merriweather-Regular, Merriweather" font-size="29" font-weight="normal" letter-spacing="2.1618185" fill="#4E586A">
+                        <tspan x="698" y="433">15 cycles/sec</tspan>
+                    </text>
+                    <text id="First-mechanism-(res" font-family="Merriweather-Regular, Merriweather" font-size="29" font-weight="normal" letter-spacing="2.1618185" fill="#4E586A">
+                        <tspan x="121.7289" y="29">First mechanism (resonator)</tspan>
+                    </text>
+                    <text id="Second-mechanism" font-family="Merriweather-Regular, Merriweather" font-size="29" font-weight="normal" letter-spacing="2.1618185" fill="#4E586A">
+                        <tspan x="121.460904" y="84">Second mechanism</tspan>
+                    </text>
+                    <path d="M190.488522,334 C242.788276,333.675518 307.681586,309.640927 385.168452,261.896226 C501.398753,190.279174 565.51147,178.082198 688.477044,251.61767 C770.454094,300.641317 845.672555,327.939853 914.132428,333.513277" id="Path-150-Copy-3" stroke="#0000A6"></path>
+                    <path id="Path-150-Copy-4" d="M549.293751,301.106688 L692.267612,226.057286 L692.732388,226.942714 L549.758528,301.992116 L551.617633,305.533829 L541.557286,305.732388 L547.434646,297.564975 L549.293751,301.106688 Z" fill="#0303A0" fill-rule="nonzero"></path>
+                </g>
+            </g>
+            <path id="Path-150" d="M559.826274,487.998404 L689.29134,428.54562 L689.70866,429.45438 L560.243593,488.907164 L561.912872,492.542203 L551.856095,492.20866 L558.156996,484.363365 L559.826274,487.998404 Z" fill="#0303A0" fill-rule="nonzero"></path>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="125px" height="51px" viewBox="0 0 125 51" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 53.2 (72643) - https://sketchapp.com -->
+    <title>Group 34</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Artboard-Copy-9" transform="translate(-466.000000, -4875.000000)">
+            <g id="Group-34" transform="translate(466.358190, 4874.000000)">
+                <path d="M0,18.7424619 L123.966717,18.7424619" id="Path-62" stroke="#979797"></path>
+                <text id="type:-dataframe-(csv" font-family="Merriweather-Regular, Merriweather" font-size="6" font-weight="normal" letter-spacing="0.4472727" fill="#000000">
+                    <tspan x="14.6418096" y="35">type: dataframe (csv)</tspan>
+                </text>
+                <text id="resonances:-constitu" font-family="Merriweather-Regular, Merriweather" font-size="6" font-weight="normal" letter-spacing="0.4472727" fill="#000000">
+                    <tspan x="35.6418096" y="51">resonances: constituents</tspan>
+                </text>
+                <text id="abstract:-musical-da" font-family="Merriweather-Regular, Merriweather" font-size="6" font-weight="normal" letter-spacing="0.4472727" fill="#000000">
+                    <tspan x="14.6418096" y="6">abstract: musical data</tspan>
+                </text>
+                <polyline id="Path-63" stroke="#979797" points="20.5425 39.5972112 20.5425 49 31.7694682 49"></polyline>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="481px" height="607px" viewBox="0 0 481 607" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 53.2 (72643) - https://sketchapp.com -->
+    <title>Group 10</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Artboard" transform="translate(-774.000000, -667.000000)">
+            <g id="Group-10" transform="translate(775.000000, 668.000000)">
+                <g id="Group-8">
+                    <text id="Banach-Spaces" font-family="Merriweather-Regular, Merriweather" font-size="11" font-weight="normal" letter-spacing="0.819999993" fill="#000000">
+                        <tspan x="175.4325" y="223">Banach Spaces</tspan>
+                    </text>
+                    <text id="Normed-Spaces" font-family="Merriweather-Regular, Merriweather" font-size="11" font-weight="normal" letter-spacing="0.819999993" fill="#000000">
+                        <tspan x="175.3315" y="146">Normed Spaces</tspan>
+                    </text>
+                    <text id="Metric-Spaces" font-family="Merriweather-Regular, Merriweather" font-size="11" font-weight="normal" letter-spacing="0.819999993" fill="#000000">
+                        <tspan x="181.1215" y="57">Metric Spaces</tspan>
+                    </text>
+                    <text id="Vector-space" font-family="Merriweather-Regular, Merriweather" font-size="11" font-weight="normal" letter-spacing="0.819999993" fill="#000000">
+                        <tspan x="181.546" y="524">Vector space</tspan>
+                    </text>
+                    <text id="Inner-product" font-family="Merriweather-Regular, Merriweather" font-size="11" font-weight="normal" letter-spacing="0.819999993" fill="#000000">
+                        <tspan x="182.916" y="384">Inner-product </tspan>
+                    </text>
+                    <path d="M239.74402,386.370411 C199.837315,369.744774 147.456783,276.004608 239.74402,217.603743 C335.929439,277.29203 276.480092,371.853747 239.74402,386.370411 Z" id="Path-88" fill="#E5ECF6" transform="translate(240.116390, 301.987077) rotate(-270.000000) translate(-240.116390, -301.987077) "></path>
+                    <circle id="Oval" stroke="#0000A6" cx="240" cy="258" r="95"></circle>
+                    <circle id="Oval-Copy-7" stroke="#AB63FA" cx="240" cy="288.5" r="183.5"></circle>
+                    <circle id="Oval-Copy-7" stroke="#0000A6" cx="239.5" cy="239.5" r="239.5"></circle>
+                    <circle id="Oval-Copy-7" stroke="#0000A6" cx="240" cy="337.5" r="239.5"></circle>
+                    <circle id="Oval-Copy-6" stroke="#0000A6" cx="240" cy="345" r="95"></circle>
+                    <text id="Spaces" font-family="Merriweather-Regular, Merriweather" font-size="11" font-weight="normal" letter-spacing="0.82" fill="#000000">
+                        <tspan x="209.1425" y="407">Spaces</tspan>
+                    </text>
+                    <text id="Hilbert-Spaces" font-family="Merriweather-Regular, Merriweather" font-size="11" font-weight="normal" letter-spacing="0.82" fill="#000000">
+                        <tspan x="177.754" y="306">Hilbert Spaces</tspan>
+                    </text>
+                    <text id="Euclidean-Vector-Spa" font-family="Merriweather-Regular, Merriweather" font-size="11" font-weight="normal" letter-spacing="0.82" fill="#000000">
+                        <tspan x="298.967" y="603">Euclidean Vector Space</tspan>
+                    </text>
+                </g>
+                <circle id="Oval" stroke="#00CC96" fill="#FFFFFF" cx="240" cy="332" r="14"></circle>
+                <path d="M254,332 L387.427414,332 L387.427414,585.890571" id="Path-90" stroke="#00CC96" stroke-dasharray="8"></path>
+            </g>
+        </g>
+    </g>
+</svg>

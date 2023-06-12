@@ -1,0 +1,197 @@
+\chapter{Hilbert Spaces}
+
+\label{chap:hilbert}
+
+\begin{marginfigure}
+\vspace{7cm}
+\centering
+\includesvg[pretex=\fontsize{7pt}{9pt}, width=0.9\linewidth]{images/resonances/hilbertSP.svg}
+\vspace{0.1cm}
+\caption{Relations among different spaces in functional analysis.}
+\label{HilbertGroup} 
+\end{marginfigure}
+
+A Hilbert space $\mathcal{H}$ is a complete inner product space, and its theory can be considered as a generalization of the familiar Euclidean vector space (e.g. $\mathbb{R}^n$). It is a vector space where vectors (usually described using finite real or complex numbers), functions, and even more general objects can be represented. It allows us to define us a complete set of basis functions, which are, in case of the Fourier Transform, complex exponentials (e.g., sinusoidals). For this chapter, the crucial idea to understand is that functions can be thought of as vectors with an infinite number of dimensions with certain basis properties. 
+
+
+\begin{theorem}[Complete normed spaces (Banach Spaces)]
+\label{banachSpace}
+\vspace{0.1cm}
+A normed
+space $\mathcal{H}$ is called complete if every Cauchy sequence of vectors in $\mathcal{H}$ converges to a vector in $\mathcal{H}$. A complete normed space is called a Banach space (\cite{kennedy_hilbert_2013}).
+\end{theorem}
+
+% If every Cauchy sequence is convergent to a norm defined in the whole space, then $\mathcal{H}$ turns into a complete metric space. 
+
+% With the upcoming definitions, our aim is to offer a more profound comprehension of Hilbert Spaces by refreshing several concepts of linear algebra (definitions from ).
+As illustrated in Figure \ref{HilbertGroup}, all (finite-dimensional) Hilbert spaces are Banach spaces, which means that it is both normed and complete. However, not all Banach spaces are Hilbert spaces. In order for a Banach space to be considered a Hilbert space, the norm (or distance) must be induced by the inner product. The inner product of two signals is a scaled projection, i.e., a scalar which may contain complex values and can be defined as
+\begin{equation}
+    \langle \alpha|\beta \rangle = \alpha_1 \beta_1 + \alpha_2 \beta_2 + ... + \alpha_N \beta_N.
+\end{equation}
+
+
+This means that given an inner product $\braket{\cdot}$ in a vector space $\mathcal{H}$, the norm is defined as 
+\begin{equation}
+    ||f|| = \sqrt{\braket{f|f}}. 
+\end{equation}
+
+
+Examples of relevant Hilbert Spaces are $\mathbb{C}^n$, the $\ell^2$- and $L^2$-spaces. The $\ell^2$ is the space of absolutely square-summable \textit{sequences} and $L^2$-space of absolutely square-summable \textit{functions}. It should be noted that the bases of a normed space are not necessarily orthonormal. A normed space is a type of vector space that has a norm, which is a mathematical function that gives each vector in the space a non-negative size or magnitude, and satisfies certain properties such as non-negativity, homogeneity, and the triangle inequality.
+A second important point to be aware of, is that the concept of completeness is closely linked to the norm. In a normed space, a sequence of vectors should converge, in terms of their norm, to a vector that is within the original space, in order for the space to be considered complete. 
+
+
+
+
+\section{Completeness, Integration and Infinity in Hilbert Spaces}
+The usage of Hilbert spaces is in general interesting for dealing with infinity, the meaning of Fourier series, and the definition of an inner product in terms of integrals (\cite{kennedy_hilbert_2013}). 
+When talking about infinity and Hilbert spaces, one refers mostly to its dimensionality ${\dim_{F}(\mathcal{H})}$. The dimension of a Hilbert space is the number of vectors (i.e., cardinality) in its basis. Finite-dimensional Hilbert spaces are defined as complete. This means that they are suitable for including the natural limits of converging vector sequences. In contrast, infinite-dimensional spaces are not necessarily complete, since there might be Cauchy sequences which do not converge. An example of a complete infinite-dimensional space is $L_2$, the space of square-integrable functions, a real- or complex-valued measurable function for which the integral of the square of the absolute value (i.e., the real axis) is finite:
+\begin{equation}
+    f:\mathbb {R} \to \mathbb {C} {\text{ square integrable}}\quad \iff \quad \int _{-\infty }^{\infty }|f(x)|^{2}\,\mathrm {d} x<\infty .
+\end{equation}
+In this way, a complete space is defined to work in. 
+Thus, when defining the inner product,
+
+\begin{equation}
+\braket{f|g} =\int _{- \infty}^{+ \infty}{f(x)} \overline {g(x)}\,\mathrm {d} x
+\end{equation}
+where $f$ and $g$ are both square integrable functions and
+$\overline {g(x)}$ is the complex conjugate of $g(x)$.
+
+
+
+\section{Bases in a Hilbert Space}
+
+\begin{marginfigure}
+\centering
+\vspace{2cm}
+\includesvg[pretex=\fontsize{8pt}{10pt}, width=1\linewidth]{images/resonances/geomF.svg}
+\vspace{0.1cm}
+\caption{Geometrical interpretation of inner products projected along $\phi_n$ in 2D with orthonormal bases.}
+\label{geomF} 
+\end{marginfigure}
+
+\subsection{Hilbert Space with Orthogonal Bases}
+\subsubsection{Example: Fourier Series}
+From the perspective of linear algebra, Fourier series is a decomposition of a periodic function into an infinite sum of (simple) harmonic oscillators in terms of a complete orthonormal sequence $\{\phi_n \}^\infty_{n=1}$ in a Hilbert space $\mathcal{H}$ (\cite{russel_92_2021, kennedy_hilbert_2013}). It should be noted that the underneath definition assumes a robust orthonormal sequence; however, the essential characteristic of the orthonormal sequence is its property of orthogonality (since an orthonormal sequence is a normalized orthogonal sequence).
+
+
+
+\begin{theorem}[Fourier Series]
+\label{fourierSeriesHilbert}
+    In a separable Hilbert space, the expansion
+    \begin{equation}
+    f = \sum_{n=1}^{\infty} \braket{f | \phi_n} \phi_n.
+\end{equation}
+of any $f \in \mathcal{H}$ in terms of a complete orthonormal sequence $\{\phi_n\}_{n=1}^\infty$ is called a Fourier series expansion, and the coefficients 
+\begin{equation}
+    \braket{f | \phi_n} \in \mathbb{C} 
+\end{equation}
+are called the Fourier series coefficients.
+\end{theorem}
+
+
+Note that we consider here a separable Hilbert space, which means that it only admits a countable orthonormal basis and thus there is a countable dense family of functions.
+
+Furthermore, $f$ can be expressed as a (complex) linear combination of the $e_n$'s, thus the family ${e_n}$ spans implicitly $L^2$ in this definition. Geometrically, it simply represents the projection of $f$ along $\phi_n$, as illustrated in Figure \ref{geomF}.
+
+\subsubsection{Example: Discrete Fourier Transform}
+
+\begin{marginfigure}
+\centering
+\includesvg[pretex=\fontsize{8pt}{10pt}, width=0.9\linewidth]{images/resonances/circleDiscrete.svg}
+\caption{A pole-zero diagram representing uniformly-spaced points due to a decomposition into orthogonal bases.}
+\label{circleDiscr} \vspace{3cm}
+\end{marginfigure}
+
+
+
+The Discrete Fourier Transform, introduced in Chapter~\ref{chap:fourier}, 
+is defined by the discrete orthogonality property of its basis vectors:
+
+\begin{equation}
+\sum_{n=0}^{N-1} e^{i\left(\frac{2 \pi}{N}\right) n k} e^{-i\left(\frac{2 \pi}{N}\right) n l}=\left\{\begin{array}{c}
+N, k \neq l \\
+0, k=l
+\end{array}\right.
+\end{equation}
+
+To simplify the expression, we can introduce the variable $\alpha = e^{i\left(\frac{2 \pi}{N}\right) n}$, leading to the following formulation:
+
+\begin{equation}
+\sum_{n=0}^{N-1} \alpha^{(k-l)} =\left\{\begin{array}{c}
+N, k \neq l \\
+0, k=l
+\end{array}\right.
+\end{equation}
+
+Thus, the product of the two exponentials is 0 or N, which corresponds to the same point in the complex plane and so the summation over a period becomes 0.
+
+
+\subsubsection{Example: Daubechies Wavelets}
+\begin{marginfigure}
+\vspace{3cm}
+\centering
+\includesvg[pretex=\fontsize{6pt}{8pt},width=0.9\linewidth]{images/resonances/daubechies.svg}
+\caption{An example of a Daubechies 4 tap wavelet (\cite{lutzl_d4_2009}).}
+\label{daubechieswavelet} \vspace{1cm}
+\end{marginfigure}
+
+The wavelet revolution in 1986 was started with the creation of the first set of wavelets that were at least as powerful as Fourier components. The technique was published by Pierre \textcite{lemarie_ondelettes_1986} in \textit{Ondelettes et bases Hilbertiennes}, which literally means "small waves in Hilbert Spaces".  Wavelets are a family of differently shaped short-lived oscillations localized in time that can be used to analyze a signal and simultaneously give a solution in time and frequency. They have different characteristics serving for different purposes, such as symmetry, regularity, vanishing moments and orthogonality (\cite{kainulainen_image_2022}). The wavelet transform can be, similarly to the Fourier Transform, categorized as a continuous wavelet transform (CWT) or discrete wavelet transform (DWT). Within the DWT, a distinction is made between the redundant discrete systems and orthonormal (and others) bases of wavelets  (\cite{daubechies_ten_1992}). 
+
+\begin{marginfigure}
+\centering
+\includesvg[pretex=\fontsize{8pt}{10pt}, width=0.9\linewidth]{images/fftvsfpt/basisFunctions.svg}
+\vspace{0.3cm}
+\caption{A linear combination of the complex exponentials $e_1, e_2, e_3$ (visualized in $\Re$) approximating function $f$.}
+\label{basisFunctions} 
+\vspace{2cm}
+\end{marginfigure}
+
+\begin{marginfigure}
+\centering
+\includesvg[pretex=\fontsize{8pt}{10pt}, width=0.9\linewidth]{images/fftvsfpt/sampledSignal.svg}
+\vspace{0.3cm}
+\caption{A sampled signal $f$ over a period of $L$ in the time domain.}
+\label{sampledSignal} 
+\end{marginfigure}
+
+Ingrid Daubechies, a famous Belgian physicist and mathematician who obtained a doctoral degree at the VUB in 1980, came up with a family of \textbf{orthogonal} wavelets called the \textit{Daubechies wavelets} and characterized by a maximal number of vanishing moments within a specific range. A vanishing moment constrains a wavelet by a polynomial, i.e., a signal with $n$ vanishing moment encodes a polynomial of $n$ coefficients. In practice, improvements in speed for the DWT are also provided with the Fast Wavelet transform. Wavelets can be applied in music for the determination of notes with time and frequency information, by convolving a wavelet with a signal.
+
+
+
+\section{Real-valued signals in a Hilbert space }
+As previously discussed, a real-valued signal can be expressed as a linear combination of various basis functions, including complex exponentials (Figure \ref{basisFunctions}). Notice that digital computers work with sampled functions (Figure \ref{sampledSignal}). They are computable finite-dimensional vectors and representable in an n-dimensional Hilbert space (i.e., an inner-product space). We interpret the components of the basis functions $e_k$ and function $f$ as function values:
+
+
+
+\begin{equation}
+     \Tilde{f} = \braket{e_k | f} =
+     \begin{bmatrix}
+         e_k(x_0) \\ 
+         e_k(x_1) \\
+         . \\
+         . \\ 
+         . \\
+         e_k(x_L)
+     \end{bmatrix}
+     \times
+     \begin{bmatrix}
+         f(x_0) \\ 
+         f(x_1) \\
+         . \\
+         . \\ 
+         . \\
+         f(x_L)
+     \end{bmatrix}
+\end{equation}
+
+Notice, signal $\Tilde{f}$ is a complex-valued function. Since there are theoretically an infinite amount of function values, we write the summation as an integral. To satisfy the mathematical properties of an inner product: $\Tilde{f}: \mathbb{R} \rightarrow \mathbb{C}$, the first argument in the integral should be the complex conjugate.
+
+\begin{equation}
+\Tilde{f} = \int^{x_0+L}_{x_0} \overline{e_k(x)} f(x) dx.
+\end{equation}
+
+\section{Summary}
+We raised our level of sophistication of the analysis of the Fourier transform through the introduction of Hilbert Spaces. We discussed its properties and relation towards Fourier analysis and emphasized the orthogonal basis that are often used in Hilbert Spaces. However, in Chapter \ref{chap:resonances}, the basis will no longer be required to be orthogonal.
+
+

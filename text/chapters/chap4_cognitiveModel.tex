@@ -1,0 +1,74 @@
+\chapter{The Mechanisms of Hearing}
+\label{chap:cognitiveModel}
+
+Hearing is both a sensory and perceptual process and involves more than just the transmission of mechanical waves to the auditory cortex. This section will discuss how the Cochlea can be seen as an extremely precise Fourier Analyzer and present the progression of scientific investigations aimed at unraveling the Cochlear mechanics. This will lead to the conceptualization of an idealized model for the receptive fields called resonances, which aim is to simulate (a part of) the inner ear mechanisms. 
+
+
+\section{Cochlea as a Fourier Analyzer}
+\begin{marginfigure}
+\centering
+\includesvg[pretex=\fontsize{7pt}{9pt}, width=0.9\linewidth]{images/music/cochlea.svg}
+\vspace{0.5cm}
+\caption{Approximated frequency ranges in the cochlea.}
+\label{cochlea}  
+\vspace{3cm}
+\end{marginfigure}
+
+\begin{marginfigure}
+\centering
+\includesvg[pretex=\fontsize{8pt}{10pt}, width=0.8\linewidth]{images/music/unrolledCochlea.svg}
+\vspace{0.5cm}
+\caption{A simplified representation of an unrolled cochlea containing the basilar membrane. At the base of the cochlea, the cochlear system decodes high frequency signals and low frequency signals at the apex (\cite{kim_mass_2015}).
+}
+\label{cochleaUnrolled}  
+\end{marginfigure}
+
+Sound waves travel through the outer ear canal and initialize vibration in the tympanic
+membrane by hitting it. This vibration is transmitted to the oval window, creating waves that travel through the fluid of the cochlea, a snail-shaped coiled tube in the human hearing system, which functions as a Fourier analyzer. Inside the cochlea, different spots of the basilar membrane respond to different frequencies of the waves, called tonotopy. This vibration stimulates thousands of about 12 000 tiny cilia (hair cells) inside the organ of Corti, laying ontop of the basilar membrane. It contains outer hair cells (OHC) that convert the auditory signal into electrical signals and inner hair cells that transmit these pulses to the auditory nerves, connected to the auditory cortex in the brain (\cite{elliott_cochlea_2012, vavakou_frequency_2019}). Figure \ref{cochlea} illustrates the organization of different frequencies on the basilar membrane. The cochlear base, located at the beginning of the tube, is more sensitive to high-frequency waves, while the cochlear apex at the end of the tube is most sensitive to low-frequency waves. The detectable range of sound for the human ear typically falls between 20 Hz and 20,000 Hz.
+
+
+\section{Modelling the Mechanisms of Hearing}
+In the past 200 years, several attempts have been made to understand cochlear mechanics, starting from Helmholtz's resonance theory, which later evolved into traveling wave theory due to the work of Békésy (\cite{manley_experiments_2012}).
+Early experiments conducted by \textcite{wegel_auditory_1924} strongly indicated that the resonators in the ear are heavily damped. Later, \textcite{gabor_acoustical_1947} discussed that the duration of a sound has an influence on the resonance pattern of the inner ear due to the two mechanisms at work: the first mechanism involves the usual resonance pattern of the inner ear, while the second mechanism involves the search for maximum excitation or amplitude, which allows for accurate sound perception when the duration of a pure tone is sufficiently long (as illustrated in Figure \ref{2mechanisms}). He explains it as the effect of gradually decrease of stimulation fibers in the auditory system. Additionally, Gabor noted that sound is perceived as "musical" only when the second mechanism comes into play, making it particularly interesting for musical data. For speech perception, on the contrary, it is enough to rely on only the first mechanism. 
+\begin{marginfigure}
+\centering
+\includesvg[pretex=\fontsize{8pt}{10pt}, width=1\linewidth]{images/music/mechanisms2.svg}
+\vspace{0.1cm}
+\caption{The two mechanisms of hearing, wherein the second mechanism tends to approximate the maximum amplitude when the duration of a pure tone increments. The illustration is a reproduction from (\cite{gabor_acoustical_1947}).}
+\label{2mechanisms}  
+\end{marginfigure}
+
+In more recent work, \textcite{vavakou_frequency_2019} observed that the OHC are operating like envelope detectors, which means that they can detect variations in volume and modify them, by altering their length in response to electrical stimulation before the transmission to the inner hair cell. This property is called OHC electromotility (\cite{brownell_what_2017}). An interesting detail to mention, is that both \textcite{brownell_what_2017} and \textcite{bacon_growth_1999} noticed that the cochlea exhibits less linearity at the base, where the membrane is generally stimulated by high frequencies, compared to the apex, suggesting non-linearity in the excitation of inner hair cells. 
+
+
+
+% ... has written a concise and accessible ...
+% .... weaves together some seemingly diverse mathematical topics to ...
+
+
+% A complex oscillator, the so-named resonance \textcolor{red}{a resonance contains energy, but an oscillator does not, since it models neural impulses/resonances, we shouldn't call it an oscillator, or it doesn't matter?}, is in its discrete form a proxy of the information that is received by the auditory cortex from the cochlea.
+
+
+% Since similar oscillations have been noticed by \cite{lindeberg_idealized_2015} Lerud (2019), Weiss(1996) in 
+
+% we assume that a similar process is happening in the cochlea. 
+
+
+
+% This nonlinear signal analysis was already proposed by several authors (\cite{selesnick_resonance-based_2011} \textcolor{red}{Add Steves paper when published}),
+% aimed at enhancing the representation, analysis, and processing of intricate non-stationary signals. Unlike traditional methods such as Fourier and wavelet transforms, which rely on frequency or scale, this new approach is based on resonances. The primary objective of this method is to provide a more effective means of dealing with complex non-stationary signals. 
+
+\subsection{The Fourier Uncertainty Principle and Hearing}
+\label{sec:beatingFourier}
+
+It has been proven that linear operators (e.g. windowing, filtering, scaling, ...) cannot exceed the uncertainty bound, and only the trade-off between time and frequency resolution can be improved (\cite{theodor_time-frequency_1997}). The discussed Fourier Uncertainty theorem states that 
+\begin{equation}
+    \Delta t \Delta f \geq \frac{1}{4 \pi},
+\end{equation}
+
+which implies that it is impossible to localize both a nonzero function and its Fourier transform with great precision in time-frequency analysis, which challenges the STFT to perform with great precision. By precision, we are referring to the capability to accurately track parameters of individual entities (\cite{dubey_fourier_2021, oppenheim_human_2013}).
+
+However, \textcite{oppenheim_human_2013} showed that human hearing can discriminate much better than the uncertainty bound, which highlights the relevance of approaching the problem from a perspective that models the hypothetical mechanisms of hearing. 
+
+\section{Summary}
+We summarized findings about the fundamental processes of auditory perception and illustrated that through the last decades, new details about the inner working of the cochlea have been mentioned in research, agreeing on several behaviors, including the damped or driven behavior of the signal. We grounded our assumptions about the mechanisms of hearing to model the input information for the perception of sound with discrete resonances, which we will discuss in the next chapter.

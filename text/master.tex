@@ -1,0 +1,128 @@
+
+\documentclass[working, openany]{tuftebook}
+
+\usepackage{afterpage}
+
+\input{layout.tex}
+\input{thesis/images/tikz/transformFourier.tex}
+\input{thesis/images/tikz/3DSimpleOscillator.tex}
+\input{thesis/images/tikz/3DResonance.tex}
+
+\newcommand\circled[1]{
+    \begin{tikzpicture}[baseline=(char.base)]%
+        \node[circle,draw,inner sep=1pt] (char) {\textsf{#1}};%
+\end{tikzpicture}}
+
+% minicircle for in figures
+% \newcommand\mc[1]{\footnotesize\circled{#1}}
+
+\usepackage{cmbright}
+\usepackage{bm}
+\usepackage{braket}
+\usepackage{epigraph}
+\usepackage{xpatch}
+
+\titleformat{\part}[display]
+  {\filleft\fontsize{40}{40}\selectfont\scshape}
+  {\fontsize{90}{90}\selectfont\thepart}
+  {20pt}
+  {\thispagestyle{epigraph}}
+
+\setlength\epigraphwidth{1\textwidth}
+
+\makeatletter
+\let\old@endpart\@endpart
+\renewcommand\@endpart[1][]{%
+\begin{quote}#1\end{quote}%
+\old@endpart}
+\makeatother
+
+\setlength\bibitemsep{0.5\baselineskip}
+\DeclareUnicodeCharacter{2212}{\ensuremath{-}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%     TITLE PAGES     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% NOTE: the VUB template clashes with the used styling.
+
+% \title{Music Analysis using Spectral Knowledge Representation and Reasoning}
+% \subtitle{Density-based Clustering and Representation of Perceived Structure in Audio Signals}
+% \author{Anastasia Nastya Krouglova}
+% \faculty{Science and Bio-Engineering Sciences}
+% \promotors{Promotor(s):~Prof. Dr. Dr. Geraint Wiggins}
+% \advisors{Advisor(s):~Dr. Nicholas Harley, Steven T. Homer}
+% \pretitle{Master thesis submitted in partial fulfillment of the requirements for the degree of Master of Science in Applied Sciences and Engineering: Computer Science}
+% \date{2022-2023}
+
+
+\begin{document}
+    % \maketitle
+    \renewcommand{\thepage}{\roman{page}}
+    
+    % \title{Muziekanalyse door spectrale kennisrepresentatie en redenering}
+    % \subtitle{Dichtheidsgebaseerde clustering en representatie van verkregen structuren in audio signalen}
+    % \author{Anastasia Nastya Krouglova}
+    % \faculty{Wetenschappen en Bio-ingenieurswetenschappen}
+    % \pretitle{Proefschrift ingediend met het oog op het behalen van de graad van Master of Science in Applied Sciences and Engineering: Computer Science}
+    % \date{2022-2023}
+    
+    % \maketitle
+    % \titleformat{\chapter}[display]
+    %    {\normalfont\bfseries}{}{0pt}{\Huge}
+    
+    \thispagestyle{empty}
+    \pagestyle{plain}
+    \setcounter{page}{1}
+    % \cleardoublepage
+    \input{abstract.tex}
+    \input{acknowledgment.tex}
+    \tableofcontents
+    \renewcommand{\thepage}{\arabic{page}}
+    \setcounter{page}{1}
+    \pagestyle{normal}
+    
+
+    \input{introduction.tex}
+    
+    %%%%%%%%%%%%% PART 1 %%%%%%%%%%%%%%%%
+    
+    \begin{adjustwidth}{2cm}{-6cm}
+    \epigraphhead[550]{In order to understand our cognitive approach to musical audio analysis, we first need to discuss the main parts of the Fourier Analysis and its classic definition in a Hilbert space with orthogonal bases. However, in the next part, this concept of orthogonality of bases for a decomposition into resonances will not hold anymore. Finally, a concise
+    yet essential introduction to psychoacoustics will be given, which plays an important role in the understanding of the cognitive clusters, formed from resonance information.}\thispagestyle{empty}
+    \part{Background on Musical Audio Analysis}
+    \end{adjustwidth}
+
+    \input{chapters/chap1_fourier.tex}
+    \input{chapters/chap2_hilbert.tex}
+    \input{chapters/chap3_psychacoustic.tex}
+
+     %%%%%%%%%%%%% PART 2 %%%%%%%%%%%%%%%%%
+
+    \begin{adjustwidth}{2cm}{-6cm}
+    \epigraphhead[550]{The aim of this part is to present the theoretical foundation for our developed models of perception, cognition, and knowledge representation. The first two chapters are reserved for modelling and explaining the perceptual components of our intelligence. Starting with cochlear mechanics and followed by discrete resonances, which is a simplified model simulating the resonance of the basilar membrane. Additionally, we will examine a density-based clustering algorithm inspired by visual cognition, which holds potential for auditory analysis. Lastly, we will explore the theoretical underpinnings of our knowledge representation, constructed from clustered information.}\thispagestyle{empty}
+    \part{A Cognitive Approach to Musical Audio Analysis}
+    \end{adjustwidth}
+
+    \input{chapters/chap4_cognitiveModel.tex}
+    \input{chapters/chap5_resonances.tex} 
+    \input{chapters/chap6_cluster.tex}
+    \input{chapters/chap7_knowledge.tex}
+
+    %%%%%%%%%%%%% PART 3 %%%%%%%%%%%%%%%%%
+    
+    \begin{adjustwidth}{2cm}{-6cm}
+    \epigraphhead[550]{In this last part, we will demonstrate our own contribution, holding the connection between the \textit{already} developed model of perception with our own model of cognition and knowledge representation. We will start with the section that introduces our knowledge representation, since it gives an overall view of obtained clusters of constituents. The hierarchies can generally be categorized in four musical levels: frame-level, note-level, stream-level and notation-level (\cite{benetos_automatic_2019}). We demonstrate the possibilities of the developed software for a note-level description of music and touch the frame-level description with a first proposition. }\thispagestyle{empty}
+    \part{Software Architecture}
+    \end{adjustwidth}
+
+    \input{chapters/chap8_architecture.tex}
+    \input{chapters/chap9_applications.tex}
+    
+    \input{conclusion.tex}
+    \input{furtherWork.tex}
+
+    % appendix
+    \input{symbols.tex}
+
+   
+    \printbibliography
+\end{document}

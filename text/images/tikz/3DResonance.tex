@@ -1,0 +1,153 @@
+
+\usepackage{graphicx} % Required for inserting images
+\usepackage{tikz}
+\usepackage{physics}
+\usepackage[outline]{contour} % glow around text
+\usepackage{xcolor}
+
+
+%\usetikzlibrary{intersections}
+%\usetikzlibrary{decorations.markings}
+\usetikzlibrary{angles,quotes} % for pic
+\usetikzlibrary{bending} % for arrow head angle
+\contourlength{1.0pt}
+\usetikzlibrary{3d}
+
+\tikzset{>=latex} % for LaTeX arrow head
+
+% \colorlet{myblue}{blue!65!black}
+% \colorlet{mydarkblue}{blue!50!black}
+% \colorlet{myred}{red!65!black}
+% \colorlet{mydarkred}{red!40!black}
+% \colorlet{veccol}{green!70!black}
+% \colorlet{vcol}{green!70!black}
+% \colorlet{xcol}{blue!85!black}
+%\colorlet{projcol}{xcol!60}
+%\colorlet{unitcol}{xcol!60!black!85}
+%\colorlet{myred}{red!90!black}
+%\colorlet{mypurple}{blue!50!red!80!black!80}
+\tikzstyle{vector}=[->,very thick,xcol,line cap=round]
+\tikzstyle{xline}=[myblue,very thick]
+\tikzstyle{yzp}=[canvas is zy plane at x=0]
+\tikzstyle{xzp}=[canvas is xz plane at y=0]
+\tikzstyle{xyp}=[canvas is xy plane at z=0]
+\def\tick#1#2{\draw[thick] (#1) ++ (#2:0.12) --++ (#2-180:0.24)}
+\def\N{100}
+
+
+
+% COMPLEX OSCILLATOR 3D
+\def\xang{-13}
+\def\zang{45}
+
+\newcommand{\resonance}[1]{
+\begin{tikzpicture}[x=(\xang:0.9), y=(90:0.9), z=(\zang:1.1)]
+  \message{^^JSynthesis 3D}
+  \def\xmax{8.8}         % max x axis
+  \def\ymin{-1.5}        % min y axis
+  \def\ymax{1.6}         % max y axis
+  \def\zmax{1.6}         % max z axis
+  \def\xf{1.17*\xmax}    % x position frequency axis
+  \def\A{(0.70*\ymax)}   % amplitude
+  \def\T{(0.335*\xmax)}  % period
+  \def\w{\zmax/11.2}     % spacing components
+  \def\ang{47}           % angle
+  \def\s{\ang/360*\T}    % time component
+  \def\x{\A*2.71^(-0.3*\s)*cos(\ang)}   % real component
+  \def\y{\A*2.71^(-0.3*\s)*sin(\ang)}   % imaginary component
+  
+  % COMPLEX PLANE
+  \begin{scope}[shift={(-1.6*\zmax,0,0)}]
+    \draw[bluesquare,fill=bluesquare,opacity=0.3,yzp]
+      (-1.25*\zmax,-1.25*\ymax) rectangle (1.4*\zmax,1.25*\ymax);
+    \draw[->,thick] (0,\ymin,0) -- (0,\ymax+0.02,0)
+      node[pos=1,left=0,yzp] {Im};
+    \draw[->,thick] (0,0,-\zmax) -- (0,0,\zmax+0.02)
+      node[right=1,below=0,yzp] {Re} coordinate (X);
+    %\node[scale=1,yzp] at (0,-\ymax,0) {Complex plane};
+    \draw[xline,yzp] (0,0) circle(0.01) coordinate (O); % circle(0.991*\A)
+    \fill[myred,yzp] (\ang:{\A}) circle(0.07) coordinate(P);
+    \node[mydarkblue,above=3,right=-5,yzp,scale=0.8] at (P) {$z(t)=Ae^{i\omega_k t}$};
+    \draw[vector,thick,yzp] (0,0) -- (\ang:{\A-0.03}) coordinate (R);
+    \draw pic[-{>[flex'=1]},draw=mydarkblue,angle radius=14,angle eccentricity=1,
+              "$\omega t$"{above=0,right=-0.5,yslant=0.69,scale=0.8},mydarkblue,yzp]
+      {angle = X--O--R};
+    \tick{0,0,{\A}}{90};
+    \tick{0,0,{-\A}}{90};
+    \tick{0,{\A},0}{\zang};
+    \tick{0,{-\A},0}{\zang};
+  \end{scope}
+  
+  % IMAGINARY
+  \begin{scope}[shift={(0,0,1.9*\zmax)}]
+    \draw[bluesquare,fill=bluesquare,opacity=0.3,xyp]
+      (-0.5*\ymax,-1.2*\ymax) rectangle (1.10*\xmax,1.25*\ymax);
+    \draw[->,thick] (-0.3*\ymax,0,0) -- (\xmax,0,0)
+      node[below right=-2,xyp] {$t$ [s]};
+    \draw[->,thick] (0,\ymin,0) -- (0,\ymax,0)
+      node[left,xyp] {Im};
+    \draw[xline,samples=\N,smooth,variable=\t,domain=-0.05*\T:0.95*\xmax]
+      plot(\t,{\A*2.71^(-0.3*\t)*sin(360/\T*\t)},0);
+    %\node[below=0,xyp] at (0.4*\xmax,-\ymax,0) {Imaginary component};
+    \fill[myred,xyp] ({\s},{\y}) circle(0.07) coordinate(I);
+    \draw[vector,thick,xyp] ({\s},0) --++ (0,{\y-0.03});
+    \tick{0,{\A},0}{180};
+    \tick{0,{-\A},0}{180};
+    \tick{{\s},0,0}{90} node[right=0,below=-1,xyp] {$\omega t$};
+    \tick{{\T},0,0}{90} node[right=0,below,xyp] {\contour{bluecontour}{$T$}};
+    \tick{{2*\T},0,0}{90} node[right=0,below,xyp] {\contour{bluecontour}{$2T$}};
+    \node[mydarkblue,below=0,xyp] at (0.4*\xmax,1.15*\ymax,0) {$y(t)=Ae^{-\lambda t}\sin(\omega t)$};
+  \end{scope}
+  
+  % REAL
+  \begin{scope}[shift={(0,-1.8*\zmax,0)}]
+    \draw[bluesquare,fill=bluesquare,opacity=0.3,xzp]
+      (-0.5*\ymax,-1.4*\ymax) rectangle (1.10*\xmax,1.25*\ymax);
+    \draw[->,thick] (-0.3*\ymax,0,0) -- (\xmax,0,0)
+      node[below right=-1,xzp] {$t$ [s]};
+    \draw[->,thick] (0,0,-\zmax) -- (0,0,\zmax)
+      node[left=-1,xzp] {Re};
+    \draw[xline,samples=\N,smooth,variable=\t,domain=-0.05*\T:0.95*\xmax]
+      plot(\t,0,{\A*2.71^(-0.3*\t)*cos(360/\T*\t)});
+    \node[below=0,xzp] at (0.4*\xmax,-\ymax,0) {};
+    \fill[myred,xzp] ({\s},{\x}) circle(0.07) coordinate(R);
+    \draw[vector,thick,xzp] ({\s},0) --++ (0,{\x-0.03});
+    \tick{0,0,{\A}}{180};
+    \tick{0,0,{-\A}}{180};
+    \tick{{\s},0,0}{\zang} node[below=-1,xzp] {$\omega t$};
+    \tick{{\T},0,0}{\zang} node[below,xzp] {$T$};
+    \tick{{2*\T},0,0}{\zang} node[below,xzp] {$2T$};
+    \node[mydarkblue,above=0,xzp] at (0.3*\xmax,-\ymax,0) {$x(t)=Ae^{-\lambda t} \cos(\omega t)$};
+  \end{scope}
+  
+  % COMPONENTS
+  \draw[myred!80!black,dashed]
+    (P) -- ({\s},{\y},{\x})
+    (I) -- ({\s},{\y},{\x+0.05})
+    ({\s},{\y-0.06},{\x}) -- (R);
+  \draw[->,black,thick] (-0.1*\ymax,0,0) -- (\xmax,0,0) node[below right=-2] {$t$ [s]};
+  \draw[->,black,thick] (0,\ymin,0,0) -- (0,\ymax+0.02,0) node[above] {Im};
+  \draw[->,black,thick] (0,0,-\zmax) -- (0,0,\zmax+0.02) node[right=1,below=3] {Re};
+  \foreach \i [evaluate={\tmin=max(-0.05*\T,(\i-0.05)*\T); \tmax=min(0.95*\xmax,(\i+1)*\T);}] in {0,...,2}{
+    %\draw[white,line width=1.2] (\tmin,0,0) -- (\tmax,0,0);
+    \draw[thick] (\tmin,0,0) -- (\tmax,0,0);
+    \draw[xline,samples=0.4*\N,smooth,variable=\t]
+      plot[domain=\tmin:\tmax](\t,{\A*2.71^(-0.3*\t)*sin(360/\T*\t)},{\A*2.71^(-0.3*\t)*cos(360/\T*\t)});
+  }
+  \draw[thick] (0,0,{0.9*\A}) -- (0,0,{\A});
+  \fill[myred] ({\s},{\y},{\x}) circle(0.07) coordinate(Z);
+  \draw[vector,thick] ({\s},0,0) --++ (0,{\y-0.03},{\x-0.03});
+  \draw[xline,samples=0.3*\N,smooth,variable=\t,domain=\s+0.03:\s+0.4*\T,line cap=round]
+    plot(\t,{\A*2.71^(-0.3*\t)*sin(360/\T*\t)},{\A*2.71^(-0.3*\t)*cos(360/\T*\t)});
+  \tick{{\T},0,0}{90};
+  \tick{{2*\T},0,0}{90};
+  \tick{0,0,{\A}}{90};
+  \tick{0,0,{-\A}}{90};
+  \tick{0,{\A},0}{\zang};
+  \tick{0,{-\A},0}{\zang};
+  \draw[myred!80!black,dashed]
+    ({\s},{\y-0.06},{\x}) --++ (0,-0.2*\ymax,0);
+  
+\end{tikzpicture}
+
+}

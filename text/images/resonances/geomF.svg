@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="196px" height="114px" viewBox="0 0 196 114" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 53.2 (72643) - https://sketchapp.com -->
+    <title>Group 15</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Artboard" transform="translate(-853.000000, -483.000000)">
+            <g id="Group-15" transform="translate(853.000000, 483.000000)">
+                <g id="Group-14">
+                    <polyline id="Path-91" stroke="#E2E2E2" points="177.192759 93.4237625 41.5 93.4237625 41.5 0"></polyline>
+                    <text id="$\phi_1$" font-family="Merriweather-Regular, Merriweather" font-size="9" font-weight="normal" letter-spacing="0.6709091" fill="#000000">
+                        <tspan x="23.4183636" y="62">$\phi_1$</tspan>
+                    </text>
+                    <text id="$\phi_2$" font-family="Merriweather-Regular, Merriweather" font-size="9" font-weight="normal" letter-spacing="0.6709091" fill="#000000">
+                        <tspan x="62.2073636" y="107">$\phi_2$</tspan>
+                    </text>
+                    <text id="..$\phi_n$" font-family="Merriweather-Regular, Merriweather" font-size="9" font-weight="normal" letter-spacing="0.6709091" fill="#000000">
+                        <tspan x="3.3544545" y="104">..$\phi_n$</tspan>
+                    </text>
+                    <text id="$f$" font-family="Merriweather-Regular, Merriweather" font-size="9" font-weight="normal" letter-spacing="0.6709091" fill="#000000">
+                        <tspan x="158.262636" y="14">$f$</tspan>
+                    </text>
+                    <text id="$\braket{f}{\phi_2}\" font-family="Merriweather-Regular, Merriweather" font-size="4" font-weight="normal" letter-spacing="0.298181832" fill="#000000">
+                        <tspan x="131.471636" y="107">$\braket{f}{\phi_2}\phi_2$</tspan>
+                    </text>
+                    <path d="M41.5,93.4237625 L158.735081,16.5278499" id="Path-103" stroke="#0000A6"></path>
+                    <path d="M41.5,16.3001493 L41.5,93.4237625" id="Path-104" stroke="#D9B6FF"></path>
+                    <path d="M158.614277,93.4237625 L41.5,93.4237625" id="Path-104" stroke="#D9B6FF"></path>
+                    <polyline id="Path-100" stroke="#AB63FA" points="41.5 63.9878399 41.5 93.4237625 70.8930589 93.4237625"></polyline>
+                    <polyline id="Path-105" stroke="#E2E2E2" points="41.5 16.3001493 158.614277 16.3001493 158.614277 93.4237625"></polyline>
+                    <polyline id="Path-99" stroke="#AB63FA" stroke-linecap="round" transform="translate(41.478995, 65.451094) rotate(-225.000000) translate(-41.478995, -65.451094) " points="40.2744259 64.2054005 40.2744259 66.6457627 42.6835634 66.6967881"></polyline>
+                    <polyline id="Path-99" stroke="#D9B6FF" stroke-linecap="round" transform="translate(41.732597, 17.732597) rotate(-225.000000) translate(-41.732597, -17.732597) " points="40.5280285 16.4869035 40.5280285 18.9272657 42.937166 18.978291"></polyline>
+                    <polyline id="Path-99" stroke="#AB63FA" stroke-linecap="round" transform="translate(69.701425, 93.503093) rotate(-135.000000) translate(-69.701425, -93.503093) " points="68.4968564 92.2573996 68.4968564 94.6977619 70.9059939 94.7487872"></polyline>
+                    <polyline id="Path-99" stroke="#AB63FA" stroke-linecap="round" transform="translate(156.732597, 93.732597) rotate(-135.000000) translate(-156.732597, -93.732597) " points="155.528029 92.4869035 155.528029 94.9272657 157.937166 94.978291"></polyline>
+                    <polyline id="Path-99" stroke="#0000A6" stroke-linecap="round" transform="translate(157.378462, 17.541698) rotate(-180.000000) translate(-157.378462, -17.541698) " points="156.173893 16.2960044 156.173893 18.7363666 158.583031 18.787392"></polyline>
+                    <text id="$\braket{f}{\phi_1}\" font-family="Merriweather-Regular, Merriweather" font-size="5" font-weight="normal" letter-spacing="0.372727275" fill="#000000">
+                        <tspan x="0.129545426" y="18">$\braket{f}{\phi_1}\phi_1$</tspan>
+                    </text>
+                </g>
+                <path d="M41.4789946,93.5030934 L21.5605149,113.421573" id="Path-106" stroke="#AB63FA" stroke-dasharray="2"></path>
+            </g>
+        </g>
+    </g>
+</svg>

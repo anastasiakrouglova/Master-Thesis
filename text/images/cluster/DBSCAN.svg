@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="286px" height="224px" viewBox="0 0 286 224" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 53.2 (72643) - https://sketchapp.com -->
+    <title>Group 58</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Artboard-Copy-9" transform="translate(-59.000000, -7493.000000)">
+            <g id="Group-58" transform="translate(60.000000, 7492.000000)">
+                <g id="Group-57">
+                    <g id="Group-56" transform="translate(0.000000, 18.000000)">
+                        <circle id="Oval" stroke="#EF553B" stroke-width="2" cx="74.5" cy="51.5" r="51.5"></circle>
+                        <circle id="Oval-Copy-148" stroke="#000000" stroke-width="2" cx="232.5" cy="118.5" r="51.5"></circle>
+                        <circle id="Oval-Copy-149" stroke="#000000" stroke-width="2" cx="51.5" cy="144.5" r="51.5"></circle>
+                        <circle id="Oval" fill="#EF553B" cx="75" cy="51" r="6"></circle>
+                        <circle id="Oval-Copy-150" fill="#000000" cx="51" cy="145" r="6"></circle>
+                        <circle id="Oval-Copy-151" fill="#000000" cx="232" cy="119" r="6"></circle>
+                        <g id="Group-55" transform="translate(31.000000, 57.000000)" fill="#F0F7FF" stroke="#0000A6" stroke-width="2">
+                            <circle id="Oval-Copy-142" stroke-opacity="0.3" fill-opacity="0.3" cx="160.5" cy="63.5" r="50.5"></circle>
+                            <circle id="Oval-Copy-143" stroke-opacity="0.3" fill-opacity="0.3" cx="124.5" cy="81.5" r="50.5"></circle>
+                            <circle id="Oval-Copy-144" stroke-opacity="0.3" fill-opacity="0.3" cx="120.5" cy="50.5" r="50.5"></circle>
+                            <circle id="Oval-Copy-145" stroke-opacity="0.3" fill-opacity="0.3" cx="81.5" cy="61.5" r="50.5"></circle>
+                            <circle id="Oval-Copy-146" stroke-opacity="0.15" fill-opacity="0.2" cx="85.5" cy="98.5" r="50.5"></circle>
+                            <circle id="Oval-Copy-147" stroke-opacity="0.15" fill-opacity="0.2" cx="50.5" cy="73.5" r="50.5"></circle>
+                        </g>
+                    </g>
+                    <text id="$B$" font-family="Merriweather-Regular, Merriweather" font-size="9" font-weight="normal" letter-spacing="0.670909" fill="#4E586A">
+                        <tspan x="242.960273" y="140">$B$</tspan>
+                    </text>
+                    <text id="$N$" font-family="Merriweather-Regular, Merriweather" font-size="9" font-weight="normal" letter-spacing="0.670909047" fill="#4E586A">
+                        <tspan x="65.9342729" y="56">$N$</tspan>
+                    </text>
+                    <text id="$C$" font-family="Merriweather-Regular, Merriweather" font-size="9" font-weight="normal" letter-spacing="0.670909047" fill="#4E586A">
+                        <tspan x="28.2482729" y="181">$C$</tspan>
+                    </text>
+                    <text id="$A$-Copy" font-family="Merriweather-Regular, Merriweather" font-size="10" font-weight="normal" letter-spacing="0.74545449" fill="#4E586A">
+                        <tspan x="144.663637" y="108">$A$</tspan>
+                    </text>
+                    <text id="Border-point" font-family="Merriweather-Regular, Merriweather" font-size="9" font-weight="normal" letter-spacing="0.670909047" fill="#4E586A">
+                        <tspan x="209.690091" y="30">Border point</tspan>
+                    </text>
+                    <text id="Core-point" font-family="Merriweather-Regular, Merriweather" font-size="9" font-weight="normal" letter-spacing="0.670909047" fill="#4E586A">
+                        <tspan x="209.03091" y="9">Core point</tspan>
+                    </text>
+                    <text id="Noise-point" font-family="Merriweather-Regular, Merriweather" font-size="9" font-weight="normal" letter-spacing="0.670909047" fill="#4E586A">
+                        <tspan x="209.626" y="51">Noise point</tspan>
+                    </text>
+                </g>
+                <circle id="Oval-Copy-152" fill="#0000A6" cx="84" cy="148" r="6"></circle>
+                <circle id="Oval-Copy-153" fill="#0000A6" cx="117" cy="136" r="6"></circle>
+                <circle id="Oval-Copy-156" fill="#0000A6" cx="155" cy="154" r="6"></circle>
+                <circle id="Oval-Copy-157" fill="#0000A6" cx="194" cy="137" r="6"></circle>
+                <circle id="Oval-Copy-155" fill="#0000A6" cx="155" cy="124" r="6"></circle>
+                <circle id="Oval" stroke="#0000A6" cx="155" cy="124" r="9"></circle>
+                <circle id="Oval-Copy-154" fill="#0000A6" cx="117" cy="175" r="6"></circle>
+                <circle id="Oval" fill="#0000A6" cx="196" cy="6" r="5"></circle>
+                <circle id="Oval-Copy-158" fill="#707376" cx="196" cy="26" r="5"></circle>
+                <circle id="Oval-Copy-159" fill="#EF553B" cx="196" cy="46" r="5"></circle>
+            </g>
+        </g>
+    </g>
+</svg>

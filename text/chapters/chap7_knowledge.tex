@@ -1,0 +1,143 @@
+\setlength{\headheight}{23.84448pt}
+\addtolength{\topmargin}{-10.84448pt}
+
+\chapter{Type-Based Knowledge Representation}
+\label{chap:knowledge}
+
+\textcite{shi_cognitive_2019} introduced the evolution of the human brain, denoting that the appreciation of music by the brain cortex coincided with the development of human abstract thinking.
+Knowledge is the possession of the ability to locate information, and therefore, we will introduce Harley's type-based framework for the abstract representation of musical knowledge (\cite{harley_abstract_2020}).
+His framework uses a constituent structure (i.e., a multi-hierarchical information model) that is able to represent the complex hierarchies of musical spaces. The framework has a main, extendable module named CHAKRA, which gives the user the freedom to create structures in terms of constituents, attributes and hierarchies. A submodule of CHAKRA, named CHARM (\cite{wiggins_representing_1989}), is a particular representation system for the creation of music-specific multidimensional hierarchies. First, we will emphasize the difference between knowledge and data, followed by highlighting the importance of the type-based aspect of the CHAKRA framework, by introducing three perspectives on computation: Type theory, Category Theory and Typed logic. Afterward, the components of the CHARM system will be briefly defined, serving to understand our own software architecture, introduced in part III.
+
+
+\section{The Three Perspectives on Computation}
+
+\begin{marginfigure}
+    \centering
+    \includesvg[pretex=\fontsize{8pt}{10pt}, width=1\linewidth]{images/knowledge/trinity.svg}
+    \vspace{0.5cm}
+    \caption{Computational Trinity: a tripartite correspondence between Logic, Type Theory, and Category Theory.}
+    \label{typeTheory}
+\end{marginfigure}
+
+The Three Perspectives on Computation, also called \textit{The Computational Trinity}, is the central organizing principle of a theory of computation that unifies Logic, Type Theory, and Category Theory (\cite{eades_type_2012, goguen_categorical_1991}). The three fields look different but are nevertheless equivalently treatable. One may think of it more intuitively as the unification of a subfield of logic, programming, and mathematics, wherein every proof can be written as a program, every program corresponds to a mapping, and every mapping to a proof (\cite{harper_holy_2011}). 
+
+\subsection{Type Theory}
+At the early 20th century, Bertrand Russell introduced type theory to cope with a paradox in naive set theory, which was expressed as follows:
+\begin{equation}
+    H = \{ x | x \notin x\} \Rightarrow H \in H \Leftrightarrow H \notin H.
+\end{equation}
+
+The paradox arises when one considers whether $H$ contains itself or not. If $H$ contains itself, then by definition it is a set that does not contain itself, which is a contradiction. On the other hand, if $H$ does not contain itself, then by definition it is a set that should contain itself, which is also a contradiction. This problem arises when impredicative universal quantification is allowed, which means that the definition of the object involves quantifying over all objects, including the object being defined itself. Russel's type theory resolved this problem by defining objects as part of a specific group. Consider a type n, then we can redefine $H$ as
+\begin{equation}
+    H^n = \{ x^{n-1} | x^{n-1} \notin x^{n-1}\} \Rightarrow H^n \in H^n \Leftrightarrow H^n \notin H^n.
+\end{equation}
+In this case, the paradox is false since the sets are defined by the types, and type $n-1$ excludes type $n$ (\cite{eades_type_2012}).
+
+\begin{marginfigure}
+\centering
+\includesvg[width=0.8\linewidth]{images/knowledge/category.svg}
+\vspace{0.5cm}
+\caption{Category $C$ with a set of objects $\{X, Y, Z, W\}$, morphisms $\{f, g, h\}$ and composition of morphisms $\{f \circ g \}$. Each object also has an identity morphism: an arrow points to the object itself. }
+\label{categoryGraph} 
+\end{marginfigure}
+
+Type theory became the formal presentation that models objects and relations, such as a variable, function or substitution, with types. For example, variable 10 has the type of natural numbers ($\mathbb{N}$), which is in the built-in notation written as $10: \textrm{nat}$. From this term, other typed terms can be constructed. As illustrated in (\cite{hoang_type_2014}), terms of the type $\mathbb{N}$ can be constructed just by defining the variable as we defined before, or as a successor function $succ(n) : \mathbb{N}$:
+
+\begin{figure}[h]
+\centering
+\includesvg[width=1\linewidth]{images/knowledge/typeSuccessor.svg}
+\label{category} 
+\end{figure}
+
+
+\subsection{Category Theory}
+Tom Leinster described category theory as a bird's eye view of mathematics. From high in the sky, details become invisible, but we can spot patterns that were impossible to detect from ground level (\cite{leinster_basic_2016}). Formally, category theory is the study of mathematical structures using abstractions of functions called morphisms, as well as a mathematical workspace and theory (\cite{barr_category_2012, eades_type_2012}). It provides the concepts to meaningfully compare and combine unrelated systems by understanding their patterns (\cite{harley_abstract_2020}). 
+A category $C$ is an abstract object consisting of a set of objects, morphisms and compositions of morphisms. The objects and relations can visually be represented as directed graphs, as illustrated in figure \ref{categoryGraph}.
+
+\begin{marginfigure}
+    \centering
+    \vspace{2cm}
+    \includesvg[width=1\linewidth]{images/knowledge/functor.svg}
+    \vspace{0.2cm}
+    \caption{A functor represented as a directed edge from category $C$ to category $D$.}
+    \label{functor}
+\end{marginfigure}
+
+ Categories are connected through structure-preserving maps named functors. They can be considered as morphisms in a category of subcategories.
+ This theoretical framework of formalization is especially useful for combining different levels of abstraction (e.g. the unification of CHARM with other modules as will be explained further), and for formal descriptions of systems.
+
+\subsection{Typed logic}
+\label{sec:cic}
+The perspective on type theory, from a logical aspect, is the definition of certain rules that must hold. An example of a formal language using these inference rules for programming purposes, is Calculus of Inductive Constructions (Cic). An example of a typing rule in Cic is defined as following: 
+
+\begin{equation}
+\frac{E[\Gamma] \vdash T: s \quad s \in \mathcal{S} \quad x \notin \Gamma}{\mathcal{W} F(E)[\Gamma::(x: T)]}
+\end{equation}
+
+
+
+Where a term $t$ is correctly typed in a global environment $E$ if and only if there exists a local context $\Gamma$ and a term $T$ such that the judgement  $E[\Gamma] \vdash t:T$ can be derived from the following rules, as literally mentioned by \textcite{inria_calculus_2018}. However, the interpretation of this rule is not important in context of the thesis and only serves as an illustration.
+
+ 
+\section{The CHAKRA System}
+
+Type theory is a strong and important foundation for the implementation of the \textit{Common Hierarchical Abstract Knowledge Representation for Anything} (CHAKRA) framework, since it allows the integration of heterogeneous data and avoids the paradox of naive set theory. CHAKRA was originally defined in Coq\footnote{https://nick-harley.github.io/chakra-coq/chakra.html}, a library with Calculus of Inductive Constructions as underlying formal language (a mapping from logic to programming). Afterward, an implementation of the CHAKRA-framework was written in Julia \footnote{https://github.com/nick-harley/Chakra}.
+
+
+
+\subsection{The CHARM System}
+The \textit{Common Hierarchical Abstract Representation of Music} (CHARM) intends to provide a logical specification of an abstract representation of music
+(\cite{pearce_construction_2005, wiggins_representing_1989}), regardless of the particular style, data source or application (\cite{smaill_hierarchical_1993}). It inherits the abstract structural components Constituent, Id and Hierarchy from CHAKRA and applies it in the musical domain (\cite{harley_charm_2022}). 
+
+
+\subsubsection{Musical Objects with Attributes in a Space}
+Musical objects are seen as statements about the world in the musical space. These atomic entities automatically add semantics to data wherefore they can be considered as \textbf{knowledge}, rather than data. Note that data can be seen as the simplest form of raw values. Knowledge, in contrast, is a statement about something in the world space that could be true or false.
+
+\begin{marginfigure}
+\centering
+\includesvg[pretex=\fontsize{7pt}{9pt},width=1\linewidth]{images/knowledge/constituent.svg}
+\caption{A simplification of a constituent $c_1 \in C$ defined in the musical space $M$.}
+\label{constituent} 
+\end{marginfigure}
+
+
+We call every existent musical object a \textit{Constituent} and use them in a hierarchical structure. Musical objects contain attributes such as $frequency$, $amplitude$ and $onset$ which can be defined in an (abstract) musical space. Often the attribute name and the name of the space is the same (for example, the attribute pitch and musical space pitch). However, sometimes they do not overlap (for example, the attributes \textit{onset} and \textit{off-set} both have the musical space of time, but it is important that their attributes names are different) (\cite{harley_abstract_2020}). In Figure \ref{constituent}, an example of a musical object (i.e., constituent) is given. The constituent is formed from a joint pair of resonance $r_1$ and $-r_1$, and has 10 attributes. The attributes of musical objects are equivalent to the features of a dataset.
+
+
+
+
+\subsubsection{Definitions}
+
+The first concept defined in CHARM, is the Constituent $C$, a high-level grouping of musical objects defined in (multiple) musical spaces $M$ (\cite{wiggins_representing_1989}). Musical objects are atomic entities of the human conceptualizations of music, such as resonances, slices in time of an audio signal or onsets of notes. The set of locations in musical space $M = (M_a)_{a \in A}$ is a family of sets indexed by attributes $A$ and $M_a$ is the subspace or dimension indicated by the perspective $a$ \parencite[p. 111]{harley_abstract_2020}. For example, a constituent representing a resonance, contains the attributes frequency, onset, decay and amplitude. 
+\begin{theorem}[Attribute]
+\label{Attribute}
+The set of Attribute names $A$ is a collection of keys for key-value pairs, where key $a \in A$.
+\end{theorem}
+
+Constituents are used to construct hierarchical structures. They are connected in a directed acyclic graph and its relation is called a Hierarchy $H$. Note that a single constituent can be defined in multiple hierarchical structures.
+
+
+\begin{definition}[Constituent]
+\label{def:constituent}
+ A musical object (i.e., a constituent) is composed of a tuple <i, P(i), R(i)> where identifier = $i$, particles = $P(i)$ and attributes =$R(i)$ \parencite[p. 112]{harley_abstract_2020}.
+ \end{definition}
+We explicitly use the notation R(i) here instead of A because A is the set of names and R a set of relations between constituents and values. Thus, $(a,v) \in R_i$ means that the value of an attribute should be taken.
+ 
+\begin{marginfigure}
+\centering
+\includesvg[pretex=\fontsize{10pt}{12pt}, width=0.7\linewidth]{images/knowledge/constituent_tuple.svg}
+\vspace{0.2cm}
+\caption{A constituent $C$ consisting of the identifier, particles and attributes.}.
+\label{hierarchy} 
+\end{marginfigure}
+
+
+\begin{definition}[Hierarchy]
+\label{Hierarchy}
+$H \subset C \times C$ is a binary relation $C$, such that $(C, H)$ forms a (simple) directed acyclic graph (DAG).  The graph $(C,H)$ captures the hierarchical structure of the domain, where $(c, c') \in H$ indicates that $c'$ is part of $c$ \parencite[p. 111]{harley_abstract_2020}.
+\end{definition}
+
+ 
+\section{Summary}
+We introduced the CHAKRA system as a model for the human-like ability to locate and use information. The theoretical underpinnings of this framework were explored from three different perspectives, providing a better understanding of its principles. Finally, we defined the constituent elements of CHAKRA in context of music, setting the foundation for the actual implementation in the following part.
+

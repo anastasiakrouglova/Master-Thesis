@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="805px" height="356px" viewBox="0 0 805 356" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 53.2 (72643) - https://sketchapp.com -->
+    <title>Group 38</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <radialGradient cx="36.3916884%" cy="23.9497661%" fx="36.3916884%" fy="23.9497661%" r="75.7150251%" id="radialGradient-1">
+            <stop stop-color="#FFFFFF" offset="0%"></stop>
+            <stop stop-color="#818181" offset="100%"></stop>
+        </radialGradient>
+        <radialGradient cx="36.3916884%" cy="23.9497661%" fx="36.3916884%" fy="23.9497661%" r="76.0502339%" id="radialGradient-2">
+            <stop stop-color="#FFFFFF" offset="0%"></stop>
+            <stop stop-color="#000000" offset="100%"></stop>
+        </radialGradient>
+        <linearGradient x1="96.4350448%" y1="49.5260768%" x2="18.4329231%" y2="50.4766237%" id="linearGradient-3">
+            <stop stop-color="#4A86AD" offset="0%"></stop>
+            <stop stop-color="#C5C5C5" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="96.9135346%" y1="48.3768686%" x2="18.4329231%" y2="51.6125403%" id="linearGradient-4">
+            <stop stop-color="#4A86AD" offset="0.609691723%"></stop>
+            <stop stop-color="#C5C5C5" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="96.9135346%" y1="45.6334371%" x2="18.4329231%" y2="54.3380706%" id="linearGradient-5">
+            <stop stop-color="#4A86AD" offset="0.609691723%"></stop>
+            <stop stop-color="#C5C5C5" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="96.9135346%" y1="49.2830619%" x2="18.4329231%" y2="50.71226%" id="linearGradient-6">
+            <stop stop-color="#4A86AD" offset="0.609691723%"></stop>
+            <stop stop-color="#C5C5C5" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="16.4727403%" y1="50.4478153%" x2="98.5046123%" y2="49.7588735%" id="linearGradient-7">
+            <stop stop-color="#9FC6DF" offset="0%"></stop>
+            <stop stop-color="#546C7D" offset="98.9970439%"></stop>
+        </linearGradient>
+        <linearGradient x1="16.4727403%" y1="51.4697036%" x2="98.5046123%" y2="49.2086368%" id="linearGradient-8">
+            <stop stop-color="#9FC6DF" offset="0%"></stop>
+            <stop stop-color="#546C7D" offset="98.9970439%"></stop>
+        </linearGradient>
+        <linearGradient x1="16.4727403%" y1="53.9124242%" x2="98.5046123%" y2="47.8933518%" id="linearGradient-9">
+            <stop stop-color="#9FC6DF" offset="0%"></stop>
+            <stop stop-color="#546C7D" offset="98.9970439%"></stop>
+        </linearGradient>
+        <linearGradient x1="16.4727403%" y1="50.673321%" x2="98.5046123%" y2="49.6374497%" id="linearGradient-10">
+            <stop stop-color="#9FC6DF" offset="0%"></stop>
+            <stop stop-color="#546C7D" offset="98.9970439%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Group-38" transform="translate(0.000000, 1.000000)">
+            <circle id="Oval-Copy-45" stroke="#000000" fill="#FF9A33" cx="442" cy="242.065229" r="8"></circle>
+            <circle id="Oval-Copy-46" stroke="#000000" fill="#FF9A33" cx="502" cy="242.065229" r="8"></circle>
+            <circle id="Oval-Copy-47" stroke="#000000" fill="#FF9A33" cx="562" cy="242.065229" r="8"></circle>
+            <circle id="Oval-Copy-48" stroke="#000000" fill="#FF9A33" cx="622" cy="242.065229" r="8"></circle>
+            <g id="Group-32-Copy-8" opacity="0.332566034" transform="translate(425.000000, 234.065229)" fill="#EB9944" stroke="#000000">
+                <circle id="Oval-Copy-25" cx="8" cy="8" r="8"></circle>
+            </g>
+            <g id="Group-32-Copy-9" opacity="0.332566034" transform="translate(485.000000, 234.065229)" fill="#EB9944" stroke="#000000">
+                <circle id="Oval-Copy-25" cx="8" cy="8" r="8"></circle>
+            </g>
+            <g id="Group-32-Copy-10" opacity="0.332566034" transform="translate(545.000000, 234.065229)" fill="#EB9944" stroke="#000000">
+                <circle id="Oval-Copy-25" cx="8" cy="8" r="8"></circle>
+            </g>
+            <g id="Group-32-Copy-11" opacity="0.332566034" transform="translate(605.000000, 234.065229)" fill="#EB9944" stroke="#000000">
+                <circle id="Oval-Copy-25" cx="8" cy="8" r="8"></circle>
+            </g>
+            <polyline id="Path-68-Copy-3" stroke="#728E9F" stroke-linecap="round" stroke-linejoin="round" points="163.211622 229 253.5 150 223.566545 229"></polyline>
+            <polyline id="Path-68-Copy-4" stroke="#728E9F" stroke-linecap="round" stroke-linejoin="round" points="437 229.065229 527.288378 150.065229 497.354923 229.065229"></polyline>
+            <polyline id="Path-68-Copy-5" stroke="#728E9F" stroke-linecap="round" stroke-linejoin="round" transform="translate(298.741330, 189.500000) scale(-1, 1) translate(-298.741330, -189.500000) " points="253.5 229 343.982659 150 313.708057 229"></polyline>
+            <polyline id="Path-68-Copy-6" stroke="#728E9F" stroke-linecap="round" stroke-linejoin="round" transform="translate(572.529708, 189.565229) scale(-1, 1) translate(-572.529708, -189.565229) " points="527.288378 229.065229 617.771038 150.065229 587.496435 229.065229"></polyline>
+            <text id="Low-level-Frequencie-Copy" font-family="Merriweather-Regular, Merriweather" font-size="9" font-weight="normal" letter-spacing="0.670909047" fill="#000000">
+                <tspan x="120" y="352">Low level Frequencies</tspan>
+            </text>
+            <text id="Slice-1" font-family="Merriweather-Regular, Merriweather" font-size="9" font-weight="normal" letter-spacing="0.670909047" fill="#000000">
+                <tspan x="266" y="150">Slice 1 </tspan>
+            </text>
+            <text id="Slice-2" font-family="Merriweather-Regular, Merriweather" font-size="9" font-weight="normal" letter-spacing="0.670909047" fill="#000000">
+                <tspan x="541" y="150">Slice 2 </tspan>
+            </text>
+            <text id="Neg.-Frequencies" font-family="Merriweather-Regular, Merriweather" font-size="9" font-weight="normal" letter-spacing="0.670909047" fill="#000000">
+                <tspan x="719" y="164">Neg. Frequencies</tspan>
+            </text>
+            <text id="Pos.-Frequencies" font-family="Merriweather-Regular, Merriweather" font-size="9" font-weight="normal" letter-spacing="0.670909047" fill="#000000">
+                <tspan x="0" y="293">Pos. Frequencies</tspan>
+            </text>
+            <text id="SliceSequence-1" font-family="Merriweather-Regular, Merriweather" font-size="9" font-weight="normal" letter-spacing="0.670909047" fill="#000000">
+                <tspan x="404" y="32">SliceSequence 1</tspan>
+            </text>
+            <text id="Mid-level-Frequencie-Copy" font-family="Merriweather-Regular, Merriweather" font-size="9" font-weight="normal" letter-spacing="0.670909047" fill="#000000">
+                <tspan x="358" y="352">Mid-level Frequencies</tspan>
+            </text>
+            <text id="High-Frequencies-Copy" font-family="Merriweather-Regular, Merriweather" font-size="9" font-weight="normal" letter-spacing="0.670909047" fill="#000000">
+                <tspan x="589" y="352">High Frequencies</tspan>
+            </text>
+            <rect id="Rectangle-Copy-32" stroke="#979797" x="147.5" y="229.5" width="33" height="25"></rect>
+            <rect id="Rectangle-Copy-33" stroke="#979797" x="420.5" y="229.5" width="33" height="25"></rect>
+            <rect id="Rectangle-Copy-34" stroke="#979797" x="207.5" y="229.5" width="33" height="25"></rect>
+            <rect id="Rectangle-Copy-35" stroke="#979797" x="480.5" y="229.5" width="33" height="25"></rect>
+            <rect id="Rectangle-Copy-36" stroke="#979797" x="266.5" y="229.5" width="33" height="25"></rect>
+            <rect id="Rectangle-Copy-37" stroke="#979797" x="539.5" y="229.5" width="33" height="25"></rect>
+            <g id="Group-37" transform="translate(327.000000, 229.000000)">
+                <rect id="Rectangle-Copy-38" stroke="#000000" stroke-width="0.3" fill="#DAEDF3" x="0.15" y="0.15" width="33.7" height="25.7"></rect>
+                <circle id="Oval-Copy-64" fill="url(#radialGradient-1)" cx="12" cy="13" r="8"></circle>
+                <circle id="Oval-Copy-65" fill="url(#radialGradient-2)" cx="21" cy="13.0652288" r="8"></circle>
+            </g>
+            <g id="Group-37" transform="translate(266.000000, 229.000000)">
+                <rect id="Rectangle-Copy-38" stroke="#000000" stroke-width="0.3" fill="#DAEDF3" x="0.15" y="0.15" width="33.7" height="25.7"></rect>
+                <circle id="Oval-Copy-64" fill="url(#radialGradient-1)" cx="12" cy="13" r="8"></circle>
+                <circle id="Oval-Copy-65" fill="url(#radialGradient-2)" cx="21" cy="13.0652288" r="8"></circle>
+            </g>
+            <rect id="Rectangle-Copy-39" stroke="#979797" x="600.5" y="229.5" width="33" height="25"></rect>
+            <circle id="Oval-Copy-49" stroke="#979797" fill="#D8D8D8" cx="224.5" cy="123.5" r="3.5"></circle>
+            <circle id="Oval-Copy-50" stroke="#979797" fill="#D8D8D8" cx="159.5" cy="209.5" r="3.5"></circle>
+            <circle id="Oval-Copy-51" stroke="#979797" fill="#D8D8D8" cx="555.5" cy="121.5" r="3.5"></circle>
+            <circle id="Oval-Copy-52" stroke="#979797" fill="#D8D8D8" cx="417.5" cy="3.5" r="3.5"></circle>
+            <path d="M226.807339,125.629395 L248.716682,143.935706" id="Path-69-Copy-4" stroke="#979797"></path>
+            <path d="M158,213 L147.716682,229.935706" id="Path-69-Copy-5" stroke="#979797"></path>
+            <path d="M390.5,32 L258,140.5" id="Path-69-Copy-6" stroke="#728E9F"></path>
+            <path d="M390,32 L523.716682,140.629395" id="Path-69-Copy-7" stroke="#728E9F"></path>
+            <path d="M552.692661,124 L532.909343,142.306311" id="Path-69-Copy-8" stroke="#979797"></path>
+            <path d="M414.692661,6 L394.909343,24.306311" id="Path-69-Copy-9" stroke="#979797"></path>
+            <circle id="Oval-Copy-53" stroke="#000000" fill="#000000" cx="527" cy="147" r="8"></circle>
+            <circle id="Oval-Copy-54" stroke="#000000" fill="#FF9A33" cx="168" cy="242.065229" r="8"></circle>
+            <g id="Group-32-Copy-12" opacity="0.332566034" transform="translate(151.000000, 234.065229)" fill="#EB9944" stroke="#000000">
+                <circle id="Oval-Copy-25" cx="8" cy="8" r="8"></circle>
+            </g>
+            <circle id="Oval-Copy-57" stroke="#000000" fill="#000000" cx="390" cy="29" r="8"></circle>
+            <path d="M163.211622,255 L171.616802,322.217413" id="Path-70-Copy" stroke="#84A2B6"></path>
+            <path d="M285,255 L171.616802,322.217413" id="Path-70-Copy-2" stroke="#84A2B6"></path>
+            <path d="M220,255 L402,322.217413" id="Path-70-Copy-3" stroke="#84A2B6"></path>
+            <path d="M555.5,255 L402,322.217413" id="Path-70-Copy-4" stroke="#84A2B6"></path>
+            <path d="M343.982659,255 L171.616802,322.217413" id="Path-70-Copy-5" stroke="#84A2B6"></path>
+            <path d="M435.5,254.5 L630,322.217413" id="Path-70-Copy-6" stroke="#84A2B6"></path>
+            <path d="M497,254.5 L630,322.217413" id="Path-70-Copy-7" stroke="#84A2B6"></path>
+            <path d="M617,254 L630,322.217413" id="Path-70-Copy-8" stroke="#84A2B6"></path>
+            <circle id="Oval-Copy-58" stroke="#000000" fill="#000000" cx="172" cy="322" r="8"></circle>
+            <circle id="Oval-Copy-59" stroke="#000000" fill="#000000" cx="402" cy="322" r="8"></circle>
+            <circle id="Oval-Copy-60" stroke="#000000" fill="#000000" cx="253" cy="147" r="8"></circle>
+            <circle id="Oval-Copy-61" stroke="#000000" fill="#000000" cx="630" cy="322" r="8"></circle>
+            <polyline id="Path-71-Copy-2" stroke="url(#linearGradient-3)" opacity="0.335635231" stroke-linecap="round" stroke-linejoin="round" points="168 233.818089 750.635277 178 228 235.447483"></polyline>
+            <polyline id="Path-71-Copy-3" stroke="url(#linearGradient-4)" opacity="0.335635231" stroke-linecap="round" stroke-linejoin="round" points="441 234.518202 752.635277 178 503 234.518202"></polyline>
+            <polyline id="Path-71-Copy-4" stroke="url(#linearGradient-5)" opacity="0.335635231" stroke-linecap="round" stroke-linejoin="round" points="562.635277 234.518202 752.635277 178 623 234.518202"></polyline>
+            <polyline id="Path-71-Copy-5" stroke="url(#linearGradient-6)" opacity="0.335635231" stroke-linecap="round" stroke-linejoin="round" points="287 234.883317 750.635277 179 348.211622 234.883317"></polyline>
+            <polyline id="Path-71-Copy-6" stroke="url(#linearGradient-7)" opacity="0.335635231" stroke-linecap="round" stroke-linejoin="round" transform="translate(326.000000, 254.000000) scale(-1, -1) translate(-326.000000, -254.000000) " points="38 272.865472 614 234 97.3166967 274"></polyline>
+            <polyline id="Path-71-Copy-7" stroke="url(#linearGradient-8)" opacity="0.335635231" stroke-linecap="round" stroke-linejoin="round" transform="translate(193.000000, 254.500000) scale(-1, -1) translate(-193.000000, -254.500000) " points="38 274 348 235 99.6746608 274"></polyline>
+            <polyline id="Path-71-Copy-8" stroke="url(#linearGradient-9)" opacity="0.335635231" stroke-linecap="round" stroke-linejoin="round" transform="translate(133.000000, 254.500000) scale(-1, -1) translate(-133.000000, -254.500000) " points="38 274 228 235 98.3647228 274"></polyline>
+            <polyline id="Path-71-Copy-9" stroke="url(#linearGradient-10)" opacity="0.335635231" stroke-linecap="round" stroke-linejoin="round" transform="translate(267.000000, 254.500000) scale(-1, -1) translate(-267.000000, -254.500000) " points="38 274 496 235 98.4676224 274"></polyline>
+            <circle id="Oval-Copy-62" stroke="#000000" fill="#000000" cx="753.5" cy="178.5" r="4.5"></circle>
+            <circle id="Oval-Copy-63" stroke="#000000" fill="#000000" cx="41.5" cy="272.5" r="4.5"></circle>
+            <text id="--copy" font-family="Merriweather-Regular, Merriweather" font-size="11" font-weight="normal" letter-spacing="0.819999874" fill="#FFFFFF">
+                <tspan x="750" y="182">-</tspan>
+            </text>
+            <text id="+-copy" font-family="Merriweather-Regular, Merriweather" font-size="11" font-weight="normal" letter-spacing="0.8199999" fill="#FFFFFF">
+                <tspan x="38" y="276">+</tspan>
+            </text>
+            <g id="Group-37" transform="translate(207.000000, 229.000000)">
+                <rect id="Rectangle-Copy-38" stroke="#000000" stroke-width="0.3" fill="#DAEDF3" x="0.15" y="0.15" width="33.7" height="25.7"></rect>
+                <circle id="Oval-Copy-64" fill="url(#radialGradient-1)" cx="12" cy="13" r="8"></circle>
+                <circle id="Oval-Copy-65" fill="url(#radialGradient-2)" cx="21" cy="13.0652288" r="8"></circle>
+            </g>
+            <g id="Group-37" transform="translate(147.000000, 229.000000)">
+                <rect id="Rectangle-Copy-38" stroke="#000000" stroke-width="0.3" fill="#DAEDF3" x="0.15" y="0.15" width="33.7" height="25.7"></rect>
+                <circle id="Oval-Copy-64" fill="url(#radialGradient-1)" cx="12" cy="13" r="8"></circle>
+                <circle id="Oval-Copy-65" fill="url(#radialGradient-2)" cx="21" cy="13.0652288" r="8"></circle>
+            </g>
+            <g id="Group-37" transform="translate(420.000000, 229.000000)">
+                <rect id="Rectangle-Copy-38" stroke="#000000" stroke-width="0.3" fill="#DAEDF3" x="0.15" y="0.15" width="33.7" height="25.7"></rect>
+                <circle id="Oval-Copy-64" fill="url(#radialGradient-1)" cx="12" cy="13" r="8"></circle>
+                <circle id="Oval-Copy-65" fill="url(#radialGradient-2)" cx="21" cy="13.0652288" r="8"></circle>
+            </g>
+            <g id="Group-37" transform="translate(480.000000, 229.000000)">
+                <rect id="Rectangle-Copy-38" stroke="#000000" stroke-width="0.3" fill="#DAEDF3" x="0.15" y="0.15" width="33.7" height="25.7"></rect>
+                <circle id="Oval-Copy-64" fill="url(#radialGradient-1)" cx="12" cy="13" r="8"></circle>
+                <circle id="Oval-Copy-65" fill="url(#radialGradient-2)" cx="21" cy="13.0652288" r="8"></circle>
+            </g>
+            <g id="Group-37" transform="translate(539.000000, 229.000000)">
+                <rect id="Rectangle-Copy-38" stroke="#000000" stroke-width="0.3" fill="#DAEDF3" x="0.15" y="0.15" width="33.7" height="25.7"></rect>
+                <circle id="Oval-Copy-64" fill="url(#radialGradient-1)" cx="12" cy="13" r="8"></circle>
+                <circle id="Oval-Copy-65" fill="url(#radialGradient-2)" cx="21" cy="13.0652288" r="8"></circle>
+            </g>
+            <g id="Group-37" transform="translate(600.000000, 229.000000)">
+                <rect id="Rectangle-Copy-38" stroke="#000000" stroke-width="0.3" fill="#DAEDF3" x="0.15" y="0.15" width="33.7" height="25.7"></rect>
+                <circle id="Oval-Copy-64" fill="url(#radialGradient-1)" cx="12" cy="13" r="8"></circle>
+                <circle id="Oval-Copy-65" fill="url(#radialGradient-2)" cx="21" cy="13.0652288" r="8"></circle>
+            </g>
+        </g>
+    </g>
+</svg>

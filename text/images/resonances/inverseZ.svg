@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="270px" height="284px" viewBox="0 0 270 284" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 53.2 (72643) - https://sketchapp.com -->
+    <title>Group 26</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Artboard" transform="translate(-838.000000, -9585.000000)">
+            <g id="Group-26" transform="translate(837.423999, 9580.000000)">
+                <circle id="Oval" stroke="#979797" cx="128.576001" cy="144" r="120"></circle>
+                <path d="M0.576000727,144 L264.576001,144" id="Path-133" stroke="#979797"></path>
+                <path d="M128.576001,288.516895 L128.576001,8.06643954" id="Path-133" stroke="#979797"></path>
+                <polyline id="Path-134" stroke="#979797" points="225.076001 73.5 128.576001 144 225.076001 214.5"></polyline>
+                <path d="M225.076001,73.5 L225.076001,214.5" id="Path-135" stroke="#979797"></path>
+                <text id="Re" font-family="AlteDIN1451Mittelschrift, Alte DIN 1451 Mittelschrift" font-size="12" font-weight="normal" letter-spacing="2" fill="#B1B1B1">
+                    <tspan x="255.576001" y="141">Re</tspan>
+                </text>
+                <text id="Im" font-family="AlteDIN1451Mittelschrift, Alte DIN 1451 Mittelschrift" font-size="12" font-weight="normal" letter-spacing="2" fill="#B1B1B1">
+                    <tspan x="105.576001" y="14">Im</tspan>
+                </text>
+                <text id="$z$" font-family="AlteDIN1451Mittelschrift, Alte DIN 1451 Mittelschrift" font-size="12" font-weight="normal" letter-spacing="2" fill="#B1B1B1">
+                    <tspan x="230.576001" y="57">$z$</tspan>
+                </text>
+                <text id="$z^-1$" font-family="AlteDIN1451Mittelschrift, Alte DIN 1451 Mittelschrift" font-size="12" font-weight="normal" letter-spacing="2" fill="#B1B1B1">
+                    <tspan x="228.576001" y="234">$z^-1$</tspan>
+                </text>
+                <path id="Path-136" d="M260.322487,213.597411 C260.28382,200.205508 257.179442,187.82099 251.008611,176.436387 L251.887768,175.959855 C258.145862,187.50545 261.291058,200.069489 261.322613,213.644471 L265.342735,213.833635 L260.424688,222.612178 L256.352682,213.410615 L260.322487,213.597411 Z" fill="#979797" fill-rule="nonzero"></path>
+                <path id="Path-136" d="M255.201241,67.9158459 C260.040849,79.7589235 261.842521,92.5924518 260.607621,106.409737 L259.611591,106.320718 C260.830673,92.6804263 259.058877,80.0250909 254.297561,68.3480489 L250.717444,70.0603112 L250.893875,59.9995522 L258.836623,66.1771524 L255.201241,67.9158459 Z" fill="#979797" fill-rule="nonzero"></path>
+                <circle id="Oval" stroke="#979797" fill="#D8D8D8" cx="225.076001" cy="73.5" r="5.5"></circle>
+                <circle id="Oval-Copy-15" stroke="#979797" fill="#D8D8D8" cx="225.076001" cy="214.5" r="5.5"></circle>
+            </g>
+        </g>
+    </g>
+</svg>

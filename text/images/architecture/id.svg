@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="77px" height="47px" viewBox="0 0 77 47" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 53.2 (72643) - https://sketchapp.com -->
+    <title>Group 42</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Artboard-Copy-9" transform="translate(-136.000000, -6489.000000)">
+            <g id="Group-42" transform="translate(136.000000, 6488.000000)">
+                <path d="M0,35.5 L76.5,35.5" id="Path-77-Copy" stroke="#E2E2E2" opacity="0.353004092"></path>
+                <g id="Group-40" transform="translate(19.000000, 0.000000)">
+                    <circle id="Oval-Copy-120" stroke="#0000A6" fill="#F0F7FF" cx="14" cy="35" r="12"></circle>
+                    <circle id="Oval-Copy-121" stroke="#0000A6" fill="#0000A6" cx="38" cy="15" r="3"></circle>
+                    <path d="M23.2373511,27.0370329 L39.5,13.5" id="Path-78" stroke="#0000A6"></path>
+                    <text id="$i_1$" font-family="Merriweather-Regular, Merriweather" font-size="8" font-weight="normal" letter-spacing="0.5963636" fill="#4E586A">
+                        <tspan x="30.610182" y="8">$i_1$</tspan>
+                    </text>
+                    <text id="$C_1$" font-family="Merriweather-Regular, Merriweather" font-size="8" font-weight="normal" letter-spacing="0.5963636" fill="#4E586A">
+                        <tspan x="0.050182" y="20">$C_1$</tspan>
+                    </text>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

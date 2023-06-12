@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="284px" height="238px" viewBox="0 0 284 238" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 53.2 (72643) - https://sketchapp.com -->
+    <title>Group</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Artboard" transform="translate(-104.000000, -315.000000)">
+            <g id="Group" transform="translate(101.000000, 313.000000)">
+                <text id="Time" font-family="Merriweather-Regular, Merriweather" font-size="10" font-weight="normal" letter-spacing="0.7454545" fill="#4E586A">
+                    <tspan x="97.878182" y="239">Time</tspan>
+                </text>
+                <text id="FFT" font-family="Merriweather-Regular, Merriweather" font-size="15" font-weight="normal" letter-spacing="1.118182" fill="#4E586A">
+                    <tspan x="93.195454" y="15">FFT</tspan>
+                </text>
+                <text id="FPT" font-family="Merriweather-Regular, Merriweather" font-size="15" font-weight="normal" letter-spacing="1.118182" fill="#4E586A">
+                    <tspan x="216.745454" y="15">FPT</tspan>
+                </text>
+                <text id="Time-Copy" font-family="Merriweather-Regular, Merriweather" font-size="10" font-weight="normal" letter-spacing="0.7454545" fill="#4E586A">
+                    <tspan x="222.878182" y="239">Time</tspan>
+                </text>
+                <text id="Frequency" transform="translate(7.000000, 136.500000) rotate(-90.000000) translate(-7.000000, -136.500000) " font-family="Merriweather-Regular, Merriweather" font-size="10" font-weight="normal" letter-spacing="0.7454545" fill="#4E586A">
+                    <tspan x="-21.7590905" y="140">Frequency</tspan>
+                </text>
+                <text id="400" opacity="0.695661272" font-family="Merriweather-Regular, Merriweather" font-size="11" font-weight="normal" letter-spacing="0.82" fill="#4E586A">
+                    <tspan x="28.0507038" y="226">400</tspan>
+                </text>
+                <text id="410" opacity="0.695661272" font-family="Merriweather-Regular, Merriweather" font-size="11" font-weight="normal" letter-spacing="0.82" fill="#4E586A">
+                    <tspan x="30.2837038" y="190">410</tspan>
+                </text>
+                <text id="420" opacity="0.695661272" font-family="Merriweather-Regular, Merriweather" font-size="11" font-weight="normal" letter-spacing="0.82" fill="#4E586A">
+                    <tspan x="28.5457038" y="148">420</tspan>
+                </text>
+                <text id="430" opacity="0.695661272" font-family="Merriweather-Regular, Merriweather" font-size="11" font-weight="normal" letter-spacing="0.82" fill="#4E586A">
+                    <tspan x="28.9637038" y="109">430</tspan>
+                </text>
+                <text id="440" opacity="0.695661272" font-family="Merriweather-Regular, Merriweather" font-size="11" font-weight="normal" letter-spacing="0.82" fill="#4E586A">
+                    <tspan x="28.0397038" y="73">440</tspan>
+                </text>
+                <rect id="Rectangle" fill="#E5ECF6" x="58.7407038" y="184" width="101" height="36"></rect>
+                <rect id="Rectangle-Copy-40" fill="#E5ECF6" x="58.7407038" y="145" width="101" height="36"></rect>
+                <rect id="Rectangle-Copy-41" fill="#E5ECF6" x="58.7407038" y="106" width="101" height="36"></rect>
+                <rect id="Rectangle-Copy-45" fill="#D5E2F5" opacity="0.498535156" x="187.5" y="159" width="99" height="39"></rect>
+                <rect id="Rectangle-Copy-49" fill="#D5E2F5" opacity="0.498535156" x="187.5" y="132" width="99" height="39"></rect>
+                <rect id="Rectangle-Copy-50" fill="#D5E2F5" opacity="0.498535156" x="187.5" y="87" width="99" height="39"></rect>
+                <rect id="Rectangle-Copy-51" fill="#D5E2F5" opacity="0.498535156" x="187.5" y="109" width="99" height="39"></rect>
+                <rect id="Rectangle-Copy-52" fill="#D5E2F5" opacity="0.498535156" x="187.5" y="59" width="99" height="39"></rect>
+                <rect id="Rectangle-Copy-53" fill="#D5E2F5" opacity="0.498535156" x="187.5" y="40" width="99" height="39"></rect>
+                <rect id="Rectangle-Copy-54" fill="#D5E2F5" opacity="0.498535156" x="187.5" y="30" width="99" height="39"></rect>
+                <rect id="Rectangle-Copy-48" fill="#D5E2F5" opacity="0.498535156" x="187.5" y="179" width="99" height="39"></rect>
+                <rect id="Rectangle-Copy-42" fill="#E5ECF6" x="58.7407038" y="67" width="101" height="36"></rect>
+                <rect id="Rectangle-Copy-43" fill="#E5ECF6" x="58.7407038" y="28" width="101" height="36"></rect>
+                <circle id="Oval-Copy-3" fill="#FFA15A" cx="234" cy="124.5" r="15.5"></circle>
+                <circle id="Oval-Copy" fill="#FFA15A" cx="109.5" cy="106" r="10"></circle>
+                <circle id="Oval-Copy-2" fill="#FFA15A" cx="109.5" cy="145" r="10"></circle>
+                <circle id="Oval-Copy-4" fill="#FFA15A" cx="109" cy="65.5" r="5.5"></circle>
+                <circle id="Oval-Copy-4" fill="#FFA15A" cx="110" cy="183.5" r="5.5"></circle>
+            </g>
+        </g>
+    </g>
+</svg>

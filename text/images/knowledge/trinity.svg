@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="174px" height="162px" viewBox="0 0 174 162" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 53.2 (72643) - https://sketchapp.com -->
+    <title>Group</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Artboard-Copy-9" transform="translate(-73.000000, -77.000000)">
+            <g id="Group" transform="translate(73.000000, 77.000000)">
+                <path d="M0.5,51.8820986 L0.5,92.75676 L35.5,74.6923203 L35.5,33.8176589 L0.5,51.8820986 Z" id="Rectangle" stroke="#0000A6" fill="#F0F7FF"></path>
+                <path d="M129.5,51.4626651 L129.5,92.3373265 L164.5,74.2728868 L164.5,33.3982254 L129.5,51.4626651 Z" id="Rectangle-Copy" stroke="#0000A6" fill="#F0F7FF" transform="translate(147.000000, 62.867776) scale(-1, 1) translate(-147.000000, -62.867776) "></path>
+                <polygon id="Path-8" stroke="#0000A6" fill="#F0F7FF" points="49.873185 129.71445 84.7304945 147.681446 119.893607 129.71445 84.7304945 111.059397"></polygon>
+                <path d="M1.64775055,124.801968 L58.6237589,93.1580592" id="Path-9" stroke="#E2E2E2"></path>
+                <path d="M110.976008,125.221401 L168.952017,93.1580592" id="Path-9" stroke="#E2E2E2" transform="translate(139.976008, 109.077493) scale(-1, 1) translate(-139.976008, -109.077493) "></path>
+                <path d="M84.883396,29.9796496 L84.883396,1.46355627" id="Path-10" stroke="#E2E2E2"></path>
+                <polygon id="Path-11" stroke="#E2E2E2" fill="#F6F8FC" points="49.873185 88.3983953 84.883396 106.556523 84.883396 66.5802387 49.873185 48.0325739"></polygon>
+                <polygon id="Path-11" stroke="#E2E2E2" fill="#F6F8FC" transform="translate(102.383396, 77.294548) scale(-1, 1) translate(-102.383396, -77.294548) " points="84.883396 88.3983953 119.883396 106.556523 119.883396 66.5802387 84.883396 48.0325739"></polygon>
+                <polygon id="Path-12" stroke="#E2E2E2" fill="#F6F8FC" points="84.883396 29.9796496 49.873185 48.0325739 84.883396 66.5802387 119.883396 48.0325739"></polygon>
+                <text id="Logic" transform="translate(13.859405, 36.866656) rotate(-26.000000) translate(-13.859405, -36.866656) " font-family="Merriweather-Regular, Merriweather" font-size="7" font-weight="normal" letter-spacing="0.5218183" fill="#000000">
+                    <tspan x="2.85940467" y="39.3666558">Logic</tspan>
+                </text>
+                <text id="Type-Theory" transform="translate(151.725948, 35.076204) rotate(27.000000) translate(-151.725948, -35.076204) " font-family="Merriweather-Regular, Merriweather" font-size="7" font-weight="normal" letter-spacing="0.5218183" fill="#000000">
+                    <tspan x="126.725948" y="37.5762045">Type Theory</tspan>
+                </text>
+                <text id="Category-Theory" font-family="Merriweather-Regular, Merriweather" font-size="7" font-weight="normal" letter-spacing="0.5218183" fill="#000000">
+                    <tspan x="53" y="160">Category Theory</tspan>
+                </text>
+                <rect id="Rectangle" fill="#F6F8FC" x="58" y="73.4635563" width="54" height="12"></rect>
+                <text id="Computation" font-family="Merriweather-Regular, Merriweather" font-size="7" font-weight="normal" letter-spacing="0.5218183" fill="#000000">
+                    <tspan x="62" y="82">Computation</tspan>
+                </text>
+                <polyline id="Path-13" stroke="#E2E2E2" stroke-linecap="round" stroke-linejoin="round" points="2.46163353 121.833755 1.64775055 124.847894 4.64775055 125.435468"></polyline>
+                <polyline id="Path-13" stroke="#E2E2E2" stroke-linecap="round" stroke-linejoin="round" transform="translate(167.500000, 124.264413) scale(-1, 1) translate(-167.500000, -124.264413) " points="166.813883 122.463556 166 125.477695 169 126.065269"></polyline>
+                <polyline id="Path-13" stroke="#E2E2E2" stroke-linecap="round" stroke-linejoin="round" transform="translate(85.109882, 2.592790) rotate(-240.000000) translate(-85.109882, -2.592790) " points="84.731657 1 83.6489111 3.69780455 86.5708522 4.1855795"></polyline>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="242px" height="258px" viewBox="0 0 242 258" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 53.2 (72643) - https://sketchapp.com -->
+    <title>circleContinuous</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="circleContinuous">
+            <g id="Group-29-Copy">
+                <circle id="Oval" stroke="#C9C9C9" cx="119" cy="136" r="82"></circle>
+                <g id="$\theta$" transform="translate(139.000000, 119.000000)" fill="#000000" font-family="Merriweather-Regular, Merriweather" font-size="8" font-weight="normal">
+                    <text>
+                        <tspan x="0" y="8">$\theta$</tspan>
+                    </text>
+                </g>
+                <path d="M119,2.5 L118.5,257.609794" id="Path-54" stroke="#C9C9C9" stroke-linecap="round" stroke-linejoin="round"></path>
+                <path d="M237.5,136.015426 L0.5,136.015426" id="Path-54" stroke="#C9C9C9" stroke-linecap="round" stroke-linejoin="round"></path>
+                <polygon id="Path-55" fill="#C9C9C9" fill-rule="nonzero" points="116 7.32732017 118.937093 0 121.940881 7.32732017"></polygon>
+                <polygon id="Path-55" fill="#C9C9C9" fill-rule="nonzero" transform="translate(237.876934, 135.932682) rotate(90.000000) translate(-237.876934, -135.932682) " points="234.906494 139.596342 237.843587 132.269023 240.847375 139.596342"></polygon>
+                <path d="M119,135.932682 L172,73" id="Path-56" stroke="#0000A6" stroke-linecap="round"></path>
+                <path d="M129.480497,123.5 C133.862608,127.145178 135.623799,131.154181 134.764071,135.52701 C134.732616,135.686996 134.701881,135.851255 134.66742,136.015426" id="Path-57" stroke="#C9C9C9" opacity="0.717726935"></path>
+            </g>
+            <path d="M118.75,136.015426 L118.75,73" id="Path-58" stroke="#0000A6"></path>
+            <path d="M118.75,136.015426 L172,136.015426" id="Path-58" stroke="#0000A6"></path>
+            <path d="M172,73 L119,73" id="Path-59" stroke="#979797" opacity="0.324032738" stroke-dasharray="3"></path>
+            <path d="M172,73 L172,136.015426" id="Path-59" stroke="#979797" opacity="0.324032738" stroke-dasharray="3"></path>
+            <g id="$M-=-\sqrt{(A^2+B^2)" transform="translate(129.000000, 164.000000)" fill="#000000" font-family="Merriweather-Regular, Merriweather" font-size="8" font-weight="normal">
+                <text id="$M-=-\sqrt{(A^2+B^2)}$">
+                    <tspan x="0" y="8">$M = \sqrt{(A^2+B^2)}$</tspan>
+                </text>
+            </g>
+            <g id="$\theta-=-\tan^{-1}(" transform="translate(129.000000, 180.000000)" fill="#000000" font-family="Merriweather-Regular, Merriweather" font-size="8" font-weight="normal">
+                <text id="$\theta-=-\tan^{-1}(B/A)$">
+                    <tspan x="0" y="8">$\theta = \tan^{-1}(B/A)$</tspan>
+                </text>
+            </g>
+            <g id="A" transform="translate(145.000000, 139.000000)" fill="#000000" font-family="Merriweather-Regular, Merriweather" font-size="8" font-weight="normal">
+                <text>
+                    <tspan x="0" y="8">A</tspan>
+                </text>
+            </g>
+            <g id="B" transform="translate(107.000000, 95.000000)" fill="#000000" font-family="Merriweather-Regular, Merriweather" font-size="8" font-weight="normal">
+                <text>
+                    <tspan x="0" y="8">B</tspan>
+                </text>
+            </g>
+            <g id="M" transform="translate(175.000000, 65.000000)" fill="#000000" font-family="Merriweather-Regular, Merriweather" font-size="8" font-weight="normal">
+                <text>
+                    <tspan x="0" y="8">M</tspan>
+                </text>
+            </g>
+            <polygon id="Path-55" fill="#0000A6" fill-rule="nonzero" transform="translate(171.251252, 73.936678) rotate(38.000000) translate(-171.251252, -73.936678) " points="168.280811 77.600338 171.217904 70.2730178 174.221692 77.600338"></polygon>
+        </g>
+    </g>
+</svg>

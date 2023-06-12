@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="146px" height="154px" viewBox="0 0 146 154" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 53.2 (72643) - https://sketchapp.com -->
+    <title>Group 34</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-1">
+            <stop stop-color="#FFFFFF" offset="0%"></stop>
+            <stop stop-color="#E5ECF6" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Artboard" transform="translate(-70.000000, -727.000000)">
+            <g id="Group-34" transform="translate(69.000000, 727.000000)">
+                <g id="Group-32">
+                    <rect id="Rectangle" fill="url(#linearGradient-1)" x="14" y="0" width="41" height="123"></rect>
+                    <rect id="Rectangle-Copy-26" fill="url(#linearGradient-1)" x="60" y="0" width="41" height="123"></rect>
+                    <rect id="Rectangle-Copy-27" fill="url(#linearGradient-1)" opacity="0.621210007" x="106" y="0" width="41" height="123"></rect>
+                    <text id="$S_x$" font-family="Merriweather-Regular, Merriweather" font-size="7" font-weight="normal" letter-spacing="0.5218182" fill="#4E586A">
+                        <tspan x="22.4984545" y="138">$S_x$</tspan>
+                    </text>
+                    <text id="$i$" font-family="Merriweather-Regular, Merriweather" font-size="7" font-weight="normal" letter-spacing="0.5218182" fill="#4E586A">
+                        <tspan x="28.9387727" y="16">$i$</tspan>
+                    </text>
+                    <text id="$j$" font-family="Merriweather-Regular, Merriweather" font-size="7" font-weight="normal" letter-spacing="0.5218182" fill="#4E586A">
+                        <tspan x="83.4947727" y="16">$j$</tspan>
+                    </text>
+                    <text id="$k$" font-family="Merriweather-Regular, Merriweather" font-size="7" font-weight="normal" letter-spacing="0.5218182" fill="#4E586A">
+                        <tspan x="86.0042727" y="76">$k$</tspan>
+                    </text>
+                    <text id="$S_{x+1}$" font-family="Merriweather-Regular, Merriweather" font-size="7" font-weight="normal" letter-spacing="0.5218182" fill="#4E586A">
+                        <tspan x="68.0453181" y="138">$S_{x+1}$</tspan>
+                    </text>
+                    <text id="Time" font-family="Merriweather-Regular, Merriweather" font-size="7" font-weight="normal" letter-spacing="0.5218182" fill="#4E586A">
+                        <tspan x="76.4823636" y="153">Time</tspan>
+                    </text>
+                    <text id="Frequency" transform="translate(4.500000, 62.500000) rotate(-90.000000) translate(-4.500000, -62.500000) " font-family="Merriweather-Regular, Merriweather" font-size="7" font-weight="normal" letter-spacing="0.5218182" fill="#4E586A">
+                        <tspan x="-15.8906819" y="65">Frequency</tspan>
+                    </text>
+                    <g id="Group-33" opacity="0.361700149" transform="translate(33.000000, 21.000000)" fill="#646FFB">
+                        <circle id="Oval" cx="2.5" cy="81.5" r="2.5"></circle>
+                        <circle id="Oval-Copy-32" cx="93.5" cy="87.5" r="2.5"></circle>
+                        <circle id="Oval-Copy-35" cx="93.5" cy="42.5" r="2.5"></circle>
+                        <circle id="Oval-Copy-37" cx="93.5" cy="19.5" r="2.5"></circle>
+                        <circle id="Oval-Copy-26" cx="2.5" cy="64.5" r="2.5"></circle>
+                        <circle id="Oval-Copy-34" cx="93.5" cy="70.5" r="2.5"></circle>
+                        <circle id="Oval-Copy-36" cx="93.5" cy="25.5" r="2.5"></circle>
+                        <circle id="Oval-Copy-38" cx="93.5" cy="2.5" r="2.5"></circle>
+                        <circle id="Oval-Copy-27" cx="2.5" cy="25.5" r="2.5"></circle>
+                        <circle id="Oval-Copy-28" cx="2.5" cy="33.5" r="2.5"></circle>
+                    </g>
+                    <circle id="Oval-Copy-30" fill="#646FFB" cx="80.5" cy="73.5" r="2.5"></circle>
+                    <circle id="Oval-Copy-31" fill="#646FFB" cx="80.5" cy="107.5" r="2.5"></circle>
+                    <circle id="Oval-Copy-33" fill="#646FFB" cx="80.5" cy="18.5" r="2.5"></circle>
+                    <circle id="Oval-Copy-29" fill="#646FFB" cx="35.5" cy="23.5" r="2.5"></circle>
+                    <path d="M35.5,23.5 L81,18.5" id="Path-153" stroke="#646FFB"></path>
+                    <path d="M35.5,23.5 L80.5,108" id="Path-153" stroke="#646FFB"></path>
+                    <path d="M35.5,23.5 L80,73.5" id="Path-153" stroke="#646FFB"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

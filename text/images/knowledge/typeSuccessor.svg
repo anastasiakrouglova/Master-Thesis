@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="514px" height="36px" viewBox="0 0 514 36" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 53.2 (72643) - https://sketchapp.com -->
+    <title>typeSuccessor</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="typeSuccessor" transform="translate(-1.000000, -8.000000)" fill="#000000">
+            <g id="0" transform="translate(0.000000, 19.000000)" font-family="Merriweather-Regular, Merriweather" font-size="19" font-weight="normal">
+                <text>
+                    <tspan x="0.366636" y="19">0</tspan>
+                </text>
+            </g>
+            <g id="1-$:\equiv$-succ(0)" transform="translate(136.000000, 19.000000)" font-family="Merriweather-Regular, Merriweather" font-size="19" font-weight="normal">
+                <text>
+                    <tspan x="0.268084" y="19">1 $:\equiv$ succ(0)</tspan>
+                </text>
+            </g>
+            <g id="2-$:\equiv$-succ(1)" transform="translate(339.000000, 20.000000)" font-family="Merriweather-Regular, Merriweather" font-size="19" font-weight="normal">
+                <text>
+                    <tspan x="0.123084" y="19">2 $:\equiv$ succ(1)</tspan>
+                </text>
+            </g>
+            <polygon id="Path-111" fill-rule="nonzero" points="107 31.5 27.4239115 31.5 27.4239115 30.5 107 30.5 107 26.5 116 31 107 35.5"></polygon>
+            <polygon id="Path-111-Copy" fill-rule="nonzero" points="318.576089 32 239 32 239 31 318.576089 31 318.576089 27 327.576089 31.5 318.576089 36"></polygon>
+            <g id="succ" transform="translate(52.000000, 0.000000)" font-family="Merriweather-Italic, Merriweather" font-size="19" font-style="italic" font-weight="normal">
+                <text>
+                    <tspan x="0.835544" y="19">succ</tspan>
+                </text>
+            </g>
+            <g id="succ-copy" transform="translate(259.000000, 0.000000)" font-family="Merriweather-Italic, Merriweather" font-size="19" font-style="italic" font-weight="normal">
+                <text id="succ">
+                    <tspan x="0.835544" y="19">succ</tspan>
+                </text>
+            </g>
+        </g>
+    </g>
+</svg>

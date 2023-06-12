@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="337px" height="169px" viewBox="0 0 337 169" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 53.2 (72643) - https://sketchapp.com -->
+    <title>Group 2</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Artboard-Copy-9" transform="translate(-402.000000, -77.000000)">
+            <g id="Group-2" transform="translate(402.000000, 75.000000)">
+                <rect id="Rectangle" stroke="#2C2923" x="143.5" y="19.5" width="106" height="57"></rect>
+                <rect id="Rectangle-Copy-2" stroke="#FF9A33" x="0.5" y="113.5" width="194" height="57"></rect>
+                <rect id="Rectangle-Copy-3" stroke="#FF9A33" x="204.5" y="113.5" width="106" height="57"></rect>
+                <text id="CHAKRA" font-family="Merriweather-Regular, Merriweather" font-size="11" font-weight="normal" letter-spacing="0.819999993" fill="#000000">
+                    <tspan x="143" y="11">CHAKR</tspan>
+                    <tspan x="186.733" y="11">A</tspan>
+                </text>
+                <text id="CHARM" font-family="Merriweather-Regular, Merriweather" font-size="11" font-weight="normal" letter-spacing="0.819999993" fill="#000000">
+                    <tspan x="0" y="105">CHARM</tspan>
+                </text>
+                <text id="A" font-family="Merriweather-Regular, Merriweather" font-size="11" font-weight="normal" letter-spacing="0.819999993" fill="#000000">
+                    <tspan x="204" y="105">A</tspan>
+                </text>
+                <text id="…" font-family="Merriweather-Regular, Merriweather" font-size="11" font-weight="normal" letter-spacing="0.819999993" fill="#000000">
+                    <tspan x="329" y="145">…</tspan>
+                </text>
+                <polyline id="Path-14" stroke="#000000" points="88 113 88 85.1166825 195 85.1166825 195 77"></polyline>
+                <polyline id="Path-14" stroke="#000000" transform="translate(226.500000, 95.000000) scale(-1, 1) translate(-226.500000, -95.000000) " points="195 113 195 85.1166825 258 85.1166825 258 77"></polyline>
+                <text id="Attribute(a,T)" font-family="Merriweather-Regular, Merriweather" font-size="9" font-weight="normal" letter-spacing="0.6709091" fill="#000000">
+                    <tspan x="152" y="38">Attribute(a,T)</tspan>
+                </text>
+                <text id="Pitch-&lt;:-Chakra.Attr" font-family="Merriweather-Regular, Merriweather" font-size="9" font-weight="normal" letter-spacing="0.6709091" fill="#000000">
+                    <tspan x="7" y="133">Pitch &lt;: Chakra.Attribute(:pitch, P)</tspan>
+                </text>
+                <text id="…" font-family="Merriweather-Regular, Merriweather" font-size="9" font-weight="normal" letter-spacing="0.6709091" fill="#000000">
+                    <tspan x="7" y="146">…</tspan>
+                </text>
+                <text id="…-copy" font-family="Merriweather-Regular, Merriweather" font-size="9" font-weight="normal" letter-spacing="0.6709091" fill="#000000">
+                    <tspan x="152" y="65">…</tspan>
+                </text>
+                <text id="…-copy-2" font-family="Merriweather-Regular, Merriweather" font-size="9" font-weight="normal" letter-spacing="0.6709091" fill="#000000">
+                    <tspan x="213" y="133">…</tspan>
+                </text>
+            </g>
+        </g>
+    </g>
+</svg>

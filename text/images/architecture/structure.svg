@@ -1,0 +1,337 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="2982px" height="1600px" viewBox="0 0 2982 1600" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 53.2 (72643) - https://sketchapp.com -->
+    <title>Group 74</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Group-74" transform="translate(0.000000, -8.000000)">
+            <rect id="Rectangle-Copy-26" stroke="#0706A8" stroke-width="3" fill="#F0F7FF" x="1.5" y="607.5" width="474" height="123"></rect>
+            <rect id="Rectangle-Copy-27" stroke="#0706A8" stroke-width="3" fill="#F0F7FF" x="616.5" y="145.5" width="333" height="241"></rect>
+            <rect id="Rectangle-Copy-28" stroke="#0706A8" stroke-width="3" fill="#F7F4FB" x="626.5" y="733.5" width="1703" height="760"></rect>
+            <rect id="Rectangle-Copy-29" stroke="#0706A8" stroke-width="3" fill="#F0F7FF" x="982.5" y="146.5" width="534" height="241"></rect>
+            <rect id="Rectangle-Copy-33" stroke="#0706A8" stroke-width="3" fill="#F0F7FF" x="1549.5" y="149.5" width="321" height="233"></rect>
+            <text id="Output" font-family="Merriweather-Bold, Merriweather" font-size="54" font-weight="bold" letter-spacing="4.02545464" fill="#4E586A">
+                <tspan x="2658.08464" y="133">Output</tspan>
+            </text>
+            <text id="Input" font-family="Merriweather-Bold, Merriweather" font-size="54" font-weight="bold" letter-spacing="4.02545464" fill="#4E586A">
+                <tspan x="153.038363" y="546">Input</tspan>
+            </text>
+            <text id="Feature" font-family="Merriweather-Regular, Merriweather" font-size="24" font-weight="normal" letter-spacing="1.78909063" fill="#4E586A">
+                <tspan x="647" y="259">Feature</tspan>
+            </text>
+            <text id="Extraction" font-family="Merriweather-Regular, Merriweather" font-size="24" font-weight="normal" letter-spacing="1.78909063" fill="#4E586A">
+                <tspan x="647" y="310">Extraction</tspan>
+            </text>
+            <text id="Feature-selection/" font-family="Merriweather-Regular, Merriweather" font-size="24" font-weight="normal" letter-spacing="1.78909063" fill="#4E586A">
+                <tspan x="1022.29018" y="259">Feature selection/</tspan>
+            </text>
+            <text id="Reduction" font-family="Merriweather-Regular, Merriweather" font-size="24" font-weight="normal" letter-spacing="1.78909063" fill="#4E586A">
+                <tspan x="1022.13709" y="310">Reduction</tspan>
+            </text>
+            <text id="Classifier" font-family="Merriweather-Regular, Merriweather" font-size="24" font-weight="normal" letter-spacing="1.78909063" fill="#4E586A">
+                <tspan x="1597.44909" y="259">Classifier</tspan>
+            </text>
+            <text id="Conventional-Machine-Copy" font-family="Merriweather-Bold, Merriweather" font-size="54" font-weight="bold" letter-spacing="4.02545393" fill="#4E586A">
+                <tspan x="1070.40992" y="53">Conventional Machine learning</tspan>
+            </text>
+            <text id="Deep-Learning-Copy" font-family="Merriweather-Bold, Merriweather" font-size="54" font-weight="bold" letter-spacing="4.02545393" fill="#4E586A">
+                <tspan x="1243.03155" y="671">Deep Learning</tspan>
+            </text>
+            <text id="Automated-Feature-Ex-Copy" font-family="Merriweather-BoldItalic, Merriweather" font-size="48" font-style="italic" font-weight="bold" letter-spacing="3.57818162" fill="#4E586A">
+                <tspan x="914.438186" y="1595">Automated Feature Extraction and Classifier</tspan>
+            </text>
+            <text id="Versatile-and-explai" font-family="Merriweather-BoldItalic, Merriweather" font-size="48" font-style="italic" font-weight="bold" letter-spacing="3.57818162" fill="#4E586A">
+                <tspan x="690.76037" y="474">Versatile and explainable feature Extraction and Classification </tspan>
+            </text>
+            <text id="Resonances-Copy" font-family="Merriweather-Regular, Merriweather" font-size="42" font-weight="normal" letter-spacing="3.13090861" fill="#4E586A">
+                <tspan x="80.293457" y="684">Resonances</tspan>
+            </text>
+            <polyline id="Path-130-Copy" stroke="#9090CA" stroke-width="3" points="477 670.5 553.604312 670.5 553.604312 265.5 615 265.5"></polyline>
+            <polyline id="Path-130-Copy-2" stroke="#9090CA" stroke-width="3" transform="translate(551.000000, 892.750000) scale(1, -1) translate(-551.000000, -892.750000) " points="477 1114.5 553.604312 1115 553.604312 670.5 625 670.5"></polyline>
+            <path d="M2330,1380 L2625.5,1380" id="Path-130-Copy-2" stroke="#9090CA" stroke-width="3" transform="translate(2478.000000, 1380.000000) scale(-1, -1) translate(-2478.000000, -1380.000000) "></path>
+            <polyline id="Path-130-Copy-2" stroke="#9090CA" stroke-width="3" transform="translate(2479.000000, 799.500000) scale(-1, 1) translate(-2479.000000, -799.500000) " points="2332 1346 2495.20049 1346 2495.20049 253 2626 253"></polyline>
+            <polyline id="Path-130-Copy-2" stroke="#9090CA" stroke-width="3" transform="translate(2479.000000, 589.500000) scale(-1, 1) translate(-2479.000000, -589.500000) " points="2332 926 2495.20049 926 2495.20049 253 2626 253"></polyline>
+            <polyline id="Path-130-Copy-2" stroke="#9090CA" stroke-width="3" transform="translate(2479.000000, 697.500000) scale(-1, 1) translate(-2479.000000, -697.500000) " points="2332 1142 2495.20049 1142 2495.20049 253 2626 253"></polyline>
+            <polyline id="Path-130-Copy-2" stroke="#9090CA" stroke-width="3" transform="translate(2479.000000, 477.000000) scale(-1, 1) translate(-2479.000000, -477.000000) " points="2332 701 2495.20049 701 2495.20049 253 2626 253"></polyline>
+            <ellipse id="Oval" fill="#0706A8" cx="769.168478" cy="936.5" rx="15.9679952" ry="16"></ellipse>
+            <ellipse id="Oval-Copy-15" fill="#0706A8" cx="769.168478" cy="992.5" rx="15.9679952" ry="16"></ellipse>
+            <ellipse id="Oval-Copy-24" fill="#0706A8" cx="1124.58514" cy="912.5" rx="15.9679952" ry="16"></ellipse>
+            <ellipse id="Oval-Copy-36" fill="#0706A8" cx="1515.02838" cy="912.5" rx="15.9679952" ry="16"></ellipse>
+            <ellipse id="Oval-Copy-48" fill="#0706A8" cx="1890.01872" cy="908.5" rx="15.9679952" ry="16"></ellipse>
+            <ellipse id="Oval-Copy-16" fill="#0706A8" cx="769.168478" cy="1048" rx="15.9679952" ry="15.5"></ellipse>
+            <ellipse id="Oval-Copy-25" fill="#0706A8" cx="1124.58514" cy="968.5" rx="15.9679952" ry="16"></ellipse>
+            <ellipse id="Oval-Copy-37" fill="#0706A8" cx="1515.02838" cy="968.5" rx="15.9679952" ry="16"></ellipse>
+            <ellipse id="Oval-Copy-49" fill="#0706A8" cx="1890.01872" cy="964.5" rx="15.9679952" ry="16"></ellipse>
+            <ellipse id="Oval-Copy-17" fill="#0706A8" cx="769.168478" cy="1103.5" rx="15.9679952" ry="16"></ellipse>
+            <ellipse id="Oval-Copy-26" fill="#0706A8" cx="1124.58514" cy="1024" rx="15.9679952" ry="15.5"></ellipse>
+            <ellipse id="Oval-Copy-38" fill="#0706A8" cx="1515.02838" cy="1024" rx="15.9679952" ry="15.5"></ellipse>
+            <ellipse id="Oval-Copy-50" fill="#0706A8" cx="1890.01872" cy="1019.5" rx="15.9679952" ry="16"></ellipse>
+            <ellipse id="Oval-Copy-27" fill="#0706A8" cx="1124.58514" cy="1192.5" rx="15.9679952" ry="16"></ellipse>
+            <ellipse id="Oval-Copy-39" fill="#0706A8" cx="1515.02838" cy="1192.5" rx="15.9679952" ry="16"></ellipse>
+            <ellipse id="Oval-Copy-51" fill="#0706A8" cx="1890.01872" cy="1187" rx="15.9679952" ry="16.5"></ellipse>
+            <ellipse id="Oval-Copy-59" fill="#0706A8" cx="2224.83152" cy="1128" rx="15.9679952" ry="16.5"></ellipse>
+            <ellipse id="Oval-Copy-18" fill="#0706A8" cx="769.168478" cy="1160.5" rx="15.9679952" ry="16"></ellipse>
+            <ellipse id="Oval-Copy-28" fill="#0706A8" cx="1124.58514" cy="1079.5" rx="15.9679952" ry="16"></ellipse>
+            <ellipse id="Oval-Copy-41" fill="#0706A8" cx="1515.02838" cy="1079.5" rx="15.9679952" ry="16"></ellipse>
+            <ellipse id="Oval-Copy-53" fill="#0706A8" cx="1890.01872" cy="1076" rx="15.9679952" ry="16.5"></ellipse>
+            <ellipse id="Oval-Copy-29" fill="#0706A8" cx="1124.58514" cy="1247.5" rx="15.9679952" ry="16"></ellipse>
+            <ellipse id="Oval-Copy-42" fill="#0706A8" cx="1515.02838" cy="1247.5" rx="15.9679952" ry="16"></ellipse>
+            <ellipse id="Oval-Copy-54" fill="#0706A8" cx="1890.01872" cy="1243.5" rx="15.9679952" ry="16"></ellipse>
+            <ellipse id="Oval-Copy-60" fill="#0706A8" cx="2224.83152" cy="1183.5" rx="15.9679952" ry="16"></ellipse>
+            <ellipse id="Oval-Copy-19" fill="#0706A8" cx="769.168478" cy="1215.5" rx="15.9679952" ry="16"></ellipse>
+            <ellipse id="Oval-Copy-30" fill="#0706A8" cx="1124.58514" cy="1136" rx="15.9679952" ry="16.5"></ellipse>
+            <ellipse id="Oval-Copy-44" fill="#0706A8" cx="1515.02838" cy="1136" rx="15.9679952" ry="16.5"></ellipse>
+            <ellipse id="Oval-Copy-56" fill="#0706A8" cx="1890.01872" cy="1132" rx="15.9679952" ry="15.5"></ellipse>
+            <ellipse id="Oval-Copy-31" fill="#0706A8" cx="1124.58514" cy="1303.5" rx="15.9679952" ry="16"></ellipse>
+            <ellipse id="Oval-Copy-45" fill="#0706A8" cx="1515.02838" cy="1303.5" rx="15.9679952" ry="16"></ellipse>
+            <ellipse id="Oval-Copy-57" fill="#0706A8" cx="1890.01872" cy="1299.5" rx="15.9679952" ry="16"></ellipse>
+            <ellipse id="Oval-Copy-61" fill="#0706A8" cx="2224.83152" cy="1068" rx="15.9679952" ry="16.5"></ellipse>
+            <path d="M1520.62869,966.517857 L1891.62977,1077.5" id="Path-131-Copy-88" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M1135.40217,970.5 L1512.4803,1077.5" id="Path-131-Copy-196" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M1528.87373,1142.5 L1890.53382,964.5" id="Path-131-Copy-111" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M1135.16063,1132.5 L1511.42271,964.5" id="Path-131-Copy-197" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M1520.62726,1192.53571 L1885.38285,1084.5" id="Path-131-Copy-134" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M1134.34399,1192.53571 L1506.27174,1084.5" id="Path-131-Copy-198" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M1520.63352,1192.52222 L1889.17718,1016.5" id="Path-131-Copy-135" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M1134.34983,1192.52222 L1510.03976,1016.5" id="Path-131-Copy-204" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M1526.8756,1142.47368 L1896.39229,1071.55263" id="Path-131-Copy-113" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M1136.5,1134 L1517.25487,1071.55263" id="Path-131-Copy-209" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M782.045894,936.5 L1111.557,1304.5" id="Path-131" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M782.045894,1046 L1112.73792,968.5" id="Path-131-Copy" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M782.045894,1159 L1127.16063,1079.5" id="Path-131-Copy-17" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M1514.51329,920.5 L1889.17674,1298.5" id="Path-131-Copy-28" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M1127.16063,920.5 L1510.03589,1298.5" id="Path-131-Copy-213" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M1526.8756,1144.5 L1892.27201,1187.5" id="Path-131-Copy-114" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M1137.5,1136 L1513.13431,1187.5" id="Path-131-Copy-215" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M1518.63406,1194.5 L1893.6244,1296.5" id="Path-131-Copy-137" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M1132.31159,1194.5 L1514.51329,1296.5" id="Path-131-Copy-216" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M782.045894,936.5 L1111.557,1247.5" id="Path-131" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M782.045894,1046 L1125,912" id="Path-131-Copy-2" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M782.045894,1159 L1118.04589,1023" id="Path-131-Copy-18" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M1514.51329,914.5 L1888.47343,1244.5" id="Path-131-Copy-29" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M1125.04589,915.5 L1511.42271,1244.5" id="Path-131-Copy-219" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M1518.63406,962.5 L1892.5942,1291.5" id="Path-131-Copy-92" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M1127.16063,971.5 L1514.51329,1291.5" id="Path-131-Copy-220" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M1518.63406,1189.5 L1889.63514,1245.5" id="Path-131-Copy-138" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M1132.31159,1189.5 L1510.44731,1245.5" id="Path-131-Copy-222" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M782.045894,936.5 L1111.557,1191.5" id="Path-131" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M782.045894,1046 L1111.557,1301" id="Path-131-Copy-3" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M782.045894,1159 L1117.88889,968.5" id="Path-131-Copy-19" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M1514.51329,915.485714 L1889.17674,1187.52857" id="Path-131-Copy-30" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M1127.16063,915.485714 L1510.03589,1187.52857" id="Path-131-Copy-225" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M1518.63406,962.492857 L1892.27104,1235.51429" id="Path-131-Copy-93" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M1128.04589,971.5 L1513.1339,1235.51429" id="Path-131-Copy-226" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M782.045894,936.5 L1111.557,1134.5" id="Path-131" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M782.045894,1046 L1111.557,1244" id="Path-131-Copy-4" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M782.045894,1159 L1122.5,913.5" id="Path-131-Copy-20" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M1516.51339,913.5 L1889.17674,1131.5" id="Path-131-Copy-31" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M1127.16063,913.5 L1510.03589,1131.5" id="Path-131-Copy-231" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M1520.62869,960.5 L1892.27104,1179.5" id="Path-131-Copy-94" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M1130,971.5 L1513.1339,1179.5" id="Path-131-Copy-232" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M782.045894,936.5 L1112.73792,1080.5" id="Path-131" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M782.045894,1046 L1112.73792,1190" id="Path-131-Copy-5" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M782.045894,1159 L1112.73792,1303" id="Path-131-Copy-21" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M1513.41803,913.5 L1890.53382,1077.5" id="Path-131-Copy-32" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M1126.10875,913.5 L1511.42271,1077.5" id="Path-131-Copy-237" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M1516.50861,960.5 L1893.6244,1124.5" id="Path-131-Copy-95" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M1132.31159,970.5 L1514.51329,1124.5" id="Path-131-Copy-238" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M1524.74473,1134.5 L1900.83575,1298.5" id="Path-131-Copy-118" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M1136.40217,1141.5 L1522.75483,1298.5" id="Path-131-Copy-239" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M782.045894,936.5 L1112.73792,1024.5" id="Path-131" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M782.045894,1046 L1112.73792,1134" id="Path-131-Copy-6" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M782.045894,1159 L1112.73792,1247" id="Path-131-Copy-22" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M1513.41803,913.5 L1890.53382,1020.5" id="Path-131-Copy-33" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M1126.10875,913.5 L1511.42271,1020.5" id="Path-131-Copy-243" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M1516.50861,960.5 L1893.6244,1067.5" id="Path-131-Copy-96" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M1129.31159,967 L1514.51329,1067.5" id="Path-131-Copy-244" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M1524.74473,1134.5 L1900.83575,1244.5" id="Path-131-Copy-119" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M1136.55314,1137.5 L1522.75483,1244.5" id="Path-131-Copy-245" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M1516.50861,1187.5 L1893.6244,1295.5" id="Path-131-Copy-142" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M1129.19933,1187.5 L1514.51329,1295.5" id="Path-131-Copy-246" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M782.045894,936.5 L1112.73792,967.5" id="Path-131" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M782.045894,1046 L1112.73792,1077" id="Path-131-Copy-7" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M782.045894,1159 L1112.73792,1190" id="Path-131-Copy-23" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M1511.42271,909.5 L1890.53382,967.5" id="Path-131-Copy-34" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M1123.92512,913 L1511.42271,967.5" id="Path-131-Copy-249" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M1514.51329,958.5 L1893.6244,1016.5" id="Path-131-Copy-97" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M1132.31159,967 L1514.51329,1016.5" id="Path-131-Copy-250" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M1522.75483,1133.5 L1900.83575,1191.5" id="Path-131-Copy-120" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M1514.51329,1186.5 L1893.6244,1244.5" id="Path-131-Copy-143" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M1127.16063,1186.5 L1514.51329,1244.5" id="Path-131-Copy-252" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M781.910987,936.5 L1112.73792,913.5" id="Path-131" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M781.910987,1046 L1112.73792,1023" id="Path-131-Copy-8" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M781.910987,1159 L1112.73792,1136" id="Path-131-Copy-24" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M1511.42271,913.5 L1890.53382,907.5" id="Path-131-Copy-35" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M1124.07005,913.5 L1511.42271,907.5" id="Path-131-Copy-255" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M1514.51329,960.5 L1893.6244,956.5" id="Path-131-Copy-98" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M1130,966.5 L1514.51329,956.5" id="Path-131-Copy-256" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M1522.75483,1134.5 L1900.83575,1131.5" id="Path-131-Copy-121" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M1135.55314,1136 L1522.75483,1131.5" id="Path-131-Copy-257" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M1514.51329,1187.5 L1893.6244,1184.5" id="Path-131-Copy-144" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M1127.16063,1187.5 L1514.51329,1184.5" id="Path-131-Copy-258" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M1516.50861,960.5 L1892.27261,904.5" id="Path-131-Copy-99" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M1135.31159,964.5 L1510.16063,908.5" id="Path-131-Copy-262" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M1524.74473,1134.5 L1899.48763,1080.5" id="Path-131-Copy-122" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M1137.44087,1134.5 L1510.16063,907.5" id="Path-131-Copy-263" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M1516.50861,1187.5 L1892.27261,1131.5" id="Path-131-Copy-145" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M1129.19933,1187.5 L1513.13211,1131.5" id="Path-131-Copy-264" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M1890.53382,964.5 L2218.20974,1067.5" id="Path-131-Copy-36" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M1893.6244,1020.5 L2223.34829,1124.5" id="Path-131-Copy-49" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M1897.74517,1077.5 L2226.44508,1179.5" id="Path-131-Copy-62" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M1890.53382,964.5 L2218.20974,1067.5" id="Path-131-Copy-36" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M1893.6244,1020.5 L2223.34829,1124.5" id="Path-131-Copy-50" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M1897.74517,1077.5 L2226.44508,1179.5" id="Path-131-Copy-63" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M1890.53382,908.47619 L2218.20974,1067.52381" id="Path-131-Copy-36" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M1893.6244,964.47619 L2223.34829,1123.52381" id="Path-131-Copy-51" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M1897.74517,1020.5 L2226.44508,1180.5" id="Path-131-Copy-64" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M1893.6244,907.5 L2223.34829,1124.5" id="Path-131-Copy-52" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M1897.74517,964.5 L2226.44508,1179.5" id="Path-131-Copy-65" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M1888.01651,1022.45833 L2218.20272,1067.5" id="Path-131-Copy-36" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M1893.16748,1079.45833 L2223.35369,1124.5" id="Path-131-Copy-53" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M1896.25806,1133.5 L2226.44426,1179.5" id="Path-131-Copy-66" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M1888.01651,1077.5 L2218.20272,1068.16667" id="Path-131-Copy-36" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M1893.16748,1131.5 L2223.35369,1123.5" id="Path-131-Copy-54" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M1896.25806,1187.5 L2226.44426,1180.16667" id="Path-131-Copy-67" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M1897.74517,1298.98718 L2226.44426,1180.18376" id="Path-131-Copy-67" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M1897.74517,1239.98305 L2226.44426,1180.18927" id="Path-131-Copy-67" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M1888.01651,1136.44737 L2218.20272,1067.55263" id="Path-131-Copy-36" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M1893.16748,1190.55263 L2223.35369,1123.44737" id="Path-131-Copy-55" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M1897.74517,1243.98305 L2223.35369,1123.37065" id="Path-131-Copy-55" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M1904.44143,1295.5 L2223.35369,1123.36717" id="Path-131-Copy-55" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M1890.53382,1184.5 L2218.20974,1067.53333" id="Path-131-Copy-36" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M1892.51973,1244.5 L2218.20974,1067.52222" id="Path-131-Copy-36" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M1892.51973,1304.5 L2218.20974,1067.51667" id="Path-131-Copy-36" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M1900.37776,911.514493 L2226.44508,1180.48551" id="Path-131-Copy-74" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M781.910987,991.5 L1124,912" id="Path-131" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M781.910987,1101 L1112.73792,1023" id="Path-131-Copy-9" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M781.910987,1214 L1112.73792,1136" id="Path-131-Copy-25" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M1516.51339,1025.5 L1890.53382,907.5" id="Path-131-Copy-37" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M1129.20458,1025.5 L1511.42271,907.5" id="Path-131-Copy-267" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M1520.62869,1075.48333 L1893.6244,956.5" id="Path-131-Copy-100" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M1134.34458,1075.48333 L1514.51329,956.5" id="Path-131-Copy-268" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M1528.86475,1249.5 L1900.83575,1131.5" id="Path-131-Copy-123" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M1136.40217,1245.5 L1522.75483,1131.5" id="Path-131-Copy-269" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M1520.62869,1302.5 L1893.6244,1184.5" id="Path-131-Copy-146" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M1137.40217,1303.5 L1514.51329,1184.5" id="Path-131-Copy-270" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M781.910987,991.5 L1112.73792,967.5" id="Path-131" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M781.910987,1101 L1112.73792,1077" id="Path-131-Copy-10" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M781.910987,1214 L1112.73792,1190" id="Path-131-Copy-26" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M1516.51339,1027.5 L1890.53382,967.5" id="Path-131-Copy-38" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M1129.20458,1027.5 L1511.42271,967.5" id="Path-131-Copy-272" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M1520.62869,1077.5 L1893.6244,1016.5" id="Path-131-Copy-101" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M1134.34458,1077.5 L1511.31159,1029.5" id="Path-131-Copy-273" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M1528.86475,1251.5 L1900.83575,1191.5" id="Path-131-Copy-124" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M1136.40217,1246.5 L1522.75483,1191.5" id="Path-131-Copy-274" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M1520.62869,1304.5 L1893.6244,1244.5" id="Path-131-Copy-147" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M1134.34458,1304.5 L1514.51329,1244.5" id="Path-131-Copy-275" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M781.924695,992.5 L1116.90742,1024.5" id="Path-131" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M781.924695,1102 L1116.90742,1134" id="Path-131-Copy-11" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M781.924695,1215 L1116.90742,1247" id="Path-131-Copy-27" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M1518.63406,1027.5 L1892.50726,1020.16667" id="Path-131-Copy-39" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M1132.31159,1027.5 L1513.37466,1020.16667" id="Path-131-Copy-277" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M1522.75483,1077.5 L1896.62803,1068.16667" id="Path-131-Copy-102" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M1135.40217,1077.5 L1517.49236,1068.16667" id="Path-131-Copy-278" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M1530.99638,1251.5 L1904.86957,1243.5" id="Path-131-Copy-125" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M1137.40217,1249.5 L1525.73698,1243.5" id="Path-131-Copy-279" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M1522.75483,1304.5 L1896.62803,1295.83333" id="Path-131-Copy-148" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M1135.40217,1304.5 L1517.49236,1295.83333" id="Path-131-Copy-280" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M781.910987,992.5 L1112.73792,1080.5" id="Path-131" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M781.910987,1102 L1112.73792,1190" id="Path-131-Copy-12" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M781.910987,1215 L1112.73792,1303" id="Path-131-Copy-45" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M1518.5135,1027.5 L1890.53382,1077.5" id="Path-131-Copy-40" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M1131.24852,1027.5 L1511.42271,1077.5" id="Path-131-Copy-282" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M1522.62332,1077.5 L1893.6244,1124.5" id="Path-131-Copy-103" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M1136.37757,1077.5 L1514.51329,1124.5" id="Path-131-Copy-283" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M1530.8539,1251.5 L1900.83575,1298.5" id="Path-131-Copy-126" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M1135.16063,1251.5 L1522.75483,1298.5" id="Path-131-Copy-284" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M781.924695,992.5 L1117.88889,1140.5" id="Path-131" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M781.924695,1102 L1117.88889,1250" id="Path-131-Copy-13" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M781.924695,1215 L1124,912.5" id="Path-131-Copy-46" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M1518.50393,1027.5 L1893.6244,1136.56777" id="Path-131-Copy-41" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M1131.23802,1027.5 L1514.51329,1136.56777" id="Path-131-Copy-287" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M1522.6247,1077.5 L1897.74517,1183.67216" id="Path-131-Copy-104" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M1136.37815,1077.5 L1518.63406,1183.67216" id="Path-131-Copy-288" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M781.924695,992.461538 L1117.88889,1192.51923" id="Path-131" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M781.924695,1101.96154 L1117.88889,1302.01923" id="Path-131-Copy-14" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M781.924695,1214.96154 L1123.04589,964.5" id="Path-131-Copy-47" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M1516.50861,1028.47619 L1893.6244,1189.55014" id="Path-131-Copy-42" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M1129.19933,1028.47619 L1514.51329,1189.55014" id="Path-131-Copy-292" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M1520.62938,1075.5 L1897.74517,1237.53846" id="Path-131-Copy-105" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M1134.34487,1075.5 L1518.63406,1237.53846" id="Path-131-Copy-293" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M781.924695,992.485075 L1116.90742,1255.5" id="Path-131" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M781.924695,1101.98507 L1124.07005,913" id="Path-131-Copy-15" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M781.924695,1214.98507 L1118.04589,1022.5" id="Path-131-Copy-48" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M1514.51329,1027.5 L1892.50687,1251.5" id="Path-131-Copy-43" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M1127.16063,1027.5 L1513.37146,1251.5" id="Path-131-Copy-297" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M1518.63406,1077.5 L1896.62764,1300.51754" id="Path-131-Copy-106" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M1132.31159,1077.5 L1517.49527,1300.51754" id="Path-131-Copy-298" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M781.924695,992.487654 L1117.88889,1311.5" id="Path-131" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M781.924695,1101.98765 L1117.88889,968" id="Path-131-Copy-16" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M781.924695,1214.98765 L1117.88889,1080.5" id="Path-131-Copy-56" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M1514.51329,1028.48592 L1893.6244,1307.5" id="Path-131-Copy-44" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M1127.16063,1028.48592 L1514.51329,1307.5" id="Path-131-Copy-302" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M1518.63406,1305.50676 L1889.63514,1014.49324" id="Path-131-Copy-153" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M1132.31159,1305.50676 L1510.44731,1014.49324" id="Path-131-Copy-306" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M1518.63406,1305.50495 L1881.39645,908.490099" id="Path-131-Copy-154" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M1132.31159,1305.50495 L1510.16063,908.5" id="Path-131-Copy-311" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M1526.8756,1253.50667 L1892.50806,956.5" id="Path-131-Copy-132" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M1135.55314,1245.5 L1513.37499,956.5" id="Path-131-Copy-315" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M1518.63406,1305.50667 L1896.39134,1008.5" id="Path-131-Copy-155" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M1132.31159,1305.50667 L1510.40217,1027.5" id="Path-131-Copy-316" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M1520.62938,1077.5 L1896.62764,904.522727" id="Path-131-Copy-110" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M1134.34487,1077.5 L1517.49527,904.522727" id="Path-131-Copy-320" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M1528.87093,1251.5 L1904.86919,1081.45455" id="Path-131-Copy-133" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M1136.40217,1244.5 L1525.73682,1081.45455" id="Path-131-Copy-321" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M1520.62938,1304.5 L1896.62764,1131.52273" id="Path-131-Copy-156" stroke="#0706A8" stroke-width="0.5"></path>
+            <path d="M1134.34487,1304.5 L1517.49527,1131.52273" id="Path-131-Copy-322" stroke="#0706A8" stroke-width="0.5"></path>
+            <polyline id="Path-130-Copy-2" stroke="#9090CA" stroke-width="3" transform="translate(2479.000000, 367.500000) scale(-1, 1) translate(-2479.000000, -367.500000) " points="2332 482 2495.20049 482 2495.20049 253 2626 253"></polyline>
+            <polyline id="Path-130-Copy-2" stroke="#9090CA" stroke-width="3" transform="translate(2479.000000, 264.000000) scale(-1, 1) translate(-2479.000000, -264.000000) " points="2332 275 2495.20049 275 2495.20049 253 2626 253"></polyline>
+            <rect id="Rectangle-Copy-34" stroke="#0706A8" stroke-width="3" fill="#F0F7FF" x="1903.5" y="149.5" width="472" height="233"></rect>
+            <text id="Knowledge" font-family="Merriweather-Regular, Merriweather" font-size="24" font-weight="normal" letter-spacing="1.78909063" fill="#4E586A">
+                <tspan x="1939" y="253">Knowledge</tspan>
+            </text>
+            <text id="Representation" font-family="Merriweather-Regular, Merriweather" font-size="24" font-weight="normal" letter-spacing="1.78909063" fill="#4E586A">
+                <tspan x="1939" y="310">Representation</tspan>
+            </text>
+            <rect id="Rectangle-Copy-37" stroke="#0706A8" stroke-width="3" fill="#F7F4FB" x="2546.5" y="1280.5" width="434" height="166"></rect>
+            <rect id="Rectangle-Copy-44" stroke="#0706A8" stroke-width="3" fill="#F0F7FF" x="2546.5" y="1061.5" width="434" height="166"></rect>
+            <rect id="Rectangle-Copy-46" stroke="#0706A8" stroke-width="3" fill="#F0F7FF" x="2546.5" y="842.5" width="434" height="166"></rect>
+            <rect id="Rectangle-Copy-56" stroke="#0706A8" stroke-width="3" fill="#F0F7FF" x="2546.5" y="623.5" width="434" height="166"></rect>
+            <rect id="Rectangle-Copy-57" stroke="#0706A8" stroke-width="3" fill="#F0F7FF" x="2546.5" y="404.5" width="434" height="166"></rect>
+            <rect id="Rectangle-Copy-58" stroke="#0706A8" stroke-width="3" fill="#F0F7FF" x="2546.5" y="185.5" width="434" height="166"></rect>
+            <text id="Note" font-family="Merriweather-Regular, Merriweather" font-size="24" font-weight="normal" letter-spacing="1.78909045" fill="#4E586A">
+                <tspan x="2599" y="1346">Note</tspan>
+            </text>
+            <text id="Instrument" font-family="Merriweather-Regular, Merriweather" font-size="24" font-weight="normal" letter-spacing="1.78909045" fill="#4E586A">
+                <tspan x="2599" y="1126">Instrument</tspan>
+            </text>
+            <text id="Onset/Pitch" font-family="Merriweather-Regular, Merriweather" font-size="24" font-weight="normal" letter-spacing="1.78909045" fill="#4E586A">
+                <tspan x="2599" y="904">Onset/Pitch</tspan>
+            </text>
+            <text id="Pitch" font-family="Merriweather-Regular, Merriweather" font-size="24" font-weight="normal" letter-spacing="1.78909045" fill="#4E586A">
+                <tspan x="2599" y="688">Pitch</tspan>
+            </text>
+            <text id="Timbre" font-family="Merriweather-Regular, Merriweather" font-size="24" font-weight="normal" letter-spacing="1.78909045" fill="#4E586A">
+                <tspan x="2599" y="467">Timbre</tspan>
+            </text>
+            <text id="…" font-family="Merriweather-Regular, Merriweather" font-size="24" font-weight="normal" letter-spacing="1.78909045" fill="#4E586A">
+                <tspan x="2599" y="277">…</tspan>
+            </text>
+            <text id="transcription" font-family="Merriweather-Regular, Merriweather" font-size="24" font-weight="normal" letter-spacing="1.78909045" fill="#4E586A">
+                <tspan x="2599" y="1405">transcription</tspan>
+            </text>
+            <text id="Seperation" font-family="Merriweather-Regular, Merriweather" font-size="24" font-weight="normal" letter-spacing="1.78909045" fill="#4E586A">
+                <tspan x="2599" y="1187">Seperation</tspan>
+            </text>
+            <text id="Detection" font-family="Merriweather-Regular, Merriweather" font-size="24" font-weight="normal" letter-spacing="1.78909045" fill="#4E586A">
+                <tspan x="2599" y="967">Detection</tspan>
+            </text>
+            <text id="Tuning" font-family="Merriweather-Regular, Merriweather" font-size="24" font-weight="normal" letter-spacing="1.78909045" fill="#4E586A">
+                <tspan x="2599" y="750">Tuning</tspan>
+            </text>
+            <text id="Adjustment" font-family="Merriweather-Regular, Merriweather" font-size="24" font-weight="normal" letter-spacing="1.78909045" fill="#4E586A">
+                <tspan x="2599" y="529">Adjustment</tspan>
+            </text>
+        </g>
+    </g>
+</svg>

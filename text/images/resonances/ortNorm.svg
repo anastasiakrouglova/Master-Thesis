@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="174px" height="194px" viewBox="0 0 174 194" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 53.2 (72643) - https://sketchapp.com -->
+    <title>Group 13</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Artboard" transform="translate(-736.000000, -5.000000)">
+            <g id="Group-13" transform="translate(736.500000, 4.000000)">
+                <g id="Group-12" transform="translate(0.000000, 0.000000)">
+                    <circle id="Oval" fill="#00CC96" cx="18" cy="4.5" r="2.5"></circle>
+                    <circle id="Oval-Copy-8" fill="#AB63FA" cx="18" cy="20.5" r="2.5"></circle>
+                    <g id="Group-11" transform="translate(0.000000, 31.000000)">
+                        <circle id="Oval" stroke="#E2E2E2" cx="84.5" cy="81.0328093" r="65"></circle>
+                        <path d="M84.5,163.74178 L84.5,-4.54747351e-13" id="Path-91" stroke="#E2E2E2"></path>
+                        <path d="M0,81.0328093 L169,81.0328093" id="Path-91" stroke="#E2E2E2"></path>
+                        <polyline id="Path-92" stroke="#979797" points="7.76843578 33.854778 84.5 81.0328093 59.1063769 121.119484"></polyline>
+                        <polyline id="Path-101" stroke="#E2E2E2" points="78.376003 90.3880648 68.9344144 84.3585168 74.7810212 74.7527639"></polyline>
+                        <polyline id="Path-102" stroke="#E2E2E2" points="90.3244839 70.9627434 100.30427 77.4871312 94.4272763 87.1893253"></polyline>
+                        <text id="$u_1$" font-family="Merriweather-Regular, Merriweather" font-size="9" font-weight="normal" letter-spacing="0.670909107" fill="#000000">
+                            <tspan x="3.31022723" y="29.0328093">$u_1$</tspan>
+                        </text>
+                        <text id="$u_2$" font-family="Merriweather-Regular, Merriweather" font-size="9" font-weight="normal" letter-spacing="0.670909107" fill="#000000">
+                            <tspan x="123.599227" y="22.0328093">$u_2$</tspan>
+                        </text>
+                        <text id="$v_2$" font-family="Merriweather-Regular, Merriweather" font-size="9" font-weight="normal" letter-spacing="0.670909107" fill="#000000">
+                            <tspan x="140.887227" y="126.032809">$v_2$</tspan>
+                        </text>
+                        <text id="$v_1$" font-family="Merriweather-Regular, Merriweather" font-size="9" font-weight="normal" letter-spacing="0.670909107" fill="#000000">
+                            <tspan x="50.0982272" y="131.032809">$v_1$</tspan>
+                        </text>
+                        <text id="unit-circle" font-family="Merriweather-Regular, Merriweather" font-size="9" font-weight="normal" letter-spacing="0.670909107" fill="#E2E2E2">
+                            <tspan x="87.9584999" y="155">unit circle</tspan>
+                        </text>
+                        <polyline id="Path-92" stroke="#00CC96" points="7.76843578 33.854778 84.5 81.0328093 59.1063769 121.119484"></polyline>
+                        <polyline id="Path-100" stroke="#AB63FA" points="117.390302 26.1113695 84.5 81.0328093 139.482491 114.125556"></polyline>
+                        <polyline id="Path-99" stroke="#AB63FA" stroke-linecap="round" transform="translate(116.518156, 27.467827) rotate(-193.000000) translate(-116.518156, -27.467827) " points="115.313588 26.2221336 115.313588 28.6624959 117.722725 28.7135212"></polyline>
+                        <polyline id="Path-99" stroke="#AB63FA" stroke-linecap="round" transform="translate(138.404941, 113.524735) rotate(-106.000000) translate(-138.404941, -113.524735) " points="137.200373 112.279041 137.200373 114.719403 139.60951 114.770429"></polyline>
+                        <polyline id="Path-99" stroke="#00CC96" stroke-linecap="round" transform="translate(59.623809, 120.239434) rotate(-13.000000) translate(-59.623809, -120.239434) " points="58.4192398 118.99374 58.4192398 121.434102 60.8283773 121.485127"></polyline>
+                        <polyline id="Path-99" stroke="#00CC96" stroke-linecap="round" transform="translate(8.594747, 34.468214) rotate(76.000000) translate(-8.594747, -34.468214) " points="7.3901779 33.2225207 7.3901779 35.6628829 9.79931536 35.7139083"></polyline>
+                    </g>
+                    <text id="Orthogonal" font-family="Merriweather-Regular, Merriweather" font-size="7" font-weight="normal" letter-spacing="0.521818221" fill="#000000">
+                        <tspan x="24.6964089" y="7">Orthogonal</tspan>
+                    </text>
+                    <text id="Orthonormal" font-family="Merriweather-Regular, Merriweather" font-size="7" font-weight="normal" letter-spacing="0.521818221" fill="#000000">
+                        <tspan x="24.9744998" y="23">Orthonormal</tspan>
+                    </text>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

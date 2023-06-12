@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="257px" height="258px" viewBox="0 0 257 258" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 53.2 (72643) - https://sketchapp.com -->
+    <title>Group 45</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Artboard-Copy-9" transform="translate(-485.000000, -3413.000000)">
+            <g id="Group-45" transform="translate(485.000000, 3412.000000)">
+                <g id="Group-29-Copy-2">
+                    <circle id="Oval" stroke="#C9C9C9" cx="119" cy="137" r="82"></circle>
+                    <text id="n" font-family="Merriweather-Regular, Merriweather" font-size="10" font-weight="normal" letter-spacing="0.7454545" fill="#0000A6">
+                        <tspan x="115" y="48">n</tspan>
+                    </text>
+                    <text id="n-1" font-family="Merriweather-Regular, Merriweather" font-size="10" font-weight="normal" letter-spacing="-0.8692307" fill="#0000A6">
+                        <tspan x="87" y="51">n-</tspan>
+                        <tspan x="98.1815386" y="51" letter-spacing="-0.965812">1</tspan>
+                    </text>
+                    <text id="1" font-family="Merriweather-Regular, Merriweather" font-size="10" font-weight="normal" letter-spacing="0.7454545" fill="#0000A6">
+                        <tspan x="144" y="51">1</tspan>
+                    </text>
+                    <text id="$\Im$" font-family="Merriweather-Regular, Merriweather" font-size="10" font-weight="normal" letter-spacing="0.7454545" fill="#000000">
+                        <tspan x="126" y="10">$\Im$</tspan>
+                    </text>
+                    <text id="$\Re$" font-family="Merriweather-Regular, Merriweather" font-size="10" font-weight="normal" letter-spacing="0.7454545" fill="#000000">
+                        <tspan x="225" y="152">$\Re$</tspan>
+                    </text>
+                    <text id="2" font-family="Merriweather-Regular, Merriweather" font-size="10" font-weight="normal" letter-spacing="0.7454545" fill="#0000A6">
+                        <tspan x="165" y="59">2</tspan>
+                    </text>
+                    <text id="…" font-family="Merriweather-Regular, Merriweather" font-size="10" font-weight="normal" letter-spacing="0.7454545" fill="#0000A6">
+                        <tspan x="185" y="71">…</tspan>
+                    </text>
+                    <path d="M119,3.5 L118.5,258.609794" id="Path-54" stroke="#C9C9C9" stroke-linecap="round" stroke-linejoin="round"></path>
+                    <path d="M237.5,137.015426 L0.5,137.015426" id="Path-54" stroke="#C9C9C9" stroke-linecap="round" stroke-linejoin="round"></path>
+                    <polygon id="Path-55" fill="#C9C9C9" points="116 8.32732017 118.937093 1 121.940881 8.32732017"></polygon>
+                    <polygon id="Path-55" fill="#C9C9C9" transform="translate(237.876934, 136.932682) rotate(-270.000000) translate(-237.876934, -136.932682) " points="234.906494 140.596342 237.843587 133.269022 240.847375 140.596342"></polygon>
+                </g>
+                <circle id="Oval" fill="#0000A6" cx="155.5" cy="75.5" r="2.5"></circle>
+                <circle id="Oval-Copy-60" fill="#0000A6" cx="188.5" cy="94.5" r="2.5"></circle>
+                <circle id="Oval-Copy-61" fill="#0000A6" cx="183.5" cy="126.5" r="2.5"></circle>
+                <circle id="Oval-Copy-63" fill="#0000A6" cx="124.5" cy="73.5" r="2.5"></circle>
+                <circle id="Oval-Copy-64" fill="#0000A6" cx="88.5" cy="105.5" r="2.5"></circle>
+                <circle id="Oval-Copy-65" fill="#0000A6" cx="106.5" cy="147.5" r="2.5"></circle>
+                <circle id="Oval-Copy-128" fill="#0000A6" cx="136.5" cy="145.5" r="2.5"></circle>
+                <circle id="Oval-Copy-129" fill="#0000A6" cx="141.5" cy="124.5" r="2.5"></circle>
+                <circle id="Oval-Copy-130" fill="#0000A6" cx="124.5" cy="116.5" r="2.5"></circle>
+                <circle id="Oval-Copy-131" fill="#0000A6" cx="115.5" cy="129.5" r="2.5"></circle>
+                <circle id="Oval-Copy-132" fill="#0000A6" cx="126.5" cy="131.5" r="2.5"></circle>
+                <circle id="Oval-Copy-133" fill="#0000A6" cx="216.5" cy="110.5" r="2.5"></circle>
+                <circle id="Oval-Copy-62" fill="#0000A6" cx="180.5" cy="49.5" r="2.5"></circle>
+            </g>
+        </g>
+    </g>
+</svg>

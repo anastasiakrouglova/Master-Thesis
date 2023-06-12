@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="295px" height="302px" viewBox="0 0 295 302" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 53.2 (72643) - https://sketchapp.com -->
+    <title>Group 23</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Artboard" transform="translate(-127.000000, -3865.000000)">
+            <g id="Group-23" transform="translate(127.000000, 3865.000000)">
+                <path d="M0.893396278,172.5 L294.613755,172.5" id="Path-123" stroke="#E2E2E2"></path>
+                <path d="M104.806877,0.814003803 L104.806877,301.502665" id="Path-123" stroke="#E2E2E2"></path>
+                <path id="Path-124" d="M197.057022,35.7202442 L105.223001,173.577373 L104.390754,173.022968 L196.224775,35.1658397 L192.895786,32.9482215 L201.630539,27.9528161 L200.386011,37.9378624 L197.057022,35.7202442 Z" fill="#0102CC" fill-rule="nonzero"></path>
+                <path id="Path-124" d="M192.857773,173.070428 L104.811021,173.800153 L104.802734,172.800188 L192.849485,172.070462 L192.816335,168.0706 L201.85332,172.495856 L192.890923,177.07029 L192.857773,173.070428 Z" fill="#0102CC" fill-rule="nonzero"></path>
+                <path id="Path-124" d="M105.306877,36.8689397 L105.306877,173.30017 L104.306877,173.30017 L104.306877,36.8689397 L100.306877,36.8689397 L104.806877,27.8689397 L109.306877,36.8689397 L105.306877,36.8689397 Z" fill="#0102CC" fill-rule="nonzero"></path>
+                <text id="M" font-family="Merriweather-Regular, Merriweather" font-size="9" font-weight="normal" letter-spacing="0.670909" fill="#4E586A">
+                    <tspan x="146.102942" y="65.0501704">M</tspan>
+                </text>
+                <text id="B" font-family="Merriweather-Regular, Merriweather" font-size="9" font-weight="normal" letter-spacing="0.670909" fill="#4E586A">
+                    <tspan x="84.9754418" y="90.0501704">B</tspan>
+                </text>
+                <text id="A" font-family="Merriweather-Regular, Merriweather" font-size="9" font-weight="normal" letter-spacing="0.670909" fill="#4E586A">
+                    <tspan x="155.443942" y="190.05017">A</tspan>
+                </text>
+                <text id="$\theta$" font-family="Merriweather-Regular, Merriweather" font-size="9" font-weight="normal" letter-spacing="0.670909" fill="#4E586A">
+                    <tspan x="151.73826" y="141.05017">$\theta$</tspan>
+                </text>
+                <path id="Path-125" d="M139.780981,137.47791 C147.717154,144.325735 152.744498,153.173656 154.856576,164.004445 L158.8677,163.531766 L155.451912,172.996564 L149.929546,164.585056 L153.860577,164.121815 C151.788548,153.572828 146.902277,144.969066 139.195426,138.293576 L136.891754,141.502545 L132.204898,132.598424 L142.140309,134.191412 L139.780981,137.47791 Z" fill="#00CC96" fill-rule="nonzero"></path>
+                <text id="$M-=-\sqrt(A^2-+-b^2" font-family="Merriweather-Regular, Merriweather" font-size="9" font-weight="normal" letter-spacing="0.670909" fill="#4E586A">
+                    <tspan x="141.511897" y="224.05017">$M = \sqrt(A^2 + b^2)$</tspan>
+                </text>
+                <text id="$\theta-=-arctan(\fr" font-family="Merriweather-Regular, Merriweather" font-size="9" font-weight="normal" letter-spacing="0.670909" fill="#4E586A">
+                    <tspan x="141.475216" y="262.05017">$\theta = arctan(\frac{B}{A}$</tspan>
+                </text>
+                <path d="M104.806877,28.3689397 L201.353337,28.3689397 L201.353337,172.5" id="Path-126" stroke="#000000" opacity="0.422177269" stroke-dasharray="4"></path>
+            </g>
+        </g>
+    </g>
+</svg>
