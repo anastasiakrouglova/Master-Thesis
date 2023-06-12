@@ -3,7 +3,7 @@
 ## Density-based Clustering and Representation of Perceived Structure in Audio Signals
 
 
-### Team
+
 This thesis was created under supervision of Geraint Wiggins, Nicholas Harley and Steven Homer at the AI Lab in Brussels.
 
 ### Abstract
