@@ -3,6 +3,9 @@
 ## Density-based Clustering and Representation of Perceived Structure in Audio Signals
 
 
+### Team
+This thesis was created under supervision of Geraint Wiggins, Nicholas Harley and Steven Homer at the AI Lab in Brussels.
+
 ### Abstract
 The extraction and formation of musical structures through the analysis of complex auditory scenes is a challenging task in signal processing and machine learning. Musical analysis includes multiple open subtasks to be resolved, such as multi-pitch estimation, musical note tracking and multi-pitch streaming.
 The main goal of this thesis is to create a framework for the multipurpose description and evaluation of music, allowing inference from different subtasks and a general improvement in the learnability of machine learning models.
@@ -25,7 +28,3 @@ Overall, this thesis bridges the gap between human intelligence and machine lear
 The layout of the thesis is an expansion on the master's thesis of Gilles Castel. That, in turn, was inspired by the work of Edward Tufte. Feel free to use the latex code in this git repository as a template for your own content.
 
 ![2](https://github.com/anastasiakrouglova/Master-Thesis-Anastasia-Krouglova/assets/41705732/4c23d103-6f3c-4ff9-926d-4c83064fdf59)
-
-
-### Questions
-This thesis was created unders supervision of Geraint Wiggins, Nicholas Harley and Steven Homer at the AI Lab in Brussels.
