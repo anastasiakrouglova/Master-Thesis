@@ -28,4 +28,4 @@ The layout of the thesis is an expansion on the master's thesis of Gilles Castel
 
 
 ### Questions
-This thesis was created unders supervision of Geraint Wiggins, Nicholas Harley and Steven Homer at the AI Lab in Brussels. For any specific questions about the developed software, please reach out to me through `nastyakrouglova@gmail.com`.
+This thesis was created unders supervision of Geraint Wiggins, Nicholas Harley and Steven Homer at the AI Lab in Brussels.
