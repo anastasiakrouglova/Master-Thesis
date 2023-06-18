@@ -6,8 +6,6 @@ using Statistics, Distributions
 using ScikitLearn
 np = pyimport("numpy")
 ENV["PYTHON"]=""
-# using Pkg
-# Pkg.build("PyCall")
 push!(pyimport("sys")."path", "./")
 kneed = pyimport("kneed")
 # import libraries
@@ -21,6 +19,9 @@ filename = "violin_canonD_1"
 PATH = "./fpt/data/output/scores/" * filename * ".csv"
 PATH_OUTPUT = "./fpt/data/output/scores/clustered/" * filename * ".csv"
 PATH_PNG = "./fpt/data/output/scores/" * filename * ".png"
+
+EPS = 0.05
+PTS = 4
 
 
 function main(path, accuracy)
@@ -54,9 +55,11 @@ function main(path, accuracy)
     CSV.write(PATH_OUTPUT, pos_raw)
     lim_pos_raw = pos_raw[pos_raw.likeliness .<= 1, :]
     overtones_limFreq = lim_pos_raw[lim_pos_raw.frequency .<= 2000, :]
+
+    filter_nonf0 = overtones_limFreq[overtones_limFreq.f0 .!= 0, :]
     
     #plotharmonic(overtones_limFreq) 
-    plotf0(overtones_limFreq) 
+    plotf0(filter_nonf0) 
 end
 
 function overtoneSlice(df, i)
@@ -108,73 +111,6 @@ function featureNormalization(df)
     mapper = fit_transform!(mapper, copy(data))
 end
 
-############################## EXPERIMENTS WITH OTHER NORMALIZATION METHODS #############################
-# Test: Euclidean distance between amplitude/decay functions
-
-function onsetNormalization(df)
-    data = DataFrame(onset=df.onset)
-    mapper = DataFrameMapper([([:onset], StandardScaler())
-                            ]);
-    mapper = fit_transform!(mapper, copy(data))
-end
-
-
-function similarityNormalization(df)
-
-    formatted_d = map(x -> replace(x, 'j' => "im", '(' => "", ')' => ""), df.d)
-    formatted_w = map(x -> replace(x, 'j' => "im", '(' => "", ')' => ""), df.w)
-
-    d = map(x -> parse(ComplexF64, x), formatted_d)
-    w = map(x -> parse(ComplexF64, x), formatted_w)
-
-
-    data = DataFrame(similarity=df.similarity)
-    mapper = DataFrameMapper([
-                                #[:w], StandardScaler()),
-                            #([:frequency], StandardScaler())
-                            ([:similarity], StandardScaler())
-                            ]);
-    mapper = fit_transform!(mapper, copy(data))
-end
-
-##########################################################################################################
-
-# Similary distance resonances (cos d_{jk})
-function resonanceSimilarity(df)
-
-    formatted_d = map(x -> replace(x, 'j' => "im", '(' => "", ')' => ""), df.d)
-    formatted_w = map(x -> replace(x, 'j' => "im", '(' => "", ')' => ""), df.w)
-
-    d = map(x -> parse(ComplexF64, x), formatted_d)
-    w = map(x -> parse(ComplexF64, x), formatted_w)
-
-    djdk = map((x,y) -> x.*y, d[1:end-1], d[2:end])
-    diff_wjwk = diff(w)
-
-
-    dj_absPow = abs.(d[1:end-1]).^2
-    dk_absPow = abs.(d[2:end]).^2
-
-    gj = df.decay[1:end-1]
-    gk = df.decay[2:end]
-
-    numerator = real(djdk./diff_wjwk)
-
-    similarity = numerator ./ (dj_absPow./gj).*(dk_absPow./gk)
-
-    # last element has 0 similarity with first one
-    push!(similarity,0)
-
-    similarity[similarity.>=1] .= 1
-    similarity[similarity.<=-1] .= -1
-    #similarity[.>]
-
-    maximum(similarity) = 0
-
-    similarity = #map(x -> if (x >= 1) x = 0 end, similarity)
-
-    similarity
-end
 
 function silhouetteScore(X, accuracy)
     max_silouette = 0
@@ -223,20 +159,88 @@ function hyperparameterTuning(df, accuracy)
     # Convert data to a normalized matrix
     df[!,:similarity] = resonanceSimilarity(df)
 
-
     X = featureNormalization(df)
 
     # Calculate Silhouette score and knee
-    best_pts, best_eps = silhouetteScore(X, accuracy)
+    #best_pts, best_eps = silhouetteScore(X, accuracy)
 
-    # return  best min_pts
-    best_clustering = dbscan(X, best_eps, best_pts); 
+    best_clustering = dbscan(X, EPS, PTS); # Best: eps = 0.06, pts = 9
     
     df[!,:f0] = best_clustering.labels
 
 
     return df
 end
+
+
+############################## EXPERIMENTS WITH OTHER NORMALIZATION METHODS #############################
+# Test: Euclidean distance between amplitude/decay functions
+
+function onsetNormalization(df)
+    data = DataFrame(onset=df.onset)
+    mapper = DataFrameMapper([([:onset], StandardScaler())
+                            ]);
+    mapper = fit_transform!(mapper, copy(data))
+end
+
+
+function similarityNormalization(df)
+
+    formatted_d = map(x -> replace(x, 'j' => "im", '(' => "", ')' => ""), df.d)
+    formatted_w = map(x -> replace(x, 'j' => "im", '(' => "", ')' => ""), df.w)
+
+    d = map(x -> parse(ComplexF64, x), formatted_d)
+    w = map(x -> parse(ComplexF64, x), formatted_w)
+
+
+    data = DataFrame(similarity=df.similarity)
+    mapper = DataFrameMapper([
+                            #[:w], StandardScaler()),
+                            #([:frequency], StandardScaler())
+                            ([:similarity], StandardScaler())
+                            ]);
+    mapper = fit_transform!(mapper, copy(data))
+end
+
+# Similary distance resonances (cos d_{jk})
+function resonanceSimilarity(df)
+
+    formatted_d = map(x -> replace(x, 'j' => "im", '(' => "", ')' => ""), df.d)
+    formatted_w = map(x -> replace(x, 'j' => "im", '(' => "", ')' => ""), df.w)
+
+    d = map(x -> parse(ComplexF64, x), formatted_d)
+    w = map(x -> parse(ComplexF64, x), formatted_w)
+
+    djdk = map((x,y) -> x.*y, d[1:end-1], d[2:end])
+    diff_wjwk = diff(w)
+
+
+    dj_absPow = abs.(d[1:end-1]).^2
+    dk_absPow = abs.(d[2:end]).^2
+
+    gj = df.decay[1:end-1]
+    gk = df.decay[2:end]
+
+    numerator = real(djdk./diff_wjwk)
+
+    similarity = numerator ./ (dj_absPow./gj).*(dk_absPow./gk)
+
+    # last element has 0 similarity with first one
+    push!(similarity,0)
+
+    similarity[similarity.>=1] .= 1
+    similarity[similarity.<=-1] .= -1
+    #similarity[.>]
+
+    maximum(similarity) = 0
+
+    #similarity = map(x -> if (x >= 1) x = 0 end, similarity)
+
+    similarity
+end
+
+##########################################################################################################
+
 
 # Experimental setup, did not give appropriate results.
 function knee_epsilonTuning(X)
@@ -322,7 +326,9 @@ function plotf0(df)
     )
     relayout!(p, scene_camera=camera, title=name)
 
-    savefig(p, "test.svg")
+    path = "add-ons/plots-demo/"*string(EPS)*"-"*string(PTS)*".png"
+
+    savefig(p, path)
 
     # open("./example.html", "w") do io
     #     PlotlyBase.to_html(io, p.plot)
