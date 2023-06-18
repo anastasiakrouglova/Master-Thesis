@@ -1,4 +1,4 @@
-# NOTE: f_0 has the additional row "ID", so code slightly different
+# NOTE: f0 has the additional row "ID", so code slightly different
 using PlotlyJS, ClusterAnalysis, StatsBase, DataFrames, CSV, LinearAlgebra
 using PyCall
 using Conda
@@ -8,15 +8,15 @@ np = pyimport("numpy")
 ENV["PYTHON"]=""
 # using Pkg
 # Pkg.build("PyCall")
-push!(pyimport("sys")."path", "/Users/nastysushi/Mirror/_MULTIMEDIA/THESIS/thesis/github/")
+push!(pyimport("sys")."path", "./")
 kneed = pyimport("kneed")
 # import libraries
 @sk_import preprocessing: (StandardScaler)
 @sk_import metrics: (silhouette_samples, silhouette_score)
 @sk_import cluster: (KMeans)
 
-filename = "flute_syrinx_1"
-#filename = "violin_canonD_1"
+# filename = "flute_syrinx_1"
+filename = "violin_canonD_1"
 
 PATH = "./fpt/data/output/scores/" * filename * ".csv"
 PATH_OUTPUT = "./fpt/data/output/scores/clustered/" * filename * ".csv"
@@ -35,7 +35,7 @@ function main(path, accuracy)
     # cluster the f0 subset
     f0_raw = pos_raw[isequal.(pos_raw.f0,1), :]
     f0_raw = filter(:f0 => isequal(1), f0_raw)
-    clustered_f0 = hyperparameterTuning(f0_raw, accuracy, "features")
+    clustered_f0 = hyperparameterTuning(f0_raw, accuracy)
 
     # cluster the f0 subset
     for (id, f0) in zip(clustered_f0.id, clustered_f0.f0)
@@ -97,6 +97,168 @@ function getf0(df, i)
 
     return frequency_pred
 end
+
+
+# Euclidean distance onset/frequency
+function featureNormalization(df)
+    data = DataFrame(onset=df.onset, frequency=df.frequency)
+    mapper = DataFrameMapper([([:onset], StandardScaler()),
+                            ([:frequency], StandardScaler())
+                            ]);
+    mapper = fit_transform!(mapper, copy(data))
+end
+
+############################## EXPERIMENTS WITH OTHER NORMALIZATION METHODS #############################
+# Test: Euclidean distance between amplitude/decay functions
+
+function onsetNormalization(df)
+    data = DataFrame(onset=df.onset)
+    mapper = DataFrameMapper([([:onset], StandardScaler())
+                            ]);
+    mapper = fit_transform!(mapper, copy(data))
+end
+
+
+function similarityNormalization(df)
+
+    formatted_d = map(x -> replace(x, 'j' => "im", '(' => "", ')' => ""), df.d)
+    formatted_w = map(x -> replace(x, 'j' => "im", '(' => "", ')' => ""), df.w)
+
+    d = map(x -> parse(ComplexF64, x), formatted_d)
+    w = map(x -> parse(ComplexF64, x), formatted_w)
+
+
+    data = DataFrame(similarity=df.similarity)
+    mapper = DataFrameMapper([
+                                #[:w], StandardScaler()),
+                            #([:frequency], StandardScaler())
+                            ([:similarity], StandardScaler())
+                            ]);
+    mapper = fit_transform!(mapper, copy(data))
+end
+
+##########################################################################################################
+
+# Similary distance resonances (cos d_{jk})
+function resonanceSimilarity(df)
+
+    formatted_d = map(x -> replace(x, 'j' => "im", '(' => "", ')' => ""), df.d)
+    formatted_w = map(x -> replace(x, 'j' => "im", '(' => "", ')' => ""), df.w)
+
+    d = map(x -> parse(ComplexF64, x), formatted_d)
+    w = map(x -> parse(ComplexF64, x), formatted_w)
+
+    djdk = map((x,y) -> x.*y, d[1:end-1], d[2:end])
+    diff_wjwk = diff(w)
+
+
+    dj_absPow = abs.(d[1:end-1]).^2
+    dk_absPow = abs.(d[2:end]).^2
+
+    gj = df.decay[1:end-1]
+    gk = df.decay[2:end]
+
+    numerator = real(djdk./diff_wjwk)
+
+    similarity = numerator ./ (dj_absPow./gj).*(dk_absPow./gk)
+
+    # last element has 0 similarity with first one
+    push!(similarity,0)
+
+    similarity[similarity.>=1] .= 1
+    similarity[similarity.<=-1] .= -1
+    #similarity[.>]
+
+    maximum(similarity) = 0
+
+    similarity = #map(x -> if (x >= 1) x = 0 end, similarity)
+
+    similarity
+end
+
+function silhouetteScore(X, accuracy)
+    max_silouette = 0
+    best_pts = 0
+    best_eps = 0
+
+    knee_eps = knee_epsilonTuning(X)
+    
+    for min_pts in 3:20 
+        for eps in range(0.01, step=0.01, length=accuracy) # TODO: user can adjust accuracy of the algorithm to have more or less notes found!! length is the parameter that will be adjusted in this case
+        # Run DBSCAN 
+            m = dbscan(X, eps, min_pts); #returns object dbscan!
+            # Put labels from clustering back to a dataframe
+            cluster_labels = m.labels
+
+            # Ignore tuning where all resonances are labeled as noise
+            if (!all(y->y==cluster_labels[1],cluster_labels))
+                # Metric for the evaluation of the quality of a clustering technique
+                silhouette_avg = silhouette_score(X, cluster_labels)
+                # println("for min_pts=", min_pts, "and eps", eps, "the average silhouette_score is :", silhouette_avg)
+                if (silhouette_avg > max_silouette)
+                    max_silouette = silhouette_avg
+                    best_pts = min_pts
+                    best_eps = eps
+                end
+            end
+        end
+    end
+
+
+    
+    println("--------------")
+    println("knee method eps:", knee_eps) 
+    println("silhoutte pts:", best_pts)
+    println("silhoutte eps:", best_eps)
+    println("--------------")
+
+    return best_pts, best_eps
+
+end
+
+function hyperparameterTuning(df, accuracy)
+    # no denoise needed
+    df[!,:onset_s] = (df.onset ./ df.sample_rate)
+    normalize!(df.power, 2)
+    # Convert data to a normalized matrix
+    df[!,:similarity] = resonanceSimilarity(df)
+
+
+    X = featureNormalization(df)
+
+    # Calculate Silhouette score and knee
+    best_pts, best_eps = silhouetteScore(X, accuracy)
+
+    # return  best min_pts
+    best_clustering = dbscan(X, best_eps, best_pts); 
+    
+    df[!,:f0] = best_clustering.labels
+
+
+    return df
+end
+
+# Experimental setup, did not give appropriate results.
+function knee_epsilonTuning(X)
+    df_distance = DataFrame([[],[]], ["index", "distance", ])
+
+    l_X = size(X, 1)-1
+    for i in 1:l_X
+        dist = np.linalg.norm(X[i, :]-X[i+1, :])
+        push!(df_distance, [string(i), dist])
+    end 
+    df_distance = sort!(df_distance, :distance)
+
+    # Knee extraction, Satopaa 2011
+    distances = df_distance.distance
+    i = 1:length(distances)
+    knee = kneed.KneeLocator(i, distances, S=1, curve="convex", direction="increasing", interp_method="polynomial")
+    # Returns the epsilon
+    distances[knee.knee]
+end
+
+
+############################## PLOT FUNCTIONS ###############################
 
 function plotharmonic(df)
     # non-harmonic data
@@ -160,201 +322,21 @@ function plotf0(df)
     )
     relayout!(p, scene_camera=camera, title=name)
 
-    savefig(p, "test.png")
-    p
-end
+    savefig(p, "test.svg")
 
-
-# Euclidean distance onset/frequency
-function featureNormalization(df)
-    data = DataFrame(onset=df.onset, frequency=df.frequency)
-    mapper = DataFrameMapper([([:onset], StandardScaler()),
-                            ([:frequency], StandardScaler())
-                            ]);
-    mapper = fit_transform!(mapper, copy(data))
-end
-
-
-function onsetNormalization(df)
-    data = DataFrame(onset=df.onset)
-    mapper = DataFrameMapper([([:onset], StandardScaler())
-                            ]);
-    mapper = fit_transform!(mapper, copy(data))
-end
-
-# Test: Euclidean distance between amplitude/decay functions
-function similarityNormalization(df)
-
-    formatted_d = map(x -> replace(x, 'j' => "im", '(' => "", ')' => ""), df.d)
-    formatted_w = map(x -> replace(x, 'j' => "im", '(' => "", ')' => ""), df.w)
-
-    d = map(x -> parse(ComplexF64, x), formatted_d)
-    w = map(x -> parse(ComplexF64, x), formatted_w)
-
-
-    data = DataFrame(similarity=df.similarity)
-    mapper = DataFrameMapper([
-                                #[:w], StandardScaler()),
-                            #([:frequency], StandardScaler())
-                            ([:similarity], StandardScaler())
-                            ]);
-    mapper = fit_transform!(mapper, copy(data))
-end
-
-# Similary distance resonances (cos d_{jk})
-function resonanceSimilarity(df)
-
-    formatted_d = map(x -> replace(x, 'j' => "im", '(' => "", ')' => ""), df.d)
-    formatted_w = map(x -> replace(x, 'j' => "im", '(' => "", ')' => ""), df.w)
-
-    d = map(x -> parse(ComplexF64, x), formatted_d)
-    w = map(x -> parse(ComplexF64, x), formatted_w)
-
-    djdk = map((x,y) -> x.*y, d[1:end-1], d[2:end])
-    diff_wjwk = diff(w)
-
-
-    dj_absPow = abs.(d[1:end-1]).^2
-    dk_absPow = abs.(d[2:end]).^2
-
-    gj = df.decay[1:end-1]
-    gk = df.decay[2:end]
-
-    numerator = real(djdk./diff_wjwk)
-
-    similarity = numerator ./ (dj_absPow./gj).*(dk_absPow./gk)
-
-    # last element has 0 similarity with first one
-    push!(similarity,0)
-
-    similarity[similarity.>=1] .= 1
-    similarity[similarity.<=-1] .= -1
-    #similarity[.>]
-
-    maximum(similarity) = 0
-
-    similarity = #map(x -> if (x >= 1) x = 0 end, similarity)
-
-    similarity
-end
-
-function hyperparameterTuning(df, accuracy, type)
-    # no denoise needed
-    df[!,:onset_s] = (df.onset ./ df.sample_rate)
-    normalize!(df.power, 2)
-    # Convert data to a normalized matrix
-    df[!,:similarity] = resonanceSimilarity(df)
-
-    if (type == "similarity")
-        X = similarityNormalization(df)
-    else
-        X = featureNormalization(df)
-    end
-    
-    knee_eps = knee_epsilonTuning(X)
-
-    # Normalize matrix
-    # dt = fit(ZScoreTransform, X, dims=1)
-    # mat = StatsBase.transform(dt, X)
-    #normOnFreq = onFreqNormalization(df)
-
-    max_silouette = 0
-    best_pts = 0
-    best_eps = 0
-    
-    for min_pts in 3:20 
-        for eps in range(0.01, step=0.01, length=accuracy) # TODO: user can adjust accuracy of the algorithm to have more or less notes found!! length is the parameter that will be adjusted in this case
-        # Run DBSCAN 
-            m = dbscan(X, eps, min_pts); #returns object dbscan!
-            # Put labels from clustering back to a dataframe
-            cluster_labels = m.labels
-
-            # Ignore tuning where all resonances are labeled as noise
-            if (!all(y->y==cluster_labels[1],cluster_labels))
-                # Metric for the evaluation of the quality of a clustering technique
-                silhouette_avg = silhouette_score(X, cluster_labels)
-                # println("for min_pts=", min_pts, "and eps", eps, "the average silhouette_score is :", silhouette_avg)
-                if (silhouette_avg > max_silouette)
-                    max_silouette = silhouette_avg
-                    best_pts = min_pts
-                    best_eps = eps
-                end
-            end
-        end
-    end
-
-
-    
-    println("--------------")
-    println("knee method eps:", knee_eps) 
-    println("silhoutte pts:", best_pts)
-    println("silhoutte eps:", best_eps)
-    println("--------------")
-
-    # return  best min_pts
-    best_clustering = dbscan(X,best_eps, best_pts); 
-    
-    # if (type == "similarity")
-    #     df[!,:clusterSimilarity] = best_clustering.labels
-    # else
-    df[!,:f0] = best_clustering.labels
+    # open("./example.html", "w") do io
+    #     PlotlyBase.to_html(io, p.plot)
     # end
 
 
-    # CONCLUSION: KNEE METHOD DOES NOT WORK FOR OUR PROBLEM!!!
-    # reason: not in combination of 2 parameters:
-    return df
+    p
 end
 
-# Experimental setup, did not give appropriate results.
-function knee_epsilonTuning(X)
-    df_distance = DataFrame([[],[]], ["index", "distance", ])
+#############################################################################
 
-    l_X = size(X, 1)-1
-    for i in 1:l_X
-        dist = np.linalg.norm(X[i, :]-X[i+1, :])
-        push!(df_distance, [string(i), dist])
-    end 
-    df_distance = sort!(df_distance, :distance)
-
-    # Knee extraction, Satopaa 2011
-    distances = df_distance.distance
-    i = 1:length(distances)
-    knee = kneed.KneeLocator(i, distances, S=1, curve="convex", direction="increasing", interp_method="polynomial")
-    # Returns the epsilon
-    distances[knee.knee]
-end
 
 # accuracy must be a value between 10 and 50, since 0.1 <= eps <= 0.5
 # The higher the value, the less accuracy (just inverse for user later), 
 # mainly used for pieces where notes vary strongly in time
 # note: increase accuracy increases running time as well
 main(PATH, 6)
-
-#df = DataFrame(CSV.File(PATH))
-#resonanceSimilarity(df)
-#featureNormalization(df)
-
-########################## TODO #######################################
-
-# SPEED TEST:
-# TODO: @time all functions (20 times and take average), do the same with Dynamic Resonances: show which one is faster 
-#@time min_ptsTuning(X)
-
-# compilation
-
-
-#@time hyperparameterTuning(df,10)
-
-# @profview hyperparameterTuning(df, 10)
-# # # pure runtime
-# @profview hyperparameterTuning(df, 10)
-
-# STATISTICAL COMPARISON
-# TODO: run on 20 pieces: say what the accuracy is met hyperparameter tuning
-# Accuracy met manuele hyperparameter tuning: 100%
-# automatische hyperparameter tuning met kleinste afstand: ...
-
-#df = findClusters(raw, 0.10, 23) # halftones
-#df = findClusters(raw, 0.07, 18) # syrinx
-
