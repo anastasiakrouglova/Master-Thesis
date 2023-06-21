@@ -2,7 +2,6 @@
 # extract the fundamental and saves both files as a CSV in `./fpt/data/output` together with the DRS
 
 
-
 import os, sys
 from os.path import exists
 from matplotlib import pyplot as plt
