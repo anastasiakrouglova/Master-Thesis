@@ -1,12 +1,10 @@
 
-# Music Analysis using Spectral Knowledge Representation and Reasoning
-## Density-based Clustering and Representation of Perceived Structure in Audio Signals
+# Music Analysis using Spectral Knowledge Representation and Reasoning: Density-based Clustering and Representation of Perceived Structure in Audio Signals
 
-
-
+## Contribution
 This thesis was created under supervision of Geraint Wiggins, Nicholas Harley and Steven Homer at the AI Lab in Brussels.
 
-### Abstract
+## Abstract
 The extraction and formation of musical structures through the analysis of complex auditory scenes is a challenging task in signal processing and machine learning. Musical analysis includes multiple open subtasks to be resolved, such as multi-pitch estimation, musical note tracking and multi-pitch streaming.
 The main goal of this thesis is to create a framework for the multipurpose description and evaluation of music, allowing inference from different subtasks and a general improvement in the learnability of machine learning models.
 This was achieved by investigating into the implementation of a coherent structure between a spectral analysis of resonances and a type-based knowledge representation in the musical domain, forming an analogy to the perception, cognition and knowledge representation of human intelligence.
@@ -17,14 +15,19 @@ Our software also contributes to long-term prospective of explainable modelling 
 Overall, this thesis bridges the gap between human intelligence and machine learning through the development of a framework for knowledge representation and the recognition of musical objects in a resonance spectrum.
 
 
-### Applications
+## Applications
 - Automatic Music Transcription (AMT)
 - Source Seperation
 - Pitch Correction
 - ...
 
 
-### Layout
+## Layout
 The layout of the thesis is an expansion on the master's thesis of Gilles Castel. That, in turn, was inspired by the work of Edward Tufte. Feel free to use the latex code in this git repository as a template for your own content.
 
 ![2](https://github.com/anastasiakrouglova/Master-Thesis-Anastasia-Krouglova/assets/41705732/4c23d103-6f3c-4ff9-926d-4c83064fdf59)
+
+
+
+Screen Space Ambient Occlusion
+
