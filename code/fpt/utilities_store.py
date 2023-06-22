@@ -2083,6 +2083,7 @@ def denoise_by_dyns(spectrogram, min_overlap=1e-15, min_length=3, freq_ratio=20)
                                   in zip(dyns.elements, dyns.onsets)))
 
 
+
 def denoise(spectrogram, density_factor=1, power_factor=0.5, min_overlap=1e-15, min_length=4):
     """Function to denoise a spectrogram based its dynamic resonances.
 
@@ -2121,7 +2122,15 @@ def denoise(spectrogram, density_factor=1, power_factor=0.5, min_overlap=1e-15, 
     return spectrogram
 
 
+# Extract fundamental tones
+
+
+
+
 """ Additional utilities """
+
+
+
 
 
 def printProgressBar(iteration, total, prefix='', suffix='', decimals=1, length=100, fill='█', printEnd="\r"):
