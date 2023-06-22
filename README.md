@@ -27,7 +27,3 @@ The layout of the thesis is an expansion on the master's thesis of Gilles Castel
 
 ![2](https://github.com/anastasiakrouglova/Master-Thesis-Anastasia-Krouglova/assets/41705732/4c23d103-6f3c-4ff9-926d-4c83064fdf59)
 
-
-
-Screen Space Ambient Occlusion
-
