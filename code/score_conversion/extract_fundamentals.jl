@@ -1,7 +1,7 @@
 using CSV, DataFrames, GLM, MLBase, Statistics
 using Lathe.preprocess: TrainTestSplit
 
-filename = "violin_canonD_1"
+filename = "violin_canonD_5"
 # filename = "flute_syrinx_artificial_1"
 PATH = "./code/fpt/data/output/scores/clustered/" * filename * ".csv"
 

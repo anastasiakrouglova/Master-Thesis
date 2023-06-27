@@ -4,7 +4,7 @@
   tagline = ""
 }{
 \new PianoStaff << 
-  \new Staff {\time4/4ges''4e''4d''4des''4b'4a'4b'4des''4}
+  \new Staff {\time4/4d'''4des''4b'4d''4g''4e''4a''4}
 >>
 }
 

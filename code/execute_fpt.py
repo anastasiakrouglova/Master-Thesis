@@ -17,7 +17,7 @@ import serialization as ser
 ACCURACY = 650  # Generally a good value for most musical analysis
 MAX_FREQ = 2000 # Generally enough for musical analysis
 
-filename = 'violin_canonD_1'
+filename = 'violin_canonD_5'
 #path_input = 'fpt/data/input/scores/' #scores/
 path_input = './code/fpt/data/input/scores/' 
 path_output = './code/fpt/data/output/scores/'

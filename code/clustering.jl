@@ -14,8 +14,8 @@ kneed = pyimport("kneed")
 @sk_import metrics: (silhouette_samples, silhouette_score)
 @sk_import cluster: (KMeans)
 
-# filename = "flute_syrinx_1"
-filename = "violin_canonD_1"
+# filename = "flute_syrinx_3"
+filename = "violin_canonD_5"
 
 PATH = "./code/fpt/data/output/scores/" * filename * ".csv"
 PATH_OUTPUT = "./code/fpt/data/output/scores/clustered/" * filename * ".csv"
