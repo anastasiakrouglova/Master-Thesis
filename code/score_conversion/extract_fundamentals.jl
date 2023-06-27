@@ -15,7 +15,12 @@ notes = DataFrame(CSV.File(Flat))
 beats_per_measure = 4
 note_one_beat = 4
 
-amount_measures = 1
+amount_measures = 2
+
+uniq = unique(df.f0)
+uniq = uniq[uniq .> 0]
+
+println("unique array: ", uniq)
 
 function getFrequency(i)
     cluster = df[df.f0 .== i, :]
@@ -62,8 +67,10 @@ frequencies = Vector{Float64}()
 noteNames = Vector{String}()
 noteDurations = Vector{String}()
 
-min_clus = 1
-max_clus = maximum(df.f0)
+min_clus = minimum(uniq) 
+max_clus = maximum(uniq)
+
+println(max_clus)
 
 minRes = minimum(df[df.f0 .== min_clus, :onset])
 maxRes = maximum(df[df.f0 .== max_clus, :onset])
@@ -75,7 +82,11 @@ lengthFragment = maxRes-minRes
 # Possible lengths of notes
 note_lengths = [1, 2, 3, 4, 6, 8, 12, 16, 32, 64, 128]  # Als geen power van 2 of multiplicatie van 6
 
-for i in 1:maximum(df.f0)
+
+
+
+
+for i in uniq
     freq = getFrequency(i)
     duration = getduration(i)
     duration = (duration / lengthFragment) * (beats_per_measure * amount_measures)
@@ -94,25 +105,26 @@ for i in 1:maximum(df.f0)
     noteName = getNotename(freq)
     cluster = df[df.f0 .== i, :]
 
-    # TODO:  add rests to musical notation (Future work)
-    # artificial boundery for the thesis demonstration with Syrinx, needs more expanded rule-based approach
-    if (minimum(cluster.frequency) > 540) 
-        push!(frequencies, freq)
+    # Future work:  add rests to musical notation (Future work)
 
-        if (ispow2(noteDur))
-            push!(noteDurations, string(noteDur))
-        else 
-            # calculate the position of the last set bit of `n`
-            lg = ceil(Int, log(noteDur)/log(2))
-            # next power of two will have a bit set at position `lg`.
-            pow2 = 1 << lg
+    push!(frequencies, freq)
 
-            push!(noteDurations, string(pow2)*".")
-        end
+    if (ispow2(noteDur))
+        push!(noteDurations, string(noteDur))
+    else 
+        # calculate the position of the last set bit of `n`
+        lg = ceil(Int, log(noteDur)/log(2))
+        # next power of two will have a bit set at position `lg`.
+        pow2 = 1 << lg
+
+        push!(noteDurations, string(pow2)*".")
     end
+
 end
 
 all_notes = Vector{String}()
+
+
 
 # return note
 for i in 1:length(frequencies)
@@ -120,8 +132,12 @@ for i in 1:length(frequencies)
     push!(all_notes, note)  
 end
 
+print(all_notes)
+
+# temparary for demo
+noteDurations .= string(4)
+
 res = [(n * d) for (n, d) in zip(all_notes, noteDurations)]
-println(res)
 
 beat = "\\time" * string(beats_per_measure) * "/" * string(note_one_beat)
 res = beat * join(res)

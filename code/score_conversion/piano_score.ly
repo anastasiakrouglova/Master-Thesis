@@ -1,10 +1,10 @@
 \header {
-  title = "Syrinx (artificial audio)"
+  title = "Partiture"
   composer = "Anastasia Krouglova using Python"
   tagline = ""
 }{
 \new PianoStaff << 
-  \new Staff {\time3/4des''128ges''8.e''8d''8.d'''128d'''128des''8.}
+  \new Staff {\time4/4ges''4e''4d''4des''4b'4a'4b'4des''4}
 >>
 }
 

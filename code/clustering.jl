@@ -52,10 +52,12 @@ function main(path, accuracy)
 
     # Power denoiser
     for i in 1:max
-        cluster = pos_raw[pos_raw.f0 .== i, :]
-        avg_power = avg_power_cluster(pos_raw, i)
+        avg_power, n_elements = avg_power_cluster(pos_raw, i)
 
-        if (avg_power < 0.0001)
+        println("avg power: ", avg_power)
+        println("n_elements: ", n_elements)
+
+        if (avg_power < 0.0001 || n_elements < 10)
             temp = temp[temp.f0 .!= i, :]
         end
     end
@@ -68,9 +70,7 @@ function main(path, accuracy)
 
     CSV.write(PATH_OUTPUT, temp)
     lim_pos_raw = temp[temp.likeliness .<= 1, :]
-    
     overtones_limFreq = lim_pos_raw[lim_pos_raw.frequency .<= 2000, :]
-
     filter_nonf0 = overtones_limFreq[overtones_limFreq.f0 .!= 0, :]
     
     #plotharmonic(overtones_limFreq) 
@@ -84,7 +84,9 @@ function avg_power_cluster(df, i)
     #avg_power = round(avg_cluster, digits = 2)
     println(avg_cluster)
 
-    return avg_cluster
+    n_elements = nrow(cluster)
+
+    return avg_cluster, n_elements
 end
 
 function overtoneSlice(df, i)
@@ -368,4 +370,4 @@ end
 # The higher the value, the less accuracy (just inverse for user later), 
 # mainly used for pieces where notes vary strongly in time
 # note: increase accuracy increases running time as well
-main(PATH, 20)
+main(PATH, 6)
