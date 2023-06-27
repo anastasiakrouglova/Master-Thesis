@@ -1,4 +1,4 @@
-# run "python score_conversion/text_to_music.py > score_conversion/piano_score.ly" in terminal
+# run "python ./code/score_conversion/text_to_music.py > ./code/score_conversion/piano_score.ly" in terminal
 # to create .ly file
 # run "export PATH=/Applications/lilypond-2.24.1/bin/:$PATH" if lilypond not found in terminal after installation
 # then, run execute.py
@@ -8,7 +8,7 @@
     
 
 #open text file in read mode
-text_file = open("score_conversion/notes.txt", "r")
+text_file = open("./code/score_conversion/notes.txt", "r")
 #read whole file to a string
 data = text_file.read()
 

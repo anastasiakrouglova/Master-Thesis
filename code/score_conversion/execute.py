@@ -1,13 +1,13 @@
 import os
 
 # go to the right folder
-exit_status = os.system("cd /Users/nastysushi/Mirror/_MULTIMEDIA/THESIS/thesis/github/score_conversion")
+exit_status = os.system("cd /Users/nastysushi/Mirror/_MULTIMEDIA/THESIS/thesis/github/code/score_conversion")
 # to create .ly file
-exit_status = os.system("python score_conversion/text_to_music.py > score_conversion/piano_score.ly")
+exit_status = os.system("python score_conversion/text_to_music.py > score_conversion/code/piano_score.ly")
 # run this command in case lilypond is not found in terminal after installation
 exit_status = os.system("export PATH=/Applications/lilypond-2.24.1/bin/:$PATH")
 # to create .pdf file
-exit_status = os.system("lilypond score_conversion/piano_score.ly")
+exit_status = os.system("lilypond ./code/score_conversion/piano_score.ly")
 
 
 # Check the return value

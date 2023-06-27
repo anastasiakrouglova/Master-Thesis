@@ -6,7 +6,8 @@ using Statistics, Distributions
 using ScikitLearn
 np = pyimport("numpy")
 ENV["PYTHON"]=""
-push!(pyimport("sys")."path", "./")
+push!(pyimport("sys")."path", "/Users/nastysushi/Mirror/_MULTIMEDIA/THESIS/thesis/github/code/")
+push!(pyimport("sys")."path", "./") # add a hardcoded path if it doesn't work: push!(pyimport("sys")."path", "<PATH>/code/")
 kneed = pyimport("kneed")
 # import libraries
 @sk_import preprocessing: (StandardScaler)
@@ -16,9 +17,9 @@ kneed = pyimport("kneed")
 # filename = "flute_syrinx_1"
 filename = "violin_canonD_1"
 
-PATH = "./fpt/data/output/scores/" * filename * ".csv"
-PATH_OUTPUT = "./fpt/data/output/scores/clustered/" * filename * ".csv"
-PATH_PNG = "./fpt/data/output/scores/" * filename * ".png"
+PATH = "./code/fpt/data/output/scores/" * filename * ".csv"
+PATH_OUTPUT = "./code/fpt/data/output/scores/clustered/" * filename * ".csv"
+PATH_PNG = "./code/fpt/data/output/scores/" * filename * ".png"
 
 EPS = 0.05
 PTS = 4
@@ -148,7 +149,7 @@ function silhouetteScore(X, accuracy)
     println("silhoutte eps:", best_eps)
     println("--------------")
 
-    return best_pts, best_eps
+    return best_pts, best_eps, knee_eps
 
 end
 
@@ -162,9 +163,9 @@ function hyperparameterTuning(df, accuracy)
     X = featureNormalization(df)
 
     # Calculate Silhouette score and knee
-    #best_pts, best_eps = silhouetteScore(X, accuracy)
+    best_pts, best_eps, knee_eps = silhouetteScore(X, accuracy)
 
-    best_clustering = dbscan(X, EPS, PTS); # Best: eps = 0.06, pts = 9
+    best_clustering = dbscan(X, best_eps, best_pts); # Best: eps = 0.06, pts = 9
     
     df[!,:f0] = best_clustering.labels
 
@@ -304,17 +305,17 @@ function plotf0(df)
         Layout(scene = attr(
                         xaxis_title="Time (s)",
                         yaxis_title="Frequency (Hz)",
-                        #zaxis_title="Power"
+                        zaxis_title="Power"
                         ),
                         #margin=attr(r=100, b=150, l=50, t=50)
                         ),
         x=:onset, 
         y=:frequency, 
-        #z=:power, 
+        z=:power, 
         color=:f0, # choose one of the two, dependent on harmonic
-        #type="scatter3d", 
+        type="scatter3d", 
         mode="markers", 
-        marker_size=4
+        marker_size=2
     )
 
     name = "Clustering of resonances"
@@ -326,14 +327,12 @@ function plotf0(df)
     )
     relayout!(p, scene_camera=camera, title=name)
 
-    path = "add-ons/plots-demo/"*string(EPS)*"-"*string(PTS)*".png"
-
-    savefig(p, path)
+    # path = "./code/add-ons/plots-demo/"*string(EPS)*"-"*string(PTS)*".png"
+    # savefig(p, path)
 
     # open("./example.html", "w") do io
     #     PlotlyBase.to_html(io, p.plot)
     # end
-
 
     p
 end
@@ -345,4 +344,4 @@ end
 # The higher the value, the less accuracy (just inverse for user later), 
 # mainly used for pieces where notes vary strongly in time
 # note: increase accuracy increases running time as well
-main(PATH, 6)
+main(PATH, 10)

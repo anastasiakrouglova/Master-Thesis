@@ -1,12 +1,12 @@
 using CSV, DataFrames, GLM, MLBase, Statistics
 using Lathe.preprocess: TrainTestSplit
 
-# filename = "violin_canonD_1"
-filename = "flute_syrinx_artificial_1"
-PATH = "./fpt/data/output/scores/clustered/" * filename * ".csv"
+filename = "violin_canonD_1"
+# filename = "flute_syrinx_artificial_1"
+PATH = "./code/fpt/data/output/scores/clustered/" * filename * ".csv"
 
-Sharp = "./score_conversion/frequenciesToNoteSharp.csv"
-Flat = "./score_conversion/frequenciesToNoteFlat.csv"
+Sharp = "./code/score_conversion/frequenciesToNoteSharp.csv"
+Flat = "./code/score_conversion/frequenciesToNoteFlat.csv"
 
 df = DataFrame(CSV.File(PATH))
 notes = DataFrame(CSV.File(Flat))
@@ -95,7 +95,6 @@ for i in 1:maximum(df.f0)
     cluster = df[df.f0 .== i, :]
 
     # TODO:  add rests to musical notation (Future work)
-
     # artificial boundery for the thesis demonstration with Syrinx, needs more expanded rule-based approach
     if (minimum(cluster.frequency) > 540) 
         push!(frequencies, freq)
@@ -128,6 +127,6 @@ beat = "\\time" * string(beats_per_measure) * "/" * string(note_one_beat)
 res = beat * join(res)
 
 # save notes in a textfile -> send to text_to_msusic
-file = open("score_conversion/notes.txt", "w")
+file = open("./code/score_conversion/notes.txt", "w")
 write(file, res)
 close(file)
