@@ -22,7 +22,7 @@ staff += "  \\new Staff {" + data  + "}\n"  # upper_staff "c'' b' ais' a' gis' g
 staff += ">>\n}\n"
 
 title = """\header {
-  title = "Syrinx (artificial audio)"
+  title = "Partiture"
   composer = "Anastasia Krouglova using Python"
   tagline = ""
 }"""

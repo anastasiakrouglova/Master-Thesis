@@ -39,7 +39,6 @@ function main(path, accuracy)
     f0_raw = filter(:f0 => isequal(1), f0_raw)
     clustered_f0 = hyperparameterTuning(f0_raw, accuracy)
 
-    # cluster the f0 subset
     for (id, f0) in zip(clustered_f0.id, clustered_f0.f0)
         indices = findall(x -> x == id, pos_raw.id)
         pos_raw[indices, :f0] .= f0
@@ -48,19 +47,44 @@ function main(path, accuracy)
     pos_raw[!, :harmonic] .= -1
     pos_raw[!, :likeliness] .= 0.5
 
-    # Harmonics
+    temp = pos_raw
+    max = maximum(clustered_f0.f0)
+
+    # Power denoiser
+    for i in 1:max
+        cluster = pos_raw[pos_raw.f0 .== i, :]
+        avg_power = avg_power_cluster(pos_raw, i)
+
+        if (avg_power < 0.0001)
+            temp = temp[temp.f0 .!= i, :]
+        end
+    end
+
     for i in 1:maximum(clustered_f0.f0)
+        # Harmonics
         pos_raw = overtoneSlice(pos_raw, i)
     end
 
-    CSV.write(PATH_OUTPUT, pos_raw)
-    lim_pos_raw = pos_raw[pos_raw.likeliness .<= 1, :]
+
+    CSV.write(PATH_OUTPUT, temp)
+    lim_pos_raw = temp[temp.likeliness .<= 1, :]
+    
     overtones_limFreq = lim_pos_raw[lim_pos_raw.frequency .<= 2000, :]
 
     filter_nonf0 = overtones_limFreq[overtones_limFreq.f0 .!= 0, :]
     
     #plotharmonic(overtones_limFreq) 
     plotf0(filter_nonf0) 
+end
+
+function avg_power_cluster(df, i)
+    cluster = df[df.f0 .== i, :]
+    vec_cluster = collect(cluster.power)
+    avg_cluster = mean(vec_cluster)
+    #avg_power = round(avg_cluster, digits = 2)
+    println(avg_cluster)
+
+    return avg_cluster
 end
 
 function overtoneSlice(df, i)
@@ -344,4 +368,4 @@ end
 # The higher the value, the less accuracy (just inverse for user later), 
 # mainly used for pieces where notes vary strongly in time
 # note: increase accuracy increases running time as well
-main(PATH, 10)
+main(PATH, 20)

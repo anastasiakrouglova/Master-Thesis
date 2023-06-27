@@ -12,7 +12,7 @@ df = DataFrame(CSV.File(PATH))
 notes = DataFrame(CSV.File(Flat))
 
 # Time signature: manual features for nrow
-beats_per_measure = 3
+beats_per_measure = 4
 note_one_beat = 4
 
 amount_measures = 1
