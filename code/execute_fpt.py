@@ -17,10 +17,10 @@ import serialization as ser
 ACCURACY = 650  # Generally a good value for most musical analysis
 MAX_FREQ = 2000 # Generally enough for musical analysis
 
-filename = 'violin_canonD_5'
+filename = 'K331-Syn_short'
 #path_input = 'fpt/data/input/scores/' #scores/
-path_input = './code/fpt/data/input/scores/' 
-path_output = './code/fpt/data/output/scores/'
+path_input = './code/fpt/data/input/polyphonic/' 
+path_output = './code/fpt/data/output/polyphonic/'
 
 file = path_output+filename+".csv"
 file_exists = exists(file)

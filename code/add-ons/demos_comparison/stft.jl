@@ -1,6 +1,20 @@
 using DSP, WAV, PlotlyJS, DataFrames, ClusterAnalysis  # "using" makes the listed modules available for the
                        # user, like "import" in other languages
 
+using StatsBase
+using PyCall
+using Conda
+using Statistics, Distributions
+using ScikitLearn
+np = pyimport("numpy")
+ENV["PYTHON"]=""
+push!(pyimport("sys")."path", "/Users/nastysushi/Mirror/_MULTIMEDIA/THESIS/thesis/github/code/")
+push!(pyimport("sys")."path", "./") # add a hardcoded path if it doesn't work: push!(pyimport("sys")."path", "<PATH>/code/")
+kneed = pyimport("kneed")
+# import libraries
+@sk_import preprocessing: (StandardScaler)
+@sk_import metrics: (silhouette_samples, silhouette_score)
+
 
                        
 function remove_noise(data, min_power, max_frequency)
@@ -9,23 +23,28 @@ function remove_noise(data, min_power, max_frequency)
     data = data[(data.onset .!= 0) .& (data.onset .!= maximum(data.onset)), :]
     
     # good value (tested on flute-a4.wav) for min_power = 0.001
-    data = data[(data.power .> min_power), :]
+    minPow = 0.000001
+    data = data[(data.power .> minPow), :]
 
     # Remove frequencies above 2000 and complex part
     data = data[(0 .< data.frequency) .& (data.frequency .< max_frequency), :]
-    normalize!(data.power, 2)
+    # normalize!(data.power, 2)
 
     return data
 end
 
 
 # # Loading and plotting an audio signal
-s, fs = wavread("./fpt/data/input/scores/flute_syrinx.wav")
+s, fs = wavread("code/fpt/data/input/polyphonic/K331-Tri_short.wav")
 # s, fs = wavread("./fpt/data/input/scores/flute_syrinx_2.wav")
 
 # PROBLEM: JUMPS OF 661 HERE, at Flute: 512
-S = spectrogram(s[:,1], 512, 0; # round(Int, 25e-3*fs),round(Int, 10e-3*fs);
- window=hanning)
+
+# Amount of samples
+
+S = spectrogram(s[:,1], 512*2, 0; # round(Int, 25e-3*fs),round(Int, 10e-3*fs);
+ window=hanning
+ )
 
 t = (time(S) ./ fs) * 44100
 # In digital signal processing (DSP), a normalized frequency is a ratio of a variable frequency (f) and a constant frequency associated with a system (such as a sampling rate, fs)
@@ -62,7 +81,10 @@ function findClusters(raw, ϵ, min_pts, min_power, max_frequency)
     mat = StatsBase.transform(dt, X)
 
     # Run DBSCAN 
-    m = dbscan(mat, ϵ, min_pts); #returns object dbscan!
+    ACCURACY = 6
+
+    best_pts, best_eps = silhouetteScore(X, ACCURACY)
+    m = dbscan(mat, best_eps, best_pts); #returns object dbscan!
 
     # Put labels from clustering back to a dataframe
     # print(m.labels)
@@ -91,15 +113,15 @@ function plotCluster(df)
         Layout(scene = attr(
                         xaxis_title="Time (s)",
                         yaxis_title="Frequency (Hz)",
-                        # zaxis_title="Power",
+                        zaxis_title="Power",
                         )
                         #margin=attr(r=50, b=50, l=50, t=50)
                         ),
         x=:onset, 
         y=:frequency,
-        #  z=:power, 
-        # color=:cluster,
-        # type="scatter3d", 
+        z=:power, 
+        color=:cluster,
+        type="scatter3d", 
         mode="markers", 
         marker_size=2
     )
@@ -117,5 +139,49 @@ function plotCluster(df)
 end
 
 
-df_cluster = findClusters(df, 0.5, 5, 0.1, 2000)
-plotCluster2D(df_cluster)
+function silhouetteScore(X, accuracy)
+    max_silouette = 0
+    best_pts = 0
+    best_eps = 0
+
+    # knee_eps = knee_epsilonTuning(X)
+    
+    for min_pts in 3:20 
+        for eps in range(0.01, step=0.01, length=accuracy) # TODO: user can adjust accuracy of the algorithm to have more or less notes found!! length is the parameter that will be adjusted in this case
+        # Run DBSCAN 
+            m = dbscan(X, eps, min_pts); #returns object dbscan!
+            # Put labels from clustering back to a dataframe
+            cluster_labels = m.labels
+
+            # Ignore tuning where all resonances are labeled as noise
+            if (!all(y->y==cluster_labels[1],cluster_labels))
+                # Metric for the evaluation of the quality of a clustering technique
+                silhouette_avg = silhouette_score(X, cluster_labels)
+                # println("for min_pts=", min_pts, "and eps", eps, "the average silhouette_score is :", silhouette_avg)
+                if (silhouette_avg > max_silouette)
+                    max_silouette = silhouette_avg
+                    best_pts = min_pts
+                    best_eps = eps
+                end
+            end
+        end
+    end
+
+
+    
+    println("--------------")
+    # println("knee method eps:", knee_eps) 
+    println("silhoutte pts:", best_pts)
+    println("silhoutte eps:", best_eps)
+    println("--------------")
+
+    return best_pts, best_eps
+
+end
+
+
+df_cluster = findClusters(df, 0.01, 5, 0.1, 2000)
+
+# plotCluster2D(df_cluster)
+
+plotCluster(df_cluster)

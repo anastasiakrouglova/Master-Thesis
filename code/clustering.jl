@@ -15,11 +15,16 @@ kneed = pyimport("kneed")
 @sk_import cluster: (KMeans)
 
 # filename = "flute_syrinx_3"
-filename = "violin_canonD_5"
+filename = "K331-Tri_short"
 
-PATH = "./code/fpt/data/output/scores/" * filename * ".csv"
-PATH_OUTPUT = "./code/fpt/data/output/scores/clustered/" * filename * ".csv"
-PATH_PNG = "./code/fpt/data/output/scores/" * filename * ".png"
+# PATH = "./code/fpt/data/output/scores/" * filename * ".csv"
+# PATH_OUTPUT = "./code/fpt/data/output/scores/clustered/" * filename * ".csv"
+# PATH_PNG = "./code/fpt/data/output/scores/" * filename * ".png"
+
+PATH = "./code/fpt/data/output/polyphonic/" * filename * ".csv"
+PATH_OUTPUT = "./code/fpt/data/output/polyphonic/" * filename * "_clustered.csv"
+PATH_PNG = "./code/fpt/data/output/polyphonic/" * filename * ".png"
+
 
 EPS = 0.05
 PTS = 4
@@ -35,8 +40,9 @@ function main(path, accuracy)
     pos_raw = filter(:frequency => x -> x > 0, raw)
 
     # cluster the f0 subset
-    f0_raw = pos_raw[isequal.(pos_raw.f0,1), :]
-    f0_raw = filter(:f0 => isequal(1), f0_raw)
+    #f0_raw = pos_raw[isequal.(pos_raw.f0,1), :]
+    #f0_raw = filter(:f0 => isequal(1), f0_raw)
+    f0_raw = filter(:power => x -> x > 0.00001, pos_raw)
     clustered_f0 = hyperparameterTuning(f0_raw, accuracy)
 
     for (id, f0) in zip(clustered_f0.id, clustered_f0.f0)
@@ -370,4 +376,4 @@ end
 # The higher the value, the less accuracy (just inverse for user later), 
 # mainly used for pieces where notes vary strongly in time
 # note: increase accuracy increases running time as well
-main(PATH, 6)
+main(PATH, 6) # MOET NOG LAGER VOOR DIE SYNTHETISCHE NUMMERS
